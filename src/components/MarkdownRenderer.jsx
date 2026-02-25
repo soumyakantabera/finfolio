@@ -224,7 +224,7 @@ function CodeBlock({ className, children }) {
   }, [code]);
 
   return (
-    <Box sx={{ my: 2, border: '1px solid #000', borderRadius: 0 }}>
+    <Box sx={{ my: 3, border: '1px solid #000', borderRadius: 0 }}>
       {/* Header bar */}
       <Box sx={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -270,7 +270,7 @@ function CodeBlock({ className, children }) {
 
 const markdownComponents = {
   h1: ({ children, ...props }) => (
-    <Typography variant="h4" component="h1" sx={{ fontWeight: 700, mt: 3, mb: 1.5, color: '#000' }} {...props}>
+    <Typography variant="h4" component="h1" sx={{ fontWeight: 700, mt: 4, mb: 2, color: '#000' }} {...props}>
       {children}
     </Typography>
   ),
@@ -278,7 +278,7 @@ const markdownComponents = {
     const text = extractTextFromChildren(children);
     const id = slugify(text);
     return (
-      <Typography variant="h5" component="h2" id={id} sx={{ fontWeight: 600, mt: 2.5, mb: 1.5, color: '#000' }} {...props}>
+      <Typography variant="h5" component="h2" id={id} sx={{ fontWeight: 600, mt: 3, mb: 1.5, color: '#000' }} {...props}>
         {children}
       </Typography>
     );
@@ -287,7 +287,7 @@ const markdownComponents = {
     const text = extractTextFromChildren(children);
     const id = slugify(text);
     return (
-      <Typography variant="h6" component="h3" id={id} sx={{ fontWeight: 600, mt: 2, mb: 1, color: '#000' }} {...props}>
+      <Typography variant="h6" component="h3" id={id} sx={{ fontWeight: 600, mt: 3, mb: 1, color: '#000' }} {...props}>
         {children}
       </Typography>
     );
@@ -298,7 +298,7 @@ const markdownComponents = {
     </Typography>
   ),
   p: ({ children, ...props }) => (
-    <Typography variant="body1" sx={{ mb: 1.5, lineHeight: 1.7, color: '#000' }} {...props}>
+    <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.7, color: '#000' }} {...props}>
       {children}
     </Typography>
   ),
@@ -308,12 +308,12 @@ const markdownComponents = {
     </MuiLink>
   ),
   img: ({ src, alt, ...props }) => (
-    <Box component="img" src={src} alt={alt} sx={{ maxWidth: '100%', borderRadius: 0, my: 1 }} {...props} />
+    <Box component="img" src={src} alt={alt} sx={{ maxWidth: '100%', borderRadius: 0, my: 2 }} {...props} />
   ),
   blockquote: ({ children, ...props }) => (
     <Box
       component="blockquote"
-      sx={{ borderLeft: '4px solid #000', pl: 2, my: 2, ml: 0, color: '#000' }}
+      sx={{ borderLeft: '4px solid #000', pl: 2, my: 3, ml: 0, color: '#000' }}
       {...props}
     >
       {children}
@@ -354,7 +354,7 @@ const markdownComponents = {
     return (
       <Box
         component="pre"
-        sx={{ bgcolor: '#fff', p: 2, borderRadius: 0, overflow: 'auto', my: 2, border: '1px solid #000', fontSize: { xs: '0.8rem', md: '0.875em' }, maxWidth: '100%' }}
+        sx={{ bgcolor: '#fff', p: 2, borderRadius: 0, overflow: 'auto', my: 3, border: '1px solid #000', fontSize: { xs: '0.8rem', md: '0.875em' }, maxWidth: '100%' }}
         {...props}
       >
         {children}
@@ -362,7 +362,7 @@ const markdownComponents = {
     );
   },
   table: ({ children, ...props }) => (
-    <Box sx={{ overflowX: 'auto', my: 2 }}>
+    <Box sx={{ overflowX: 'auto', my: 3 }}>
       <Box component="table" sx={{ width: '100%', borderCollapse: 'collapse' }} {...props}>
         {children}
       </Box>
