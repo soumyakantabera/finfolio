@@ -220,7 +220,7 @@ export default function ProjectDetail({ data }) {
             {project.keyFindings?.length > 0 && (
               <Box sx={{ mb: 3, p: 2, border: '1px solid #000' }}>
                 <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1 }}>Key Findings</Typography>
-                <Box component="ul" sx={{ m: 0, pl: 2.5 }}>
+                <Box component="ul" sx={{ m: 0, pl: 3 }}>
                   {project.keyFindings.map((finding, i) => (
                     <Box component="li" key={i} sx={{ mb: 0.5 }}>
                       <Typography variant="body2">{finding}</Typography>

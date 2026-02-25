@@ -372,7 +372,7 @@ export default function AboutPage({ data }) {
                         tabIndex={hasMedia ? 0 : undefined}
                         onKeyDown={hasMedia ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedCert(cert); } } : undefined}
                       >
-                        <CardContent sx={{ p: { xs: 2, md: 2.5 }, '&:last-child': { pb: { xs: 2, md: 2.5 } }, display: 'flex', alignItems: 'center', gap: 2, minHeight: 56 }}>
+                        <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } }, display: 'flex', alignItems: 'center', gap: 2, minHeight: 56 }}>
                           <Box sx={{
                             width: 38, height: 38, bgcolor: '#000', color: '#fff',
                             display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
