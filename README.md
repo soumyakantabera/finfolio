@@ -6,8 +6,15 @@ A deployable portfolio web app template built with **Vite + React + Material UI*
 
 - **Public Portfolio Pages** — Home, Projects, About, Resume, Contact
 - **Project Detail Pages** — Dedicated pages for each project with rich markdown content and embeds
+- **Block-Based Project Articles** — Projects support an ordered blocks array (markdown, embed, callout, divider, gallery, attachments) with drag-to-reorder in admin
 - **Markdown Authoring** — Write project content in Markdown via the admin portal with live preview
-- **Rich Embed Support** — Embed YouTube, Google Docs/Sheets, PDFs, Microsoft Office, images, and more
+- **Rich Embed Support** — 13 embed types (YouTube, PDF, audio, Google Docs/Sheets, MS Office, image, gallery, Figma, code, GitHub Gist, iframe, chart, file) with responsive rendering
+- **Auto Table of Contents + Reading Progress** — Project detail pages auto-generate a TOC from headings and show a reading progress bar at the top
+- **Code Blocks with Syntax Highlighting** — B&W syntax highlighting, copy button, and line wrap support in markdown and embed code blocks
+- **Callout Blocks** — Styled callout blocks with variants: insight, assumption, risk, result, and key takeaway
+- **Asset Upload Library** — Upload PDFs and images in the admin project editor; assets stored as base64 data URLs and available for embed `src` fields
+- **Enhanced Project Card Hover Effects** — Project cards feature hover-revealed quick actions and metadata strips on desktop
+- **Certification Click-to-View Modal** — Certifications with media attachments open in a modal viewer with download, open in new tab, and metadata display
 - **Admin Portal (CMS)** — Full CRUD dashboard to manage all content from the browser (hidden from public navigation)
 - **Quotes / Own Words CMS** — Manage personal quotes with CRUD, featured toggle, ordering, and attribution
 - **Modern About Page** — Polished design with timeline, skill progress bars, metrics, achievements, and contact links
@@ -60,8 +67,8 @@ The admin portal is hidden from the public navigation but remains accessible via
 | Section      | Fields                                                                 |
 | ------------ | ---------------------------------------------------------------------- |
 | **Home**     | Hero title/subtitle, intro text, snapshot panel (location/role/availability), CTA buttons, stats, custom sections |
-| **About**    | Profile, bio, education, experience, skills, certifications, achievements, metrics, contact links |
-| **Projects** | Title, slug, subtitle, description, category, tags, tech stack, links, markdown content, embeds, hero image, date, status (draft/published), featured toggle |
+| **About**    | Profile, bio, education, experience, skills, certifications (name, issuer, date, credential ID, link, media attachment), achievements, metrics, contact links |
+| **Projects** | Title, slug, subtitle, description, category, tags, tech stack, links, block-based content (markdown, embed, callout, divider, gallery, attachments), hero image, date, status (draft/published), featured toggle, asset library |
 | **Resume**   | Summary, downloadable file link, structured sections                   |
 | **Contact**  | Email, phone, address, LinkedIn, GitHub, social links                 |
 | **Quotes**   | Quote text, attribution label, context/tag, featured toggle, order control |
@@ -185,15 +192,71 @@ Supported embed types:
 
 | Type         | Description                              | Behavior                                    |
 | ------------ | ---------------------------------------- | ------------------------------------------- |
-| `youtube`    | YouTube videos                           | Renders embedded player (16:9)              |
-| `pdf`        | PDF documents                            | Renders in-page PDF viewer                  |
-| `gdocs`      | Google Docs                              | Renders Google Docs preview iframe          |
-| `gsheets`    | Google Sheets                            | Renders Google Sheets preview iframe        |
-| `msoffice`   | Microsoft Office (Word/Excel/PowerPoint) | Uses Office Online viewer                   |
-| `image`      | Images                                   | Renders responsive image                    |
-| `github`     | GitHub repositories                      | Shows card with "Open on GitHub" button     |
+| `youtube`    | YouTube videos                           | Lazy-loaded embedded player with click-to-play (16:9) |
+| `pdf`        | PDF documents                            | In-page PDF viewer with download button     |
+| `audio`      | Audio files                              | Audio player element                        |
+| `gdocs`      | Google Docs                              | Google Docs preview iframe                  |
+| `gsheets`    | Google Sheets                            | Google Sheets preview iframe                |
+| `msoffice`   | Microsoft Office (Word/Excel/PowerPoint) | Office Online viewer iframe                 |
+| `image`      | Images                                   | Responsive image with lightbox              |
+| `gallery`    | Image galleries                          | Multi-image gallery with lightbox and keyboard navigation |
+| `figma`      | Figma designs                            | Figma embed iframe                          |
+| `code`       | Code snippets                            | Syntax-highlighted code block with copy button |
+| `gist`       | GitHub Gists                             | GitHub Gist embed                           |
+| `iframe`     | Generic iframes                          | Whitelisted iframe embed                    |
+| `chart`      | Charts (Plotly/Vega/generic)             | Chart embed iframe                          |
+| `file`       | Downloadable files                       | File card with download link                |
 
 If an embed fails to load (iframe restrictions, invalid URL, etc.), it gracefully falls back to a preview card with an external link button.
+
+## Block-Based Project Articles
+
+Projects now support an ordered **blocks** array as the primary content model. Each block has a `type` and type-specific fields:
+
+| Block Type      | Description                                                         |
+| --------------- | ------------------------------------------------------------------- |
+| `markdown`      | Markdown content rendered with GFM support and syntax highlighting  |
+| `embed`         | Rich embed (any of the 13 supported embed types)                    |
+| `callout`       | Styled callout with variant: `insight`, `assumption`, `risk`, `result`, or `takeaway` |
+| `divider`       | Horizontal divider between content sections                         |
+| `gallery`       | Image gallery with lightbox support                                 |
+| `attachments`   | File attachments with download / open buttons                       |
+
+In the admin project editor, blocks can be **added**, **reordered** (move up/down), and **deleted**. The system is **backward compatible** — projects with legacy `markdownContent` still render correctly.
+
+## Embed Whitelist Configuration
+
+The `config.embedWhitelist` array in the data model controls which domains are allowed for iframe-based embeds. The default whitelist includes:
+
+```
+youtube.com, youtu.be, docs.google.com, sheets.google.com,
+drive.google.com, figma.com, gist.github.com,
+codepen.io, codesandbox.io, plotly.com,
+view.officeapps.live.com, onedrive.live.com
+```
+
+Customize the whitelist by editing the `embedWhitelist` array in `src/data/portfolioData.js` or via the admin data model.
+
+## Asset Upload Flow
+
+The admin project editor includes an **Asset Library** for managing file uploads:
+
+1. Open a project in **Admin → Projects**
+2. Scroll to the **Asset Library** section in the editor sidebar
+3. Click **Upload Asset** to add PDFs, images, or other files
+4. Uploaded assets are stored as **base64 data URLs** in localStorage
+5. When editing an embed block's `src` field, use the **Pick from Assets** dropdown to select an uploaded asset
+6. Assets can be copied (data URL) or deleted from the library
+
+## Certifications Click-to-View
+
+Certifications on the About page now support rich media attachments:
+
+- Each certification can have a **media attachment** (PDF or image) via the `mediaUrl` and `mediaType` fields
+- Clicking a certification card with media opens a **modal viewer** displaying the PDF (via iframe) or image
+- The modal footer shows metadata: issuer, date, and credential ID
+- Action buttons: **Download** and **Open in new tab**
+- **Keyboard accessible** — press Esc to close the modal
 
 ## About Page Content
 
@@ -210,7 +273,7 @@ The About page features a modern, section-based layout managed entirely through 
 | **Experience**      | Vertical timeline with role, company, period     |
 | **Education**       | Card grid with degree, institution, year         |
 | **Skills**          | Progress bars with proficiency levels            |
-| **Certifications**  | Card grid with name and year                     |
+| **Certifications**  | Clickable cards with name, issuer, date, credential ID, link, and optional media attachment (PDF/image) — click to view in modal |
 | **Achievements**    | Cards with title, description, and year          |
 | **Custom Sections** | User-defined additional sections                 |
 
@@ -258,7 +321,6 @@ The included `.github/workflows/deploy.yml` workflow:
 │   │       ├── HomeEditor.jsx
 │   │       ├── AboutEditor.jsx
 │   │       ├── ProjectsEditor.jsx
-│   │       ├── ResumeEditor.jsx
 │   │       ├── ContactEditor.jsx
 │   │       ├── QuotesEditor.jsx   # Quotes CRUD manager
 │   │       └── SettingsEditor.jsx
@@ -266,15 +328,15 @@ The included `.github/workflows/deploy.yml` workflow:
 │   │   ├── Navbar.jsx             # Responsive navigation bar
 │   │   ├── QuoteBlock.jsx         # Quote display component (featured / rotating)
 │   │   ├── MarkdownRenderer.jsx   # Markdown rendering with embed shortcodes
-│   │   └── EmbedBlock.jsx         # Rich embed component (YouTube, PDF, etc.)
+│   │   ├── EmbedBlock.jsx         # Rich embed component (13 types)
+│   │   └── BlockRenderer.jsx      # Block-based content renderer (markdown, embed, callout, etc.)
 │   ├── data/
-│   │   └── portfolioData.js       # Data layer with sample content + quotes
+│   │   └── portfolioData.js       # Data layer with sample content + quotes + embed whitelist
 │   ├── pages/                     # Public pages
 │   │   ├── Home.jsx               # Redesigned editorial homepage
 │   │   ├── Projects.jsx           # Project gallery with filtering
-│   │   ├── ProjectDetail.jsx      # Dedicated project detail page
-│   │   ├── About.jsx              # Modern redesigned About page
-│   │   ├── Resume.jsx
+│   │   ├── ProjectDetail.jsx      # Project detail page with TOC + reading progress
+│   │   ├── About.jsx              # Modern About page with certification modal
 │   │   ├── Contact.jsx
 │   │   └── CustomPage.jsx
 │   ├── theme/
