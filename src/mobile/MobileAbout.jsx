@@ -60,7 +60,7 @@ export default function MobileAbout({ data }) {
   return (
     <Box sx={{ bgcolor: '#fff', minHeight: '100vh' }}>
       {/* Compact header — name + role + bio */}
-      <Box sx={{ borderBottom: '1px solid #000', px: '14px', py: '20px' }}>
+      <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
         <Typography
           component="h1"
           sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, fontSize: '1.3rem', lineHeight: 1.2 }}
@@ -114,7 +114,7 @@ export default function MobileAbout({ data }) {
 
       {/* Metrics */}
       {about.metrics?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: '14px', py: '14px' }}>
+        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
           <Box sx={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(about.metrics.length, 3)}, 1fr)`, gap: 0 }}>
             {about.metrics.map((m, i) => (
               <Box key={m.id} sx={{
@@ -133,7 +133,7 @@ export default function MobileAbout({ data }) {
         </Box>
       )}
 
-      <Box sx={{ px: '14px', py: '16px' }}>
+      <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
         {/* Bio */}
         {about.bio && (
           <Box sx={{ mb: 2 }}>
@@ -314,7 +314,7 @@ export default function MobileAbout({ data }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            px: '14px',
+            px: 'var(--page-pad-x)',
             py: 1,
             borderBottom: '1px solid #000',
             flexShrink: 0,
@@ -353,7 +353,7 @@ export default function MobileAbout({ data }) {
 
           {/* Footer */}
           <Box sx={{
-            px: '14px',
+            px: 'var(--page-pad-x)',
             py: 1.5,
             borderTop: '1px solid #000',
             flexShrink: 0,

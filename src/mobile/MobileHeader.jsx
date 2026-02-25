@@ -84,7 +84,7 @@ export default function MobileHeader({ data }) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          px: '14px',
+          px: 'var(--page-pad-x)',
           height: 48,
         }}
       >
@@ -153,7 +153,7 @@ export default function MobileHeader({ data }) {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              px: '14px',
+              px: 'var(--page-pad-x)',
               height: 48,
               borderBottom: '1px solid #000',
               flexShrink: 0,
@@ -197,7 +197,7 @@ export default function MobileHeader({ data }) {
           </Box>
 
           {/* Nav links */}
-          <Box component="nav" aria-label="Primary navigation" sx={{ flex: 1, px: '14px', pt: 3 }}>
+          <Box component="nav" aria-label="Primary navigation" sx={{ flex: 1, px: 'var(--page-pad-x)', pt: 3 }}>
             {navLinks.map((item, i) => (
               <Box
                 key={item.key}
@@ -277,7 +277,7 @@ export default function MobileHeader({ data }) {
           </Box>
 
           {/* Menu footer */}
-          <Box sx={{ px: '14px', py: 2, borderTop: '1px solid #000', flexShrink: 0 }}>
+          <Box sx={{ px: 'var(--page-pad-x)', py: 2, borderTop: '1px solid #000', flexShrink: 0 }}>
             <Typography
               variant="caption"
               sx={{ color: '#000', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, fontSize: '0.6rem' }}

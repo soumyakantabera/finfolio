@@ -66,7 +66,7 @@ export default function MobileProjectDetail({ data }) {
 
   if (!project) {
     return (
-      <Box sx={{ px: '14px', py: '24px', textAlign: 'center' }}>
+      <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)', textAlign: 'center' }}>
         <Typography sx={{ fontWeight: 700, fontSize: '1.1rem', mb: 1 }}>Project not found</Typography>
         <Typography sx={{ fontSize: '0.85rem', mb: 2 }}>
           The project you&apos;re looking for doesn&apos;t exist or has been removed.
@@ -134,7 +134,7 @@ export default function MobileProjectDetail({ data }) {
           zIndex: 1100,
           bgcolor: '#fff',
           borderBottom: '1px solid #000',
-          px: '14px',
+          px: 'var(--page-pad-x)',
           py: 0.75,
           display: 'flex',
           alignItems: 'center',
@@ -158,7 +158,7 @@ export default function MobileProjectDetail({ data }) {
         </Box>
       </Box>
 
-      <Box sx={{ px: '14px', py: '20px', pb: '80px' }}>
+      <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)', pb: '80px' }}>
         {/* Hero image */}
         {project.heroImage && (
           <Box
@@ -166,8 +166,8 @@ export default function MobileProjectDetail({ data }) {
             src={project.heroImage}
             alt={project.title}
             sx={{
-              width: 'calc(100% + 28px)',
-              ml: '-14px',
+              width: 'calc(100% + 2 * var(--page-pad-x))',
+              ml: 'calc(-1 * var(--page-pad-x))',
               maxHeight: 200,
               objectFit: 'cover',
               mb: 2,
@@ -358,7 +358,7 @@ export default function MobileProjectDetail({ data }) {
           right: 0,
           bgcolor: '#fff',
           borderTop: '1px solid #000',
-          px: '14px',
+          px: 'var(--page-pad-x)',
           py: 1,
           display: 'flex',
           justifyContent: 'space-between',

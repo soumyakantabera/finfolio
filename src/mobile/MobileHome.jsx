@@ -20,7 +20,7 @@ export default function MobileHome({ data }) {
   return (
     <Box>
       {/* ── 01 / Hero ── */}
-      <Box sx={{ borderBottom: '1px solid #000', px: '14px', py: '20px' }}>
+      <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
         <Typography
           variant="overline"
           sx={{ color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 700, fontSize: '0.6rem' }}
@@ -86,7 +86,7 @@ export default function MobileHome({ data }) {
       </Box>
 
       {/* Snapshot — compact list */}
-      <Box sx={{ borderBottom: '1px solid #000', px: '14px', py: '16px' }}>
+      <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
         <Typography
           variant="overline"
           sx={{ color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 700, fontSize: '0.6rem' }}
@@ -122,7 +122,7 @@ export default function MobileHome({ data }) {
 
       {/* ── 02 / Key Metrics ── */}
       {home.stats?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: '14px', py: '16px' }}>
+        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
           <Box sx={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
@@ -161,7 +161,7 @@ export default function MobileHome({ data }) {
 
       {/* ── 03 / Featured Work (compact list) ── */}
       {allProjects.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: '14px', py: '20px' }}>
+        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           <Typography
             variant="overline"
             sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
@@ -181,8 +181,8 @@ export default function MobileHome({ data }) {
                 mb: 2,
                 overflowX: 'auto',
                 WebkitOverflowScrolling: 'touch',
-                mx: '-14px',
-                px: '14px',
+                mx: 'calc(-1 * var(--page-pad-x))',
+                px: 'var(--page-pad-x)',
                 '&::-webkit-scrollbar': { display: 'none' },
                 scrollbarWidth: 'none',
               }}
@@ -278,14 +278,14 @@ export default function MobileHome({ data }) {
 
       {/* ── 04 / Quote ── */}
       {quotes?.length > 0 && (
-        <Box sx={{ px: '14px' }}>
+        <Box sx={{ px: 'var(--page-pad-x)' }}>
           <QuoteBlock quotes={quotes} mode="featured" />
         </Box>
       )}
 
       {/* ── 05 / Highlights (simple list) ── */}
       {featuredProjects.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: '14px', py: '20px' }}>
+        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           <Typography
             variant="overline"
             sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
@@ -327,7 +327,7 @@ export default function MobileHome({ data }) {
 
       {/* ── 06 / Custom Sections ── */}
       {home.customSections?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: '14px', py: '20px' }}>
+        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           {home.customSections.map((section, i) => (
             <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 3 : 0 }}>
               <Typography sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: '1.15rem', mb: 1 }}>
@@ -342,7 +342,7 @@ export default function MobileHome({ data }) {
       )}
 
       {/* ── 07 / CTA Footer ── */}
-      <Box sx={{ borderBottom: '1px solid #000', px: '14px', py: '24px', textAlign: 'center' }}>
+      <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)', textAlign: 'center' }}>
         <Typography
           variant="overline"
           sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
