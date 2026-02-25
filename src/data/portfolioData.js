@@ -6,6 +6,22 @@ const defaultData = {
     profilePhoto: '',
     introTitle: 'Finance Professional & Analyst',
     introDescription: 'Aspiring finance professional with a strong foundation in financial modeling, data analysis, and portfolio management. Passionate about leveraging technology and quantitative methods to drive investment decisions.',
+    bio: 'I am a finance professional with deep expertise in quantitative analysis, portfolio management, and financial technology. My work bridges the gap between traditional finance and modern data science, enabling more informed investment decisions through rigorous analytical frameworks.',
+    achievements: [
+      { id: '1', title: 'Dean\'s List', description: 'Recognized for outstanding academic performance', year: '2022' },
+      { id: '2', title: 'Bloomberg Market Concepts', description: 'Completed comprehensive financial markets certification', year: '2023' }
+    ],
+    metrics: [
+      { id: '1', label: 'Projects Completed', value: '10+' },
+      { id: '2', label: 'Models Built', value: '15+' },
+      { id: '3', label: 'Research Reports', value: '3' },
+      { id: '4', label: 'Certifications', value: '2' }
+    ],
+    contactLinks: [
+      { id: '1', platform: 'Email', url: 'mailto:jane.smith@email.com' },
+      { id: '2', platform: 'LinkedIn', url: 'https://linkedin.com/in/janesmith' },
+      { id: '3', platform: 'GitHub', url: 'https://github.com/janesmith' }
+    ],
     additionalSections: [
       { id: '1', title: 'Interests', content: 'Financial markets, Quantitative analysis, Fintech, Data visualization' }
     ],
@@ -34,6 +50,8 @@ const defaultData = {
     {
       id: '1',
       title: 'DCF Valuation Model',
+      slug: 'dcf-valuation-model',
+      subtitle: 'Comprehensive DCF analysis for Fortune 500 tech companies',
       description: 'Built a comprehensive discounted cash flow model for a Fortune 500 tech company, incorporating scenario analysis and sensitivity tables.',
       category: 'Financial Models',
       tags: ['Excel', 'Valuation', 'DCF'],
@@ -42,11 +60,19 @@ const defaultData = {
       embedType: '',
       embedUrl: '',
       thumbnail: '',
-      featured: true
+      heroImage: '',
+      date: '2024',
+      featured: true,
+      status: 'published',
+      markdownContent: '## Overview\n\nThis project involves building a comprehensive **Discounted Cash Flow (DCF)** model for a Fortune 500 technology company.\n\n### Key Features\n\n- Revenue projections with multiple growth scenarios\n- WACC calculation with sensitivity analysis\n- Terminal value estimation (Gordon Growth & Exit Multiple)\n- Monte Carlo simulation for probabilistic valuation\n\n### Methodology\n\nThe model uses a **10-year projection period** with three scenarios:\n\n| Scenario | Revenue Growth | EBITDA Margin |\n|----------|---------------|---------------|\n| Bull | 15% | 35% |\n| Base | 10% | 30% |\n| Bear | 5% | 25% |\n',
+      embeds: [],
+      relatedProjects: ['portfolio-optimization-tool']
     },
     {
       id: '2',
       title: 'Portfolio Optimization Tool',
+      slug: 'portfolio-optimization-tool',
+      subtitle: 'Mean-variance optimization with efficient frontier visualization',
       description: 'Python-based mean-variance optimization tool using historical stock data to construct efficient frontiers and optimal portfolios.',
       category: 'Coding Projects',
       tags: ['Python', 'Finance', 'Optimization'],
@@ -55,11 +81,19 @@ const defaultData = {
       embedType: '',
       embedUrl: '',
       thumbnail: '',
-      featured: true
+      heroImage: '',
+      date: '2024',
+      featured: true,
+      status: 'published',
+      markdownContent: '## About This Project\n\nA Python-based **mean-variance optimization** tool that constructs efficient frontiers and identifies optimal portfolios using historical stock data.\n\n### Features\n\n- Historical data fetching and preprocessing\n- Efficient frontier calculation\n- Sharpe ratio optimization\n- Portfolio weight visualization\n- Risk-return scatter plots\n',
+      embeds: [],
+      relatedProjects: ['dcf-valuation-model']
     },
     {
       id: '3',
       title: 'ESG Investment Research',
+      slug: 'esg-investment-research',
+      subtitle: 'Analyzing ESG portfolio performance over a decade',
       description: 'Research paper analyzing the risk-return profile of ESG-screened portfolios versus traditional benchmarks over a 10-year period.',
       category: 'Case Studies',
       tags: ['Research', 'ESG', 'Portfolio Management'],
@@ -68,11 +102,19 @@ const defaultData = {
       embedType: '',
       embedUrl: '',
       thumbnail: '',
-      featured: false
+      heroImage: '',
+      date: '2023',
+      featured: false,
+      status: 'published',
+      markdownContent: '',
+      embeds: [],
+      relatedProjects: []
     },
     {
       id: '4',
       title: 'Crypto Market Dashboard',
+      slug: 'crypto-market-dashboard',
+      subtitle: 'Real-time cryptocurrency analytics and correlation analysis',
       description: 'Interactive dashboard tracking cryptocurrency market metrics with real-time data visualization and correlation analysis.',
       category: 'Coding Projects',
       tags: ['Dashboard', 'Crypto', 'Data Viz'],
@@ -81,7 +123,13 @@ const defaultData = {
       embedType: '',
       embedUrl: '',
       thumbnail: '',
-      featured: false
+      heroImage: '',
+      date: '2023',
+      featured: false,
+      status: 'published',
+      markdownContent: '',
+      embeds: [],
+      relatedProjects: []
     }
   ],
   contact: {

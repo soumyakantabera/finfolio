@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Grid,
@@ -13,11 +14,12 @@ import {
   ToggleButton,
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const EMBED_TYPES = ['pdf', 'gdocs', 'gsheets', 'github', 'chart'];
 
 export default function ProjectsPage({ data }) {
-  const projects = data.projects || [];
+  const projects = (data.projects || []).filter((p) => p.status !== 'draft');
   const [filter, setFilter] = useState('All');
 
   const categories = useMemo(
@@ -64,8 +66,18 @@ export default function ProjectsPage({ data }) {
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
             <Card
               variant="outlined"
-              sx={{ height: '100%', display: 'flex', flexDirection: 'column', position: 'relative' }}
+              sx={{ height: '100%', display: 'flex', flexDirection: 'column', position: 'relative', '&:hover': { borderColor: '#000' }, transition: 'border-color 0.2s' }}
             >
+              {/* Thumbnail */}
+              {project.thumbnail && (
+                <Box
+                  component="img"
+                  src={project.thumbnail}
+                  alt={project.title}
+                  sx={{ width: '100%', height: 160, objectFit: 'cover' }}
+                />
+              )}
+
               {/* Featured badge */}
               {project.featured && (
                 <Box
@@ -76,6 +88,10 @@ export default function ProjectsPage({ data }) {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 0.5,
+                    bgcolor: 'rgba(255,255,255,0.9)',
+                    px: 1,
+                    py: 0.25,
+                    borderRadius: 1,
                   }}
                 >
                   <StarIcon sx={{ fontSize: 16, color: '#000' }} />
@@ -92,6 +108,11 @@ export default function ProjectsPage({ data }) {
                 <Typography variant="h6" fontWeight={600} gutterBottom>
                   {project.title}
                 </Typography>
+                {project.subtitle && (
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                    {project.subtitle}
+                  </Typography>
+                )}
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                   {project.description}
                 </Typography>
@@ -114,26 +135,12 @@ export default function ProjectsPage({ data }) {
                     <Typography variant="caption">{project.techStack.join(', ')}</Typography>
                   </Box>
                 )}
-
-                {/* Embed Preview */}
-                {project.embedType && EMBED_TYPES.includes(project.embedType) && project.embedUrl && (
-                  <Box sx={{ mt: 2, border: '1px solid #e0e0e0', borderRadius: 1, overflow: 'hidden' }}>
-                    <iframe
-                      src={project.embedUrl}
-                      title={project.title}
-                      width="100%"
-                      height="200"
-                      style={{ border: 'none' }}
-                      sandbox="allow-scripts allow-same-origin"
-                    />
-                  </Box>
-                )}
               </CardContent>
 
               {/* Links */}
-              {project.links?.length > 0 && (
-                <CardActions sx={{ px: 2, pb: 2 }}>
-                  {project.links.map((link, i) => (
+              <CardActions sx={{ px: 2, pb: 2, justifyContent: 'space-between' }}>
+                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                  {project.links?.map((link, i) => (
                     <Button
                       key={i}
                       href={link.url}
@@ -146,8 +153,19 @@ export default function ProjectsPage({ data }) {
                       {link.label}
                     </Button>
                   ))}
-                </CardActions>
-              )}
+                </Box>
+                {project.slug && (
+                  <Button
+                    component={Link}
+                    to={`/projects/${project.slug}`}
+                    size="small"
+                    endIcon={<ArrowForwardIcon />}
+                    sx={{ color: '#000', textTransform: 'none', fontWeight: 600 }}
+                  >
+                    Details
+                  </Button>
+                )}
+              </CardActions>
             </Card>
           </Grid>
         ))}
