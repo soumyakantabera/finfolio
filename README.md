@@ -21,8 +21,49 @@ A deployable portfolio web app template built with **Vite + React + Material UI*
 - **Modern About Page** — Polished design with timeline, skill progress bars, metrics, achievements, and contact links
 - **Sharp B&W Design** — Professional, editorial typography with Space Grotesk + Sora fonts, minimal borders, no rounded corners
 - **Responsive** — Desktop, tablet, and mobile layouts
+- **Dedicated Mobile Code Path** — Separate mobile components (`src/mobile/`) with compact, editorial B&W design that activates automatically at ≤768px
 - **GitHub Pages Ready** — HashRouter for SPA compatibility, GitHub Actions deploy workflow
 - **Custom Pages** — Create and manage additional pages from the admin portal
+
+## Mobile Architecture
+
+FinFolio implements a **dedicated mobile code path** that activates automatically when the viewport is ≤768px. Mobile components live in `src/mobile/` and are completely separate from the desktop pages.
+
+### How It Works
+
+1. **Viewport detection**: `useIsMobile()` hook wraps MUI's `useMediaQuery('(max-width: 768px)')`.
+2. **Route wrapper**: `<ResponsiveRoute desktop={…} mobile={…} />` renders the correct component based on viewport.
+3. **Navigation split**: `App.jsx` renders `<MobileHeader>` on mobile and `<Navbar>` on desktop.
+4. **Lazy loading**: All mobile components are lazy-loaded, so desktop users never download mobile code.
+
+### File Structure
+
+```
+src/mobile/
+├── useIsMobile.js           # Viewport detection hook
+├── ResponsiveRoute.jsx      # Desktop/mobile component switcher
+├── MobileHeader.jsx         # Compact fixed header + fullscreen menu
+├── MobileHome.jsx           # Compact editorial home page
+├── MobileProjects.jsx       # List-based project gallery
+├── MobileProjectDetail.jsx  # Compact project detail + sticky back row
+├── MobileAbout.jsx          # Accordion-based about page
+└── MobileContact.jsx        # Tappable contact rows + form
+```
+
+### Design Principles
+
+- **Strict B&W**: Only `#000` and `#fff` — no gray, no shadows, no opacity overlays.
+- **Compact rhythm**: 12–16px page padding, 20–28px section spacing, tight typography.
+- **List-first layout**: Projects use list rows instead of large cards.
+- **Editorial navigation**: Fullscreen white menu with numbered links and "Close" text button.
+- **Shared data layer**: Mobile components receive the same `data` prop and reuse `portfolioData.js`.
+
+### Modifying Mobile
+
+To update mobile UI without affecting desktop:
+- Edit files in `src/mobile/` only.
+- Desktop components in `src/pages/` and `src/components/` remain untouched.
+- Mobile-specific CSS classes (`mobile-ink-link`, `mobile-btn-press`) are in `src/index.css`.
 
 ## Typography & Fonts
 

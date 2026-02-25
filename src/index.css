@@ -105,6 +105,32 @@ table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
   }
 }
 
+/* ── Mobile-Only Micro-Interactions ── */
+@media (max-width: 768px) {
+  /* Underline reveal on tap/active */
+  .mobile-ink-link {
+    position: relative;
+  }
+  .mobile-ink-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: #000;
+    transition: width 0.2s ease;
+  }
+  .mobile-ink-link:active::after {
+    width: 100%;
+  }
+
+  /* Frame shift on press (active state) */
+  .mobile-btn-press:active {
+    transform: translate(1px, 1px);
+  }
+}
+
 /* ── Respect prefers-reduced-motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -119,5 +145,11 @@ table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
   }
   .ink-link::after {
     transition: none;
+  }
+  .mobile-ink-link::after {
+    transition: none;
+  }
+  .mobile-btn-press:active {
+    transform: none;
   }
 }
