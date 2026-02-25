@@ -42,8 +42,8 @@ const defaultData = {
       { id: '6', name: 'Tableau', level: 'Intermediate' }
     ],
     certifications: [
-      { id: '1', name: 'CFA Level I Candidate', year: '2024' },
-      { id: '2', name: 'Bloomberg Market Concepts', year: '2023' }
+      { id: '1', title: 'CFA Level I Candidate', name: 'CFA Level I Candidate', issuer: 'CFA Institute', date: '2024', year: '2024', credentialId: '', link: '', mediaType: '', mediaUrl: '', thumbnail: '' },
+      { id: '2', title: 'Bloomberg Market Concepts', name: 'Bloomberg Market Concepts', issuer: 'Bloomberg LP', date: '2023', year: '2023', credentialId: '', link: '', mediaType: '', mediaUrl: '', thumbnail: '' }
     ]
   },
   projects: [
@@ -66,6 +66,12 @@ const defaultData = {
       status: 'published',
       markdownContent: '## Overview\n\nThis project involves building a comprehensive **Discounted Cash Flow (DCF)** model for a Fortune 500 technology company.\n\n### Key Features\n\n- Revenue projections with multiple growth scenarios\n- WACC calculation with sensitivity analysis\n- Terminal value estimation (Gordon Growth & Exit Multiple)\n- Monte Carlo simulation for probabilistic valuation\n\n### Methodology\n\nThe model uses a **10-year projection period** with three scenarios:\n\n| Scenario | Revenue Growth | EBITDA Margin |\n|----------|---------------|---------------|\n| Bull | 15% | 35% |\n| Base | 10% | 30% |\n| Bear | 5% | 25% |\n',
       embeds: [],
+      blocks: [
+        { id: 'b1-1', type: 'markdown', content: '## Overview\n\nThis project involves building a comprehensive **Discounted Cash Flow (DCF)** model for a Fortune 500 technology company.\n\n### Key Features\n\n- Revenue projections with multiple growth scenarios\n- WACC calculation with sensitivity analysis\n- Terminal value estimation (Gordon Growth & Exit Multiple)\n- Monte Carlo simulation for probabilistic valuation' },
+        { id: 'b1-2', type: 'divider' },
+        { id: 'b1-3', type: 'callout', variant: 'insight', title: 'Key Insight', content: 'The Monte Carlo simulation revealed a 70% probability of the stock being undervalued at current market prices.' },
+        { id: 'b1-4', type: 'markdown', content: '### Methodology\n\nThe model uses a **10-year projection period** with three scenarios:\n\n| Scenario | Revenue Growth | EBITDA Margin |\n|----------|---------------|---------------|\n| Bull | 15% | 35% |\n| Base | 10% | 30% |\n| Bear | 5% | 25% |' }
+      ],
       relatedProjects: ['portfolio-optimization-tool']
     },
     {
@@ -87,6 +93,9 @@ const defaultData = {
       status: 'published',
       markdownContent: '## About This Project\n\nA Python-based **mean-variance optimization** tool that constructs efficient frontiers and identifies optimal portfolios using historical stock data.\n\n### Features\n\n- Historical data fetching and preprocessing\n- Efficient frontier calculation\n- Sharpe ratio optimization\n- Portfolio weight visualization\n- Risk-return scatter plots\n',
       embeds: [],
+      blocks: [
+        { id: 'b2-1', type: 'markdown', content: '## About This Project\n\nA Python-based **mean-variance optimization** tool that constructs efficient frontiers and identifies optimal portfolios using historical stock data.\n\n### Features\n\n- Historical data fetching and preprocessing\n- Efficient frontier calculation\n- Sharpe ratio optimization\n- Portfolio weight visualization\n- Risk-return scatter plots' }
+      ],
       relatedProjects: ['dcf-valuation-model']
     },
     {
@@ -108,6 +117,7 @@ const defaultData = {
       status: 'published',
       markdownContent: '',
       embeds: [],
+      blocks: [],
       relatedProjects: []
     },
     {
@@ -129,6 +139,7 @@ const defaultData = {
       status: 'published',
       markdownContent: '',
       embeds: [],
+      blocks: [],
       relatedProjects: []
     }
   ],
@@ -175,7 +186,16 @@ const defaultData = {
     { id: '1', text: 'Build things that compound. Ship work that speaks.', attribution: 'Principle', context: 'Work ethic', featured: true, order: 1 },
     { id: '2', text: 'Markets reward the prepared mind—and the disciplined spreadsheet.', attribution: 'Note to self', context: 'Markets', featured: false, order: 2 },
     { id: '3', text: 'Good analysis is invisible. Bad analysis is expensive.', attribution: 'Me', context: 'Learning', featured: false, order: 3 }
-  ]
+  ],
+  config: {
+    embedWhitelist: [
+      'youtube.com', 'youtu.be', 'docs.google.com', 'sheets.google.com',
+      'drive.google.com', 'figma.com', 'gist.github.com',
+      'codepen.io', 'codesandbox.io', 'plotly.com',
+      'view.officeapps.live.com', 'onedrive.live.com'
+    ],
+    uploads: []
+  }
 };
 
 const STORAGE_KEY = 'finfolio_data';
@@ -185,7 +205,43 @@ export function loadData() {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const parsed = JSON.parse(stored);
-      return { ...defaultData, ...parsed };
+      const merged = { ...defaultData, ...parsed };
+      // Deep-merge about section
+      if (parsed.about) {
+        merged.about = { ...defaultData.about, ...parsed.about };
+      }
+      // Deep-merge config with defaults
+      merged.config = { ...defaultData.config, ...(parsed.config || {}) };
+      if (!Array.isArray(merged.config.embedWhitelist)) {
+        merged.config.embedWhitelist = defaultData.config.embedWhitelist;
+      }
+      if (!Array.isArray(merged.config.uploads)) {
+        merged.config.uploads = defaultData.config.uploads;
+      }
+      // Ensure projects have blocks array
+      if (Array.isArray(merged.projects)) {
+        merged.projects = merged.projects.map(p => ({
+          ...p,
+          blocks: p.blocks || []
+        }));
+      }
+      // Ensure certifications have new fields with backward compat
+      if (Array.isArray(merged.about.certifications)) {
+        merged.about.certifications = merged.about.certifications.map(c => ({
+          ...c,
+          title: c.title || c.name || '',
+          name: c.name || c.title || '',
+          issuer: c.issuer || '',
+          date: c.date || c.year || '',
+          year: c.year || c.date || '',
+          credentialId: c.credentialId || '',
+          link: c.link || '',
+          mediaType: c.mediaType || '',
+          mediaUrl: c.mediaUrl || '',
+          thumbnail: c.thumbnail || ''
+        }));
+      }
+      return merged;
     }
   } catch (e) {
     console.error('Error loading data:', e);
