@@ -148,17 +148,21 @@ const defaultData = {
     sections: []
   },
   home: {
-    heroTitle: 'Hi, I\'m Jane Smith',
-    heroSubtitle: 'Finance Professional & Aspiring Analyst',
+    heroTitle: 'Finance meets code.\nI build both.',
+    heroSubtitle: 'Analyst. Builder. Model obsessive.',
     introText: 'I build financial models, analyze markets, and develop data-driven investment strategies. Welcome to my portfolio.',
+    snapshotLocation: 'New York, NY',
+    snapshotRole: 'Finance Professional & Analyst',
+    snapshotAvailability: 'Open to opportunities',
     ctaButtons: [
       { id: '1', label: 'View Projects', link: '/projects' },
       { id: '2', label: 'Contact Me', link: '/contact' }
     ],
     stats: [
       { id: '1', label: 'Projects', value: '10+' },
-      { id: '2', label: 'Research Papers', value: '3' },
-      { id: '3', label: 'Certifications', value: '2' }
+      { id: '2', label: 'Models Built', value: '15+' },
+      { id: '3', label: 'Research Papers', value: '3' },
+      { id: '4', label: 'Certifications', value: '2' }
     ],
     customSections: []
   },
@@ -172,7 +176,12 @@ const defaultData = {
       contact: true
     },
     customPages: []
-  }
+  },
+  quotes: [
+    { id: '1', text: 'Build things that compound. Ship work that speaks.', attribution: 'Principle', context: 'Work ethic', featured: true, order: 1 },
+    { id: '2', text: 'Markets reward the prepared mind—and the disciplined spreadsheet.', attribution: 'Note to self', context: 'Markets', featured: false, order: 2 },
+    { id: '3', text: 'Good analysis is invisible. Bad analysis is expensive.', attribution: 'Me', context: 'Learning', featured: false, order: 3 }
+  ]
 };
 
 const STORAGE_KEY = 'finfolio_data';

@@ -91,7 +91,6 @@ export default function ProjectsPage({ data }) {
                     bgcolor: 'rgba(255,255,255,0.9)',
                     px: 1,
                     py: 0.25,
-                    borderRadius: 1,
                   }}
                 >
                   <StarIcon sx={{ fontSize: 16, color: '#000' }} />

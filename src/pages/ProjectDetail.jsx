@@ -62,7 +62,6 @@ export default function ProjectDetail({ data }) {
             width: '100%',
             maxHeight: 400,
             objectFit: 'cover',
-            borderRadius: 2,
             mb: 4,
             display: 'block',
           }}

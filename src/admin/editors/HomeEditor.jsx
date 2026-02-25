@@ -73,6 +73,32 @@ export default function HomeEditor({ data, onChange }) {
 
       <Divider sx={{ my: 2 }} />
       <Typography variant="subtitle1" fontWeight={600} mb={1}>
+        Snapshot Panel
+      </Typography>
+      <TextField
+        label="Location"
+        fullWidth
+        value={data.snapshotLocation || ''}
+        onChange={(e) => update('snapshotLocation', e.target.value)}
+        sx={{ mb: 2 }}
+      />
+      <TextField
+        label="Role"
+        fullWidth
+        value={data.snapshotRole || ''}
+        onChange={(e) => update('snapshotRole', e.target.value)}
+        sx={{ mb: 2 }}
+      />
+      <TextField
+        label="Availability"
+        fullWidth
+        value={data.snapshotAvailability || ''}
+        onChange={(e) => update('snapshotAvailability', e.target.value)}
+        sx={{ mb: 3 }}
+      />
+
+      <Divider sx={{ my: 2 }} />
+      <Typography variant="subtitle1" fontWeight={600} mb={1}>
         CTA Buttons
       </Typography>
       {(data.ctaButtons || []).map((btn) => (
