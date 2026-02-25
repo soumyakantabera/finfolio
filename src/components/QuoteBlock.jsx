@@ -42,9 +42,10 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
           lineHeight: 1.4,
           maxWidth: 700,
           mx: 'auto',
-          px: 2,
+          px: { xs: 1, sm: 2 },
+          fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2.125rem' },
           color: '#111',
-          '&::before': { content: '"\\201C"', display: 'block', fontSize: '3rem', lineHeight: 1, color: '#ccc', mb: 1 },
+          '&::before': { content: '"\\201C"', display: 'block', fontSize: { xs: '2rem', md: '3rem' }, lineHeight: 1, color: '#ccc', mb: 1 },
         }}
       >
         {quote.text}

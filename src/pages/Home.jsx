@@ -28,13 +28,13 @@ export default function HomePage({ data }) {
     <Box>
       {/* ── 01 / Hero ── */}
       <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
-        <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
+        <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2.5, sm: 3 } }}>
           <Grid container spacing={{ xs: 4, md: 6 }} alignItems="flex-start">
             {/* Left: headline */}
             <Grid size={{ xs: 12, md: 7 }}>
               <Typography
                 variant="overline"
-                sx={{ color: '#999', letterSpacing: '0.15em', mb: 2, display: 'block' }}
+                sx={{ color: '#999', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block' }}
               >
                 01 / Introduction
               </Typography>
@@ -44,7 +44,7 @@ export default function HomePage({ data }) {
                 sx={{
                   fontFamily: '"Space Grotesk", sans-serif',
                   fontWeight: 700,
-                  fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                  fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' },
                   letterSpacing: '-0.03em',
                   lineHeight: 1.15,
                   whiteSpace: 'pre-line',
@@ -55,12 +55,19 @@ export default function HomePage({ data }) {
               </Typography>
               <Typography
                 variant="h6"
-                sx={{ color: '#555', fontWeight: 400, mb: 3, maxWidth: 500 }}
+                sx={{
+                  color: '#555',
+                  fontWeight: 400,
+                  mb: 3,
+                  maxWidth: 500,
+                  fontSize: { xs: '1rem', md: '1.25rem' },
+                  lineHeight: 1.6,
+                }}
               >
                 {home.heroSubtitle}
               </Typography>
               {home.introText && (
-                <Typography variant="body1" sx={{ color: '#666', maxWidth: 500, mb: 4 }}>
+                <Typography variant="body1" sx={{ color: '#666', maxWidth: 500, mb: 4, lineHeight: 1.7 }}>
                   {home.introText}
                 </Typography>
               )}
@@ -77,6 +84,8 @@ export default function HomePage({ data }) {
                         bgcolor: i === 0 ? '#000' : 'transparent',
                         color: i === 0 ? '#fff' : '#000',
                         borderColor: '#000',
+                        minHeight: 48,
+                        px: { xs: 3, md: 4 },
                         transition: 'all 0.2s ease',
                         '&:hover': {
                           bgcolor: i === 0 ? '#222' : '#000',
@@ -99,7 +108,7 @@ export default function HomePage({ data }) {
               <Box
                 sx={{
                   border: '1px solid #e0e0e0',
-                  p: { xs: 3, md: 4 },
+                  p: { xs: 2.5, md: 4 },
                 }}
               >
                 <Typography
@@ -119,8 +128,10 @@ export default function HomePage({ data }) {
                     sx={{
                       display: 'flex',
                       justifyContent: 'space-between',
+                      alignItems: 'center',
                       py: 1.5,
                       borderBottom: '1px solid #f0f0f0',
+                      minHeight: 44,
                     }}
                   >
                     <Typography variant="caption" sx={{ color: '#999', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
@@ -133,13 +144,13 @@ export default function HomePage({ data }) {
                 ))}
                 {/* Quick links */}
                 {(contact?.linkedin || contact?.github || contact?.email) && (
-                  <Box sx={{ mt: 2, display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
+                  <Box sx={{ mt: 2, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                     {contact?.email && (
                       <Typography
                         component="a"
                         href={`mailto:${contact.email}`}
                         variant="caption"
-                        sx={{ color: '#555', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s ease', borderBottom: '1px solid transparent', '&:hover': { color: '#000', borderBottom: '1px solid #000' } }}
+                        sx={{ color: '#555', textDecoration: 'none', fontWeight: 500, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center', transition: 'color 0.2s ease', borderBottom: '1px solid transparent', '&:hover': { color: '#000', borderBottom: '1px solid #000' } }}
                       >
                         Email
                       </Typography>
@@ -151,7 +162,7 @@ export default function HomePage({ data }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         variant="caption"
-                        sx={{ color: '#555', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s ease', borderBottom: '1px solid transparent', '&:hover': { color: '#000', borderBottom: '1px solid #000' } }}
+                        sx={{ color: '#555', textDecoration: 'none', fontWeight: 500, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center', transition: 'color 0.2s ease', borderBottom: '1px solid transparent', '&:hover': { color: '#000', borderBottom: '1px solid #000' } }}
                       >
                         LinkedIn
                       </Typography>
@@ -163,7 +174,7 @@ export default function HomePage({ data }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         variant="caption"
-                        sx={{ color: '#555', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s ease', borderBottom: '1px solid transparent', '&:hover': { color: '#000', borderBottom: '1px solid #000' } }}
+                        sx={{ color: '#555', textDecoration: 'none', fontWeight: 500, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center', transition: 'color 0.2s ease', borderBottom: '1px solid transparent', '&:hover': { color: '#000', borderBottom: '1px solid #000' } }}
                       >
                         GitHub
                       </Typography>
@@ -179,7 +190,7 @@ export default function HomePage({ data }) {
       {/* ── 02 / Key Metrics ── */}
       {home.stats?.length > 0 && (
         <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
-          <Container maxWidth="lg" sx={{ py: { xs: 4, md: 5 } }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 3, md: 5 }, px: { xs: 2.5, sm: 3 } }}>
             <Grid container spacing={0}>
               {home.stats.map((stat, i) => (
                 <Grid
@@ -198,14 +209,14 @@ export default function HomePage({ data }) {
                     sx={{
                       fontFamily: '"Space Grotesk", sans-serif',
                       fontWeight: 700,
-                      fontSize: { xs: '1.75rem', md: '2.25rem' },
+                      fontSize: { xs: '1.5rem', md: '2.25rem' },
                     }}
                   >
                     {stat.value}
                   </Typography>
                   <Typography
                     variant="caption"
-                    sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600 }}
+                    sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600, fontSize: { xs: '0.65rem', md: '0.75rem' } }}
                   >
                     {stat.label}
                   </Typography>
@@ -219,8 +230,8 @@ export default function HomePage({ data }) {
       {/* ── 03 / Featured Work ── */}
       {allProjects.length > 0 && (
         <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
-          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: 4, flexWrap: 'wrap', gap: 2 }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 }, px: { xs: 2.5, sm: 3 } }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: { xs: 3, md: 4 }, flexWrap: 'wrap', gap: 2 }}>
               <Box>
                 <Typography
                   variant="overline"
@@ -228,39 +239,59 @@ export default function HomePage({ data }) {
                 >
                   03 / Work
                 </Typography>
-                <Typography variant="h4" fontWeight={600}>
+                <Typography variant="h4" fontWeight={600} sx={{ fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
                   Featured Work
                 </Typography>
               </Box>
-              {categories.length > 1 && (
-                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                  {categories.map((cat) => (
-                    <Box
-                      key={cat}
-                      onClick={() => setFilter(cat)}
-                      sx={{
-                        px: 2,
-                        py: 0.5,
-                        cursor: 'pointer',
-                        border: '1px solid',
-                        borderColor: filter === cat ? '#000' : '#ddd',
-                        bgcolor: filter === cat ? '#000' : 'transparent',
-                        color: filter === cat ? '#fff' : '#555',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.08em',
-                        transition: 'all 0.2s ease',
-                        '&:hover': { borderColor: '#000', bgcolor: filter === cat ? '#000' : '#f5f5f5' },
-                      }}
-                    >
-                      {cat}
-                    </Box>
-                  ))}
-                </Box>
-              )}
             </Box>
-            <Grid container spacing={3}>
+            {/* Mobile-friendly horizontal scrolling filters */}
+            {categories.length > 1 && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: 1,
+                  mb: 3,
+                  overflowX: 'auto',
+                  WebkitOverflowScrolling: 'touch',
+                  pb: 1,
+                  mx: { xs: -0.5, sm: 0 },
+                  px: { xs: 0.5, sm: 0 },
+                  '&::-webkit-scrollbar': { display: 'none' },
+                  scrollbarWidth: 'none',
+                }}
+              >
+                {categories.map((cat) => (
+                  <Box
+                    key={cat}
+                    component="button"
+                    onClick={() => setFilter(cat)}
+                    sx={{
+                      px: 2,
+                      py: 1,
+                      cursor: 'pointer',
+                      border: '1px solid',
+                      borderColor: filter === cat ? '#000' : '#ddd',
+                      bgcolor: filter === cat ? '#000' : 'transparent',
+                      color: filter === cat ? '#fff' : '#555',
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      fontFamily: 'inherit',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      minHeight: 44,
+                      whiteSpace: 'nowrap',
+                      flexShrink: 0,
+                      transition: 'all 0.2s ease',
+                      '&:hover': { borderColor: '#000', bgcolor: filter === cat ? '#000' : '#f5f5f5' },
+                      '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+                    }}
+                  >
+                    {cat}
+                  </Box>
+                ))}
+              </Box>
+            )}
+            <Grid container spacing={{ xs: 2, sm: 3 }}>
               {displayProjects.slice(0, 6).map((project) => (
                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
                   <Box
@@ -271,7 +302,7 @@ export default function HomePage({ data }) {
                       textDecoration: 'none',
                       color: 'inherit',
                       border: '1px solid #e0e0e0',
-                      p: 3,
+                      p: { xs: 2.5, sm: 3 },
                       height: '100%',
                       position: 'relative',
                       overflow: 'hidden',
@@ -305,10 +336,10 @@ export default function HomePage({ data }) {
                     >
                       {project.category}
                     </Typography>
-                    <Typography variant="h6" fontWeight={600} gutterBottom>
+                    <Typography variant="h6" fontWeight={600} gutterBottom sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>
                       {project.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2, lineHeight: 1.6 }}>
                       {project.description}
                     </Typography>
                     {project.tags?.length > 0 && (
@@ -318,7 +349,7 @@ export default function HomePage({ data }) {
                         ))}
                       </Box>
                     )}
-                    {/* Hover-revealed metadata strip */}
+                    {/* Always visible on mobile, hover-revealed on desktop */}
                     <Box
                       className="card-meta"
                       sx={{
@@ -327,8 +358,8 @@ export default function HomePage({ data }) {
                         alignItems: 'center',
                         pt: 2,
                         borderTop: '1px solid #f0f0f0',
-                        opacity: 0,
-                        transform: 'translateY(4px)',
+                        opacity: { xs: 1, sm: 0 },
+                        transform: { xs: 'none', sm: 'translateY(4px)' },
                         transition: 'opacity 0.25s ease, transform 0.25s ease',
                       }}
                     >
@@ -350,7 +381,7 @@ export default function HomePage({ data }) {
                 component={RouterLink}
                 to="/projects"
                 endIcon={<ArrowForwardIcon />}
-                sx={{ color: '#000', fontWeight: 600 }}
+                sx={{ color: '#000', fontWeight: 600, minHeight: 48 }}
               >
                 View all projects
               </Button>
@@ -361,7 +392,7 @@ export default function HomePage({ data }) {
 
       {/* ── 04 / Featured Quote ── */}
       {quotes?.length > 0 && (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ px: { xs: 2.5, sm: 3 } }}>
           <QuoteBlock quotes={quotes} mode="featured" />
         </Container>
       )}
@@ -369,14 +400,14 @@ export default function HomePage({ data }) {
       {/* ── 05 / Highlights ── */}
       {featuredProjects.length > 0 && (
         <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
-          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 }, px: { xs: 2.5, sm: 3 } }}>
             <Typography
               variant="overline"
               sx={{ color: '#999', letterSpacing: '0.15em', display: 'block', mb: 0.5 }}
             >
               05 / Highlights
             </Typography>
-            <Typography variant="h4" fontWeight={600} sx={{ mb: 4 }}>
+            <Typography variant="h4" fontWeight={600} sx={{ mb: { xs: 3, md: 4 }, fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
               Notable Work
             </Typography>
             {featuredProjects.slice(0, 4).map((project, i) => (
@@ -389,11 +420,13 @@ export default function HomePage({ data }) {
                   justifyContent: 'space-between',
                   alignItems: 'baseline',
                   py: 2,
+                  minHeight: 56,
                   borderBottom: i < featuredProjects.length - 1 ? '1px solid #f0f0f0' : 'none',
                   textDecoration: 'none',
                   color: 'inherit',
                   transition: 'padding-left 0.2s ease',
                   '&:hover': { pl: 1, '& .highlight-arrow': { opacity: 1 } },
+                  '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                 }}
               >
                 <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -407,7 +440,7 @@ export default function HomePage({ data }) {
                 <Typography
                   className="highlight-arrow"
                   variant="caption"
-                  sx={{ color: '#000', fontWeight: 600, ml: 2, opacity: 0, transition: 'opacity 0.2s ease', flexShrink: 0 }}
+                  sx={{ color: '#000', fontWeight: 600, ml: 2, opacity: { xs: 1, sm: 0 }, transition: 'opacity 0.2s ease', flexShrink: 0 }}
                 >
                   →
                 </Typography>
@@ -420,13 +453,13 @@ export default function HomePage({ data }) {
       {/* ── 06 / Custom Sections ── */}
       {home.customSections?.length > 0 && (
         <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
-          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 }, px: { xs: 2.5, sm: 3 } }}>
             {home.customSections.map((section, i) => (
               <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 6 : 0 }}>
-                <Typography variant="h4" fontWeight={600} gutterBottom>
+                <Typography variant="h4" fontWeight={600} gutterBottom sx={{ fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
                   {section.title}
                 </Typography>
-                <Typography variant="body1" sx={{ whiteSpace: 'pre-line', maxWidth: 700 }}>
+                <Typography variant="body1" sx={{ whiteSpace: 'pre-line', maxWidth: 700, lineHeight: 1.7 }}>
                   {section.content}
                 </Typography>
               </Box>
@@ -437,7 +470,7 @@ export default function HomePage({ data }) {
 
       {/* ── 07 / CTA Footer ── */}
       <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
-        <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 }, textAlign: 'center' }}>
+        <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2.5, sm: 3 }, textAlign: 'center' }}>
           <Typography
             variant="overline"
             sx={{ color: '#999', letterSpacing: '0.15em', display: 'block', mb: 1 }}
@@ -446,11 +479,11 @@ export default function HomePage({ data }) {
           </Typography>
           <Typography
             variant="h3"
-            sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, mb: 2 }}
+            sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, mb: 2, fontSize: { xs: '1.75rem', md: '3rem' } }}
           >
             Let&apos;s connect.
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 500, mx: 'auto' }}>
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 500, mx: 'auto', lineHeight: 1.7 }}>
             Interested in working together, discussing markets, or just saying hello? I&apos;d love to hear from you.
           </Typography>
           <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -459,7 +492,7 @@ export default function HomePage({ data }) {
                 href={`mailto:${contact.email}`}
                 variant="contained"
                 size="large"
-                sx={{ bgcolor: '#000', transition: 'all 0.2s ease', '&:hover': { bgcolor: '#222', transform: 'translateY(-1px)' }, '&:active': { transform: 'translateY(0)' } }}
+                sx={{ bgcolor: '#000', minHeight: 48, px: { xs: 3, md: 4 }, transition: 'all 0.2s ease', '&:hover': { bgcolor: '#222', transform: 'translateY(-1px)' }, '&:active': { transform: 'translateY(0)' } }}
               >
                 Email me
               </Button>
@@ -469,7 +502,7 @@ export default function HomePage({ data }) {
               to="/contact"
               variant="outlined"
               size="large"
-              sx={{ color: '#000', borderColor: '#000', transition: 'all 0.2s ease', '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#fff', transform: 'translateY(-1px)' }, '&:active': { transform: 'translateY(0)' } }}
+              sx={{ color: '#000', borderColor: '#000', minHeight: 48, px: { xs: 3, md: 4 }, transition: 'all 0.2s ease', '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#fff', transform: 'translateY(-1px)' }, '&:active': { transform: 'translateY(0)' } }}
             >
               Contact page
             </Button>
