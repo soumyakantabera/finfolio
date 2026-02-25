@@ -31,7 +31,7 @@ export default function ProjectsPage({ data }) {
     <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2.5, sm: 3 } }}>
       <Typography
         variant="overline"
-        sx={{ color: '#999', letterSpacing: '0.15em', display: 'block', mb: 0.5 }}
+        sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700 }}
       >
         Gallery
       </Typography>
@@ -39,7 +39,7 @@ export default function ProjectsPage({ data }) {
         Projects
       </Typography>
 
-      {/* Category Filters — horizontal scroll on mobile */}
+      {/* Category Filters — strict B&W, horizontal scroll on mobile */}
       {categories.length > 1 && (
         <Box
           sx={{
@@ -64,10 +64,9 @@ export default function ProjectsPage({ data }) {
                 px: 2,
                 py: 1,
                 cursor: 'pointer',
-                border: '1px solid',
-                borderColor: filter === cat ? '#000' : '#ddd',
-                bgcolor: filter === cat ? '#000' : 'transparent',
-                color: filter === cat ? '#fff' : '#555',
+                border: '1px solid #000',
+                bgcolor: filter === cat ? '#000' : '#fff',
+                color: filter === cat ? '#fff' : '#000',
                 fontSize: '0.75rem',
                 fontWeight: 600,
                 fontFamily: 'inherit',
@@ -76,8 +75,8 @@ export default function ProjectsPage({ data }) {
                 minHeight: 44,
                 whiteSpace: 'nowrap',
                 flexShrink: 0,
-                transition: 'all 0.2s ease',
-                '&:hover': { borderColor: '#000', bgcolor: filter === cat ? '#000' : '#f5f5f5' },
+                transition: prefersReducedMotion ? 'none' : 'all 0.2s ease',
+                '&:hover': { bgcolor: '#000', color: '#fff' },
                 '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
               }}
             >
@@ -93,37 +92,17 @@ export default function ProjectsPage({ data }) {
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
             <Card
               variant="outlined"
+              className="frame-shift"
               sx={{
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'relative',
                 overflow: 'hidden',
-                transition: prefersReducedMotion ? 'none' : 'border-color 0.2s ease, transform 0.2s ease',
-                '&:hover': {
-                  borderColor: '#000',
-                  transform: prefersReducedMotion ? 'none' : 'translateY(-2px)',
-                  '& .project-card-accent': { transform: 'scaleX(1)' },
-                },
-                '&:focus-within': { borderColor: '#000' },
+                border: '1px solid #000',
+                '&:focus-within': { outline: '2px solid #000', outlineOffset: '2px' },
               }}
             >
-              {/* Animated top border accent */}
-              <Box
-                className="project-card-accent"
-                sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '2px',
-                  bgcolor: '#000',
-                  transform: 'scaleX(0)',
-                  transformOrigin: 'left',
-                  transition: prefersReducedMotion ? 'none' : 'transform 0.3s ease',
-                  zIndex: 1,
-                }}
-              />
               {/* Thumbnail */}
               {project.thumbnail && (
                 <Box
@@ -144,7 +123,8 @@ export default function ProjectsPage({ data }) {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 0.5,
-                    bgcolor: 'rgba(255,255,255,0.9)',
+                    bgcolor: '#fff',
+                    border: '1px solid #000',
                     px: 1,
                     py: 0.25,
                   }}
@@ -157,18 +137,18 @@ export default function ProjectsPage({ data }) {
               )}
 
               <CardContent sx={{ flexGrow: 1, p: { xs: 2, sm: 2 } }}>
-                <Typography variant="overline" color="text.secondary">
+                <Typography variant="overline" sx={{ color: '#000', fontWeight: 700 }}>
                   {project.category}
                 </Typography>
                 <Typography variant="h6" fontWeight={600} gutterBottom sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>
                   {project.title}
                 </Typography>
                 {project.subtitle && (
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                  <Typography variant="body2" sx={{ mb: 1 }}>
                     {project.subtitle}
                   </Typography>
                 )}
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2, lineHeight: 1.6 }}>
+                <Typography variant="body2" sx={{ mb: 2, lineHeight: 1.6 }}>
                   {project.description}
                 </Typography>
 
@@ -176,7 +156,7 @@ export default function ProjectsPage({ data }) {
                 {project.tags?.length > 0 && (
                   <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 1 }}>
                     {project.tags.map((tag) => (
-                      <Chip key={tag} label={tag} size="small" variant="outlined" />
+                      <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#000', color: '#000' }} />
                     ))}
                   </Box>
                 )}
@@ -184,7 +164,7 @@ export default function ProjectsPage({ data }) {
                 {/* Tech Stack */}
                 {project.techStack?.length > 0 && (
                   <Box sx={{ mt: 1 }}>
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" sx={{ fontWeight: 700 }}>
                       Tech:&nbsp;
                     </Typography>
                     <Typography variant="caption">{project.techStack.join(', ')}</Typography>
@@ -195,12 +175,12 @@ export default function ProjectsPage({ data }) {
                 {project.category === 'Research Papers' && (
                   <Box sx={{ mt: 1 }}>
                     {project.publication && (
-                      <Typography variant="caption" sx={{ display: 'block', fontStyle: 'italic', color: '#555', mb: 0.5 }}>
+                      <Typography variant="caption" sx={{ display: 'block', fontStyle: 'italic', color: '#000', mb: 0.5 }}>
                         {project.publication}{project.year ? ` (${project.year})` : ''}
                       </Typography>
                     )}
                     {project.authors && (
-                      <Typography variant="caption" sx={{ display: 'block', color: '#777', mb: 0.5 }}>
+                      <Typography variant="caption" sx={{ display: 'block', color: '#000', mb: 0.5 }}>
                         {project.authors}
                       </Typography>
                     )}
@@ -208,7 +188,7 @@ export default function ProjectsPage({ data }) {
                 )}
               </CardContent>
 
-              <CardActions sx={{ px: 2, pb: 2, pt: 1, justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
+              <CardActions sx={{ px: 2, pb: 2, pt: 1, justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, borderTop: '1px dashed #000' }}>
                 <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                   {project.category === 'Research Papers' ? (
                     <>
@@ -218,7 +198,7 @@ export default function ProjectsPage({ data }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           size="small"
-                          sx={{ color: '#fff', bgcolor: '#000', minHeight: 44, '&:hover': { bgcolor: '#333' } }}
+                          sx={{ color: '#fff', bgcolor: '#000', minHeight: 44, '&:hover': { bgcolor: '#000' } }}
                           variant="contained"
                         >
                           Read Paper
@@ -271,7 +251,7 @@ export default function ProjectsPage({ data }) {
       </Grid>
 
       {filtered.length === 0 && (
-        <Typography variant="body1" color="text.secondary" sx={{ mt: 4, textAlign: 'center' }}>
+        <Typography variant="body1" sx={{ mt: 4, textAlign: 'center' }}>
           No projects found in this category.
         </Typography>
       )}

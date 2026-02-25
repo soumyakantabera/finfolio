@@ -79,17 +79,17 @@ export default function Navbar({ data }) {
   }, [menuOpen, handleKeyDown]);
 
   const linkSx = (path) => ({
-    color: isActive(path) ? '#000' : '#555',
+    color: '#000',
     fontWeight: isActive(path) ? 700 : 500,
-    borderBottom: isActive(path) ? '2px solid #000' : '2px solid transparent',
+    borderBottom: isActive(path) ? '1px solid #000' : '1px solid transparent',
     borderRadius: 0,
     mx: 0.5,
     position: 'relative',
-    transition: 'color 0.2s ease',
+    transition: 'border-color 0.2s ease',
     '&:hover': {
       backgroundColor: 'transparent',
       color: '#000',
-      borderBottom: '2px solid #000',
+      borderBottom: '1px solid #000',
     },
     '&:focus-visible': {
       outline: '2px solid #000',
@@ -97,20 +97,15 @@ export default function Navbar({ data }) {
     },
   });
 
-  const allLinks = [
-    ...navLinks.map((item, i) => ({ ...item, index: i })),
-    ...customLinks.map((item, i) => ({ ...item, key: item.path, index: navLinks.length + i })),
-  ];
-
   return (
     <>
-      <AppBar position="sticky" sx={{ bgcolor: '#fff', color: '#111' }}>
+      <AppBar position="sticky" sx={{ bgcolor: '#fff', color: '#000' }}>
         <Toolbar>
           <Typography
             variant="h6"
             component={Link}
             to="/"
-            sx={{ fontWeight: 700, flexGrow: 1, color: '#111', textDecoration: 'none' }}
+            sx={{ fontWeight: 700, flexGrow: 1, color: '#000', textDecoration: 'none' }}
           >
             {siteTitle}
           </Typography>
@@ -145,7 +140,7 @@ export default function Navbar({ data }) {
               border: 'none',
               cursor: 'pointer',
               p: 1,
-              color: '#111',
+              color: '#000',
               fontFamily: '"Space Grotesk", sans-serif',
               fontSize: '0.85rem',
               fontWeight: 600,
@@ -187,13 +182,13 @@ export default function Navbar({ data }) {
               alignItems: 'center',
               px: 2,
               minHeight: 56,
-              borderBottom: '1px solid #e0e0e0',
+              borderBottom: '1px solid #000',
               flexShrink: 0,
             }}
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: 700, color: '#111', letterSpacing: '-0.02em' }}
+              sx={{ fontWeight: 700, color: '#000', letterSpacing: '-0.02em' }}
             >
               {siteTitle}
             </Typography>
@@ -204,7 +199,7 @@ export default function Navbar({ data }) {
               aria-label="Close navigation menu"
               sx={{
                 background: 'none',
-                border: '1px solid #e0e0e0',
+                border: '1px solid #000',
                 cursor: 'pointer',
                 p: 0,
                 width: 44,
@@ -212,14 +207,12 @@ export default function Navbar({ data }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#111',
+                color: '#000',
                 fontFamily: '"Space Grotesk", sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                transition: 'border-color 0.2s ease',
-                '&:hover': { borderColor: '#000' },
                 '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
               }}
             >
@@ -240,19 +233,19 @@ export default function Navbar({ data }) {
                   alignItems: 'baseline',
                   gap: 2,
                   py: 2,
-                  borderBottom: '1px solid #f0f0f0',
+                  borderBottom: '1px dashed #000',
                   textDecoration: 'none',
-                  color: isActive(item.path) ? '#000' : '#333',
+                  color: '#000',
                   minHeight: 56,
-                  transition: 'color 0.15s ease, padding-left 0.15s ease',
-                  '&:hover': { color: '#000', pl: 0.5 },
+                  transition: 'padding-left 0.15s ease',
+                  '&:hover': { pl: 0.5 },
                   '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                 }}
               >
                 <Typography
                   variant="caption"
                   sx={{
-                    color: '#999',
+                    color: '#000',
                     fontWeight: 600,
                     fontSize: '0.7rem',
                     letterSpacing: '0.1em',
@@ -278,10 +271,10 @@ export default function Navbar({ data }) {
 
             {/* Custom page links — secondary style */}
             {customLinks.length > 0 && (
-              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #e0e0e0' }}>
+              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #000' }}>
                 <Typography
                   variant="overline"
-                  sx={{ color: '#999', letterSpacing: '0.15em', display: 'block', mb: 1 }}
+                  sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 700 }}
                 >
                   Pages
                 </Typography>
@@ -295,12 +288,11 @@ export default function Navbar({ data }) {
                       display: 'block',
                       py: 1.5,
                       textDecoration: 'none',
-                      color: isActive(item.path) ? '#000' : '#555',
-                      fontWeight: isActive(item.path) ? 600 : 400,
+                      color: '#000',
+                      fontWeight: isActive(item.path) ? 700 : 400,
                       fontSize: '1rem',
                       minHeight: 44,
-                      transition: 'color 0.15s ease',
-                      '&:hover': { color: '#000' },
+                      '&:hover': { fontWeight: 700 },
                       '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
                   >
@@ -316,13 +308,13 @@ export default function Navbar({ data }) {
             sx={{
               px: 2,
               py: 3,
-              borderTop: '1px solid #e0e0e0',
+              borderTop: '1px solid #000',
               flexShrink: 0,
             }}
           >
             <Typography
               variant="caption"
-              sx={{ color: '#999', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}
+              sx={{ color: '#000', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}
             >
               © {new Date().getFullYear()} {siteTitle}
             </Typography>

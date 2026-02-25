@@ -26,8 +26,8 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
     <Box
       sx={{
         py: { xs: 4, md: 6 },
-        borderTop: '1px solid #e0e0e0',
-        borderBottom: '1px solid #e0e0e0',
+        borderTop: '1px solid #000',
+        borderBottom: '1px solid #000',
         textAlign: 'center',
       }}
     >
@@ -44,8 +44,8 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
           mx: 'auto',
           px: { xs: 1, sm: 2 },
           fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2.125rem' },
-          color: '#111',
-          '&::before': { content: '"\\201C"', display: 'block', fontSize: { xs: '2rem', md: '3rem' }, lineHeight: 1, color: '#ccc', mb: 1 },
+          color: '#000',
+          '&::before': { content: '"\\201C"', display: 'block', fontSize: { xs: '2rem', md: '3rem' }, lineHeight: 1, color: '#000', mb: 1 },
         }}
       >
         {quote.text}
@@ -56,7 +56,7 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
           sx={{
             display: 'block',
             mt: 2,
-            color: '#888',
+            color: '#000',
             textTransform: 'uppercase',
             letterSpacing: '0.15em',
             fontWeight: 600,
@@ -74,7 +74,8 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
               sx={{
                 width: 8,
                 height: 8,
-                bgcolor: i === activeIndex ? '#111' : '#ddd',
+                bgcolor: i === activeIndex ? '#000' : '#fff',
+                border: '1px solid #000',
                 cursor: 'pointer',
                 transition: 'background-color 0.3s',
               }}

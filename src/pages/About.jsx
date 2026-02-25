@@ -7,12 +7,10 @@ import {
   CardContent,
   Avatar,
   Grid,
-  LinearProgress,
   IconButton,
   Chip,
   Collapse,
   Modal,
-  Backdrop,
   Button,
 } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
@@ -32,16 +30,6 @@ import ImageIcon from '@mui/icons-material/Image';
 import CloseIcon from '@mui/icons-material/Close';
 import DownloadIcon from '@mui/icons-material/Download';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-
-const levelValue = (level) => {
-  switch (level) {
-    case 'Expert': return 100;
-    case 'Advanced': return 75;
-    case 'Intermediate': return 50;
-    case 'Beginner': return 25;
-    default: return 50;
-  }
-};
 
 const platformIcon = (platform) => {
   const p = platform?.toLowerCase() || '';
@@ -73,21 +61,14 @@ const SectionHeader = ({ icon, children, collapsible, expanded, onToggle }) => (
     <Typography variant="h5" fontWeight={700} sx={{ letterSpacing: '-0.02em', fontSize: { xs: '1.15rem', md: '1.5rem' } }}>
       {children}
     </Typography>
-    <Box sx={{ flex: 1, height: '1px', bgcolor: '#e0e0e0', ml: 2 }} />
+    <Box sx={{ flex: 1, height: '1px', bgcolor: '#000', ml: 2 }} />
     {collapsible && (
-      <Box sx={{ flexShrink: 0, color: '#999', display: 'flex' }}>
+      <Box sx={{ flexShrink: 0, color: '#000', display: 'flex' }}>
         {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </Box>
     )}
   </Box>
 );
-
-const hoverCard = {
-  transition: 'border-color 0.2s ease',
-  border: '1px solid #e0e0e0',
-  borderRadius: 0,
-  '&:hover': { borderColor: '#000' },
-};
 
 export default function AboutPage({ data }) {
   const { about } = data;
@@ -114,7 +95,7 @@ export default function AboutPage({ data }) {
     <Box sx={{ bgcolor: '#fff', minHeight: '100vh' }}>
       {/* Hero Section */}
       <Box sx={{
-        bgcolor: '#fafafa', borderBottom: '1px solid #eee',
+        bgcolor: '#fff', borderBottom: '1px solid #000',
         py: { xs: 5, md: 10 }, px: { xs: 2.5, sm: 2 },
       }}>
         <Container maxWidth="md">
@@ -126,8 +107,9 @@ export default function AboutPage({ data }) {
               alt={about.name}
               sx={{
                 width: { xs: 100, md: 160 }, height: { xs: 100, md: 160 },
-                bgcolor: '#111', fontSize: { xs: 40, md: 64 }, fontWeight: 700,
-                border: '4px solid #fff', boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                bgcolor: '#000', fontSize: { xs: 40, md: 64 }, fontWeight: 700,
+                color: '#fff',
+                border: '2px solid #000',
                 mb: 3, borderRadius: 0,
               }}
             >
@@ -140,14 +122,14 @@ export default function AboutPage({ data }) {
             </Typography>
             {about.introTitle && (
               <Typography variant="h6" sx={{
-                color: '#555', fontWeight: 400, mt: 1, fontSize: { xs: '0.95rem', md: '1.25rem' },
+                color: '#000', fontWeight: 400, mt: 1, fontSize: { xs: '0.95rem', md: '1.25rem' },
               }}>
                 {about.introTitle}
               </Typography>
             )}
             {about.introDescription && (
               <Typography variant="body1" sx={{
-                color: '#666', mt: 2, maxWidth: 600, lineHeight: 1.8, fontSize: { xs: '0.95rem', md: '1rem' },
+                color: '#000', mt: 2, maxWidth: 600, lineHeight: 1.8, fontSize: { xs: '0.95rem', md: '1rem' },
               }}>
                 {about.introDescription}
               </Typography>
@@ -161,12 +143,12 @@ export default function AboutPage({ data }) {
                 {about.metrics.map((m) => (
                   <Box key={m.id} sx={{
                     px: { xs: 2, md: 3 }, py: 1.5, bgcolor: '#fff',
-                    border: '1px solid #e0e0e0', minWidth: { xs: 100, md: 120 }, textAlign: 'center',
+                    border: '1px solid #000', minWidth: { xs: 100, md: 120 }, textAlign: 'center',
                   }}>
-                    <Typography variant="h6" fontWeight={700} sx={{ color: '#000', fontSize: { xs: '1rem', md: '1.25rem' } }}>
+                    <Typography variant="h6" fontWeight={700} className="tabular-nums" sx={{ color: '#000', fontSize: { xs: '1rem', md: '1.25rem' } }}>
                       {m.value}
                     </Typography>
-                    <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: 1, fontSize: '0.65rem' }}>
+                    <Typography variant="caption" sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: 1, fontSize: '0.65rem', fontWeight: 600 }}>
                       {m.label}
                     </Typography>
                   </Box>
@@ -185,10 +167,10 @@ export default function AboutPage({ data }) {
                     rel="noopener noreferrer"
                     aria-label={link.platform}
                     sx={{
-                      color: '#555', border: '1px solid #ddd',
+                      color: '#000', border: '1px solid #000',
                       width: 44, height: 44,
                       transition: 'all 0.2s ease',
-                      '&:hover': { bgcolor: '#000', color: '#fff', borderColor: '#000' },
+                      '&:hover': { bgcolor: '#000', color: '#fff' },
                     }}
                     size="small"
                   >
@@ -207,7 +189,7 @@ export default function AboutPage({ data }) {
           <Box sx={{ maxWidth: 800, mx: 'auto', mt: { xs: 2, md: 4 }, mb: 2 }}>
             <SectionHeader icon={<ArticleIcon fontSize="small" />}>About Me</SectionHeader>
             <Typography variant="body1" sx={{
-              lineHeight: 2, color: '#444', whiteSpace: 'pre-line', fontSize: { xs: '0.95rem', md: '1.05rem' },
+              lineHeight: 2, color: '#000', whiteSpace: 'pre-line', fontSize: { xs: '0.95rem', md: '1.05rem' },
             }}>
               {about.bio}
             </Typography>
@@ -230,7 +212,7 @@ export default function AboutPage({ data }) {
                 {/* Timeline line */}
                 <Box sx={{
                   position: 'absolute', left: { xs: 10, md: 18 }, top: 8, bottom: 8,
-                  width: 2, bgcolor: '#e0e0e0',
+                  width: 2, bgcolor: '#000',
                 }} />
                 {about.experience.map((exp, idx) => (
                   <Box key={exp.id} sx={{
@@ -247,23 +229,24 @@ export default function AboutPage({ data }) {
                       border: '3px solid #000',
                       zIndex: 1,
                     }} />
-                    <Card sx={{ ...hoverCard, bgcolor: '#fff' }} variant="outlined">
+                    <Card sx={{ border: '1px solid #000', bgcolor: '#fff' }} variant="outlined">
                       <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } } }}>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1 }}>
                           <Box sx={{ minWidth: 0, flex: 1 }}>
                             <Typography variant="h6" fontWeight={700} sx={{ fontSize: { xs: '0.95rem', md: '1.05rem' } }}>
                               {exp.role}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: '#555', fontWeight: 500 }}>
+                            <Typography variant="body2" sx={{ color: '#000', fontWeight: 500 }}>
                               {exp.company}
                             </Typography>
                           </Box>
                           <Chip label={exp.period} size="small" sx={{
-                            bgcolor: '#f5f5f5', color: '#666', fontWeight: 500, fontSize: '0.7rem',
+                            bgcolor: '#fff', color: '#000', fontWeight: 600, fontSize: '0.7rem',
+                            border: '1px solid #000',
                           }} />
                         </Box>
                         {exp.description && (
-                          <Typography variant="body2" sx={{ mt: 1.5, color: '#666', lineHeight: 1.7 }}>
+                          <Typography variant="body2" sx={{ mt: 1.5, color: '#000', lineHeight: 1.7 }}>
                             {exp.description}
                           </Typography>
                         )}
@@ -291,27 +274,27 @@ export default function AboutPage({ data }) {
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.education.map((edu) => (
                   <Grid size={{ xs: 12, md: 6 }} key={edu.id}>
-                    <Card sx={{ ...hoverCard, height: '100%' }} variant="outlined">
+                    <Card sx={{ border: '1px solid #000', height: '100%' }} variant="outlined">
                       <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } } }}>
                         <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                           <Box sx={{
-                            width: 44, height: 44, bgcolor: '#f5f5f5',
+                            width: 44, height: 44, bgcolor: '#000', color: '#fff',
                             display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                           }}>
-                            <SchoolIcon sx={{ color: '#333', fontSize: 22 }} />
+                            <SchoolIcon sx={{ fontSize: 22 }} />
                           </Box>
                           <Box sx={{ flex: 1, minWidth: 0 }}>
                             <Typography variant="subtitle1" fontWeight={700} sx={{ fontSize: { xs: '0.95rem', md: '1rem' } }}>
                               {edu.degree}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: '#666' }}>
+                            <Typography variant="body2" sx={{ color: '#000' }}>
                               {edu.institution}
                             </Typography>
-                            <Typography variant="caption" sx={{ color: '#999' }}>
+                            <Typography variant="caption" sx={{ color: '#000', fontWeight: 600 }}>
                               {edu.year}
                             </Typography>
                             {edu.details && (
-                              <Typography variant="body2" sx={{ mt: 1.5, color: '#555', lineHeight: 1.7 }}>
+                              <Typography variant="body2" sx={{ mt: 1.5, color: '#000', lineHeight: 1.7 }}>
                                 {edu.details}
                               </Typography>
                             )}
@@ -326,7 +309,7 @@ export default function AboutPage({ data }) {
           </Box>
         )}
 
-        {/* Skills */}
+        {/* Skills — no progress bars, use text-based matrix */}
         {about.skills?.length > 0 && (
           <Box>
             <SectionHeader
@@ -341,23 +324,18 @@ export default function AboutPage({ data }) {
               <Grid container spacing={2}>
                 {about.skills.map((skill) => (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={skill.id}>
-                    <Box sx={{ mb: 1, minHeight: 44, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
-                        <Typography variant="body2" fontWeight={600}>
-                          {skill.name}
-                        </Typography>
-                        <Typography variant="caption" sx={{ color: '#888' }}>
-                          {skill.level}
-                        </Typography>
-                      </Box>
-                      <LinearProgress
-                        variant="determinate"
-                        value={levelValue(skill.level)}
-                        sx={{
-                          height: 6, bgcolor: '#eee',
-                          '& .MuiLinearProgress-bar': { bgcolor: '#000' },
-                        }}
-                      />
+                    <Box sx={{
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                      py: 1.5, px: 2,
+                      border: '1px solid #000',
+                      minHeight: 44,
+                    }}>
+                      <Typography variant="body2" fontWeight={600}>
+                        {skill.name}
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                        {skill.level}
+                      </Typography>
                     </Box>
                   </Grid>
                 ))}
@@ -385,7 +363,7 @@ export default function AboutPage({ data }) {
                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={cert.id}>
                       <Card
                         sx={{
-                          ...hoverCard,
+                          border: '1px solid #000',
                           cursor: hasMedia ? 'pointer' : 'default',
                         }}
                         variant="outlined"
@@ -396,10 +374,10 @@ export default function AboutPage({ data }) {
                       >
                         <CardContent sx={{ p: { xs: 2, md: 2.5 }, '&:last-child': { pb: { xs: 2, md: 2.5 } }, display: 'flex', alignItems: 'center', gap: 2, minHeight: 56 }}>
                           <Box sx={{
-                            width: 38, height: 38, bgcolor: '#f5f5f5',
+                            width: 38, height: 38, bgcolor: '#000', color: '#fff',
                             display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                           }}>
-                            <VerifiedUserIcon sx={{ color: '#333', fontSize: 20 }} />
+                            <VerifiedUserIcon sx={{ fontSize: 20 }} />
                           </Box>
                           <Box sx={{ minWidth: 0, flex: 1 }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
@@ -408,16 +386,16 @@ export default function AboutPage({ data }) {
                               </Typography>
                               {hasMedia && (
                                 cert.mediaType === 'pdf'
-                                  ? <PictureAsPdfIcon sx={{ fontSize: 16, color: '#999' }} />
-                                  : <ImageIcon sx={{ fontSize: 16, color: '#999' }} />
+                                  ? <PictureAsPdfIcon sx={{ fontSize: 16, color: '#000' }} />
+                                  : <ImageIcon sx={{ fontSize: 16, color: '#000' }} />
                               )}
                             </Box>
                             {cert.issuer && (
-                              <Typography variant="caption" sx={{ color: '#666', display: 'block' }}>
+                              <Typography variant="caption" sx={{ color: '#000', display: 'block' }}>
                                 {cert.issuer}
                               </Typography>
                             )}
-                            <Typography variant="caption" sx={{ color: '#999' }}>
+                            <Typography variant="caption" sx={{ color: '#000', fontWeight: 600 }}>
                               {cert.date || cert.year}
                             </Typography>
                           </Box>
@@ -431,13 +409,12 @@ export default function AboutPage({ data }) {
           </Box>
         )}
 
-        {/* Certification Viewer Modal */}
+        {/* Certification Viewer Modal — strict B&W */}
         <Modal
           open={!!selectedCert}
           onClose={() => setSelectedCert(null)}
           closeAfterTransition
-          slots={{ backdrop: Backdrop }}
-          slotProps={{ backdrop: { sx: { bgcolor: 'rgba(0,0,0,0.7)' } } }}
+          slotProps={{ backdrop: { sx: { bgcolor: '#fff' } } }}
         >
           <Box sx={{
             position: 'absolute',
@@ -449,6 +426,7 @@ export default function AboutPage({ data }) {
             height: { xs: '100%', md: 'auto' },
             maxHeight: { xs: '100%', md: '85vh' },
             bgcolor: '#fff',
+            border: '2px solid #000',
             borderRadius: 0,
             display: 'flex',
             flexDirection: 'column',
@@ -458,7 +436,7 @@ export default function AboutPage({ data }) {
             <Box sx={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               px: { xs: 2, md: 3 }, py: 1.5,
-              borderBottom: '1px solid #e0e0e0', flexShrink: 0,
+              borderBottom: '1px solid #000', flexShrink: 0,
             }}>
               <Typography variant="subtitle1" fontWeight={700} noWrap sx={{ flex: 1, mr: 1 }}>
                 {selectedCert?.title || selectedCert?.name}
@@ -466,7 +444,7 @@ export default function AboutPage({ data }) {
               <IconButton
                 onClick={() => setSelectedCert(null)}
                 aria-label="Close"
-                sx={{ color: '#333', flexShrink: 0 }}
+                sx={{ color: '#000', flexShrink: 0, border: '1px solid #000', borderRadius: 0, width: 40, height: 40 }}
                 size="large"
               >
                 <CloseIcon />
@@ -495,24 +473,24 @@ export default function AboutPage({ data }) {
             {/* Footer */}
             <Box sx={{
               px: { xs: 2, md: 3 }, py: 2,
-              borderTop: '1px solid #e0e0e0', flexShrink: 0,
+              borderTop: '1px solid #000', flexShrink: 0,
               display: 'flex', flexDirection: { xs: 'column', md: 'row' },
               alignItems: { xs: 'stretch', md: 'center' },
               gap: 2,
             }}>
               <Box sx={{ flex: 1, minWidth: 0 }}>
                 {selectedCert?.issuer && (
-                  <Typography variant="body2" sx={{ color: '#555' }}>
+                  <Typography variant="body2">
                     <strong>Issuer:</strong> {selectedCert.issuer}
                   </Typography>
                 )}
                 {(selectedCert?.date || selectedCert?.year) && (
-                  <Typography variant="body2" sx={{ color: '#555' }}>
+                  <Typography variant="body2">
                     <strong>Date:</strong> {selectedCert.date || selectedCert.year}
                   </Typography>
                 )}
                 {selectedCert?.credentialId && (
-                  <Typography variant="body2" sx={{ color: '#555' }}>
+                  <Typography variant="body2">
                     <strong>Credential ID:</strong> {selectedCert.credentialId}
                   </Typography>
                 )}
@@ -540,7 +518,7 @@ export default function AboutPage({ data }) {
                   rel="noopener noreferrer"
                   sx={{
                     bgcolor: '#000', color: '#fff', borderRadius: 0, boxShadow: 'none',
-                    '&:hover': { bgcolor: '#333', boxShadow: 'none' },
+                    '&:hover': { bgcolor: '#000', boxShadow: 'none' },
                   }}
                 >
                   Open in new tab
@@ -565,7 +543,7 @@ export default function AboutPage({ data }) {
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.achievements.map((ach) => (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={ach.id}>
-                    <Card sx={{ ...hoverCard, height: '100%' }} variant="outlined">
+                    <Card sx={{ border: '1px solid #000', height: '100%' }} variant="outlined">
                       <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } } }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
                           <EmojiEventsIcon sx={{ color: '#000', fontSize: 24 }} />
@@ -574,12 +552,12 @@ export default function AboutPage({ data }) {
                           </Typography>
                         </Box>
                         {ach.description && (
-                          <Typography variant="body2" sx={{ color: '#666', lineHeight: 1.7 }}>
+                          <Typography variant="body2" sx={{ color: '#000', lineHeight: 1.7 }}>
                             {ach.description}
                           </Typography>
                         )}
                         {ach.year && (
-                          <Typography variant="caption" sx={{ color: '#999', display: 'block', mt: 1.5 }}>
+                          <Typography variant="caption" sx={{ color: '#000', display: 'block', mt: 1.5, fontWeight: 600 }}>
                             {ach.year}
                           </Typography>
                         )}
@@ -597,7 +575,7 @@ export default function AboutPage({ data }) {
           <Box key={section.id}>
             <SectionHeader icon={<ArticleIcon fontSize="small" />}>{section.title}</SectionHeader>
             <Typography variant="body1" sx={{
-              whiteSpace: 'pre-line', color: '#444', lineHeight: 1.8, fontSize: { xs: '0.95rem', md: '1rem' },
+              whiteSpace: 'pre-line', color: '#000', lineHeight: 1.8, fontSize: { xs: '0.95rem', md: '1rem' },
             }}>
               {section.content}
             </Typography>

@@ -14,10 +14,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 const bw = {
   color: '#000', borderColor: '#000',
-  '&:hover': { borderColor: '#333', bgcolor: '#f5f5f5' },
+  '&:hover': { borderColor: '#000', bgcolor: '#fff' },
 };
-const cardSx = { my: 2, borderRadius: 0, border: '1px solid #ccc' };
-const iframeStyle = { border: '1px solid #e0e0e0', borderRadius: 0 };
+const cardSx = { my: 2, borderRadius: 0, border: '1px solid #000' };
+const iframeStyle = { border: '1px solid #000', borderRadius: 0 };
 
 function extractYouTubeId(url) {
   const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?.*v=|embed\/))([\w-]+)/);
@@ -91,7 +91,7 @@ function Lightbox({ open, onClose, src, alt, images, index, onNav }) {
 
   return (
     <Modal open={open} onClose={onClose} slots={{ backdrop: Backdrop }}
-      slotProps={{ backdrop: { sx: { bgcolor: 'rgba(0,0,0,0.9)' } } }}>
+      slotProps={{ backdrop: { sx: { bgcolor: '#000' } } }}>
       <Box sx={{ position: 'fixed', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', outline: 'none' }}>
         <IconButton onClick={onClose} sx={{ position: 'absolute', top: 16, right: 16, color: '#fff', zIndex: 1 }}>
           <CloseIcon />
@@ -158,7 +158,7 @@ export default function EmbedBlock({
   const withCaption = (content) => (
     <Box sx={{ my: 2 }}>
       {content}
-      {caption && <Typography variant="caption" sx={{ display: 'block', mt: 0.5, color: '#666', textAlign: 'center' }}>{caption}</Typography>}
+      {caption && <Typography variant="caption" sx={{ display: 'block', mt: 0.5, color: '#000', textAlign: 'center' }}>{caption}</Typography>}
     </Box>
   );
 
@@ -193,15 +193,15 @@ export default function EmbedBlock({
           <Box onClick={() => setYtLoaded(true)}
             sx={{
               position: 'relative', pb: aspectRatio ? undefined : '56.25%', height: 0, overflow: 'hidden',
-              bgcolor: '#222', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              bgcolor: '#000', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
             <Box sx={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <IconButton sx={{ color: '#fff', bgcolor: 'rgba(0,0,0,0.6)', '&:hover': { bgcolor: 'rgba(0,0,0,0.8)' }, width: 64, height: 64 }}>
+              <IconButton sx={{ color: '#fff', bgcolor: '#000', '&:hover': { bgcolor: '#000' }, width: 64, height: 64 }}>
                 <PlayArrowIcon sx={{ fontSize: 40 }} />
               </IconButton>
             </Box>
             {title && (
-              <Typography variant="body2" sx={{ position: 'absolute', bottom: 8, left: 12, color: '#ccc' }}>{title}</Typography>
+              <Typography variant="body2" sx={{ position: 'absolute', bottom: 8, left: 12, color: '#fff' }}>{title}</Typography>
             )}
           </Box>
         );
@@ -293,9 +293,9 @@ export default function EmbedBlock({
     case 'code': {
       if (!code) return <FallbackCard title={title || 'Code Snippet'} />;
       return withCaption(
-        <Box sx={{ position: 'relative', my: 1, border: '1px solid #ccc', bgcolor: '#fafafa' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 1.5, py: 0.5, borderBottom: '1px solid #ccc' }}>
-            <Typography variant="caption" sx={{ color: '#666', fontFamily: 'monospace' }}>{language || 'plain text'}</Typography>
+        <Box sx={{ position: 'relative', my: 1, border: '1px solid #000', bgcolor: '#fff' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 1.5, py: 0.5, borderBottom: '1px solid #000' }}>
+            <Typography variant="caption" sx={{ color: '#000', fontFamily: 'monospace' }}>{language || 'plain text'}</Typography>
             <Button size="small" startIcon={<ContentCopyIcon sx={{ fontSize: 14 }} />} onClick={handleCopy}
               sx={{ ...bw, fontSize: 12, textTransform: 'none' }}>
               {copied ? 'Copied!' : 'Copy'}
@@ -364,7 +364,7 @@ export default function EmbedBlock({
                 <Typography variant="body1" sx={{ fontWeight: 500, color: '#000', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {name}
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#666' }}>
+                <Typography variant="caption" sx={{ color: '#000' }}>
                   {[fileType, formatFileSize(fileSize)].filter(Boolean).join(' · ')}
                 </Typography>
               </Box>
