@@ -56,7 +56,8 @@ export default function AboutEditor({ data, onChange }) {
       <TextField label="Address" fullWidth value={data.address || ''} onChange={(e) => update('address', e.target.value)} sx={{ mb: 2 }} />
       <TextField label="Profile Photo URL" fullWidth value={data.profilePhoto || ''} onChange={(e) => update('profilePhoto', e.target.value)} sx={{ mb: 2 }} />
       <TextField label="Intro Title" fullWidth value={data.introTitle || ''} onChange={(e) => update('introTitle', e.target.value)} sx={{ mb: 2 }} />
-      <TextField label="Intro Description" fullWidth multiline rows={3} value={data.introDescription || ''} onChange={(e) => update('introDescription', e.target.value)} sx={{ mb: 3 }} />
+      <TextField label="Intro Description" fullWidth multiline rows={3} value={data.introDescription || ''} onChange={(e) => update('introDescription', e.target.value)} sx={{ mb: 2 }} />
+      <TextField label="Bio" fullWidth multiline rows={4} value={data.bio || ''} onChange={(e) => update('bio', e.target.value)} sx={{ mb: 3 }} />
 
       {/* Education */}
       <Divider sx={{ my: 2 }} />
@@ -115,6 +116,45 @@ export default function AboutEditor({ data, onChange }) {
         </Card>
       ))}
       <Button startIcon={<Add />} onClick={() => addItem('certifications', { name: '', year: '' })} sx={{ mb: 3 }}>Add Certification</Button>
+
+      {/* Achievements */}
+      <Divider sx={{ my: 2 }} />
+      <Typography variant="subtitle1" fontWeight={600} mb={1}>Achievements</Typography>
+      {(data.achievements || []).map((ach) => (
+        <Card key={ach.id} sx={{ p: 2, mb: 1 }}>
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
+            <TextField label="Title" size="small" value={ach.title || ''} onChange={(e) => updateItem('achievements', ach.id, 'title', e.target.value)} sx={{ flex: 1, minWidth: 150 }} />
+            <TextField label="Year" size="small" value={ach.year || ''} onChange={(e) => updateItem('achievements', ach.id, 'year', e.target.value)} sx={{ width: 100 }} />
+            <IconButton color="error" onClick={() => setDeleteTarget({ field: 'achievements', id: ach.id })}><Delete /></IconButton>
+          </Box>
+          <TextField label="Description" fullWidth size="small" value={ach.description || ''} onChange={(e) => updateItem('achievements', ach.id, 'description', e.target.value)} sx={{ mt: 1 }} />
+        </Card>
+      ))}
+      <Button startIcon={<Add />} onClick={() => addItem('achievements', { title: '', description: '', year: '' })} sx={{ mb: 3 }}>Add Achievement</Button>
+
+      {/* Metrics/Stats */}
+      <Divider sx={{ my: 2 }} />
+      <Typography variant="subtitle1" fontWeight={600} mb={1}>Metrics / Stats</Typography>
+      {(data.metrics || []).map((metric) => (
+        <Card key={metric.id} sx={{ p: 2, mb: 1, display: 'flex', gap: 1, alignItems: 'center' }}>
+          <TextField label="Label" size="small" value={metric.label || ''} onChange={(e) => updateItem('metrics', metric.id, 'label', e.target.value)} sx={{ flex: 1 }} />
+          <TextField label="Value" size="small" value={metric.value || ''} onChange={(e) => updateItem('metrics', metric.id, 'value', e.target.value)} sx={{ flex: 1 }} />
+          <IconButton color="error" onClick={() => setDeleteTarget({ field: 'metrics', id: metric.id })}><Delete /></IconButton>
+        </Card>
+      ))}
+      <Button startIcon={<Add />} onClick={() => addItem('metrics', { label: '', value: '' })} sx={{ mb: 3 }}>Add Metric</Button>
+
+      {/* Contact Quick Links */}
+      <Divider sx={{ my: 2 }} />
+      <Typography variant="subtitle1" fontWeight={600} mb={1}>Contact Quick Links</Typography>
+      {(data.contactLinks || []).map((link) => (
+        <Card key={link.id} sx={{ p: 2, mb: 1, display: 'flex', gap: 1, alignItems: 'center' }}>
+          <TextField label="Platform" size="small" value={link.platform || ''} onChange={(e) => updateItem('contactLinks', link.id, 'platform', e.target.value)} sx={{ flex: 1 }} />
+          <TextField label="URL" size="small" value={link.url || ''} onChange={(e) => updateItem('contactLinks', link.id, 'url', e.target.value)} sx={{ flex: 1 }} />
+          <IconButton color="error" onClick={() => setDeleteTarget({ field: 'contactLinks', id: link.id })}><Delete /></IconButton>
+        </Card>
+      ))}
+      <Button startIcon={<Add />} onClick={() => addItem('contactLinks', { platform: '', url: '' })} sx={{ mb: 3 }}>Add Contact Link</Button>
 
       {/* Additional Sections */}
       <Divider sx={{ my: 2 }} />
