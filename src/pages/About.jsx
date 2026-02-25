@@ -44,7 +44,7 @@ const SectionHeader = ({ icon, children }) => (
   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 4, mt: 10 }}>
     <Box sx={{
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      width: 40, height: 40, borderRadius: '50%', bgcolor: '#000', color: '#fff', flexShrink: 0,
+      width: 40, height: 40, bgcolor: '#000', color: '#fff', flexShrink: 0,
     }}>
       {icon}
     </Box>
@@ -56,10 +56,10 @@ const SectionHeader = ({ icon, children }) => (
 );
 
 const hoverCard = {
-  transition: 'box-shadow 0.25s ease, border-color 0.25s ease',
+  transition: 'border-color 0.2s ease',
   border: '1px solid #e0e0e0',
-  borderRadius: 2,
-  '&:hover': { boxShadow: '0 4px 20px rgba(0,0,0,0.08)', borderColor: '#bbb' },
+  borderRadius: 0,
+  '&:hover': { borderColor: '#000' },
 };
 
 export default function AboutPage({ data }) {
@@ -83,7 +83,7 @@ export default function AboutPage({ data }) {
                 width: { xs: 120, md: 160 }, height: { xs: 120, md: 160 },
                 bgcolor: '#111', fontSize: { xs: 48, md: 64 }, fontWeight: 700,
                 border: '4px solid #fff', boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
-                mb: 3,
+                mb: 3, borderRadius: 0,
               }}
             >
               {about.name?.[0]}
@@ -115,7 +115,7 @@ export default function AboutPage({ data }) {
               }}>
                 {about.metrics.map((m) => (
                   <Box key={m.id} sx={{
-                    px: 3, py: 1.5, bgcolor: '#fff', borderRadius: 2,
+                    px: 3, py: 1.5, bgcolor: '#fff',
                     border: '1px solid #e0e0e0', minWidth: 120, textAlign: 'center',
                   }}>
                     <Typography variant="h6" fontWeight={700} sx={{ color: '#000' }}>
@@ -188,7 +188,7 @@ export default function AboutPage({ data }) {
                     position: 'absolute',
                     left: { xs: -22, md: -36 },
                     top: 20,
-                    width: 14, height: 14, borderRadius: '50%',
+                    width: 14, height: 14,
                     bgcolor: idx === 0 ? '#000' : '#fff',
                     border: '3px solid #000',
                     zIndex: 1,
@@ -232,7 +232,7 @@ export default function AboutPage({ data }) {
                     <CardContent sx={{ p: 3, '&:last-child': { pb: 3 } }}>
                       <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                         <Box sx={{
-                          width: 44, height: 44, borderRadius: '50%', bgcolor: '#f5f5f5',
+                          width: 44, height: 44, bgcolor: '#f5f5f5',
                           display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                         }}>
                           <SchoolIcon sx={{ color: '#333', fontSize: 22 }} />
@@ -282,8 +282,8 @@ export default function AboutPage({ data }) {
                       variant="determinate"
                       value={levelValue(skill.level)}
                       sx={{
-                        height: 6, borderRadius: 3, bgcolor: '#eee',
-                        '& .MuiLinearProgress-bar': { bgcolor: '#000', borderRadius: 3 },
+                        height: 6, bgcolor: '#eee',
+                        '& .MuiLinearProgress-bar': { bgcolor: '#000' },
                       }}
                     />
                   </Box>
@@ -303,7 +303,7 @@ export default function AboutPage({ data }) {
                   <Card sx={{ ...hoverCard }} variant="outlined">
                     <CardContent sx={{ p: 2.5, '&:last-child': { pb: 2.5 }, display: 'flex', alignItems: 'center', gap: 2 }}>
                       <Box sx={{
-                        width: 38, height: 38, borderRadius: '50%', bgcolor: '#f5f5f5',
+                        width: 38, height: 38, bgcolor: '#f5f5f5',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                       }}>
                         <VerifiedUserIcon sx={{ color: '#333', fontSize: 20 }} />

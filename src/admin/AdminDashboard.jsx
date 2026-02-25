@@ -25,8 +25,9 @@ import ProjectsEditor from './editors/ProjectsEditor';
 import ResumeEditor from './editors/ResumeEditor';
 import ContactEditor from './editors/ContactEditor';
 import SettingsEditor from './editors/SettingsEditor';
+import QuotesEditor from './editors/QuotesEditor';
 
-const SECTIONS = ['Home', 'About', 'Projects', 'Resume', 'Contact', 'Settings'];
+const SECTIONS = ['Home', 'About', 'Projects', 'Resume', 'Contact', 'Quotes', 'Settings'];
 const DRAWER_WIDTH = 220;
 
 export default function AdminDashboard({ data, setData, isAdmin }) {
@@ -80,6 +81,8 @@ export default function AdminDashboard({ data, setData, isAdmin }) {
         return <ResumeEditor data={localData.resume || {}} onChange={(v) => updateSection('resume', v)} />;
       case 'Contact':
         return <ContactEditor data={localData.contact || {}} onChange={(v) => updateSection('contact', v)} />;
+      case 'Quotes':
+        return <QuotesEditor data={localData.quotes || []} onChange={(v) => updateSection('quotes', v)} />;
       case 'Settings':
         return <SettingsEditor data={localData.settings || {}} onChange={(v) => updateSection('settings', v)} />;
       default:

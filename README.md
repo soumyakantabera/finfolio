@@ -1,6 +1,6 @@
 # FinFolio — Finance Portfolio Template
 
-A deployable portfolio web app template built with **Vite + React + Material UI**, designed for finance students and professionals. Features a clean, minimal black-and-white design and a built-in **Admin Portal** for managing all content without editing code.
+A deployable portfolio web app template built with **Vite + React + Material UI**, designed for finance students and professionals. Features a sharp, editorial black-and-white design and a built-in **Admin Portal** for managing all content without editing code.
 
 ## Features
 
@@ -9,11 +9,27 @@ A deployable portfolio web app template built with **Vite + React + Material UI*
 - **Markdown Authoring** — Write project content in Markdown via the admin portal with live preview
 - **Rich Embed Support** — Embed YouTube, Google Docs/Sheets, PDFs, Microsoft Office, images, and more
 - **Admin Portal (CMS)** — Full CRUD dashboard to manage all content from the browser (hidden from public navigation)
+- **Quotes / Own Words CMS** — Manage personal quotes with CRUD, featured toggle, ordering, and attribution
 - **Modern About Page** — Polished design with timeline, skill progress bars, metrics, achievements, and contact links
-- **Black & White Design** — Professional, minimal Material Design styling
+- **Sharp B&W Design** — Professional, editorial typography with Space Grotesk + Sora fonts, minimal borders, no rounded corners
 - **Responsive** — Desktop, tablet, and mobile layouts
 - **GitHub Pages Ready** — HashRouter for SPA compatibility, GitHub Actions deploy workflow
 - **Custom Pages** — Create and manage additional pages from the admin portal
+
+## Typography & Fonts
+
+The site uses a custom font system loaded via `@fontsource`:
+
+| Usage | Font | Weights |
+|-------|------|---------|
+| **Headings / Display** | Space Grotesk | 400–700 |
+| **Body / UI text** | Sora | 300–700 |
+
+**Type scale**: display, h1–h6, body1, body2, caption, overline — all defined in `src/theme/theme.js`.
+
+**Tabular numerals** are enabled for finance content (tables, metrics, stats) via the `.tabular-nums` CSS class and global CSS rules.
+
+Fallback fonts: Helvetica → Arial → sans-serif.
 
 ## Quick Start
 
@@ -43,12 +59,47 @@ The admin portal is hidden from the public navigation but remains accessible via
 
 | Section      | Fields                                                                 |
 | ------------ | ---------------------------------------------------------------------- |
-| **Home**     | Hero title/subtitle, intro text, CTA buttons, stats, custom sections   |
+| **Home**     | Hero title/subtitle, intro text, snapshot panel (location/role/availability), CTA buttons, stats, custom sections |
 | **About**    | Profile, bio, education, experience, skills, certifications, achievements, metrics, contact links |
 | **Projects** | Title, slug, subtitle, description, category, tags, tech stack, links, markdown content, embeds, hero image, date, status (draft/published), featured toggle |
 | **Resume**   | Summary, downloadable file link, structured sections                   |
 | **Contact**  | Email, phone, address, LinkedIn, GitHub, social links                 |
+| **Quotes**   | Quote text, attribution label, context/tag, featured toggle, order control |
 | **Settings** | Site title, page visibility toggles, custom pages                     |
+
+## Quotes / Own Words
+
+A CMS-managed section for personal quotes that appear on the homepage and optionally other pages.
+
+### Admin Portal (Quotes Manager)
+
+1. Go to **Admin → Quotes**
+2. Add quotes with:
+   - **Quote text** (required) — the quote content
+   - **Attribution** (optional) — e.g., "Me", "Principle", "Note to self"
+   - **Context / Tag** (optional) — e.g., "Work ethic", "Markets", "Learning"
+   - **Featured** toggle — show on homepage
+   - **Order** — use up/down arrows to reorder
+3. Click **Save Changes**
+
+### Public Display
+
+- The homepage displays the first featured quote in an editorial block
+- The `QuoteBlock` component supports `mode="featured"` (single) or `mode="rotating"` (auto-rotate)
+- Quotes use large typography with minimal styling: opening quote mark, bold text, attribution
+
+## Homepage Sections
+
+The redesigned homepage features an editorial layout with these sections:
+
+| Section | Description |
+|---------|-------------|
+| **01 / Hero** | Editorial split layout — headline + subtitle on left, snapshot panel on right (name, role, location, availability, quick links) |
+| **02 / Key Metrics** | Stats row with tabular numerals and vertical separators |
+| **03 / Featured Work** | Project grid with category filter buttons, sharp bordered cards |
+| **04 / Featured Quote** | Quote block pulled from the Quotes CMS |
+| **05 / Custom Sections** | User-defined content sections |
+| **06 / CTA Footer** | "Let's connect" call-to-action with email and contact page links |
 
 ## Creating Project Detail Pages
 
@@ -209,15 +260,17 @@ The included `.github/workflows/deploy.yml` workflow:
 │   │       ├── ProjectsEditor.jsx
 │   │       ├── ResumeEditor.jsx
 │   │       ├── ContactEditor.jsx
+│   │       ├── QuotesEditor.jsx   # Quotes CRUD manager
 │   │       └── SettingsEditor.jsx
 │   ├── components/
 │   │   ├── Navbar.jsx             # Responsive navigation bar
+│   │   ├── QuoteBlock.jsx         # Quote display component (featured / rotating)
 │   │   ├── MarkdownRenderer.jsx   # Markdown rendering with embed shortcodes
 │   │   └── EmbedBlock.jsx         # Rich embed component (YouTube, PDF, etc.)
 │   ├── data/
-│   │   └── portfolioData.js       # Data layer with sample content
+│   │   └── portfolioData.js       # Data layer with sample content + quotes
 │   ├── pages/                     # Public pages
-│   │   ├── Home.jsx
+│   │   ├── Home.jsx               # Redesigned editorial homepage
 │   │   ├── Projects.jsx           # Project gallery with filtering
 │   │   ├── ProjectDetail.jsx      # Dedicated project detail page
 │   │   ├── About.jsx              # Modern redesigned About page
@@ -225,10 +278,10 @@ The included `.github/workflows/deploy.yml` workflow:
 │   │   ├── Contact.jsx
 │   │   └── CustomPage.jsx
 │   ├── theme/
-│   │   └── theme.js               # MUI theme (B&W palette)
+│   │   └── theme.js               # MUI theme (B&W, sharp corners, Space Grotesk + Sora)
 │   ├── App.jsx                    # Root component with routing
-│   ├── main.jsx                   # Entry point
-│   └── index.css                  # Global styles
+│   ├── main.jsx                   # Entry point + font imports
+│   └── index.css                  # Global styles + tabular numerals
 ├── index.html
 ├── vite.config.js
 └── package.json
@@ -238,7 +291,8 @@ The included `.github/workflows/deploy.yml` workflow:
 
 - **Vite** — Build tool
 - **React 19** — UI library
-- **Material UI (MUI) v7** — Component library
+- **Material UI (MUI) v7** — Component library (sharp styling overrides)
+- **Space Grotesk + Sora** — Fonts via @fontsource
 - **React Router v7** — Client-side routing (HashRouter)
 - **react-markdown** — Markdown rendering
 - **remark-gfm** — GitHub Flavored Markdown support
