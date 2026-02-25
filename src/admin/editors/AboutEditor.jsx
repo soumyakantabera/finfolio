@@ -39,6 +39,13 @@ export default function AboutEditor({ data, onChange }) {
     );
   };
 
+  const updateCert = (id, key, value) => {
+    const updates = { [key]: value };
+    if (key === 'title') updates.name = value;
+    if (key === 'date') updates.year = value;
+    update('certifications', (data.certifications || []).map(c => c.id === id ? { ...c, ...updates } : c));
+  };
+
   const removeItem = (field, id) => {
     update(
       field,
@@ -109,13 +116,29 @@ export default function AboutEditor({ data, onChange }) {
       <Divider sx={{ my: 2 }} />
       <Typography variant="subtitle1" fontWeight={600} mb={1}>Certifications</Typography>
       {(data.certifications || []).map((cert) => (
-        <Card key={cert.id} sx={{ p: 2, mb: 1, display: 'flex', gap: 1, alignItems: 'center' }}>
-          <TextField label="Name" size="small" value={cert.name || ''} onChange={(e) => updateItem('certifications', cert.id, 'name', e.target.value)} sx={{ flex: 1 }} />
-          <TextField label="Year" size="small" value={cert.year || ''} onChange={(e) => updateItem('certifications', cert.id, 'year', e.target.value)} sx={{ width: 100 }} />
-          <IconButton color="error" onClick={() => setDeleteTarget({ field: 'certifications', id: cert.id })}><Delete /></IconButton>
+        <Card key={cert.id} sx={{ p: 2, mb: 1 }}>
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
+            <TextField label="Title" size="small" value={cert.title || cert.name || ''} onChange={(e) => updateCert(cert.id, 'title', e.target.value)} sx={{ flex: 1, minWidth: 150 }} />
+            <TextField label="Issuer" size="small" value={cert.issuer || ''} onChange={(e) => updateCert(cert.id, 'issuer', e.target.value)} sx={{ flex: 1, minWidth: 150 }} />
+            <TextField label="Date" size="small" value={cert.date || cert.year || ''} onChange={(e) => updateCert(cert.id, 'date', e.target.value)} sx={{ width: 120 }} />
+            <IconButton color="error" onClick={() => setDeleteTarget({ field: 'certifications', id: cert.id })}><Delete /></IconButton>
+          </Box>
+          <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mt: 1 }}>
+            <TextField label="Credential ID" size="small" value={cert.credentialId || ''} onChange={(e) => updateCert(cert.id, 'credentialId', e.target.value)} sx={{ flex: 1, minWidth: 150 }} />
+            <TextField label="Link" size="small" value={cert.link || ''} onChange={(e) => updateCert(cert.id, 'link', e.target.value)} sx={{ flex: 1, minWidth: 150 }} />
+          </Box>
+          <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mt: 1 }}>
+            <Select size="small" value={cert.mediaType || ''} onChange={(e) => updateCert(cert.id, 'mediaType', e.target.value)} displayEmpty sx={{ minWidth: 120 }}>
+              <MenuItem value="">No Media</MenuItem>
+              <MenuItem value="pdf">PDF</MenuItem>
+              <MenuItem value="image">Image</MenuItem>
+            </Select>
+            <TextField label="Media URL" size="small" value={cert.mediaUrl || ''} onChange={(e) => updateCert(cert.id, 'mediaUrl', e.target.value)} sx={{ flex: 1, minWidth: 150 }} />
+            <TextField label="Thumbnail URL" size="small" value={cert.thumbnail || ''} onChange={(e) => updateCert(cert.id, 'thumbnail', e.target.value)} sx={{ flex: 1, minWidth: 150 }} />
+          </Box>
         </Card>
       ))}
-      <Button startIcon={<Add />} onClick={() => addItem('certifications', { name: '', year: '' })} sx={{ mb: 3 }}>Add Certification</Button>
+      <Button startIcon={<Add />} onClick={() => addItem('certifications', { title: '', name: '', issuer: '', date: '', year: '', credentialId: '', link: '', mediaType: '', mediaUrl: '', thumbnail: '' })} sx={{ mb: 3 }}>Add Certification</Button>
 
       {/* Achievements */}
       <Divider sx={{ my: 2 }} />
