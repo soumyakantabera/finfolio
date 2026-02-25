@@ -61,6 +61,17 @@ const emptyProject = () => ({
   embeds: [],
   blocks: [],
   relatedProjects: [],
+  publication: '',
+  authors: '',
+  year: '',
+  doiLink: '',
+  pdfLink: '',
+  citationText: '',
+  bibtex: '',
+  abstract: '',
+  keyFindings: [],
+  methodology: '',
+  dataSources: [],
 });
 
 const newBlock = (type) => {
@@ -404,6 +415,54 @@ export default function ProjectsEditor({ data, onChange, config, onConfigChange 
                 <Typography variant="body2">Featured</Typography>
                 <Switch checked={!!project.featured} onChange={(e) => updateProject(index, 'featured', e.target.checked)} />
               </Box>
+
+              {/* Research Paper Fields */}
+              {project.category === 'Research Papers' && (
+                <Box sx={{ border: '1px solid', borderColor: 'divider', p: 2, mb: 1 }}>
+                  <Typography variant="body2" fontWeight={600} mb={1}>Research Paper Fields</Typography>
+                  <TextField label="Publication / Journal" fullWidth size="small" value={project.publication || ''} onChange={(e) => updateProject(index, 'publication', e.target.value)} sx={{ mb: 1 }} />
+                  <TextField label="Authors" fullWidth size="small" value={project.authors || ''} onChange={(e) => updateProject(index, 'authors', e.target.value)} sx={{ mb: 1 }} />
+                  <TextField label="Year" fullWidth size="small" value={project.year || ''} onChange={(e) => updateProject(index, 'year', e.target.value)} sx={{ mb: 1 }} />
+                  <TextField label="DOI Link (optional)" fullWidth size="small" value={project.doiLink || ''} onChange={(e) => updateProject(index, 'doiLink', e.target.value)} sx={{ mb: 1 }} />
+                  <TextField label="PDF Link (required for papers)" fullWidth size="small" value={project.pdfLink || ''} onChange={(e) => updateProject(index, 'pdfLink', e.target.value)} sx={{ mb: 1 }} />
+                  <TextField label="Abstract" fullWidth size="small" multiline rows={3} value={project.abstract || ''} onChange={(e) => updateProject(index, 'abstract', e.target.value)} sx={{ mb: 1 }} />
+                  <TextField label="Citation Text (optional)" fullWidth size="small" multiline rows={2} value={project.citationText || ''} onChange={(e) => updateProject(index, 'citationText', e.target.value)} sx={{ mb: 1 }} />
+                  <TextField label="BibTeX (optional)" fullWidth size="small" multiline rows={3} value={project.bibtex || ''} onChange={(e) => updateProject(index, 'bibtex', e.target.value)} sx={{ mb: 1 }} />
+                  <TextField label="Methodology" fullWidth size="small" multiline rows={3} value={project.methodology || ''} onChange={(e) => updateProject(index, 'methodology', e.target.value)} sx={{ mb: 1 }} />
+                  <TextField
+                    label="Key Findings (one per line)"
+                    fullWidth
+                    size="small"
+                    multiline
+                    rows={4}
+                    value={(project.keyFindings || []).join('\n')}
+                    onChange={(e) => updateProject(index, 'keyFindings', e.target.value.split('\n').filter(Boolean))}
+                    sx={{ mb: 1 }}
+                  />
+                  <Divider sx={{ my: 1 }} />
+                  <Typography variant="body2" fontWeight={600} mb={1}>Data Sources</Typography>
+                  {(project.dataSources || []).map((ds, dsIdx) => (
+                    <Box key={dsIdx} sx={{ display: 'flex', gap: 1, mb: 1, alignItems: 'center' }}>
+                      <TextField label="Label" size="small" value={ds.label || ''} onChange={(e) => {
+                        const updated = [...(project.dataSources || [])];
+                        updated[dsIdx] = { ...updated[dsIdx], label: e.target.value };
+                        updateProject(index, 'dataSources', updated);
+                      }} sx={{ flex: 1 }} />
+                      <TextField label="URL" size="small" value={ds.url || ''} onChange={(e) => {
+                        const updated = [...(project.dataSources || [])];
+                        updated[dsIdx] = { ...updated[dsIdx], url: e.target.value };
+                        updateProject(index, 'dataSources', updated);
+                      }} sx={{ flex: 1 }} />
+                      <IconButton size="small" color="error" onClick={() => {
+                        updateProject(index, 'dataSources', (project.dataSources || []).filter((_, i) => i !== dsIdx));
+                      }}><Delete fontSize="small" /></IconButton>
+                    </Box>
+                  ))}
+                  <Button size="small" startIcon={<Add />} onClick={() => {
+                    updateProject(index, 'dataSources', [...(project.dataSources || []), { label: '', url: '' }]);
+                  }}>Add Data Source</Button>
+                </Box>
+              )}
 
               <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
                 <Select size="small" value={project.embedType || 'none'} onChange={(e) => updateProject(index, 'embedType', e.target.value === 'none' ? '' : e.target.value)} sx={{ minWidth: 140 }}>

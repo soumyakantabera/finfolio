@@ -21,6 +21,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import FormatListBulleted from '@mui/icons-material/FormatListBulleted';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import BlockRenderer from '../components/BlockRenderer';
 
 function slugify(text) {
@@ -182,6 +184,145 @@ export default function ProjectDetail({ data }) {
             </Box>
           )}
         </Box>
+
+        {/* Research Paper metadata */}
+        {project.category === 'Research Papers' && (
+          <Box sx={{ mb: 4 }}>
+            {project.abstract && (
+              <Box sx={{ mb: 3 }}>
+                <Typography variant="overline" sx={{ color: '#999', letterSpacing: '0.1em' }}>Abstract</Typography>
+                <Typography variant="body1" sx={{ mt: 0.5, lineHeight: 1.8, color: '#333' }}>
+                  {project.abstract}
+                </Typography>
+              </Box>
+            )}
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mb: 3 }}>
+              {project.publication && (
+                <Box>
+                  <Typography variant="caption" color="text.secondary">Publication</Typography>
+                  <Typography variant="body2" fontWeight={600}>{project.publication}</Typography>
+                </Box>
+              )}
+              {project.authors && (
+                <Box>
+                  <Typography variant="caption" color="text.secondary">Authors</Typography>
+                  <Typography variant="body2">{project.authors}</Typography>
+                </Box>
+              )}
+              {project.year && (
+                <Box>
+                  <Typography variant="caption" color="text.secondary">Year</Typography>
+                  <Typography variant="body2">{project.year}</Typography>
+                </Box>
+              )}
+            </Box>
+            {project.keyFindings?.length > 0 && (
+              <Box sx={{ mb: 3, p: 2, border: '1px solid #e0e0e0' }}>
+                <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1 }}>Key Findings</Typography>
+                <Box component="ul" sx={{ m: 0, pl: 2.5 }}>
+                  {project.keyFindings.map((finding, i) => (
+                    <Box component="li" key={i} sx={{ mb: 0.5 }}>
+                      <Typography variant="body2" color="text.secondary">{finding}</Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            )}
+            {project.methodology && (
+              <Box sx={{ mb: 3 }}>
+                <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1 }}>Methodology</Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                  {project.methodology}
+                </Typography>
+              </Box>
+            )}
+            {project.dataSources?.length > 0 && (
+              <Box sx={{ mb: 3 }}>
+                <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1 }}>Data Sources</Typography>
+                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                  {project.dataSources.map((ds, i) => (
+                    <Button
+                      key={i}
+                      href={ds.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      size="small"
+                      variant="outlined"
+                      sx={{ color: '#000', borderColor: '#ccc', textTransform: 'none', minHeight: 36 }}
+                    >
+                      {ds.label}
+                    </Button>
+                  ))}
+                </Box>
+              </Box>
+            )}
+            {/* PDF viewer or fallback */}
+            {project.pdfLink && (
+              <Box sx={{ mb: 3 }}>
+                <Button
+                  href={project.pdfLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="contained"
+                  startIcon={<PictureAsPdfIcon />}
+                  sx={{ bgcolor: '#000', color: '#fff', '&:hover': { bgcolor: '#333' }, minHeight: 48, textTransform: 'none', fontWeight: 600 }}
+                >
+                  Open PDF
+                </Button>
+                {project.doiLink && (
+                  <Button
+                    href={project.doiLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="outlined"
+                    size="small"
+                    sx={{ ml: 1, color: '#000', borderColor: '#000', minHeight: 48, textTransform: 'none' }}
+                  >
+                    View DOI
+                  </Button>
+                )}
+              </Box>
+            )}
+            {/* Citation block */}
+            {project.citationText && (
+              <Box sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                  <Typography variant="subtitle2" fontWeight={700}>Citation</Typography>
+                  <Button
+                    size="small"
+                    startIcon={<ContentCopyIcon />}
+                    onClick={() => navigator.clipboard.writeText(project.citationText)}
+                    sx={{ color: '#000', textTransform: 'none', fontSize: '0.75rem' }}
+                  >
+                    Copy
+                  </Button>
+                </Box>
+                <Typography variant="body2" sx={{ fontFamily: 'monospace', fontSize: '0.8rem', color: '#555', lineHeight: 1.6 }}>
+                  {project.citationText}
+                </Typography>
+                {project.bibtex && (
+                  <Box sx={{ mt: 2 }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
+                      <Typography variant="caption" fontWeight={600}>BibTeX</Typography>
+                      <Button
+                        size="small"
+                        startIcon={<ContentCopyIcon />}
+                        onClick={() => navigator.clipboard.writeText(project.bibtex)}
+                        sx={{ color: '#000', textTransform: 'none', fontSize: '0.7rem' }}
+                      >
+                        Copy
+                      </Button>
+                    </Box>
+                    <Box sx={{ p: 1.5, bgcolor: '#f5f5f5', fontFamily: 'monospace', fontSize: '0.75rem', whiteSpace: 'pre-wrap', color: '#333' }}>
+                      {project.bibtex}
+                    </Box>
+                  </Box>
+                )}
+              </Box>
+            )}
+            <Divider sx={{ mb: 0 }} />
+          </Box>
+        )}
 
         {/* Meta info row */}
         {(project.techStack?.length > 0 || project.links?.length > 0) && (
