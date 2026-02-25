@@ -36,7 +36,7 @@ export default function MobileContact({ data }) {
   };
 
   return (
-    <Box sx={{ px: '14px', py: '20px' }}>
+    <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
       <Typography
         variant="overline"
         sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}

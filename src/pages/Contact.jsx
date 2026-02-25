@@ -51,7 +51,7 @@ export default function ContactPage({ data }) {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2.5, sm: 3 } }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 } }}>
       <Typography
         variant="overline"
         sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700 }}
@@ -66,7 +66,7 @@ export default function ContactPage({ data }) {
         {/* Contact Info */}
         <Grid size={{ xs: 12, md: 5 }}>
           <Card variant="outlined" sx={{ mb: 3, border: '1px solid #000' }}>
-            <CardContent sx={{ p: { xs: 2, md: 2 } }}>
+            <CardContent sx={{ p: 2 }}>
               {contact.email && (
                 <Box
                   component="a"

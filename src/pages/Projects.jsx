@@ -28,7 +28,7 @@ export default function ProjectsPage({ data }) {
   const filtered = filter === 'All' ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2.5, sm: 3 } }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 } }}>
       <Typography
         variant="overline"
         sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700 }}
@@ -87,7 +87,7 @@ export default function ProjectsPage({ data }) {
       )}
 
       {/* Project Grid */}
-      <Grid container spacing={{ xs: 2, sm: 3 }}>
+      <Grid container spacing={{ xs: 2, md: 3 }}>
         {filtered.map((project) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
             <Card
@@ -136,7 +136,7 @@ export default function ProjectsPage({ data }) {
                 </Box>
               )}
 
-              <CardContent sx={{ flexGrow: 1, p: { xs: 2, sm: 2 } }}>
+              <CardContent sx={{ flexGrow: 1, p: 2 }}>
                 <Typography variant="overline" sx={{ color: '#000', fontWeight: 700 }}>
                   {project.category}
                 </Typography>

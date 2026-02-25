@@ -42,7 +42,7 @@ const platformIcon = (platform) => {
 const SectionHeader = ({ icon, children, collapsible, expanded, onToggle }) => (
   <Box
     sx={{
-      display: 'flex', alignItems: 'center', gap: 1.5, mb: 4, mt: { xs: 6, md: 10 },
+      display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, mt: { xs: 6, md: 8 },
       cursor: collapsible ? 'pointer' : 'default',
       minHeight: 44,
     }}
@@ -96,7 +96,7 @@ export default function AboutPage({ data }) {
       {/* Hero Section */}
       <Box sx={{
         bgcolor: '#fff', borderBottom: '1px solid #000',
-        py: { xs: 5, md: 10 }, px: { xs: 2.5, sm: 2 },
+        py: { xs: 4, md: 8 }, px: { xs: 2, md: 5 },
       }}>
         <Container maxWidth="md">
           <Box sx={{
@@ -183,7 +183,7 @@ export default function AboutPage({ data }) {
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ py: { xs: 3, md: 6 }, px: { xs: 2.5, sm: 3 } }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 } }}>
         {/* Bio */}
         {about.bio && (
           <Box sx={{ maxWidth: 800, mx: 'auto', mt: { xs: 2, md: 4 }, mb: 2 }}>
@@ -372,7 +372,7 @@ export default function AboutPage({ data }) {
                         tabIndex={hasMedia ? 0 : undefined}
                         onKeyDown={hasMedia ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedCert(cert); } } : undefined}
                       >
-                        <CardContent sx={{ p: { xs: 2, md: 2.5 }, '&:last-child': { pb: { xs: 2, md: 2.5 } }, display: 'flex', alignItems: 'center', gap: 2, minHeight: 56 }}>
+                        <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } }, display: 'flex', alignItems: 'center', gap: 2, minHeight: 56 }}>
                           <Box sx={{
                             width: 38, height: 38, bgcolor: '#000', color: '#fff',
                             display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,

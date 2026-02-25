@@ -6,14 +6,35 @@
   --border: 1px solid #000;
   --border-dashed: 1px dashed #000;
 
+  /* ── Spacing Scale ── */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 40px;
+  --s8: 48px;
+  --s9: 64px;
+
+  /* ── Layout Tokens (Desktop) ── */
+  --page-pad-x: 40px;
+  --page-pad-y: 64px;
+  --section-gap: 48px;
+
+  /* ── Layout Tokens (Shared) ── */
+  --block-gap: 16px;
+  --row-gap: 12px;
+
+  /* Legacy aliases (mapped to new scale) */
   --space-unit: 8px;
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-2xl: 48px;
-  --space-3xl: 64px;
+  --space-xs: var(--s1);
+  --space-sm: var(--s2);
+  --space-md: var(--s4);
+  --space-lg: var(--s5);
+  --space-xl: var(--s6);
+  --space-2xl: var(--s8);
+  --space-3xl: var(--s9);
 
   --radius: 0px;
 
@@ -23,6 +44,15 @@
   --transition-fast: 0.15s ease;
   --transition-base: 0.2s ease;
   --transition-slow: 0.3s ease;
+}
+
+/* ── Mobile Layout Tokens ── */
+@media (max-width: 768px) {
+  :root {
+    --page-pad-x: 16px;
+    --page-pad-y: 32px;
+    --section-gap: 32px;
+  }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

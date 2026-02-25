@@ -15,7 +15,7 @@ export default function MobileProjects({ data }) {
   const filtered = filter === 'All' ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <Box sx={{ px: '14px', py: '20px' }}>
+    <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
       <Typography
         variant="overline"
         sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
@@ -38,8 +38,8 @@ export default function MobileProjects({ data }) {
             mb: 2,
             overflowX: 'auto',
             WebkitOverflowScrolling: 'touch',
-            mx: '-14px',
-            px: '14px',
+            mx: 'calc(-1 * var(--page-pad-x))',
+            px: 'var(--page-pad-x)',
             borderBottom: '1px solid #000',
             '&::-webkit-scrollbar': { display: 'none' },
             scrollbarWidth: 'none',

@@ -53,7 +53,7 @@ src/mobile/
 ### Design Principles
 
 - **Strict B&W**: Only `#000` and `#fff` — no gray, no shadows, no opacity overlays.
-- **Compact rhythm**: 12–16px page padding, 20–28px section spacing, tight typography.
+- **Consistent spacing**: Uses the spacing token system (see below) via CSS variables.
 - **List-first layout**: Projects use list rows instead of large cards.
 - **Editorial navigation**: Fullscreen white menu with numbered links and "Close" text button.
 - **Shared data layer**: Mobile components receive the same `data` prop and reuse `portfolioData.js`.
@@ -64,6 +64,43 @@ To update mobile UI without affecting desktop:
 - Edit files in `src/mobile/` only.
 - Desktop components in `src/pages/` and `src/components/` remain untouched.
 - Mobile-specific CSS classes (`mobile-ink-link`, `mobile-btn-press`) are in `src/index.css`.
+
+## Spacing System
+
+All spacing uses a consistent token system defined as CSS custom properties in `src/index.css`. Use tokens only — no ad-hoc margin or padding values.
+
+### Spacing Scale
+
+| Token | Value | MUI Units | Usage |
+|-------|-------|-----------|-------|
+| `--s1` | 4px | 0.5 | Tight inline gaps |
+| `--s2` | 8px | 1 | Small gaps, icon spacing |
+| `--s3` | 12px | 1.5 | Row gaps (`--row-gap`) |
+| `--s4` | 16px | 2 | Block gap (`--block-gap`), paragraph spacing |
+| `--s5` | 24px | 3 | Section header margins |
+| `--s6` | 32px | 4 | Mobile section spacing |
+| `--s7` | 40px | 5 | Desktop horizontal page padding |
+| `--s8` | 48px | 6 | Desktop section gaps |
+| `--s9` | 64px | 8 | Desktop page vertical padding |
+
+### Layout Tokens
+
+| Token | Desktop | Mobile | Usage |
+|-------|---------|--------|-------|
+| `--page-pad-x` | 40px | 16px | Page horizontal padding |
+| `--page-pad-y` | 64px | 32px | Page vertical padding |
+| `--section-gap` | 48px | 32px | Gap between major sections |
+| `--block-gap` | 16px | 16px | Gap between blocks within a section |
+| `--row-gap` | 12px | 12px | Gap between list/row items |
+
+### Usage Rules
+
+1. **Desktop pages** (in `src/pages/`): Use MUI spacing units that map to the scale (e.g., `py: { xs: 4, md: 8 }` for 32px/64px).
+2. **Mobile components** (in `src/mobile/`): Use CSS variables directly (e.g., `px: 'var(--page-pad-x)'`).
+3. **Section padding**: Hero/CTA sections use `py: { xs: 4, md: 8 }`. Content sections use `py: { xs: 4, md: 6 }`.
+4. **Container horizontal padding**: `px: { xs: 2, md: 5 }` (16px/40px).
+5. **Grid spacing**: `spacing: { xs: 2, md: 3 }` (16px/24px).
+6. **Markdown vertical rhythm**: Headings get `mt: 3–4`, paragraphs get `mb: 2`, code/tables/quotes get `my: 3`.
 
 ## Typography & Fonts
 
