@@ -16,7 +16,7 @@ import {
 import { Add, Delete } from '@mui/icons-material';
 import { v4 as uuidv4 } from 'uuid';
 
-const PAGE_KEYS = ['home', 'projects', 'about', 'resume', 'contact'];
+const PAGE_KEYS = ['home', 'projects', 'about', 'contact'];
 
 function toSlug(title) {
   return title

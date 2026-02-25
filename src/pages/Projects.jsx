@@ -66,8 +66,37 @@ export default function ProjectsPage({ data }) {
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
             <Card
               variant="outlined"
-              sx={{ height: '100%', display: 'flex', flexDirection: 'column', position: 'relative', '&:hover': { borderColor: '#000' }, transition: 'border-color 0.2s' }}
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'border-color 0.2s ease',
+                '&:hover': {
+                  borderColor: '#000',
+                  '& .project-card-accent': { transform: 'scaleX(1)' },
+                  '& .project-card-reveal': { opacity: 1, transform: 'translateY(0)' },
+                },
+                '&:focus-within': { borderColor: '#000' },
+              }}
             >
+              {/* Animated top border accent */}
+              <Box
+                className="project-card-accent"
+                sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  bgcolor: '#000',
+                  transform: 'scaleX(0)',
+                  transformOrigin: 'left',
+                  transition: 'transform 0.3s ease',
+                  zIndex: 1,
+                }}
+              />
               {/* Thumbnail */}
               {project.thumbnail && (
                 <Box
@@ -135,6 +164,33 @@ export default function ProjectsPage({ data }) {
                   </Box>
                 )}
               </CardContent>
+
+              {/* Hover-revealed metadata strip */}
+              <Box
+                className="project-card-reveal"
+                sx={{
+                  px: 2,
+                  py: 1,
+                  borderTop: '1px solid #f0f0f0',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  opacity: 0,
+                  transform: 'translateY(4px)',
+                  transition: 'opacity 0.25s ease, transform 0.25s ease',
+                }}
+              >
+                {project.date && (
+                  <Typography variant="caption" sx={{ color: '#999' }}>
+                    {project.date}
+                  </Typography>
+                )}
+                {project.category && (
+                  <Typography variant="caption" sx={{ color: '#999', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
+                    {project.category}
+                  </Typography>
+                )}
+              </Box>
 
               {/* Links */}
               <CardActions sx={{ px: 2, pb: 2, justifyContent: 'space-between' }}>

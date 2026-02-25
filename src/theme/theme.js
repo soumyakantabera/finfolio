@@ -31,13 +31,32 @@ const theme = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
-        root: { borderRadius: 0, padding: '8px 20px' },
-        contained: { boxShadow: 'none', '&:hover': { boxShadow: 'none' } },
+        root: {
+          borderRadius: 0,
+          padding: '8px 20px',
+          transition: 'all 0.2s ease',
+          '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+        },
+        contained: {
+          boxShadow: 'none',
+          '&:hover': { boxShadow: 'none', transform: 'translateY(-1px)' },
+          '&:active': { transform: 'translateY(0)' },
+        },
+        outlined: {
+          '&:hover': { backgroundColor: '#000', color: '#fff', borderColor: '#000' },
+          '&:active': { transform: 'translateY(0)' },
+        },
       },
     },
     MuiCard: {
       styleOverrides: {
-        root: { borderRadius: 0, boxShadow: 'none', border: '1px solid #e0e0e0' },
+        root: {
+          borderRadius: 0,
+          boxShadow: 'none',
+          border: '1px solid #e0e0e0',
+          transition: 'border-color 0.2s ease',
+          '&:hover': { borderColor: '#000' },
+        },
       },
     },
     MuiChip: {
