@@ -69,13 +69,6 @@ export default function Navbar({ data }) {
         ))}
       </List>
       <Divider />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton component={Link} to="/admin">
-            <ListItemText primary="Admin" primaryTypographyProps={{ variant: 'body2', color: 'text.secondary' }} />
-          </ListItemButton>
-        </ListItem>
-      </List>
     </Box>
   );
 
@@ -113,13 +106,6 @@ export default function Navbar({ data }) {
               {item.label}
             </Button>
           ))}
-          <Button
-            component={Link}
-            to="/admin"
-            sx={{ ml: 1, color: '#aaa', fontSize: '0.75rem', minWidth: 'auto', '&:hover': { color: '#555' } }}
-          >
-            Admin
-          </Button>
         </Box>
 
         {/* Mobile drawer */}

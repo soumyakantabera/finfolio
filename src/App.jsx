@@ -13,6 +13,7 @@ const Projects = React.lazy(() => import('./pages/Projects'));
 const About = React.lazy(() => import('./pages/About'));
 const Resume = React.lazy(() => import('./pages/Resume'));
 const Contact = React.lazy(() => import('./pages/Contact'));
+const ProjectDetail = React.lazy(() => import('./pages/ProjectDetail'));
 const CustomPage = React.lazy(() => import('./pages/CustomPage'));
 const AdminLogin = React.lazy(() => import('./admin/AdminLogin'));
 const AdminDashboard = React.lazy(() => import('./admin/AdminDashboard'));
@@ -41,6 +42,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home data={data} />} />
             <Route path="/projects" element={<Projects data={data} />} />
+            <Route path="/projects/:slug" element={<ProjectDetail data={data} />} />
             <Route path="/about" element={<About data={data} />} />
             <Route path="/resume" element={<Resume data={data} />} />
             <Route path="/contact" element={<Contact data={data} />} />
