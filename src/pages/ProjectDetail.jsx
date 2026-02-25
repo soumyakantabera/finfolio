@@ -80,7 +80,7 @@ export default function ProjectDetail({ data }) {
 
   if (!project) {
     return (
-      <Container maxWidth="md" sx={{ py: 8, textAlign: 'center', px: { xs: 2.5, sm: 3 } }}>
+      <Container maxWidth="md" sx={{ py: 8, textAlign: 'center', px: { xs: 2, md: 5 } }}>
         <Typography variant="h4" fontWeight={700} gutterBottom>
           Project not found
         </Typography>
@@ -128,7 +128,7 @@ export default function ProjectDetail({ data }) {
         }}
       />
 
-      <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2.5, sm: 3 }, pb: { xs: 10, sm: 6 } }}>
+      <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 }, pb: { xs: 10, sm: 6 } }}>
         {/* Back navigation */}
         <Button
           component={Link}
@@ -464,7 +464,7 @@ export default function ProjectDetail({ data }) {
             <Typography variant="h5" fontWeight={700} sx={{ mb: 3, fontSize: { xs: '1.15rem', md: '1.5rem' } }}>
               Related Projects
             </Typography>
-            <Grid container spacing={{ xs: 2, sm: 3 }}>
+            <Grid container spacing={{ xs: 2, md: 3 }}>
               {relatedProjects.map((rp) => (
                 <Grid size={{ xs: 12, sm: 6 }} key={rp.id}>
                   <Card
@@ -479,7 +479,7 @@ export default function ProjectDetail({ data }) {
                       '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
                   >
-                    <CardContent sx={{ p: { xs: 2, sm: 2 } }}>
+                    <CardContent sx={{ p: 2 }}>
                       {rp.category && (
                         <Typography variant="overline" sx={{ fontWeight: 700 }}>
                           {rp.category}
