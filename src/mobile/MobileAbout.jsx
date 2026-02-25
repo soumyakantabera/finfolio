@@ -236,7 +236,6 @@ export default function MobileAbout({ data }) {
                       alignItems: 'center',
                       gap: 1.5,
                       py: 1,
-                      borderBottom: idx < about.certifications.length - 1 ? '1px dashed #000' : 'none',
                       minHeight: 40,
                       width: '100%',
                       textAlign: 'left',
