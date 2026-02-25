@@ -18,7 +18,6 @@ const corePages = [
   { key: 'home', label: 'Home', path: '/' },
   { key: 'projects', label: 'Projects', path: '/projects' },
   { key: 'about', label: 'About', path: '/about' },
-  { key: 'resume', label: 'Resume', path: '/resume' },
   { key: 'contact', label: 'Contact', path: '/contact' },
 ];
 
@@ -43,7 +42,17 @@ export default function Navbar({ data }) {
     borderBottom: isActive(path) ? '2px solid #000' : '2px solid transparent',
     borderRadius: 0,
     mx: 0.5,
-    '&:hover': { backgroundColor: 'transparent', color: '#000' },
+    position: 'relative',
+    transition: 'color 0.2s ease',
+    '&:hover': {
+      backgroundColor: 'transparent',
+      color: '#000',
+      borderBottom: '2px solid #000',
+    },
+    '&:focus-visible': {
+      outline: '2px solid #000',
+      outlineOffset: '2px',
+    },
   });
 
   const drawerContent = (

@@ -142,11 +142,6 @@ const defaultData = {
       { id: '1', platform: 'Twitter', url: 'https://twitter.com/janesmith' }
     ]
   },
-  resume: {
-    summary: 'Finance professional with expertise in financial modeling, quantitative analysis, and portfolio management. Seeking full-time opportunities in investment banking, asset management, or fintech.',
-    fileUrl: '',
-    sections: []
-  },
   home: {
     heroTitle: 'Finance meets code.\nI build both.',
     heroSubtitle: 'Analyst. Builder. Model obsessive.',
@@ -172,7 +167,6 @@ const defaultData = {
       home: true,
       projects: true,
       about: true,
-      resume: true,
       contact: true
     },
     customPages: []

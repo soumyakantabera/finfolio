@@ -22,12 +22,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HomeEditor from './editors/HomeEditor';
 import AboutEditor from './editors/AboutEditor';
 import ProjectsEditor from './editors/ProjectsEditor';
-import ResumeEditor from './editors/ResumeEditor';
 import ContactEditor from './editors/ContactEditor';
 import SettingsEditor from './editors/SettingsEditor';
 import QuotesEditor from './editors/QuotesEditor';
 
-const SECTIONS = ['Home', 'About', 'Projects', 'Resume', 'Contact', 'Quotes', 'Settings'];
+const SECTIONS = ['Home', 'About', 'Projects', 'Contact', 'Quotes', 'Settings'];
 const DRAWER_WIDTH = 220;
 
 export default function AdminDashboard({ data, setData, isAdmin }) {
@@ -77,8 +76,6 @@ export default function AdminDashboard({ data, setData, isAdmin }) {
         return <AboutEditor data={localData.about || {}} onChange={(v) => updateSection('about', v)} />;
       case 'Projects':
         return <ProjectsEditor data={localData.projects || []} onChange={(v) => updateSection('projects', v)} />;
-      case 'Resume':
-        return <ResumeEditor data={localData.resume || {}} onChange={(v) => updateSection('resume', v)} />;
       case 'Contact':
         return <ContactEditor data={localData.contact || {}} onChange={(v) => updateSection('contact', v)} />;
       case 'Quotes':

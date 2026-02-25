@@ -11,7 +11,6 @@ import './index.css';
 const Home = React.lazy(() => import('./pages/Home'));
 const Projects = React.lazy(() => import('./pages/Projects'));
 const About = React.lazy(() => import('./pages/About'));
-const Resume = React.lazy(() => import('./pages/Resume'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const ProjectDetail = React.lazy(() => import('./pages/ProjectDetail'));
 const CustomPage = React.lazy(() => import('./pages/CustomPage'));
@@ -44,7 +43,6 @@ export default function App() {
             <Route path="/projects" element={<Projects data={data} />} />
             <Route path="/projects/:slug" element={<ProjectDetail data={data} />} />
             <Route path="/about" element={<About data={data} />} />
-            <Route path="/resume" element={<Resume data={data} />} />
             <Route path="/contact" element={<Contact data={data} />} />
             <Route path="/admin" element={<AdminLogin setIsAdmin={setIsAdmin} />} />
             <Route

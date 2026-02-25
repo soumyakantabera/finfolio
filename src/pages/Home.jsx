@@ -77,10 +77,14 @@ export default function HomePage({ data }) {
                         bgcolor: i === 0 ? '#000' : 'transparent',
                         color: i === 0 ? '#fff' : '#000',
                         borderColor: '#000',
+                        transition: 'all 0.2s ease',
                         '&:hover': {
-                          bgcolor: i === 0 ? '#222' : 'rgba(0,0,0,0.04)',
+                          bgcolor: i === 0 ? '#222' : '#000',
+                          color: '#fff',
                           borderColor: '#000',
+                          transform: 'translateY(-1px)',
                         },
+                        '&:active': { transform: 'translateY(0)' },
                       }}
                     >
                       {btn.label}
@@ -135,7 +139,7 @@ export default function HomePage({ data }) {
                         component="a"
                         href={`mailto:${contact.email}`}
                         variant="caption"
-                        sx={{ color: '#555', textDecoration: 'underline', '&:hover': { color: '#000' } }}
+                        sx={{ color: '#555', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s ease', borderBottom: '1px solid transparent', '&:hover': { color: '#000', borderBottom: '1px solid #000' } }}
                       >
                         Email
                       </Typography>
@@ -147,7 +151,7 @@ export default function HomePage({ data }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         variant="caption"
-                        sx={{ color: '#555', textDecoration: 'underline', '&:hover': { color: '#000' } }}
+                        sx={{ color: '#555', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s ease', borderBottom: '1px solid transparent', '&:hover': { color: '#000', borderBottom: '1px solid #000' } }}
                       >
                         LinkedIn
                       </Typography>
@@ -159,7 +163,7 @@ export default function HomePage({ data }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         variant="caption"
-                        sx={{ color: '#555', textDecoration: 'underline', '&:hover': { color: '#000' } }}
+                        sx={{ color: '#555', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s ease', borderBottom: '1px solid transparent', '&:hover': { color: '#000', borderBottom: '1px solid #000' } }}
                       >
                         GitHub
                       </Typography>
@@ -246,8 +250,8 @@ export default function HomePage({ data }) {
                         fontWeight: 600,
                         textTransform: 'uppercase',
                         letterSpacing: '0.08em',
-                        transition: 'all 0.2s',
-                        '&:hover': { borderColor: '#000' },
+                        transition: 'all 0.2s ease',
+                        '&:hover': { borderColor: '#000', bgcolor: filter === cat ? '#000' : '#f5f5f5' },
                       }}
                     >
                       {cat}
@@ -269,10 +273,32 @@ export default function HomePage({ data }) {
                       border: '1px solid #e0e0e0',
                       p: 3,
                       height: '100%',
-                      transition: 'border-color 0.2s',
-                      '&:hover': { borderColor: '#000' },
+                      position: 'relative',
+                      overflow: 'hidden',
+                      transition: 'border-color 0.2s ease',
+                      '&:hover': {
+                        borderColor: '#000',
+                        '& .card-meta': { opacity: 1, transform: 'translateY(0)' },
+                        '& .card-border-accent': { transform: 'scaleX(1)' },
+                      },
+                      '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
                   >
+                    {/* Animated top border accent */}
+                    <Box
+                      className="card-border-accent"
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '2px',
+                        bgcolor: '#000',
+                        transform: 'scaleX(0)',
+                        transformOrigin: 'left',
+                        transition: 'transform 0.3s ease',
+                      }}
+                    />
                     <Typography
                       variant="overline"
                       sx={{ color: '#999', display: 'block', mb: 1 }}
@@ -286,12 +312,35 @@ export default function HomePage({ data }) {
                       {project.description}
                     </Typography>
                     {project.tags?.length > 0 && (
-                      <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                      <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
                         {project.tags.map((tag) => (
                           <Chip key={tag} label={tag} size="small" variant="outlined" />
                         ))}
                       </Box>
                     )}
+                    {/* Hover-revealed metadata strip */}
+                    <Box
+                      className="card-meta"
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        pt: 2,
+                        borderTop: '1px solid #f0f0f0',
+                        opacity: 0,
+                        transform: 'translateY(4px)',
+                        transition: 'opacity 0.25s ease, transform 0.25s ease',
+                      }}
+                    >
+                      {project.date && (
+                        <Typography variant="caption" sx={{ color: '#999' }}>
+                          {project.date}
+                        </Typography>
+                      )}
+                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 600 }}>
+                        View →
+                      </Typography>
+                    </Box>
                   </Box>
                 </Grid>
               ))}
@@ -317,7 +366,58 @@ export default function HomePage({ data }) {
         </Container>
       )}
 
-      {/* ── 05 / Custom Sections ── */}
+      {/* ── 05 / Highlights ── */}
+      {featuredProjects.length > 0 && (
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
+            <Typography
+              variant="overline"
+              sx={{ color: '#999', letterSpacing: '0.15em', display: 'block', mb: 0.5 }}
+            >
+              05 / Highlights
+            </Typography>
+            <Typography variant="h4" fontWeight={600} sx={{ mb: 4 }}>
+              Notable Work
+            </Typography>
+            {featuredProjects.slice(0, 4).map((project, i) => (
+              <Box
+                key={project.id}
+                component={RouterLink}
+                to={`/projects/${project.slug}`}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'baseline',
+                  py: 2,
+                  borderBottom: i < featuredProjects.length - 1 ? '1px solid #f0f0f0' : 'none',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  transition: 'padding-left 0.2s ease',
+                  '&:hover': { pl: 1, '& .highlight-arrow': { opacity: 1 } },
+                }}
+              >
+                <Box sx={{ flex: 1, minWidth: 0 }}>
+                  <Typography variant="body1" fontWeight={600}>
+                    {project.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ mt: 0.25 }}>
+                    {project.subtitle || project.description}
+                  </Typography>
+                </Box>
+                <Typography
+                  className="highlight-arrow"
+                  variant="caption"
+                  sx={{ color: '#000', fontWeight: 600, ml: 2, opacity: 0, transition: 'opacity 0.2s ease', flexShrink: 0 }}
+                >
+                  →
+                </Typography>
+              </Box>
+            ))}
+          </Container>
+        </Box>
+      )}
+
+      {/* ── 06 / Custom Sections ── */}
       {home.customSections?.length > 0 && (
         <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
@@ -335,7 +435,7 @@ export default function HomePage({ data }) {
         </Box>
       )}
 
-      {/* ── 06 / CTA Footer ── */}
+      {/* ── 07 / CTA Footer ── */}
       <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
         <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 }, textAlign: 'center' }}>
           <Typography
@@ -359,7 +459,7 @@ export default function HomePage({ data }) {
                 href={`mailto:${contact.email}`}
                 variant="contained"
                 size="large"
-                sx={{ bgcolor: '#000', '&:hover': { bgcolor: '#222' } }}
+                sx={{ bgcolor: '#000', transition: 'all 0.2s ease', '&:hover': { bgcolor: '#222', transform: 'translateY(-1px)' }, '&:active': { transform: 'translateY(0)' } }}
               >
                 Email me
               </Button>
@@ -369,7 +469,7 @@ export default function HomePage({ data }) {
               to="/contact"
               variant="outlined"
               size="large"
-              sx={{ color: '#000', borderColor: '#000', '&:hover': { borderColor: '#000', bgcolor: 'rgba(0,0,0,0.04)' } }}
+              sx={{ color: '#000', borderColor: '#000', transition: 'all 0.2s ease', '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#fff', transform: 'translateY(-1px)' }, '&:active': { transform: 'translateY(0)' } }}
             >
               Contact page
             </Button>
