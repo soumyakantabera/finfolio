@@ -13,7 +13,8 @@ A deployable portfolio web app template built with **Vite + React + Material UI*
 - **Code Blocks with Syntax Highlighting** — B&W syntax highlighting, copy button, and line wrap support in markdown and embed code blocks
 - **Callout Blocks** — Styled callout blocks with variants: insight, assumption, risk, result, and key takeaway
 - **Asset Upload Library** — Upload PDFs and images in the admin project editor; assets stored as base64 data URLs and available for embed `src` fields
-- **Enhanced Project Card Hover Effects** — Project cards feature hover-revealed quick actions and metadata strips on desktop
+- **Research Papers / Journals** — First-class research paper content type with abstract, key findings, methodology, citation/BibTeX support, and PDF viewer
+- **Clean Project Card Design** — Project cards with always-visible CTAs and subtle hover effects (border, translate)
 - **Certification Click-to-View Modal** — Certifications with media attachments open in a modal viewer with download, open in new tab, and metadata display
 - **Admin Portal (CMS)** — Full CRUD dashboard to manage all content from the browser (hidden from public navigation)
 - **Quotes / Own Words CMS** — Manage personal quotes with CRUD, featured toggle, ordering, and attribution
@@ -68,7 +69,7 @@ The admin portal is hidden from the public navigation but remains accessible via
 | ------------ | ---------------------------------------------------------------------- |
 | **Home**     | Hero title/subtitle, intro text, snapshot panel (location/role/availability), CTA buttons, stats, custom sections |
 | **About**    | Profile, bio, education, experience, skills, certifications (name, issuer, date, credential ID, link, media attachment), achievements, metrics, contact links |
-| **Projects** | Title, slug, subtitle, description, category, tags, tech stack, links, block-based content (markdown, embed, callout, divider, gallery, attachments), hero image, date, status (draft/published), featured toggle, asset library |
+| **Projects** | Title, slug, subtitle, description, category, tags, tech stack, links, block-based content (markdown, embed, callout, divider, gallery, attachments), hero image, date, status (draft/published), featured toggle, asset library. **Research Papers**: publication, authors, year, DOI link, PDF link, citation text, BibTeX, abstract, key findings, methodology, data sources |
 | **Resume**   | Summary, downloadable file link, structured sections                   |
 | **Contact**  | Email, phone, address, LinkedIn, GitHub, social links                 |
 | **Quotes**   | Quote text, attribution label, context/tag, featured toggle, order control |
@@ -132,6 +133,53 @@ Each project can have a dedicated detail page accessible at `/#/projects/:slug`.
 6. Add **Links** (GitHub, live demo, docs, etc.)
 7. Set **Related Projects** as comma-separated slugs
 8. Click **Save Changes**
+
+### Adding a Research Paper
+
+Research Papers are a specialized project type with richer metadata for academic publications.
+
+1. Go to **Admin → Projects**
+2. Click **Add Project**
+3. Set **Category** to `Research Papers`
+4. Fill in the standard fields (title, slug, description, tags, etc.)
+5. The **Research Paper Fields** section will appear automatically with:
+   - **Publication / Journal** — e.g., "Journal of Sustainable Finance & Investment"
+   - **Authors** — e.g., "Jane Smith, Robert Chen"
+   - **Year** — publication year
+   - **DOI Link** (optional) — digital object identifier URL
+   - **PDF Link** (required) — link to the PDF file or embed
+   - **Abstract** — short summary of the paper
+   - **Citation Text** (optional) — formatted citation string
+   - **BibTeX** (optional) — BibTeX entry for the paper
+   - **Methodology** — description of the research methodology
+   - **Key Findings** — one finding per line
+   - **Data Sources** — label + URL pairs for datasets used
+6. Add block-based content (markdown, callouts, etc.) for the full paper body
+7. Click **Save Changes**
+
+#### Research Paper Detail Page
+
+The detail page for research papers automatically displays:
+
+- **Abstract** (prominent, at the top)
+- **Publication info** (journal, authors, year)
+- **Key Findings** (bulleted list in a bordered box)
+- **Methodology** (structured text block)
+- **Data Sources** (linked buttons)
+- **Open PDF** button + optional **View DOI** button
+- **Citation block** with copy-to-clipboard and optional BibTeX entry
+- Standard block-based content below
+
+#### Research Paper Card (Projects Page)
+
+Research paper cards on the Projects page show:
+
+- Title, abstract/description, tags
+- Publication name and year (italicized)
+- Author names
+- **Read Paper** (primary CTA) and **DOI** (secondary CTA) buttons — always visible, not hover-based
+
+Filter research papers using the **RESEARCH PAPERS** tab on the Projects page.
 
 ### Markdown Usage
 
@@ -410,8 +458,10 @@ Use this checklist when testing mobile views (375px viewport recommended):
 
 ### Projects Page
 - [ ] Filters scroll horizontally, no overflow
-- [ ] Cards show metadata strip without hover
+- [ ] Cards show all CTAs without hover (no hover-revealed buttons)
 - [ ] "Details" link is easily tappable
+- [ ] Research Papers tab filters correctly
+- [ ] Research paper cards show Read Paper / DOI buttons
 
 ### Project Detail
 - [ ] Sticky bottom action bar visible with "← Projects"
