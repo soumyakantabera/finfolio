@@ -75,7 +75,7 @@ export default function AdminDashboard({ data, setData, isAdmin }) {
       case 'About':
         return <AboutEditor data={localData.about || {}} onChange={(v) => updateSection('about', v)} />;
       case 'Projects':
-        return <ProjectsEditor data={localData.projects || []} onChange={(v) => updateSection('projects', v)} />;
+        return <ProjectsEditor data={localData.projects || []} onChange={(v) => updateSection('projects', v)} config={localData.config || {}} onConfigChange={(v) => updateSection('config', v)} />;
       case 'Contact':
         return <ContactEditor data={localData.contact || {}} onChange={(v) => updateSection('contact', v)} />;
       case 'Quotes':

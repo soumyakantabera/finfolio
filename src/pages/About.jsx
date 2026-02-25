@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -11,6 +11,9 @@ import {
   IconButton,
   Chip,
   Collapse,
+  Modal,
+  Backdrop,
+  Button,
 } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkIcon from '@mui/icons-material/Work';
@@ -24,6 +27,11 @@ import LanguageIcon from '@mui/icons-material/Language';
 import ArticleIcon from '@mui/icons-material/Article';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import ImageIcon from '@mui/icons-material/Image';
+import CloseIcon from '@mui/icons-material/Close';
+import DownloadIcon from '@mui/icons-material/Download';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const levelValue = (level) => {
   switch (level) {
@@ -84,6 +92,16 @@ const hoverCard = {
 export default function AboutPage({ data }) {
   const { about } = data;
   const [expandedSections, setExpandedSections] = useState({});
+  const [selectedCert, setSelectedCert] = useState(null);
+
+  useEffect(() => {
+    if (selectedCert) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [selectedCert]);
 
   const toggleSection = (key) => {
     setExpandedSections((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -361,32 +379,176 @@ export default function AboutPage({ data }) {
             </SectionHeader>
             <Collapse in={isSectionExpanded('certifications')}>
               <Grid container spacing={2}>
-                {about.certifications.map((cert) => (
-                  <Grid size={{ xs: 12, sm: 6, md: 4 }} key={cert.id}>
-                    <Card sx={{ ...hoverCard }} variant="outlined">
-                      <CardContent sx={{ p: { xs: 2, md: 2.5 }, '&:last-child': { pb: { xs: 2, md: 2.5 } }, display: 'flex', alignItems: 'center', gap: 2, minHeight: 56 }}>
-                        <Box sx={{
-                          width: 38, height: 38, bgcolor: '#f5f5f5',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                        }}>
-                          <VerifiedUserIcon sx={{ color: '#333', fontSize: 20 }} />
-                        </Box>
-                        <Box sx={{ minWidth: 0, flex: 1 }}>
-                          <Typography variant="body2" fontWeight={700}>
-                            {cert.name}
-                          </Typography>
-                          <Typography variant="caption" sx={{ color: '#999' }}>
-                            {cert.year}
-                          </Typography>
-                        </Box>
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                ))}
+                {about.certifications.map((cert) => {
+                  const hasMedia = !!cert.mediaUrl;
+                  return (
+                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={cert.id}>
+                      <Card
+                        sx={{
+                          ...hoverCard,
+                          cursor: hasMedia ? 'pointer' : 'default',
+                        }}
+                        variant="outlined"
+                        onClick={hasMedia ? () => setSelectedCert(cert) : undefined}
+                        role={hasMedia ? 'button' : undefined}
+                        tabIndex={hasMedia ? 0 : undefined}
+                        onKeyDown={hasMedia ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedCert(cert); } } : undefined}
+                      >
+                        <CardContent sx={{ p: { xs: 2, md: 2.5 }, '&:last-child': { pb: { xs: 2, md: 2.5 } }, display: 'flex', alignItems: 'center', gap: 2, minHeight: 56 }}>
+                          <Box sx={{
+                            width: 38, height: 38, bgcolor: '#f5f5f5',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                          }}>
+                            <VerifiedUserIcon sx={{ color: '#333', fontSize: 20 }} />
+                          </Box>
+                          <Box sx={{ minWidth: 0, flex: 1 }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                              <Typography variant="body2" fontWeight={700}>
+                                {cert.title || cert.name}
+                              </Typography>
+                              {hasMedia && (
+                                cert.mediaType === 'pdf'
+                                  ? <PictureAsPdfIcon sx={{ fontSize: 16, color: '#999' }} />
+                                  : <ImageIcon sx={{ fontSize: 16, color: '#999' }} />
+                              )}
+                            </Box>
+                            {cert.issuer && (
+                              <Typography variant="caption" sx={{ color: '#666', display: 'block' }}>
+                                {cert.issuer}
+                              </Typography>
+                            )}
+                            <Typography variant="caption" sx={{ color: '#999' }}>
+                              {cert.date || cert.year}
+                            </Typography>
+                          </Box>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  );
+                })}
               </Grid>
             </Collapse>
           </Box>
         )}
+
+        {/* Certification Viewer Modal */}
+        <Modal
+          open={!!selectedCert}
+          onClose={() => setSelectedCert(null)}
+          closeAfterTransition
+          slots={{ backdrop: Backdrop }}
+          slotProps={{ backdrop: { sx: { bgcolor: 'rgba(0,0,0,0.7)' } } }}
+        >
+          <Box sx={{
+            position: 'absolute',
+            top: { xs: 0, md: '50%' },
+            left: { xs: 0, md: '50%' },
+            transform: { xs: 'none', md: 'translate(-50%, -50%)' },
+            width: { xs: '100%', md: '90%' },
+            maxWidth: { xs: '100%', md: 900 },
+            height: { xs: '100%', md: 'auto' },
+            maxHeight: { xs: '100%', md: '85vh' },
+            bgcolor: '#fff',
+            borderRadius: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            outline: 'none',
+          }}>
+            {/* Header */}
+            <Box sx={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              px: { xs: 2, md: 3 }, py: 1.5,
+              borderBottom: '1px solid #e0e0e0', flexShrink: 0,
+            }}>
+              <Typography variant="subtitle1" fontWeight={700} noWrap sx={{ flex: 1, mr: 1 }}>
+                {selectedCert?.title || selectedCert?.name}
+              </Typography>
+              <IconButton
+                onClick={() => setSelectedCert(null)}
+                aria-label="Close"
+                sx={{ color: '#333', flexShrink: 0 }}
+                size="large"
+              >
+                <CloseIcon />
+              </IconButton>
+            </Box>
+
+            {/* Body */}
+            <Box sx={{ flex: 1, overflow: 'auto', minHeight: 0 }}>
+              {selectedCert?.mediaType === 'pdf' ? (
+                <iframe
+                  src={selectedCert.mediaUrl}
+                  title={selectedCert.title || selectedCert.name}
+                  style={{ width: '100%', height: '100%', minHeight: 500, border: 'none', display: 'block' }}
+                />
+              ) : (
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p: 2 }}>
+                  <img
+                    src={selectedCert?.mediaUrl}
+                    alt={selectedCert?.title || selectedCert?.name}
+                    style={{ maxWidth: '100%', maxHeight: '60vh', objectFit: 'contain' }}
+                  />
+                </Box>
+              )}
+            </Box>
+
+            {/* Footer */}
+            <Box sx={{
+              px: { xs: 2, md: 3 }, py: 2,
+              borderTop: '1px solid #e0e0e0', flexShrink: 0,
+              display: 'flex', flexDirection: { xs: 'column', md: 'row' },
+              alignItems: { xs: 'stretch', md: 'center' },
+              gap: 2,
+            }}>
+              <Box sx={{ flex: 1, minWidth: 0 }}>
+                {selectedCert?.issuer && (
+                  <Typography variant="body2" sx={{ color: '#555' }}>
+                    <strong>Issuer:</strong> {selectedCert.issuer}
+                  </Typography>
+                )}
+                {(selectedCert?.date || selectedCert?.year) && (
+                  <Typography variant="body2" sx={{ color: '#555' }}>
+                    <strong>Date:</strong> {selectedCert.date || selectedCert.year}
+                  </Typography>
+                )}
+                {selectedCert?.credentialId && (
+                  <Typography variant="body2" sx={{ color: '#555' }}>
+                    <strong>Credential ID:</strong> {selectedCert.credentialId}
+                  </Typography>
+                )}
+              </Box>
+              <Box sx={{ display: 'flex', gap: 1, flexShrink: 0 }}>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  startIcon={<DownloadIcon />}
+                  href={selectedCert?.mediaUrl}
+                  download
+                  sx={{
+                    borderColor: '#000', color: '#000', borderRadius: 0,
+                    '&:hover': { bgcolor: '#000', color: '#fff', borderColor: '#000' },
+                  }}
+                >
+                  Download
+                </Button>
+                <Button
+                  variant="contained"
+                  size="small"
+                  startIcon={<OpenInNewIcon />}
+                  href={selectedCert?.mediaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    bgcolor: '#000', color: '#fff', borderRadius: 0, boxShadow: 'none',
+                    '&:hover': { bgcolor: '#333', boxShadow: 'none' },
+                  }}
+                >
+                  Open in new tab
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        </Modal>
 
         {/* Achievements */}
         {about.achievements?.length > 0 && (

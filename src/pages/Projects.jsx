@@ -10,6 +10,7 @@ import {
   Chip,
   Button,
   Box,
+  useMediaQuery,
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -17,6 +18,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 export default function ProjectsPage({ data }) {
   const projects = (data.projects || []).filter((p) => p.status !== 'draft');
   const [filter, setFilter] = useState('All');
+  const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
 
   const categories = useMemo(
     () => ['All', ...new Set(projects.map((p) => p.category).filter(Boolean))],
@@ -97,11 +99,13 @@ export default function ProjectsPage({ data }) {
                 flexDirection: 'column',
                 position: 'relative',
                 overflow: 'hidden',
-                transition: 'border-color 0.2s ease',
+                transition: prefersReducedMotion ? 'none' : 'border-color 0.2s ease, transform 0.2s ease',
                 '&:hover': {
                   borderColor: '#000',
+                  transform: prefersReducedMotion ? 'none' : 'translateY(-2px)',
                   '& .project-card-accent': { transform: 'scaleX(1)' },
                   '& .project-card-reveal': { opacity: 1, transform: 'translateY(0)' },
+                  '& .project-card-actions': { opacity: 1, transform: 'translateY(0)' },
                 },
                 '&:focus-within': { borderColor: '#000' },
               }}
@@ -118,7 +122,7 @@ export default function ProjectsPage({ data }) {
                   bgcolor: '#000',
                   transform: 'scaleX(0)',
                   transformOrigin: 'left',
-                  transition: 'transform 0.3s ease',
+                  transition: prefersReducedMotion ? 'none' : 'transform 0.3s ease',
                   zIndex: 1,
                 }}
               />
@@ -202,7 +206,7 @@ export default function ProjectsPage({ data }) {
                   alignItems: 'center',
                   opacity: { xs: 1, sm: 0 },
                   transform: { xs: 'none', sm: 'translateY(4px)' },
-                  transition: 'opacity 0.25s ease, transform 0.25s ease',
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.25s ease, transform 0.25s ease',
                 }}
               >
                 {project.date && (
@@ -214,6 +218,57 @@ export default function ProjectsPage({ data }) {
                   <Typography variant="caption" sx={{ color: '#999', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
                     {project.category}
                   </Typography>
+                )}
+              </Box>
+
+              {/* Quick actions — hover-revealed on desktop, always visible on mobile */}
+              <Box
+                className="project-card-actions"
+                sx={{
+                  px: 2,
+                  py: 1,
+                  borderTop: '1px solid #f0f0f0',
+                  display: 'flex',
+                  gap: 1,
+                  opacity: { xs: 1, sm: 0 },
+                  transform: { xs: 'none', sm: 'translateY(4px)' },
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.25s ease, transform 0.25s ease',
+                }}
+              >
+                {project.slug && (
+                  <Button
+                    component={Link}
+                    to={`/projects/${project.slug}`}
+                    size="small"
+                    variant="outlined"
+                    sx={{ color: '#000', borderColor: '#000', textTransform: 'none', fontWeight: 600, minHeight: 36 }}
+                  >
+                    View
+                  </Button>
+                )}
+                {project.links?.some((l) => l.label.toLowerCase().includes('github')) && (
+                  <Button
+                    href={project.links.find((l) => l.label.toLowerCase().includes('github')).url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    size="small"
+                    variant="outlined"
+                    sx={{ color: '#000', borderColor: '#000', textTransform: 'none', fontWeight: 600, minHeight: 36 }}
+                  >
+                    GitHub
+                  </Button>
+                )}
+                {project.links?.some((l) => l.label.toLowerCase().includes('doc')) && (
+                  <Button
+                    href={project.links.find((l) => l.label.toLowerCase().includes('doc')).url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    size="small"
+                    variant="outlined"
+                    sx={{ color: '#000', borderColor: '#000', textTransform: 'none', fontWeight: 600, minHeight: 36 }}
+                  >
+                    Docs
+                  </Button>
                 )}
               </Box>
 

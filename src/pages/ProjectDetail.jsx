@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   Container,
@@ -10,15 +10,71 @@ import {
   CardContent,
   Divider,
   Grid,
+  LinearProgress,
+  Collapse,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import MarkdownRenderer from '../components/MarkdownRenderer';
-import EmbedBlock from '../components/EmbedBlock';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import FormatListBulleted from '@mui/icons-material/FormatListBulleted';
+import BlockRenderer from '../components/BlockRenderer';
+
+function slugify(text) {
+  return String(text).toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+function extractHeadings(blocks, markdownContent) {
+  let mdContent = '';
+  if (blocks?.length) {
+    mdContent = blocks.filter(b => b.type === 'markdown').map(b => b.content).join('\n');
+  } else {
+    mdContent = markdownContent || '';
+  }
+  const headings = [];
+  const regex = /^(#{2,3})\s+(.+)$/gm;
+  let match;
+  while ((match = regex.exec(mdContent)) !== null) {
+    headings.push({ level: match[1].length, text: match[2], id: slugify(match[2]) });
+  }
+  return headings;
+}
 
 export default function ProjectDetail({ data }) {
   const { slug } = useParams();
   const projects = data.projects || [];
   const project = projects.find((p) => p.slug === slug);
+  const contentRef = useRef(null);
+  const [readingProgress, setReadingProgress] = useState(0);
+  const [tocOpen, setTocOpen] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mql.matches);
+    const handler = (e) => setPrefersReducedMotion(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!contentRef.current) return;
+      const el = contentRef.current;
+      const rect = el.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalHeight = el.scrollHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const maxScroll = totalHeight - windowHeight;
+      if (maxScroll <= 0) { setReadingProgress(100); return; }
+      setReadingProgress(Math.min(100, (scrolled / maxScroll) * 100));
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   if (!project) {
     return (
@@ -36,6 +92,9 @@ export default function ProjectDetail({ data }) {
     );
   }
 
+  const headings = extractHeadings(project.blocks, project.markdownContent);
+  const showToc = headings.length >= 2;
+
   const relatedProjects = project.relatedProjects?.length
     ? projects.filter((p) => project.relatedProjects.includes(p.slug))
     : [];
@@ -46,6 +105,26 @@ export default function ProjectDetail({ data }) {
 
   return (
     <>
+      {/* Reading Progress Bar */}
+      <LinearProgress
+        variant="determinate"
+        value={readingProgress}
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1300,
+          height: 2,
+          backgroundColor: 'transparent',
+          transition: prefersReducedMotion ? 'none' : undefined,
+          '& .MuiLinearProgress-bar': {
+            backgroundColor: '#000',
+            transition: prefersReducedMotion ? 'none' : undefined,
+          },
+        }}
+      />
+
       <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2.5, sm: 3 }, pb: { xs: 10, sm: 6 } }}>
         {/* Back navigation — hidden on mobile (bottom bar has it) */}
         <Button
@@ -150,27 +229,94 @@ export default function ProjectDetail({ data }) {
           </>
         )}
 
-        {/* Main content */}
-        {project.markdownContent && (
-          <Box sx={{ mb: 4 }}>
-            <MarkdownRenderer content={project.markdownContent} />
-          </Box>
+        {/* Table of Contents */}
+        {showToc && (
+          <>
+            {/* Desktop ToC */}
+            <Box sx={{ display: { xs: 'none', sm: 'block' }, mb: 4 }}>
+              <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <FormatListBulleted fontSize="small" /> Table of Contents
+              </Typography>
+              <List dense disablePadding>
+                {headings.map((h) => (
+                  <ListItem key={h.id} disablePadding sx={{ pl: h.level === 3 ? 2 : 0 }}>
+                    <ListItemButton
+                      component="a"
+                      href={`#${h.id}`}
+                      sx={{ py: 0.25, borderRadius: 0 }}
+                    >
+                      <ListItemText
+                        primary={h.text}
+                        primaryTypographyProps={{
+                          variant: 'body2',
+                          color: 'text.secondary',
+                          fontSize: h.level === 3 ? '0.8rem' : '0.875rem',
+                        }}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+
+            {/* Mobile ToC */}
+            <Box sx={{ display: { xs: 'block', sm: 'none' }, mb: 4 }}>
+              <Button
+                onClick={() => setTocOpen((prev) => !prev)}
+                startIcon={<FormatListBulleted />}
+                endIcon={tocOpen ? <ExpandLess /> : <ExpandMore />}
+                fullWidth
+                sx={{
+                  color: '#000',
+                  borderColor: '#000',
+                  border: '1px solid #000',
+                  borderRadius: 0,
+                  textTransform: 'none',
+                  fontWeight: 600,
+                  justifyContent: 'space-between',
+                  minHeight: 44,
+                }}
+              >
+                Table of Contents
+              </Button>
+              <Collapse in={tocOpen}>
+                <Box sx={{ border: '1px solid #000', borderTop: 0 }}>
+                  <List dense disablePadding>
+                    {headings.map((h) => (
+                      <ListItem key={h.id} disablePadding sx={{ pl: h.level === 3 ? 2 : 0 }}>
+                        <ListItemButton
+                          component="a"
+                          href={`#${h.id}`}
+                          sx={{ py: 0.5, borderRadius: 0 }}
+                          onClick={() => setTocOpen(false)}
+                        >
+                          <ListItemText
+                            primary={h.text}
+                            primaryTypographyProps={{
+                              variant: 'body2',
+                              color: 'text.secondary',
+                              fontSize: h.level === 3 ? '0.8rem' : '0.875rem',
+                            }}
+                          />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Box>
+              </Collapse>
+            </Box>
+          </>
         )}
 
-        {project.embeds?.length > 0 && (
-          <Box sx={{ mb: 4, '& iframe': { maxWidth: '100%' } }}>
-            {project.embeds.map((embed) => (
-              <Box key={embed.id} sx={{ mb: 3 }}>
-                {embed.title && (
-                  <Typography variant="subtitle2" fontWeight={600} sx={{ mb: 1 }}>
-                    {embed.title}
-                  </Typography>
-                )}
-                <EmbedBlock type={embed.type} url={embed.url} title={embed.title} />
-              </Box>
-            ))}
-          </Box>
-        )}
+        {/* Main content */}
+        <Box ref={contentRef} sx={{ mb: 4 }}>
+          <BlockRenderer
+            blocks={project.blocks}
+            markdownContent={project.markdownContent}
+            embeds={project.embeds}
+            config={data.config}
+          />
+        </Box>
 
         {/* Related projects */}
         {relatedProjects.length > 0 && (
