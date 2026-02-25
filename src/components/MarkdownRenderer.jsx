@@ -43,14 +43,14 @@ function EmbedBlock({ type, url, title }) {
     allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
     allowFullScreen: true,
     onError: () => setError(true),
-    style: { border: 'none', borderRadius: 8 },
+    style: { border: 'none', borderRadius: 0 },
   };
 
   switch (type) {
     case 'youtube': {
       const videoId = url.match(/(?:youtu\.be\/|v=)([\w-]+)/)?.[1] || url;
       return (
-        <Box sx={{ position: 'relative', pb: '56.25%', height: 0, overflow: 'hidden', my: 2, borderRadius: 2 }}>
+        <Box sx={{ position: 'relative', pb: '56.25%', height: 0, overflow: 'hidden', my: 2, borderRadius: 0 }}>
           <iframe
             {...iframeProps}
             src={`https://www.youtube.com/embed/${videoId}`}
@@ -89,7 +89,7 @@ function EmbedBlock({ type, url, title }) {
             src={url}
             alt={title}
             onError={() => setError(true)}
-            style={{ maxWidth: '100%', borderRadius: 8 }}
+            style={{ maxWidth: '100%', borderRadius: 0 }}
           />
         </Box>
       );
@@ -152,7 +152,7 @@ const markdownComponents = {
     </MuiLink>
   ),
   img: ({ src, alt, ...props }) => (
-    <Box component="img" src={src} alt={alt} sx={{ maxWidth: '100%', borderRadius: 2, my: 1 }} {...props} />
+    <Box component="img" src={src} alt={alt} sx={{ maxWidth: '100%', borderRadius: 0, my: 1 }} {...props} />
   ),
   blockquote: ({ children, ...props }) => (
     <Box
@@ -188,7 +188,7 @@ const markdownComponents = {
   pre: ({ children, ...props }) => (
     <Box
       component="pre"
-      sx={{ bgcolor: '#f5f5f5', p: 2, borderRadius: 2, overflow: 'auto', my: 2, border: '1px solid #e0e0e0' }}
+      sx={{ bgcolor: '#f5f5f5', p: 2, borderRadius: 0, overflow: 'auto', my: 2, border: '1px solid #e0e0e0', fontSize: { xs: '0.8rem', md: '0.875em' }, maxWidth: '100%' }}
       {...props}
     >
       {children}

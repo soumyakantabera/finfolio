@@ -10,13 +10,9 @@ import {
   Chip,
   Button,
   Box,
-  ToggleButtonGroup,
-  ToggleButton,
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-
-const EMBED_TYPES = ['pdf', 'gdocs', 'gsheets', 'github', 'chart'];
 
 export default function ProjectsPage({ data }) {
   const projects = (data.projects || []).filter((p) => p.status !== 'draft');
@@ -30,38 +26,67 @@ export default function ProjectsPage({ data }) {
   const filtered = filter === 'All' ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <Container maxWidth="lg" sx={{ py: 6 }}>
-      <Typography variant="h3" fontWeight={700} gutterBottom>
+    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2.5, sm: 3 } }}>
+      <Typography
+        variant="overline"
+        sx={{ color: '#999', letterSpacing: '0.15em', display: 'block', mb: 0.5 }}
+      >
+        Gallery
+      </Typography>
+      <Typography variant="h3" fontWeight={700} gutterBottom sx={{ fontSize: { xs: '1.75rem', md: '3rem' } }}>
         Projects
       </Typography>
 
-      {/* Category Filters */}
+      {/* Category Filters — horizontal scroll on mobile */}
       {categories.length > 1 && (
-        <Box sx={{ mb: 4, overflowX: 'auto' }}>
-          <ToggleButtonGroup
-            value={filter}
-            exclusive
-            onChange={(_, v) => v && setFilter(v)}
-            size="small"
-          >
-            {categories.map((cat) => (
-              <ToggleButton
-                key={cat}
-                value={cat}
-                sx={{
-                  textTransform: 'none',
-                  '&.Mui-selected': { bgcolor: '#000', color: '#fff', '&:hover': { bgcolor: '#333' } },
-                }}
-              >
-                {cat}
-              </ToggleButton>
-            ))}
-          </ToggleButtonGroup>
+        <Box
+          sx={{
+            mb: { xs: 3, md: 4 },
+            display: 'flex',
+            gap: 1,
+            overflowX: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            pb: 1,
+            mx: { xs: -0.5, sm: 0 },
+            px: { xs: 0.5, sm: 0 },
+            '&::-webkit-scrollbar': { display: 'none' },
+            scrollbarWidth: 'none',
+          }}
+        >
+          {categories.map((cat) => (
+            <Box
+              key={cat}
+              component="button"
+              onClick={() => setFilter(cat)}
+              sx={{
+                px: 2,
+                py: 1,
+                cursor: 'pointer',
+                border: '1px solid',
+                borderColor: filter === cat ? '#000' : '#ddd',
+                bgcolor: filter === cat ? '#000' : 'transparent',
+                color: filter === cat ? '#fff' : '#555',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                fontFamily: 'inherit',
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                minHeight: 44,
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+                transition: 'all 0.2s ease',
+                '&:hover': { borderColor: '#000', bgcolor: filter === cat ? '#000' : '#f5f5f5' },
+                '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+              }}
+            >
+              {cat}
+            </Box>
+          ))}
         </Box>
       )}
 
       {/* Project Grid */}
-      <Grid container spacing={3}>
+      <Grid container spacing={{ xs: 2, sm: 3 }}>
         {filtered.map((project) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
             <Card
@@ -103,7 +128,7 @@ export default function ProjectsPage({ data }) {
                   component="img"
                   src={project.thumbnail}
                   alt={project.title}
-                  sx={{ width: '100%', height: 160, objectFit: 'cover' }}
+                  sx={{ width: '100%', height: { xs: 140, sm: 160 }, objectFit: 'cover' }}
                 />
               )}
 
@@ -129,11 +154,11 @@ export default function ProjectsPage({ data }) {
                 </Box>
               )}
 
-              <CardContent sx={{ flexGrow: 1 }}>
+              <CardContent sx={{ flexGrow: 1, p: { xs: 2, sm: 2 } }}>
                 <Typography variant="overline" color="text.secondary">
                   {project.category}
                 </Typography>
-                <Typography variant="h6" fontWeight={600} gutterBottom>
+                <Typography variant="h6" fontWeight={600} gutterBottom sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>
                   {project.title}
                 </Typography>
                 {project.subtitle && (
@@ -141,7 +166,7 @@ export default function ProjectsPage({ data }) {
                     {project.subtitle}
                   </Typography>
                 )}
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2, lineHeight: 1.6 }}>
                   {project.description}
                 </Typography>
 
@@ -165,7 +190,7 @@ export default function ProjectsPage({ data }) {
                 )}
               </CardContent>
 
-              {/* Hover-revealed metadata strip */}
+              {/* Always visible on mobile, hover-revealed on desktop */}
               <Box
                 className="project-card-reveal"
                 sx={{
@@ -175,8 +200,8 @@ export default function ProjectsPage({ data }) {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  opacity: 0,
-                  transform: 'translateY(4px)',
+                  opacity: { xs: 1, sm: 0 },
+                  transform: { xs: 'none', sm: 'translateY(4px)' },
                   transition: 'opacity 0.25s ease, transform 0.25s ease',
                 }}
               >
@@ -193,7 +218,7 @@ export default function ProjectsPage({ data }) {
               </Box>
 
               {/* Links */}
-              <CardActions sx={{ px: 2, pb: 2, justifyContent: 'space-between' }}>
+              <CardActions sx={{ px: 2, pb: 2, pt: 1, justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
                 <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                   {project.links?.map((link, i) => (
                     <Button
@@ -202,7 +227,7 @@ export default function ProjectsPage({ data }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       size="small"
-                      sx={{ color: '#000', borderColor: '#000' }}
+                      sx={{ color: '#000', borderColor: '#000', minHeight: 44 }}
                       variant="outlined"
                     >
                       {link.label}
@@ -215,7 +240,7 @@ export default function ProjectsPage({ data }) {
                     to={`/projects/${project.slug}`}
                     size="small"
                     endIcon={<ArrowForwardIcon />}
-                    sx={{ color: '#000', textTransform: 'none', fontWeight: 600 }}
+                    sx={{ color: '#000', textTransform: 'none', fontWeight: 600, minHeight: 44 }}
                   >
                     Details
                   </Button>

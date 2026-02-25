@@ -56,7 +56,7 @@ export default function EmbedBlock({ type, url, title }) {
     sandbox: 'allow-scripts allow-same-origin allow-popups',
     loading: 'lazy',
     onError: () => setError(true),
-    style: { border: '1px solid #e0e0e0', borderRadius: 8 },
+    style: { border: '1px solid #e0e0e0', borderRadius: 0 },
   };
 
   switch (type) {
@@ -66,7 +66,7 @@ export default function EmbedBlock({ type, url, title }) {
         return <EmbedFallback url={url} title={title || 'YouTube Video'} />;
       }
       return (
-        <Box sx={{ position: 'relative', pb: '56.25%', height: 0, overflow: 'hidden', my: 2, borderRadius: 2 }}>
+        <Box sx={{ position: 'relative', pb: '56.25%', height: 0, overflow: 'hidden', my: 2, borderRadius: 0 }}>
           <iframe
             {...iframeProps}
             src={`https://www.youtube.com/embed/${videoId}`}
@@ -147,7 +147,7 @@ export default function EmbedBlock({ type, url, title }) {
             src={url}
             alt={title || 'Embedded image'}
             onError={() => setError(true)}
-            sx={{ maxWidth: '100%', borderRadius: 2, objectFit: 'cover' }}
+            sx={{ maxWidth: '100%', borderRadius: 0, objectFit: 'cover' }}
           />
         </Box>
       );

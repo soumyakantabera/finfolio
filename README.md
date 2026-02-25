@@ -320,6 +320,61 @@ export default defineConfig({
 
 The default portfolio content is defined in `src/data/portfolioData.js`. This serves as the initial data when no changes have been saved. Edit this file to change the default template content.
 
+## Mobile QA Checklist
+
+Use this checklist when testing mobile views (375px viewport recommended):
+
+### Navigation
+- [ ] "Menu" button visible on mobile, opens full-screen overlay
+- [ ] Menu shows numbered links (01 Home, 02 Projects, 03 About, 04 Contact)
+- [ ] Close button (✕) dismisses menu
+- [ ] ESC key dismisses menu
+- [ ] Focus is trapped within menu when open
+- [ ] Body scroll is locked when menu is open
+- [ ] Navigating to a page auto-closes the menu
+- [ ] No Admin link visible in mobile menu
+
+### Touch Targets
+- [ ] All buttons and links have ≥ 44px touch height
+- [ ] Filter pills are easily tappable
+- [ ] Social icon buttons are 44×44px
+
+### Home Page
+- [ ] Hero text is readable (not cramped)
+- [ ] Snapshot panel renders cleanly below hero
+- [ ] Category filter pills scroll horizontally
+- [ ] Project cards show "View →" and date without hover
+- [ ] CTA buttons have adequate spacing
+
+### Projects Page
+- [ ] Filters scroll horizontally, no overflow
+- [ ] Cards show metadata strip without hover
+- [ ] "Details" link is easily tappable
+
+### Project Detail
+- [ ] Sticky bottom action bar visible with "← Projects"
+- [ ] Markdown content (headings, code blocks, tables, blockquotes) is readable
+- [ ] Embeds do not overflow the viewport
+- [ ] Hero image scales to screen width
+
+### About Page
+- [ ] Avatar and name are centered and not cramped
+- [ ] Sections are collapsible (expand/collapse toggle)
+- [ ] Skills show as grouped list with progress bars
+- [ ] Certifications and achievements render cleanly
+
+### Contact Page
+- [ ] Email and phone are tappable links (mailto:, tel:)
+- [ ] Social icons are 44×44px with border
+- [ ] Form fields have adequate spacing and touch targets
+- [ ] Send button is large enough to tap
+
+### Accessibility
+- [ ] Focus-visible outlines on all interactive elements
+- [ ] `prefers-reduced-motion` disables transitions
+- [ ] Menu has `role="dialog"` and `aria-modal="true"`
+- [ ] No layout shifts during page load
+
 ## License
 
 MIT
