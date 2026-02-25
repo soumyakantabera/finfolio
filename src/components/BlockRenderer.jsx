@@ -33,18 +33,18 @@ function getFileIcon(fileType) {
 
 const calloutConfig = {
   insight:    { border: '#000', label: 'INSIGHT' },
-  assumption: { border: '#888', label: 'ASSUMPTION' },
+  assumption: { border: '#000', label: 'ASSUMPTION' },
   risk:       { border: '#000', label: 'RISK' },
-  result:     { border: '#555', label: 'RESULT' },
+  result:     { border: '#000', label: 'RESULT' },
   takeaway:   { border: '#000', label: 'KEY TAKEAWAY' },
 };
 
 function AttachmentDrawer({ files }) {
   if (!files || !files.length) return null;
   return (
-    <Card variant="outlined" sx={{ my: 2, borderRadius: 0, border: '1px solid #ccc' }}>
+    <Card variant="outlined" sx={{ my: 2, borderRadius: 0, border: '1px solid #000' }}>
       <CardContent sx={{ py: 1.5, '&:last-child': { pb: 1.5 } }}>
-        <Typography variant="caption" sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1, color: '#666', mb: 1, display: 'block' }}>
+        <Typography variant="caption" sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1, color: '#000', mb: 1, display: 'block' }}>
           Attachments
         </Typography>
         {files.map((file, i) => (
@@ -52,7 +52,7 @@ function AttachmentDrawer({ files }) {
             key={file.id || i}
             sx={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              py: 1, borderTop: i > 0 ? '1px solid #eee' : 'none', gap: 1,
+              py: 1, borderTop: i > 0 ? '1px dashed #000' : 'none', gap: 1,
             }}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, overflow: 'hidden', flex: 1 }}>
@@ -62,7 +62,7 @@ function AttachmentDrawer({ files }) {
                   {file.name}
                 </Typography>
                 {file.size && (
-                  <Typography variant="caption" sx={{ color: '#666' }}>
+                  <Typography variant="caption" sx={{ color: '#000' }}>
                     {formatFileSize(file.size)}
                   </Typography>
                 )}
@@ -106,7 +106,7 @@ function CalloutBlock({ variant, title, content }) {
           {title}
         </Typography>
       )}
-      <Typography variant="body2" sx={{ color: '#222', lineHeight: 1.7 }}>
+      <Typography variant="body2" sx={{ color: '#000', lineHeight: 1.7 }}>
         {content}
       </Typography>
     </Box>

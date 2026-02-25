@@ -192,9 +192,9 @@ function highlightCode(code, language) {
 
 const tokenStyles = {
   keyword: { color: '#000', fontWeight: 700 },
-  string: { color: '#555' },
-  comment: { color: '#999', fontStyle: 'italic' },
-  plain: { color: '#222' },
+  string: { color: '#000', fontWeight: 500 },
+  comment: { color: '#000', fontStyle: 'italic', fontWeight: 400 },
+  plain: { color: '#000' },
 };
 
 function HighlightedCode({ code, language }) {
@@ -224,18 +224,18 @@ function CodeBlock({ className, children }) {
   }, [code]);
 
   return (
-    <Box sx={{ my: 2, border: '1px solid #e0e0e0', borderRadius: 0 }}>
+    <Box sx={{ my: 2, border: '1px solid #000', borderRadius: 0 }}>
       {/* Header bar */}
       <Box sx={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        px: 1.5, py: 0.5, borderBottom: '1px solid #e0e0e0', bgcolor: '#fafafa',
+        px: 1.5, py: 0.5, borderBottom: '1px solid #000', bgcolor: '#fff',
       }}>
-        <Typography variant="caption" sx={{ color: '#666', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+        <Typography variant="caption" sx={{ color: '#000', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: 0.5 }}>
           {language || 'code'}
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <Tooltip title={wrap ? 'No wrap' : 'Wrap lines'}>
-            <IconButton size="small" onClick={() => setWrap((w) => !w)} sx={{ color: wrap ? '#000' : '#999' }}>
+            <IconButton size="small" onClick={() => setWrap((w) => !w)} sx={{ color: '#000' }}>
               <WrapTextIcon sx={{ fontSize: 16 }} />
             </IconButton>
           </Tooltip>
@@ -243,7 +243,7 @@ function CodeBlock({ className, children }) {
             size="small"
             startIcon={<ContentCopyIcon sx={{ fontSize: 14 }} />}
             onClick={handleCopy}
-            sx={{ fontSize: 12, textTransform: 'none', color: '#000', borderColor: '#ccc', '&:hover': { bgcolor: '#f0f0f0' } }}
+            sx={{ fontSize: 12, textTransform: 'none', color: '#000', borderColor: '#000', '&:hover': { bgcolor: '#fff' } }}
           >
             {copied ? 'Copied!' : 'Copy'}
           </Button>
@@ -253,7 +253,7 @@ function CodeBlock({ className, children }) {
       <Box
         component="pre"
         sx={{
-          m: 0, p: 2, bgcolor: '#f5f5f5', fontFamily: 'monospace', fontSize: { xs: '0.8rem', md: '0.875em' },
+          m: 0, p: 2, bgcolor: '#fff', fontFamily: 'monospace', fontSize: { xs: '0.8rem', md: '0.875em' },
           lineHeight: 1.7, maxWidth: '100%',
           overflowX: wrap ? 'visible' : 'auto',
           whiteSpace: wrap ? 'pre-wrap' : 'pre',
@@ -298,7 +298,7 @@ const markdownComponents = {
     </Typography>
   ),
   p: ({ children, ...props }) => (
-    <Typography variant="body1" sx={{ mb: 1.5, lineHeight: 1.7, color: '#222' }} {...props}>
+    <Typography variant="body1" sx={{ mb: 1.5, lineHeight: 1.7, color: '#000' }} {...props}>
       {children}
     </Typography>
   ),
@@ -313,7 +313,7 @@ const markdownComponents = {
   blockquote: ({ children, ...props }) => (
     <Box
       component="blockquote"
-      sx={{ borderLeft: '4px solid #000', pl: 2, my: 2, ml: 0, color: '#444' }}
+      sx={{ borderLeft: '4px solid #000', pl: 2, my: 2, ml: 0, color: '#000' }}
       {...props}
     >
       {children}
@@ -324,7 +324,7 @@ const markdownComponents = {
       return (
         <Box
           component="code"
-          sx={{ bgcolor: '#f5f5f5', px: 0.75, py: 0.25, borderRadius: 0.5, fontSize: '0.875em', fontFamily: 'monospace' }}
+          sx={{ bgcolor: '#fff', border: '1px solid #000', px: 0.75, py: 0.25, borderRadius: 0, fontSize: '0.875em', fontFamily: 'monospace' }}
           {...props}
         >
           {children}
@@ -354,7 +354,7 @@ const markdownComponents = {
     return (
       <Box
         component="pre"
-        sx={{ bgcolor: '#f5f5f5', p: 2, borderRadius: 0, overflow: 'auto', my: 2, border: '1px solid #e0e0e0', fontSize: { xs: '0.8rem', md: '0.875em' }, maxWidth: '100%' }}
+        sx={{ bgcolor: '#fff', p: 2, borderRadius: 0, overflow: 'auto', my: 2, border: '1px solid #000', fontSize: { xs: '0.8rem', md: '0.875em' }, maxWidth: '100%' }}
         {...props}
       >
         {children}
@@ -371,14 +371,14 @@ const markdownComponents = {
   th: ({ children, ...props }) => (
     <Box
       component="th"
-      sx={{ border: '1px solid #ddd', p: 1, fontWeight: 600, textAlign: 'left', bgcolor: '#fafafa' }}
+      sx={{ border: '1px solid #000', p: 1, fontWeight: 600, textAlign: 'left', bgcolor: '#fff' }}
       {...props}
     >
       {children}
     </Box>
   ),
   td: ({ children, ...props }) => (
-    <Box component="td" sx={{ border: '1px solid #ddd', p: 1 }} {...props}>
+    <Box component="td" sx={{ border: '1px solid #000', p: 1 }} {...props}>
       {children}
     </Box>
   ),

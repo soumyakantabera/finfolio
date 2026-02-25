@@ -1,18 +1,10 @@
-/* ── Design Tokens ── */
+/* ── Design Tokens (Strict B&W) ── */
 :root {
-  --color-black: #000;
-  --color-white: #fff;
-  --color-gray-50: #fafafa;
-  --color-gray-100: #f5f5f5;
-  --color-gray-200: #eee;
-  --color-gray-300: #e0e0e0;
-  --color-gray-400: #ccc;
-  --color-gray-500: #999;
-  --color-gray-600: #888;
-  --color-gray-700: #666;
-  --color-gray-800: #555;
-  --color-gray-900: #333;
-  --color-gray-950: #111;
+  --c-bg: #fff;
+  --c-fg: #000;
+
+  --border: 1px solid #000;
+  --border-dashed: 1px dashed #000;
 
   --space-unit: 8px;
   --space-xs: 4px;
@@ -23,8 +15,6 @@
   --space-2xl: 48px;
   --space-3xl: 64px;
 
-  --border-hairline: 1px solid var(--color-gray-300);
-  --border-strong: 1px solid var(--color-black);
   --radius: 0px;
 
   --font-heading: 'Space Grotesk', 'Sora', 'Helvetica', 'Arial', sans-serif;
@@ -36,16 +26,75 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-body); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: var(--font-body); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: var(--c-bg); color: var(--c-fg); }
 a { color: inherit; text-decoration: none; }
 
 /* Tabular numerals for finance content */
 .tabular-nums { font-variant-numeric: tabular-nums lining-nums; }
 table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
 
-/* ── Focus States (Accessibility) ── */
+/* ── Effect B — Underline Reveal (Ink Line) ── */
+.ink-link {
+  position: relative;
+  display: inline-block;
+}
+.ink-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: #000;
+  transition: width 0.3s ease;
+}
+.ink-link:hover::after,
+.ink-link:focus-visible::after {
+  width: 100%;
+}
+
+/* ── Effect C — Dashed/Striped Pattern Accent ── */
+.pattern-stripe {
+  background: repeating-linear-gradient(
+    -45deg,
+    #000,
+    #000 1px,
+    #fff 1px,
+    #fff 6px
+  );
+}
+.pattern-dot {
+  background: radial-gradient(circle, #000 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* ── Effect A — Hairline Frame Shift ── */
+.frame-shift {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.frame-shift::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid #000;
+  opacity: 0;
+  transition: opacity 0.2s ease, inset 0.2s ease;
+  pointer-events: none;
+}
+.frame-shift:hover,
+.frame-shift:focus-visible {
+  transform: translate(-1px, -1px);
+}
+.frame-shift:hover::before,
+.frame-shift:focus-visible::before {
+  opacity: 1;
+  inset: -2px;
+}
+
+/* ── Effect E — Focus Ring System ── */
 *:focus-visible {
-  outline: 2px solid var(--color-black);
+  outline: 2px solid #000;
   outline-offset: 2px;
 }
 
@@ -63,5 +112,12 @@ table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .frame-shift:hover,
+  .frame-shift:focus-visible {
+    transform: none;
+  }
+  .ink-link::after {
+    transition: none;
   }
 }

@@ -54,7 +54,7 @@ export default function ContactPage({ data }) {
     <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2.5, sm: 3 } }}>
       <Typography
         variant="overline"
-        sx={{ color: '#999', letterSpacing: '0.15em', display: 'block', mb: 0.5 }}
+        sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700 }}
       >
         Get in Touch
       </Typography>
@@ -65,7 +65,7 @@ export default function ContactPage({ data }) {
       <Grid container spacing={{ xs: 3, md: 4 }}>
         {/* Contact Info */}
         <Grid size={{ xs: 12, md: 5 }}>
-          <Card variant="outlined" sx={{ mb: 3 }}>
+          <Card variant="outlined" sx={{ mb: 3, border: '1px solid #000' }}>
             <CardContent sx={{ p: { xs: 2, md: 2 } }}>
               {contact.email && (
                 <Box
@@ -73,14 +73,13 @@ export default function ContactPage({ data }) {
                   href={`mailto:${contact.email}`}
                   sx={{
                     display: 'flex', alignItems: 'center', gap: 1.5, py: 1.5,
-                    borderBottom: '1px solid #f0f0f0', textDecoration: 'none', color: 'inherit',
+                    borderBottom: '1px dashed #000', textDecoration: 'none', color: '#000',
                     minHeight: 48,
-                    transition: 'color 0.2s ease',
-                    '&:hover': { color: '#000' },
+                    '&:hover': { fontWeight: 700 },
                     '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                   }}
                 >
-                  <EmailIcon sx={{ color: '#555', fontSize: 20 }} />
+                  <EmailIcon sx={{ color: '#000', fontSize: 20 }} />
                   <Typography variant="body2" sx={{ fontWeight: 500 }}>{contact.email}</Typography>
                 </Box>
               )}
@@ -90,20 +89,19 @@ export default function ContactPage({ data }) {
                   href={`tel:${contact.phone}`}
                   sx={{
                     display: 'flex', alignItems: 'center', gap: 1.5, py: 1.5,
-                    borderBottom: '1px solid #f0f0f0', textDecoration: 'none', color: 'inherit',
+                    borderBottom: '1px dashed #000', textDecoration: 'none', color: '#000',
                     minHeight: 48,
-                    transition: 'color 0.2s ease',
-                    '&:hover': { color: '#000' },
+                    '&:hover': { fontWeight: 700 },
                     '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                   }}
                 >
-                  <PhoneIcon sx={{ color: '#555', fontSize: 20 }} />
+                  <PhoneIcon sx={{ color: '#000', fontSize: 20 }} />
                   <Typography variant="body2" sx={{ fontWeight: 500 }}>{contact.phone}</Typography>
                 </Box>
               )}
               {contact.address && (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, py: 1.5, minHeight: 48 }}>
-                  <LocationOnIcon sx={{ color: '#555', fontSize: 20 }} />
+                  <LocationOnIcon sx={{ color: '#000', fontSize: 20 }} />
                   <Typography variant="body2">{contact.address}</Typography>
                 </Box>
               )}
@@ -118,7 +116,7 @@ export default function ContactPage({ data }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                sx={{ color: '#000', border: '1px solid #e0e0e0', width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#fff', borderColor: '#000' } }}
+                sx={{ color: '#000', border: '1px solid #000', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#fff' } }}
               >
                 <LinkedInIcon />
               </IconButton>
@@ -129,7 +127,7 @@ export default function ContactPage({ data }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                sx={{ color: '#000', border: '1px solid #e0e0e0', width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#fff', borderColor: '#000' } }}
+                sx={{ color: '#000', border: '1px solid #000', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#fff' } }}
               >
                 <GitHubIcon />
               </IconButton>
@@ -141,7 +139,7 @@ export default function ContactPage({ data }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.platform}
-                sx={{ color: '#000', border: '1px solid #e0e0e0', width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#fff', borderColor: '#000' } }}
+                sx={{ color: '#000', border: '1px solid #000', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#fff' } }}
               >
                 <LaunchIcon />
               </IconButton>
@@ -188,7 +186,7 @@ export default function ContactPage({ data }) {
               type="submit"
               variant="contained"
               size="large"
-              sx={{ bgcolor: '#000', minHeight: 48, px: 4, '&:hover': { bgcolor: '#333' } }}
+              sx={{ bgcolor: '#000', minHeight: 48, px: 4, '&:hover': { bgcolor: '#000' } }}
             >
               Send Message
             </Button>

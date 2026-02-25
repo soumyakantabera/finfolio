@@ -84,7 +84,7 @@ export default function ProjectDetail({ data }) {
         <Typography variant="h4" fontWeight={700} gutterBottom>
           Project not found
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography variant="body1" sx={{ mb: 3 }}>
           The project you're looking for doesn't exist or has been removed.
         </Typography>
         <Button component={Link} to="/projects" variant="outlined" sx={{ color: '#000', borderColor: '#000', minHeight: 48 }}>
@@ -119,6 +119,7 @@ export default function ProjectDetail({ data }) {
           zIndex: 1300,
           height: 2,
           backgroundColor: 'transparent',
+          border: 'none',
           transition: prefersReducedMotion ? 'none' : undefined,
           '& .MuiLinearProgress-bar': {
             backgroundColor: '#000',
@@ -128,7 +129,7 @@ export default function ProjectDetail({ data }) {
       />
 
       <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2.5, sm: 3 }, pb: { xs: 10, sm: 6 } }}>
-        {/* Back navigation — hidden on mobile (bottom bar has it) */}
+        {/* Back navigation */}
         <Button
           component={Link}
           to="/projects"
@@ -160,26 +161,26 @@ export default function ProjectDetail({ data }) {
             <Chip
               label={project.category}
               size="small"
-              sx={{ mb: 1.5, bgcolor: '#000', color: '#fff' }}
+              sx={{ mb: 1.5, bgcolor: '#000', color: '#fff', borderRadius: 0 }}
             />
           )}
           <Typography variant="h3" fontWeight={700} sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
             {project.title}
           </Typography>
           {project.subtitle && (
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1, lineHeight: 1.6 }}>
+            <Typography variant="body1" sx={{ mt: 1, lineHeight: 1.6 }}>
               {project.subtitle}
             </Typography>
           )}
           {project.date && (
-            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+            <Typography variant="caption" sx={{ display: 'block', mt: 1, fontWeight: 600 }}>
               {project.date}
             </Typography>
           )}
           {project.tags?.length > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 2 }}>
               {project.tags.map((tag) => (
-                <Chip key={tag} label={tag} size="small" variant="outlined" />
+                <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#000', color: '#000' }} />
               ))}
             </Box>
           )}
@@ -190,8 +191,8 @@ export default function ProjectDetail({ data }) {
           <Box sx={{ mb: 4 }}>
             {project.abstract && (
               <Box sx={{ mb: 3 }}>
-                <Typography variant="overline" sx={{ color: '#999', letterSpacing: '0.1em' }}>Abstract</Typography>
-                <Typography variant="body1" sx={{ mt: 0.5, lineHeight: 1.8, color: '#333' }}>
+                <Typography variant="overline" sx={{ color: '#000', letterSpacing: '0.1em', fontWeight: 700 }}>Abstract</Typography>
+                <Typography variant="body1" sx={{ mt: 0.5, lineHeight: 1.8, color: '#000' }}>
                   {project.abstract}
                 </Typography>
               </Box>
@@ -199,30 +200,30 @@ export default function ProjectDetail({ data }) {
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mb: 3 }}>
               {project.publication && (
                 <Box>
-                  <Typography variant="caption" color="text.secondary">Publication</Typography>
+                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Publication</Typography>
                   <Typography variant="body2" fontWeight={600}>{project.publication}</Typography>
                 </Box>
               )}
               {project.authors && (
                 <Box>
-                  <Typography variant="caption" color="text.secondary">Authors</Typography>
+                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Authors</Typography>
                   <Typography variant="body2">{project.authors}</Typography>
                 </Box>
               )}
               {project.year && (
                 <Box>
-                  <Typography variant="caption" color="text.secondary">Year</Typography>
+                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Year</Typography>
                   <Typography variant="body2">{project.year}</Typography>
                 </Box>
               )}
             </Box>
             {project.keyFindings?.length > 0 && (
-              <Box sx={{ mb: 3, p: 2, border: '1px solid #e0e0e0' }}>
+              <Box sx={{ mb: 3, p: 2, border: '1px solid #000' }}>
                 <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1 }}>Key Findings</Typography>
                 <Box component="ul" sx={{ m: 0, pl: 2.5 }}>
                   {project.keyFindings.map((finding, i) => (
                     <Box component="li" key={i} sx={{ mb: 0.5 }}>
-                      <Typography variant="body2" color="text.secondary">{finding}</Typography>
+                      <Typography variant="body2">{finding}</Typography>
                     </Box>
                   ))}
                 </Box>
@@ -231,7 +232,7 @@ export default function ProjectDetail({ data }) {
             {project.methodology && (
               <Box sx={{ mb: 3 }}>
                 <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1 }}>Methodology</Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                <Typography variant="body2" sx={{ lineHeight: 1.7 }}>
                   {project.methodology}
                 </Typography>
               </Box>
@@ -248,7 +249,7 @@ export default function ProjectDetail({ data }) {
                       rel="noopener noreferrer"
                       size="small"
                       variant="outlined"
-                      sx={{ color: '#000', borderColor: '#ccc', textTransform: 'none', minHeight: 36 }}
+                      sx={{ color: '#000', borderColor: '#000', textTransform: 'none', minHeight: 36 }}
                     >
                       {ds.label}
                     </Button>
@@ -256,7 +257,6 @@ export default function ProjectDetail({ data }) {
                 </Box>
               </Box>
             )}
-            {/* PDF viewer or fallback */}
             {project.pdfLink && (
               <Box sx={{ mb: 3 }}>
                 <Button
@@ -265,7 +265,7 @@ export default function ProjectDetail({ data }) {
                   rel="noopener noreferrer"
                   variant="contained"
                   startIcon={<PictureAsPdfIcon />}
-                  sx={{ bgcolor: '#000', color: '#fff', '&:hover': { bgcolor: '#333' }, minHeight: 48, textTransform: 'none', fontWeight: 600 }}
+                  sx={{ bgcolor: '#000', color: '#fff', '&:hover': { bgcolor: '#000' }, minHeight: 48, textTransform: 'none', fontWeight: 600 }}
                 >
                   Open PDF
                 </Button>
@@ -285,7 +285,7 @@ export default function ProjectDetail({ data }) {
             )}
             {/* Citation block */}
             {project.citationText && (
-              <Box sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+              <Box sx={{ p: 2, border: '1px solid #000', mb: 3 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
                   <Typography variant="subtitle2" fontWeight={700}>Citation</Typography>
                   <Button
@@ -297,7 +297,7 @@ export default function ProjectDetail({ data }) {
                     Copy
                   </Button>
                 </Box>
-                <Typography variant="body2" sx={{ fontFamily: 'monospace', fontSize: '0.8rem', color: '#555', lineHeight: 1.6 }}>
+                <Typography variant="body2" sx={{ fontFamily: 'monospace', fontSize: '0.8rem', color: '#000', lineHeight: 1.6 }}>
                   {project.citationText}
                 </Typography>
                 {project.bibtex && (
@@ -313,14 +313,14 @@ export default function ProjectDetail({ data }) {
                         Copy
                       </Button>
                     </Box>
-                    <Box sx={{ p: 1.5, bgcolor: '#f5f5f5', fontFamily: 'monospace', fontSize: '0.75rem', whiteSpace: 'pre-wrap', color: '#333' }}>
+                    <Box sx={{ p: 1.5, bgcolor: '#fff', border: '1px dashed #000', fontFamily: 'monospace', fontSize: '0.75rem', whiteSpace: 'pre-wrap', color: '#000' }}>
                       {project.bibtex}
                     </Box>
                   </Box>
                 )}
               </Box>
             )}
-            <Divider sx={{ mb: 0 }} />
+            <Divider sx={{ mb: 0, borderColor: '#000' }} />
           </Box>
         )}
 
@@ -340,7 +340,7 @@ export default function ProjectDetail({ data }) {
             >
               {project.techStack?.length > 0 && (
                 <Box>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     Tech Stack
                   </Typography>
                   <Typography variant="body2">
@@ -366,7 +366,7 @@ export default function ProjectDetail({ data }) {
                 </Box>
               )}
             </Box>
-            <Divider sx={{ mb: 4 }} />
+            <Divider sx={{ mb: 4, borderColor: '#000' }} />
           </>
         )}
 
@@ -390,7 +390,6 @@ export default function ProjectDetail({ data }) {
                         primary={h.text}
                         primaryTypographyProps={{
                           variant: 'body2',
-                          color: 'text.secondary',
                           fontSize: h.level === 3 ? '0.8rem' : '0.875rem',
                         }}
                       />
@@ -435,7 +434,6 @@ export default function ProjectDetail({ data }) {
                             primary={h.text}
                             primaryTypographyProps={{
                               variant: 'body2',
-                              color: 'text.secondary',
                               fontSize: h.level === 3 ? '0.8rem' : '0.875rem',
                             }}
                           />
@@ -462,7 +460,7 @@ export default function ProjectDetail({ data }) {
         {/* Related projects */}
         {relatedProjects.length > 0 && (
           <>
-            <Divider sx={{ mb: 4 }} />
+            <Divider sx={{ mb: 4, borderColor: '#000' }} />
             <Typography variant="h5" fontWeight={700} sx={{ mb: 3, fontSize: { xs: '1.15rem', md: '1.5rem' } }}>
               Related Projects
             </Typography>
@@ -477,13 +475,13 @@ export default function ProjectDetail({ data }) {
                       textDecoration: 'none',
                       color: 'inherit',
                       display: 'block',
-                      '&:hover': { borderColor: '#000' },
+                      border: '1px solid #000',
                       '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
                   >
                     <CardContent sx={{ p: { xs: 2, sm: 2 } }}>
                       {rp.category && (
-                        <Typography variant="overline" color="text.secondary">
+                        <Typography variant="overline" sx={{ fontWeight: 700 }}>
                           {rp.category}
                         </Typography>
                       )}
@@ -491,7 +489,7 @@ export default function ProjectDetail({ data }) {
                         {rp.title}
                       </Typography>
                       {rp.description && (
-                        <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                        <Typography variant="body2" sx={{ mt: 0.5 }}>
                           {rp.description}
                         </Typography>
                       )}
@@ -513,7 +511,7 @@ export default function ProjectDetail({ data }) {
           left: 0,
           right: 0,
           bgcolor: '#fff',
-          borderTop: '1px solid #e0e0e0',
+          borderTop: '1px solid #000',
           px: 2,
           py: 1.5,
           gap: 1,
@@ -547,7 +545,7 @@ export default function ProjectDetail({ data }) {
               variant="outlined"
               sx={{
                 color: '#000',
-                borderColor: '#e0e0e0',
+                borderColor: '#000',
                 textTransform: 'none',
                 fontWeight: 600,
                 fontSize: '0.8rem',
@@ -567,7 +565,7 @@ export default function ProjectDetail({ data }) {
               variant="outlined"
               sx={{
                 color: '#000',
-                borderColor: '#e0e0e0',
+                borderColor: '#000',
                 textTransform: 'none',
                 fontWeight: 600,
                 fontSize: '0.8rem',
