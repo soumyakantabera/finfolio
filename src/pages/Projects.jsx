@@ -104,8 +104,6 @@ export default function ProjectsPage({ data }) {
                   borderColor: '#000',
                   transform: prefersReducedMotion ? 'none' : 'translateY(-2px)',
                   '& .project-card-accent': { transform: 'scaleX(1)' },
-                  '& .project-card-reveal': { opacity: 1, transform: 'translateY(0)' },
-                  '& .project-card-actions': { opacity: 1, transform: 'translateY(0)' },
                 },
                 '&:focus-within': { borderColor: '#000' },
               }}
@@ -192,102 +190,68 @@ export default function ProjectsPage({ data }) {
                     <Typography variant="caption">{project.techStack.join(', ')}</Typography>
                   </Box>
                 )}
+
+                {/* Research Paper metadata */}
+                {project.category === 'Research Papers' && (
+                  <Box sx={{ mt: 1 }}>
+                    {project.publication && (
+                      <Typography variant="caption" sx={{ display: 'block', fontStyle: 'italic', color: '#555', mb: 0.5 }}>
+                        {project.publication}{project.year ? ` (${project.year})` : ''}
+                      </Typography>
+                    )}
+                    {project.authors && (
+                      <Typography variant="caption" sx={{ display: 'block', color: '#777', mb: 0.5 }}>
+                        {project.authors}
+                      </Typography>
+                    )}
+                  </Box>
+                )}
               </CardContent>
 
-              {/* Always visible on mobile, hover-revealed on desktop */}
-              <Box
-                className="project-card-reveal"
-                sx={{
-                  px: 2,
-                  py: 1,
-                  borderTop: '1px solid #f0f0f0',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  opacity: { xs: 1, sm: 0 },
-                  transform: { xs: 'none', sm: 'translateY(4px)' },
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.25s ease, transform 0.25s ease',
-                }}
-              >
-                {project.date && (
-                  <Typography variant="caption" sx={{ color: '#999' }}>
-                    {project.date}
-                  </Typography>
-                )}
-                {project.category && (
-                  <Typography variant="caption" sx={{ color: '#999', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
-                    {project.category}
-                  </Typography>
-                )}
-              </Box>
-
-              {/* Quick actions — hover-revealed on desktop, always visible on mobile */}
-              <Box
-                className="project-card-actions"
-                sx={{
-                  px: 2,
-                  py: 1,
-                  borderTop: '1px solid #f0f0f0',
-                  display: 'flex',
-                  gap: 1,
-                  opacity: { xs: 1, sm: 0 },
-                  transform: { xs: 'none', sm: 'translateY(4px)' },
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.25s ease, transform 0.25s ease',
-                }}
-              >
-                {project.slug && (
-                  <Button
-                    component={Link}
-                    to={`/projects/${project.slug}`}
-                    size="small"
-                    variant="outlined"
-                    sx={{ color: '#000', borderColor: '#000', textTransform: 'none', fontWeight: 600, minHeight: 36 }}
-                  >
-                    View
-                  </Button>
-                )}
-                {project.links?.some((l) => l.label.toLowerCase().includes('github')) && (
-                  <Button
-                    href={project.links.find((l) => l.label.toLowerCase().includes('github')).url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    size="small"
-                    variant="outlined"
-                    sx={{ color: '#000', borderColor: '#000', textTransform: 'none', fontWeight: 600, minHeight: 36 }}
-                  >
-                    GitHub
-                  </Button>
-                )}
-                {project.links?.some((l) => l.label.toLowerCase().includes('doc')) && (
-                  <Button
-                    href={project.links.find((l) => l.label.toLowerCase().includes('doc')).url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    size="small"
-                    variant="outlined"
-                    sx={{ color: '#000', borderColor: '#000', textTransform: 'none', fontWeight: 600, minHeight: 36 }}
-                  >
-                    Docs
-                  </Button>
-                )}
-              </Box>
-
-              {/* Links */}
               <CardActions sx={{ px: 2, pb: 2, pt: 1, justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
                 <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                  {project.links?.map((link, i) => (
-                    <Button
-                      key={i}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      size="small"
-                      sx={{ color: '#000', borderColor: '#000', minHeight: 44 }}
-                      variant="outlined"
-                    >
-                      {link.label}
-                    </Button>
-                  ))}
+                  {project.category === 'Research Papers' ? (
+                    <>
+                      {project.pdfLink && (
+                        <Button
+                          href={project.pdfLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          size="small"
+                          sx={{ color: '#fff', bgcolor: '#000', minHeight: 44, '&:hover': { bgcolor: '#333' } }}
+                          variant="contained"
+                        >
+                          Read Paper
+                        </Button>
+                      )}
+                      {project.doiLink && (
+                        <Button
+                          href={project.doiLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          size="small"
+                          sx={{ color: '#000', borderColor: '#000', minHeight: 44 }}
+                          variant="outlined"
+                        >
+                          DOI
+                        </Button>
+                      )}
+                    </>
+                  ) : (
+                    project.links?.map((link, i) => (
+                      <Button
+                        key={i}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        size="small"
+                        sx={{ color: '#000', borderColor: '#000', minHeight: 44 }}
+                        variant="outlined"
+                      >
+                        {link.label}
+                      </Button>
+                    ))
+                  )}
                 </Box>
                 {project.slug && (
                   <Button
