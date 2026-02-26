@@ -80,10 +80,13 @@ export default function Navbar({ data }) {
 
   const linkSx = (path) => ({
     color: '#000',
-    fontWeight: isActive(path) ? 700 : 500,
+    fontWeight: isActive(path) ? 700 : 400,
     borderBottom: isActive(path) ? '1px solid #000' : '1px solid transparent',
     borderRadius: 0,
-    mx: 0.5,
+    px: 1.5,
+    py: 0.75,
+    fontSize: '0.875rem',
+    letterSpacing: '0.01em',
     position: 'relative',
     transition: 'border-color 0.2s ease',
     '&:hover': {
@@ -100,18 +103,18 @@ export default function Navbar({ data }) {
   return (
     <>
       <AppBar position="sticky" sx={{ bgcolor: '#fff', color: '#000' }}>
-        <Toolbar>
+        <Toolbar sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 1, minHeight: { xs: 56, sm: 64 } }}>
           <Typography
             variant="h6"
             component={Link}
             to="/"
-            sx={{ fontWeight: 700, flexGrow: 1, color: '#000', textDecoration: 'none' }}
+            sx={{ fontWeight: 700, flexGrow: 1, color: '#000', textDecoration: 'none', fontSize: { xs: '1rem', sm: '1.1rem' } }}
           >
             {siteTitle}
           </Typography>
 
           {/* Desktop links */}
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: 1 }}>
             {navLinks.map((item) => (
               <Button key={item.key} component={Link} to={item.path} sx={linkSx(item.path)}>
                 {item.label}
@@ -180,8 +183,8 @@ export default function Navbar({ data }) {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              px: 2,
-              minHeight: 56,
+              px: 3,
+              minHeight: 64,
               borderBottom: '1px solid #000',
               flexShrink: 0,
             }}
@@ -221,7 +224,7 @@ export default function Navbar({ data }) {
           </Box>
 
           {/* Primary nav links */}
-          <Box component="nav" aria-label="Primary navigation" sx={{ flex: 1, px: 2, pt: 4 }}>
+          <Box component="nav" aria-label="Primary navigation" sx={{ flex: 1, px: 3, pt: 5 }}>
             {navLinks.map((item, i) => (
               <Box
                 key={item.key}
@@ -306,7 +309,7 @@ export default function Navbar({ data }) {
           {/* Menu footer */}
           <Box
             sx={{
-              px: 2,
+              px: 3,
               py: 3,
               borderTop: '1px solid #000',
               flexShrink: 0,

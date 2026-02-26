@@ -85,7 +85,7 @@ export default function MobileHeader({ data }) {
           justifyContent: 'space-between',
           alignItems: 'center',
           px: 'var(--page-pad-x)',
-          height: 48,
+          height: 56,
         }}
       >
         <Typography
@@ -154,7 +154,7 @@ export default function MobileHeader({ data }) {
               justifyContent: 'space-between',
               alignItems: 'center',
               px: 'var(--page-pad-x)',
-              height: 48,
+              height: 56,
               borderBottom: '1px solid #000',
               flexShrink: 0,
             }}
@@ -197,7 +197,7 @@ export default function MobileHeader({ data }) {
           </Box>
 
           {/* Nav links */}
-          <Box component="nav" aria-label="Primary navigation" sx={{ flex: 1, px: 'var(--page-pad-x)', pt: 3 }}>
+          <Box component="nav" aria-label="Primary navigation" sx={{ flex: 1, px: 'var(--page-pad-x)', pt: 4 }}>
             {navLinks.map((item, i) => (
               <Box
                 key={item.key}
@@ -207,12 +207,12 @@ export default function MobileHeader({ data }) {
                 sx={{
                   display: 'flex',
                   alignItems: 'baseline',
-                  gap: 1.5,
-                  py: 1.5,
+                  gap: 2,
+                  py: 2,
                   borderBottom: '1px dashed #000',
                   textDecoration: 'none',
                   color: '#000',
-                  minHeight: 44,
+                  minHeight: 48,
                   '&:active': { pl: 0.5 },
                   '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                 }}
@@ -245,7 +245,7 @@ export default function MobileHeader({ data }) {
             ))}
 
             {customLinks.length > 0 && (
-              <Box sx={{ mt: 2, pt: 1.5, borderTop: '1px solid #000' }}>
+              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #000' }}>
                 <Typography
                   variant="overline"
                   sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
@@ -277,7 +277,7 @@ export default function MobileHeader({ data }) {
           </Box>
 
           {/* Menu footer */}
-          <Box sx={{ px: 'var(--page-pad-x)', py: 2, borderTop: '1px solid #000', flexShrink: 0 }}>
+          <Box sx={{ px: 'var(--page-pad-x)', py: 3, borderTop: '1px solid #000', flexShrink: 0 }}>
             <Typography
               variant="caption"
               sx={{ color: '#000', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, fontSize: '0.6rem' }}
