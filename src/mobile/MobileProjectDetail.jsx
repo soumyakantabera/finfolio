@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import LinearProgress from '@mui/material/LinearProgress';
 import Collapse from '@mui/material/Collapse';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -36,33 +35,7 @@ export default function MobileProjectDetail({ data }) {
   const projects = data.projects || [];
   const project = projects.find((p) => p.slug === slug);
   const contentRef = useRef(null);
-  const [readingProgress, setReadingProgress] = useState(0);
   const [tocOpen, setTocOpen] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mql.matches);
-    const handler = (e) => setPrefersReducedMotion(e.matches);
-    mql.addEventListener('change', handler);
-    return () => mql.removeEventListener('change', handler);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!contentRef.current) return;
-      const el = contentRef.current;
-      const rect = el.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalHeight = el.scrollHeight;
-      const scrolled = Math.max(0, -rect.top);
-      const maxScroll = totalHeight - windowHeight;
-      if (maxScroll <= 0) { setReadingProgress(100); return; }
-      setReadingProgress(Math.min(100, (scrolled / maxScroll) * 100));
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   if (!project) {
     return (
@@ -105,27 +78,6 @@ export default function MobileProjectDetail({ data }) {
 
   return (
     <>
-      {/* Reading Progress Bar */}
-      <LinearProgress
-        variant="determinate"
-        value={readingProgress}
-        sx={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1300,
-          height: 2,
-          backgroundColor: 'transparent',
-          border: 'none',
-          transition: prefersReducedMotion ? 'none' : undefined,
-          '& .MuiLinearProgress-bar': {
-            backgroundColor: '#000',
-            transition: prefersReducedMotion ? 'none' : undefined,
-          },
-        }}
-      />
-
       {/* Sticky back row */}
       <Box
         sx={{
@@ -334,7 +286,7 @@ export default function MobileProjectDetail({ data }) {
                   borderBottom: i < arr.length - 1 ? '1px dashed #000' : 'none',
                   textDecoration: 'none',
                   color: '#000',
-                  '&:active': { pl: 0.5 },
+                  '&:active': { fontWeight: 700 },
                 }}
               >
                 {rp.category && (

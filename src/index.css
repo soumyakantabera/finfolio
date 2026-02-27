@@ -41,9 +41,9 @@
   --font-heading: 'Space Grotesk', 'Sora', 'Helvetica', 'Arial', sans-serif;
   --font-body: 'Sora', 'Helvetica', 'Arial', sans-serif;
 
-  --transition-fast: 0.15s ease;
-  --transition-base: 0.2s ease;
-  --transition-slow: 0.3s ease;
+  --transition-fast: 0s;
+  --transition-base: 0s;
+  --transition-slow: 0s;
 }
 
 /* ── Mobile Layout Tokens ── */
@@ -63,63 +63,18 @@ a { color: inherit; text-decoration: none; }
 .tabular-nums { font-variant-numeric: tabular-nums lining-nums; }
 table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
 
-/* ── Effect B — Underline Reveal (Ink Line) ── */
+/* ── Effect B — Underline on hover ── */
 .ink-link {
-  position: relative;
   display: inline-block;
 }
-.ink-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background: #000;
-  transition: width 0.3s ease;
-}
-.ink-link:hover::after,
-.ink-link:focus-visible::after {
-  width: 100%;
+.ink-link:hover,
+.ink-link:focus-visible {
+  text-decoration: underline;
 }
 
-/* ── Effect C — Dashed/Striped Pattern Accent ── */
-.pattern-stripe {
-  background: repeating-linear-gradient(
-    -45deg,
-    #000,
-    #000 1px,
-    #fff 1px,
-    #fff 6px
-  );
-}
-.pattern-dot {
-  background: radial-gradient(circle, #000 1px, transparent 1px);
-  background-size: 8px 8px;
-}
-
-/* ── Effect A — Hairline Frame Shift ── */
+/* ── Effect A — Frame highlight on hover ── */
 .frame-shift {
   position: relative;
-  transition: transform 0.2s ease;
-}
-.frame-shift::before {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  border: 1px solid #000;
-  opacity: 0;
-  transition: opacity 0.2s ease, inset 0.2s ease;
-  pointer-events: none;
-}
-.frame-shift:hover,
-.frame-shift:focus-visible {
-  transform: translate(-1px, -1px);
-}
-.frame-shift:hover::before,
-.frame-shift:focus-visible::before {
-  opacity: 1;
-  inset: -2px;
 }
 
 /* ── Effect E — Focus Ring System ── */
@@ -137,27 +92,8 @@ table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
 
 /* ── Mobile-Only Micro-Interactions ── */
 @media (max-width: 768px) {
-  /* Underline reveal on tap/active */
-  .mobile-ink-link {
-    position: relative;
-  }
-  .mobile-ink-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 1px;
-    background: #000;
-    transition: width 0.2s ease;
-  }
-  .mobile-ink-link:active::after {
-    width: 100%;
-  }
-
-  /* Frame shift on press (active state) */
-  .mobile-btn-press:active {
-    transform: translate(1px, 1px);
+  .mobile-ink-link:active {
+    text-decoration: underline;
   }
 }
 
@@ -168,18 +104,5 @@ table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-  .frame-shift:hover,
-  .frame-shift:focus-visible {
-    transform: none;
-  }
-  .ink-link::after {
-    transition: none;
-  }
-  .mobile-ink-link::after {
-    transition: none;
-  }
-  .mobile-btn-press:active {
-    transform: none;
   }
 }

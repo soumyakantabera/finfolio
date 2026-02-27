@@ -86,14 +86,11 @@ export default function HomePage({ data }) {
                         borderColor: '#000',
                         minHeight: 48,
                         px: { xs: 3, md: 4 },
-                        transition: 'all 0.2s ease',
                         '&:hover': {
                           bgcolor: '#000',
                           color: '#fff',
                           borderColor: '#000',
-                          transform: 'translateY(-1px)',
                         },
-                        '&:active': { transform: 'translateY(0)' },
                       }}
                     >
                       {btn.label}
@@ -283,7 +280,7 @@ export default function HomePage({ data }) {
                       minHeight: 44,
                       whiteSpace: 'nowrap',
                       flexShrink: 0,
-                      transition: 'all 0.2s ease',
+                      transition: 'none',
                       '&:hover': { bgcolor: '#000', color: '#fff' },
                       '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
@@ -401,8 +398,7 @@ export default function HomePage({ data }) {
                   borderBottom: i < featuredProjects.length - 1 ? '1px dashed #000' : 'none',
                   textDecoration: 'none',
                   color: 'inherit',
-                  transition: 'padding-left 0.2s ease',
-                  '&:hover': { pl: 1 },
+                  '&:hover': { fontWeight: 700 },
                   '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                 }}
               >
@@ -468,7 +464,7 @@ export default function HomePage({ data }) {
                 href={`mailto:${contact.email}`}
                 variant="contained"
                 size="large"
-                sx={{ bgcolor: '#000', minHeight: 48, px: { xs: 3, md: 4 }, transition: 'all 0.2s ease', '&:hover': { bgcolor: '#000', transform: 'translateY(-1px)' }, '&:active': { transform: 'translateY(0)' } }}
+                sx={{ bgcolor: '#000', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000' } }}
               >
                 Email me
               </Button>
@@ -478,7 +474,7 @@ export default function HomePage({ data }) {
               to="/contact"
               variant="outlined"
               size="large"
-              sx={{ color: '#000', borderColor: '#000', minHeight: 48, px: { xs: 3, md: 4 }, transition: 'all 0.2s ease', '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#fff', transform: 'translateY(-1px)' }, '&:active': { transform: 'translateY(0)' } }}
+              sx={{ color: '#000', borderColor: '#000', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#fff' } }}
             >
               Contact page
             </Button>

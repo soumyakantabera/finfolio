@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   Container,
@@ -10,7 +10,6 @@ import {
   CardContent,
   Divider,
   Grid,
-  LinearProgress,
   Collapse,
   List,
   ListItem,
@@ -50,33 +49,7 @@ export default function ProjectDetail({ data }) {
   const projects = data.projects || [];
   const project = projects.find((p) => p.slug === slug);
   const contentRef = useRef(null);
-  const [readingProgress, setReadingProgress] = useState(0);
   const [tocOpen, setTocOpen] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mql.matches);
-    const handler = (e) => setPrefersReducedMotion(e.matches);
-    mql.addEventListener('change', handler);
-    return () => mql.removeEventListener('change', handler);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!contentRef.current) return;
-      const el = contentRef.current;
-      const rect = el.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalHeight = el.scrollHeight;
-      const scrolled = Math.max(0, -rect.top);
-      const maxScroll = totalHeight - windowHeight;
-      if (maxScroll <= 0) { setReadingProgress(100); return; }
-      setReadingProgress(Math.min(100, (scrolled / maxScroll) * 100));
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   if (!project) {
     return (
@@ -107,27 +80,6 @@ export default function ProjectDetail({ data }) {
 
   return (
     <>
-      {/* Reading Progress Bar */}
-      <LinearProgress
-        variant="determinate"
-        value={readingProgress}
-        sx={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1300,
-          height: 2,
-          backgroundColor: 'transparent',
-          border: 'none',
-          transition: prefersReducedMotion ? 'none' : undefined,
-          '& .MuiLinearProgress-bar': {
-            backgroundColor: '#000',
-            transition: prefersReducedMotion ? 'none' : undefined,
-          },
-        }}
-      />
-
       <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 }, pb: { xs: 10, sm: 6 } }}>
         {/* Back navigation */}
         <Button

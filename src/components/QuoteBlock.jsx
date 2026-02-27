@@ -77,7 +77,7 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
                 bgcolor: i === activeIndex ? '#000' : '#fff',
                 border: '1px solid #000',
                 cursor: 'pointer',
-                transition: 'background-color 0.3s',
+                transition: 'none',
               }}
             />
           ))}

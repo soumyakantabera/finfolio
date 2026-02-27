@@ -36,18 +36,15 @@ const theme = createTheme({
           borderRadius: 0,
           padding: '8px 20px',
           boxShadow: 'none',
-          transition: 'all 0.2s ease',
           '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
         },
         contained: {
           boxShadow: 'none',
-          '&:hover': { boxShadow: 'none', transform: 'translateY(-1px)' },
-          '&:active': { transform: 'translateY(0)' },
+          '&:hover': { boxShadow: 'none' },
         },
         outlined: {
           borderColor: '#000',
           '&:hover': { backgroundColor: '#000', color: '#fff', borderColor: '#000' },
-          '&:active': { transform: 'translateY(0)' },
         },
       },
     },
@@ -91,12 +88,6 @@ const theme = createTheme({
     MuiToggleButton: {
       styleOverrides: {
         root: { borderRadius: 0 },
-      },
-    },
-    MuiLinearProgress: {
-      styleOverrides: {
-        root: { borderRadius: 0, backgroundColor: '#fff', border: '1px solid #000', height: 6 },
-        bar: { borderRadius: 0, backgroundColor: '#000' },
       },
     },
     MuiAvatar: {
