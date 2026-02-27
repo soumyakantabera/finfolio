@@ -10,7 +10,6 @@ import {
   Chip,
   Button,
   Box,
-  useMediaQuery,
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -18,7 +17,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 export default function ProjectsPage({ data }) {
   const projects = (data.projects || []).filter((p) => p.status !== 'draft');
   const [filter, setFilter] = useState('All');
-  const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
 
   const categories = useMemo(
     () => ['All', ...new Set(projects.map((p) => p.category).filter(Boolean))],
@@ -75,7 +73,7 @@ export default function ProjectsPage({ data }) {
                 minHeight: 44,
                 whiteSpace: 'nowrap',
                 flexShrink: 0,
-                transition: prefersReducedMotion ? 'none' : 'all 0.2s ease',
+                transition: 'none',
                 '&:hover': { bgcolor: '#000', color: '#fff' },
                 '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
               }}
