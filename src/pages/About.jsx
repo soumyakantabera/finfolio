@@ -3,8 +3,6 @@ import {
   Container,
   Typography,
   Box,
-  Card,
-  CardContent,
   Avatar,
   Grid,
   IconButton,
@@ -13,16 +11,10 @@ import {
   Modal,
   Button,
 } from '@mui/material';
-import SchoolIcon from '@mui/icons-material/School';
-import WorkIcon from '@mui/icons-material/Work';
-import CodeIcon from '@mui/icons-material/Code';
-import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LanguageIcon from '@mui/icons-material/Language';
-import ArticleIcon from '@mui/icons-material/Article';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
@@ -39,37 +31,6 @@ const platformIcon = (platform) => {
   return <LanguageIcon />;
 };
 
-const SectionHeader = ({ icon, children, collapsible, expanded, onToggle }) => (
-  <Box
-    sx={{
-      display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, mt: { xs: 6, md: 8 },
-      cursor: collapsible ? 'pointer' : 'default',
-      minHeight: 44,
-    }}
-    onClick={collapsible ? onToggle : undefined}
-    role={collapsible ? 'button' : undefined}
-    tabIndex={collapsible ? 0 : undefined}
-    aria-expanded={collapsible ? expanded : undefined}
-    onKeyDown={collapsible ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); } } : undefined}
-  >
-    <Box sx={{
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      width: 40, height: 40, bgcolor: '#000', color: '#fff', flexShrink: 0,
-    }}>
-      {icon}
-    </Box>
-    <Typography variant="h5" fontWeight={700} sx={{ letterSpacing: '-0.02em', fontSize: { xs: '1.15rem', md: '1.5rem' } }}>
-      {children}
-    </Typography>
-    <Box sx={{ flex: 1, height: '1px', bgcolor: '#000', ml: 2 }} />
-    {collapsible && (
-      <Box sx={{ flexShrink: 0, color: '#000', display: 'flex' }}>
-        {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-      </Box>
-    )}
-  </Box>
-);
-
 export default function AboutPage({ data }) {
   const { about } = data;
   const [expandedSections, setExpandedSections] = useState({});
@@ -85,241 +46,286 @@ export default function AboutPage({ data }) {
   }, [selectedCert]);
 
   const toggleSection = (key) => {
-    setExpandedSections((prev) => ({ ...prev, [key]: !prev[key] }));
+    setExpandedSections((prev) => ({ ...prev, [key]: prev[key] === false }));
   };
 
-  // Default all sections to expanded
   const isSectionExpanded = (key) => expandedSections[key] !== false;
 
+  const SectionHeading = ({ number, title, collapsible, sectionKey }) => (
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        mb: { xs: 3, md: 5 },
+        flexWrap: 'wrap',
+        gap: 2,
+        cursor: collapsible ? 'pointer' : 'default',
+        minHeight: 44,
+      }}
+      onClick={collapsible ? () => toggleSection(sectionKey) : undefined}
+      role={collapsible ? 'button' : undefined}
+      tabIndex={collapsible ? 0 : undefined}
+      aria-expanded={collapsible ? isSectionExpanded(sectionKey) : undefined}
+      onKeyDown={collapsible ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSection(sectionKey); } } : undefined}
+    >
+      <Box>
+        {number && (
+          <Typography
+            variant="overline"
+            sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 600 }}
+          >
+            {number}
+          </Typography>
+        )}
+        <Typography variant="h4" fontWeight={600} sx={{ fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
+          {title}
+        </Typography>
+      </Box>
+      {collapsible && (
+        <Box sx={{ color: '#555', display: 'flex', alignItems: 'center' }}>
+          {isSectionExpanded(sectionKey) ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </Box>
+      )}
+    </Box>
+  );
+
   return (
-    <Box sx={{ bgcolor: '#fff', minHeight: '100vh' }}>
-      {/* Hero Section */}
-      <Box sx={{
-        bgcolor: '#fff', borderBottom: '1px solid #000',
-        py: { xs: 4, md: 8 }, px: { xs: 2, md: 5 },
-      }}>
-        <Container maxWidth="md">
-          <Box sx={{
-            display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center',
-          }}>
-            <Avatar
-              src={about.profilePhoto || undefined}
-              alt={about.name}
-              sx={{
-                width: { xs: 100, md: 160 }, height: { xs: 100, md: 160 },
-                bgcolor: '#000', fontSize: { xs: 40, md: 64 }, fontWeight: 700,
-                color: '#fff',
-                border: '2px solid #000',
-                mb: 3, borderRadius: 0,
-              }}
-            >
-              {about.name?.[0]}
-            </Avatar>
-            <Typography variant="h3" fontWeight={800} sx={{
-              letterSpacing: '-0.03em', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' },
-            }}>
-              {about.name}
-            </Typography>
-            {about.introTitle && (
-              <Typography variant="h6" sx={{
-                color: '#000', fontWeight: 400, mt: 1, fontSize: { xs: '0.95rem', md: '1.25rem' },
-              }}>
-                {about.introTitle}
+    <Box>
+      {/* ── 01 / Hero ── */}
+      <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+        <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
+          <Grid container spacing={{ xs: 2, md: 3 }} alignItems="flex-start">
+            {/* Left: headline */}
+            <Grid size={{ xs: 12, md: 7 }}>
+              <Typography
+                variant="overline"
+                sx={{ color: '#555', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block', fontWeight: 600 }}
+              >
+                01 / About
               </Typography>
-            )}
-            {about.introDescription && (
-              <Typography variant="body1" sx={{
-                color: '#000', mt: 2, maxWidth: 600, lineHeight: 1.8, fontSize: { xs: '0.95rem', md: '1rem' },
-              }}>
-                {about.introDescription}
+              <Typography
+                variant="h2"
+                component="h1"
+                sx={{
+                  fontFamily: '"Space Grotesk", sans-serif',
+                  fontWeight: 700,
+                  fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' },
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1.15,
+                  mb: 2,
+                }}
+              >
+                {about.name}
               </Typography>
-            )}
+              {about.introTitle && (
+                <Typography
+                  variant="h6"
+                  sx={{ color: '#333', fontWeight: 400, mb: 2, fontSize: { xs: '1rem', md: '1.25rem' }, lineHeight: 1.6 }}
+                >
+                  {about.introTitle}
+                </Typography>
+              )}
+              {about.introDescription && (
+                <Typography variant="body1" sx={{ color: '#444', maxWidth: 500, mb: 3, lineHeight: 1.7 }}>
+                  {about.introDescription}
+                </Typography>
+              )}
+              {/* Contact Links */}
+              {about.contactLinks?.length > 0 && (
+                <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
+                  {about.contactLinks.map((link) => (
+                    <IconButton
+                      key={link.id}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.platform}
+                      sx={{
+                        color: '#111', border: '1px solid #e0e0e0',
+                        width: 44, height: 44,
+                        '&:hover': { bgcolor: '#111', color: '#fff', borderColor: '#111' },
+                      }}
+                      size="small"
+                    >
+                      {platformIcon(link.platform)}
+                    </IconButton>
+                  ))}
+                </Box>
+              )}
+            </Grid>
 
-            {/* Metrics */}
-            {about.metrics?.length > 0 && (
-              <Box sx={{
-                display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: { xs: 1, md: 2 }, mt: 4,
-              }}>
-                {about.metrics.map((m) => (
-                  <Box key={m.id} sx={{
-                    px: { xs: 2, md: 3 }, py: 1.5, bgcolor: '#fff',
-                    border: '1px solid #000', minWidth: { xs: 100, md: 120 }, textAlign: 'center',
-                  }}>
-                    <Typography variant="h6" fontWeight={700} className="tabular-nums" sx={{ color: '#000', fontSize: { xs: '1rem', md: '1.25rem' } }}>
-                      {m.value}
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: 1, fontSize: '0.65rem', fontWeight: 600 }}>
-                      {m.label}
-                    </Typography>
-                  </Box>
-                ))}
-              </Box>
-            )}
-
-            {/* Contact Links */}
-            {about.contactLinks?.length > 0 && (
-              <Box sx={{ display: 'flex', gap: 1, mt: 3, flexWrap: 'wrap', justifyContent: 'center' }}>
-                {about.contactLinks.map((link) => (
-                  <IconButton
-                    key={link.id}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={link.platform}
+            {/* Right: profile card */}
+            <Grid size={{ xs: 12, md: 5 }}>
+              <Box sx={{ border: '1px solid #e0e0e0', p: { xs: 2.5, md: 4 } }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                  <Avatar
+                    src={about.profilePhoto || undefined}
+                    alt={about.name}
                     sx={{
-                      color: '#000', border: '1px solid #000',
-                      width: 44, height: 44,
-                      transition: 'all 0.2s ease',
-                      '&:hover': { bgcolor: '#000', color: '#fff' },
+                      width: 64, height: 64,
+                      bgcolor: '#111', fontSize: 28, fontWeight: 700,
+                      color: '#fff', border: '1px solid #e0e0e0',
                     }}
-                    size="small"
                   >
-                    {platformIcon(link.platform)}
-                  </IconButton>
-                ))}
+                    {about.name?.[0]}
+                  </Avatar>
+                  <Box>
+                    <Typography variant="subtitle1" fontWeight={600}>{about.name}</Typography>
+                    {about.introTitle && (
+                      <Typography variant="body2" sx={{ color: '#555' }}>{about.introTitle}</Typography>
+                    )}
+                  </Box>
+                </Box>
+                {/* Metrics */}
+                {about.metrics?.length > 0 && (
+                  <Box>
+                    <Typography
+                      variant="overline"
+                      sx={{ color: '#555', letterSpacing: '0.15em', mb: 1.5, display: 'block', fontWeight: 600 }}
+                    >
+                      At a glance
+                    </Typography>
+                    {about.metrics.map((m, i) => (
+                      <Box
+                        key={m.id}
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          py: 1.5,
+                          borderBottom: i < about.metrics.length - 1 ? '1px solid #eee' : 'none',
+                          minHeight: 44,
+                        }}
+                      >
+                        <Typography variant="caption" sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
+                          {m.label}
+                        </Typography>
+                        <Typography variant="body2" className="tabular-nums" sx={{ fontWeight: 600 }}>
+                          {m.value}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                )}
               </Box>
-            )}
-          </Box>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 } }}>
-        {/* Bio */}
-        {about.bio && (
-          <Box sx={{ maxWidth: 800, mx: 'auto', mt: { xs: 2, md: 4 }, mb: 2 }}>
-            <SectionHeader icon={<ArticleIcon fontSize="small" />}>About Me</SectionHeader>
+      {/* ── 02 / Bio ── */}
+      {about.bio && (
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+            <SectionHeading number="02 / Bio" title="About Me" />
             <Typography variant="body1" sx={{
-              lineHeight: 2, color: '#000', whiteSpace: 'pre-line', fontSize: { xs: '0.95rem', md: '1.05rem' },
+              lineHeight: 1.8, color: '#444', whiteSpace: 'pre-line', maxWidth: 700,
+              fontSize: { xs: '0.95rem', md: '1.05rem' },
             }}>
               {about.bio}
             </Typography>
-          </Box>
-        )}
+          </Container>
+        </Box>
+      )}
 
-        {/* Experience Timeline */}
-        {about.experience?.length > 0 && (
-          <Box>
-            <SectionHeader
-              icon={<WorkIcon fontSize="small" />}
+      {/* ── 03 / Experience ── */}
+      {about.experience?.length > 0 && (
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+            <SectionHeading
+              number="03 / Experience"
+              title="Experience"
               collapsible
-              expanded={isSectionExpanded('experience')}
-              onToggle={() => toggleSection('experience')}
-            >
-              Experience
-            </SectionHeader>
+              sectionKey="experience"
+            />
             <Collapse in={isSectionExpanded('experience')}>
-              <Box sx={{ position: 'relative', pl: { xs: 3, md: 5 } }}>
-                {/* Timeline line */}
-                <Box sx={{
-                  position: 'absolute', left: { xs: 10, md: 18 }, top: 8, bottom: 8,
-                  width: 2, bgcolor: '#000',
-                }} />
-                {about.experience.map((exp, idx) => (
-                  <Box key={exp.id} sx={{
-                    position: 'relative', mb: 3,
-                    '&:last-child': { mb: 0 },
-                  }}>
-                    {/* Dot */}
-                    <Box sx={{
-                      position: 'absolute',
-                      left: { xs: -22, md: -36 },
-                      top: 20,
-                      width: 14, height: 14,
-                      bgcolor: idx === 0 ? '#000' : '#fff',
-                      border: '3px solid #000',
-                      zIndex: 1,
-                    }} />
-                    <Card sx={{ border: '1px solid #000', bgcolor: '#fff' }} variant="outlined">
-                      <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } } }}>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1 }}>
-                          <Box sx={{ minWidth: 0, flex: 1 }}>
-                            <Typography variant="h6" fontWeight={700} sx={{ fontSize: { xs: '0.95rem', md: '1.05rem' } }}>
-                              {exp.role}
-                            </Typography>
-                            <Typography variant="body2" sx={{ color: '#000', fontWeight: 500 }}>
-                              {exp.company}
-                            </Typography>
-                          </Box>
-                          <Chip label={exp.period} size="small" sx={{
-                            bgcolor: '#fff', color: '#000', fontWeight: 600, fontSize: '0.7rem',
-                            border: '1px solid #000',
-                          }} />
-                        </Box>
-                        {exp.description && (
-                          <Typography variant="body2" sx={{ mt: 1.5, color: '#000', lineHeight: 1.7 }}>
-                            {exp.description}
-                          </Typography>
-                        )}
-                      </CardContent>
-                    </Card>
+              {about.experience.map((exp, idx) => (
+                <Box
+                  key={exp.id}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    flexWrap: 'wrap',
+                    gap: 1,
+                    py: 2.5,
+                    borderBottom: idx < about.experience.length - 1 ? '1px solid #eee' : 'none',
+                    minHeight: 56,
+                  }}
+                >
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography variant="body1" fontWeight={600}>
+                      {exp.role}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: '#555', mt: 0.5 }}>
+                      {exp.company}
+                    </Typography>
+                    {exp.description && (
+                      <Typography variant="body2" sx={{ mt: 1.5, color: '#444', lineHeight: 1.7 }}>
+                        {exp.description}
+                      </Typography>
+                    )}
                   </Box>
-                ))}
-              </Box>
+                  <Chip label={exp.period} size="small" sx={{
+                    bgcolor: '#fff', color: '#555', fontWeight: 600, fontSize: '0.7rem',
+                    border: '1px solid #e0e0e0',
+                  }} />
+                </Box>
+              ))}
             </Collapse>
-          </Box>
-        )}
+          </Container>
+        </Box>
+      )}
 
-        {/* Education */}
-        {about.education?.length > 0 && (
-          <Box>
-            <SectionHeader
-              icon={<SchoolIcon fontSize="small" />}
+      {/* ── 04 / Education ── */}
+      {about.education?.length > 0 && (
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+            <SectionHeading
+              number="04 / Education"
+              title="Education"
               collapsible
-              expanded={isSectionExpanded('education')}
-              onToggle={() => toggleSection('education')}
-            >
-              Education
-            </SectionHeader>
+              sectionKey="education"
+            />
             <Collapse in={isSectionExpanded('education')}>
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.education.map((edu) => (
                   <Grid size={{ xs: 12, md: 6 }} key={edu.id}>
-                    <Card sx={{ border: '1px solid #000', height: '100%' }} variant="outlined">
-                      <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } } }}>
-                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-                          <Box sx={{
-                            width: 44, height: 44, bgcolor: '#000', color: '#fff',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                          }}>
-                            <SchoolIcon sx={{ fontSize: 22 }} />
-                          </Box>
-                          <Box sx={{ flex: 1, minWidth: 0 }}>
-                            <Typography variant="subtitle1" fontWeight={700} sx={{ fontSize: { xs: '0.95rem', md: '1rem' } }}>
-                              {edu.degree}
-                            </Typography>
-                            <Typography variant="body2" sx={{ color: '#000' }}>
-                              {edu.institution}
-                            </Typography>
-                            <Typography variant="caption" sx={{ color: '#000', fontWeight: 600 }}>
-                              {edu.year}
-                            </Typography>
-                            {edu.details && (
-                              <Typography variant="body2" sx={{ mt: 1.5, color: '#000', lineHeight: 1.7 }}>
-                                {edu.details}
-                              </Typography>
-                            )}
-                          </Box>
-                        </Box>
-                      </CardContent>
-                    </Card>
+                    <Box sx={{ border: '1px solid #e0e0e0', p: { xs: 2.5, md: 3 }, height: '100%' }}>
+                      <Typography variant="subtitle1" fontWeight={600}>
+                        {edu.degree}
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: '#555', mt: 0.5 }}>
+                        {edu.institution}
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: '#555', fontWeight: 600, display: 'block', mt: 0.5 }}>
+                        {edu.year}
+                      </Typography>
+                      {edu.details && (
+                        <Typography variant="body2" sx={{ mt: 1.5, color: '#444', lineHeight: 1.7 }}>
+                          {edu.details}
+                        </Typography>
+                      )}
+                    </Box>
                   </Grid>
                 ))}
               </Grid>
             </Collapse>
-          </Box>
-        )}
+          </Container>
+        </Box>
+      )}
 
-        {/* Skills — no progress bars, use text-based matrix */}
-        {about.skills?.length > 0 && (
-          <Box>
-            <SectionHeader
-              icon={<CodeIcon fontSize="small" />}
+      {/* ── 05 / Skills ── */}
+      {about.skills?.length > 0 && (
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+            <SectionHeading
+              number="05 / Skills"
+              title="Skills"
               collapsible
-              expanded={isSectionExpanded('skills')}
-              onToggle={() => toggleSection('skills')}
-            >
-              Skills
-            </SectionHeader>
+              sectionKey="skills"
+            />
             <Collapse in={isSectionExpanded('skills')}>
               <Grid container spacing={2}>
                 {about.skills.map((skill) => (
@@ -327,13 +333,13 @@ export default function AboutPage({ data }) {
                     <Box sx={{
                       display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                       py: 1.5, px: 2,
-                      border: '1px solid #000',
+                      border: '1px solid #e0e0e0',
                       minHeight: 44,
                     }}>
                       <Typography variant="body2" fontWeight={600}>
                         {skill.name}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                      <Typography variant="caption" sx={{ color: '#555', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                         {skill.level}
                       </Typography>
                     </Box>
@@ -341,247 +347,242 @@ export default function AboutPage({ data }) {
                 ))}
               </Grid>
             </Collapse>
-          </Box>
-        )}
+          </Container>
+        </Box>
+      )}
 
-        {/* Certifications */}
-        {about.certifications?.length > 0 && (
-          <Box>
-            <SectionHeader
-              icon={<VerifiedUserIcon fontSize="small" />}
+      {/* ── 06 / Certifications ── */}
+      {about.certifications?.length > 0 && (
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+            <SectionHeading
+              number="06 / Certifications"
+              title="Certifications"
               collapsible
-              expanded={isSectionExpanded('certifications')}
-              onToggle={() => toggleSection('certifications')}
-            >
-              Certifications
-            </SectionHeader>
+              sectionKey="certifications"
+            />
             <Collapse in={isSectionExpanded('certifications')}>
               <Grid container spacing={2}>
                 {about.certifications.map((cert) => {
                   const hasMedia = !!cert.mediaUrl;
                   return (
                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={cert.id}>
-                      <Card
+                      <Box
                         sx={{
-                          border: '1px solid #000',
+                          border: '1px solid #e0e0e0',
+                          p: { xs: 2, md: 2.5 },
                           cursor: hasMedia ? 'pointer' : 'default',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 1.5,
+                          minHeight: 56,
+                          '&:hover': hasMedia ? { borderColor: '#111' } : {},
+                          '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
                         }}
-                        variant="outlined"
                         onClick={hasMedia ? () => setSelectedCert(cert) : undefined}
                         role={hasMedia ? 'button' : undefined}
                         tabIndex={hasMedia ? 0 : undefined}
                         onKeyDown={hasMedia ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedCert(cert); } } : undefined}
                       >
-                        <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } }, display: 'flex', alignItems: 'center', gap: 2, minHeight: 56 }}>
-                          <Box sx={{
-                            width: 38, height: 38, bgcolor: '#000', color: '#fff',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                          }}>
-                            <VerifiedUserIcon sx={{ fontSize: 20 }} />
-                          </Box>
-                          <Box sx={{ minWidth: 0, flex: 1 }}>
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                              <Typography variant="body2" fontWeight={700}>
-                                {cert.title || cert.name}
-                              </Typography>
-                              {hasMedia && (
-                                cert.mediaType === 'pdf'
-                                  ? <PictureAsPdfIcon sx={{ fontSize: 16, color: '#000' }} />
-                                  : <ImageIcon sx={{ fontSize: 16, color: '#000' }} />
-                              )}
-                            </Box>
-                            {cert.issuer && (
-                              <Typography variant="caption" sx={{ color: '#000', display: 'block' }}>
-                                {cert.issuer}
-                              </Typography>
-                            )}
-                            <Typography variant="caption" sx={{ color: '#000', fontWeight: 600 }}>
-                              {cert.date || cert.year}
+                        <Box sx={{ minWidth: 0, flex: 1 }}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                            <Typography variant="body2" fontWeight={600}>
+                              {cert.title || cert.name}
                             </Typography>
+                            {hasMedia && (
+                              cert.mediaType === 'pdf'
+                                ? <PictureAsPdfIcon sx={{ fontSize: 16, color: '#555' }} />
+                                : <ImageIcon sx={{ fontSize: 16, color: '#555' }} />
+                            )}
                           </Box>
-                        </CardContent>
-                      </Card>
+                          {cert.issuer && (
+                            <Typography variant="caption" sx={{ color: '#555', display: 'block' }}>
+                              {cert.issuer}
+                            </Typography>
+                          )}
+                          <Typography variant="caption" sx={{ color: '#555', fontWeight: 600 }}>
+                            {cert.date || cert.year}
+                          </Typography>
+                        </Box>
+                      </Box>
                     </Grid>
                   );
                 })}
               </Grid>
             </Collapse>
-          </Box>
-        )}
+          </Container>
+        </Box>
+      )}
 
-        {/* Certification Viewer Modal — strict B&W */}
-        <Modal
-          open={!!selectedCert}
-          onClose={() => setSelectedCert(null)}
-          closeAfterTransition
-          slotProps={{ backdrop: { sx: { bgcolor: '#fff' } } }}
-        >
+      {/* Certification Viewer Modal */}
+      <Modal
+        open={!!selectedCert}
+        onClose={() => setSelectedCert(null)}
+        closeAfterTransition
+        slotProps={{ backdrop: { sx: { bgcolor: 'rgba(255,255,255,0.95)' } } }}
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: { xs: 0, md: '50%' },
+          left: { xs: 0, md: '50%' },
+          transform: { xs: 'none', md: 'translate(-50%, -50%)' },
+          width: { xs: '100%', md: '90%' },
+          maxWidth: { xs: '100%', md: 900 },
+          height: { xs: '100%', md: 'auto' },
+          maxHeight: { xs: '100%', md: '85vh' },
+          bgcolor: '#fff',
+          border: '1px solid #e0e0e0',
+          display: 'flex',
+          flexDirection: 'column',
+          outline: 'none',
+        }}>
+          {/* Header */}
           <Box sx={{
-            position: 'absolute',
-            top: { xs: 0, md: '50%' },
-            left: { xs: 0, md: '50%' },
-            transform: { xs: 'none', md: 'translate(-50%, -50%)' },
-            width: { xs: '100%', md: '90%' },
-            maxWidth: { xs: '100%', md: 900 },
-            height: { xs: '100%', md: 'auto' },
-            maxHeight: { xs: '100%', md: '85vh' },
-            bgcolor: '#fff',
-            border: '2px solid #000',
-            borderRadius: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            outline: 'none',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            px: { xs: 2, md: 3 }, py: 1.5,
+            borderBottom: '1px solid #e0e0e0', flexShrink: 0,
           }}>
-            {/* Header */}
-            <Box sx={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              px: { xs: 2, md: 3 }, py: 1.5,
-              borderBottom: '1px solid #000', flexShrink: 0,
-            }}>
-              <Typography variant="subtitle1" fontWeight={700} noWrap sx={{ flex: 1, mr: 1 }}>
-                {selectedCert?.title || selectedCert?.name}
-              </Typography>
-              <IconButton
-                onClick={() => setSelectedCert(null)}
-                aria-label="Close"
-                sx={{ color: '#000', flexShrink: 0, border: '1px solid #000', borderRadius: 0, width: 40, height: 40 }}
-                size="large"
-              >
-                <CloseIcon />
-              </IconButton>
-            </Box>
+            <Typography variant="subtitle1" fontWeight={600} noWrap sx={{ flex: 1, mr: 1 }}>
+              {selectedCert?.title || selectedCert?.name}
+            </Typography>
+            <IconButton
+              onClick={() => setSelectedCert(null)}
+              aria-label="Close"
+              sx={{ color: '#111', flexShrink: 0, border: '1px solid #e0e0e0', width: 40, height: 40 }}
+              size="large"
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
 
-            {/* Body */}
-            <Box sx={{ flex: 1, overflow: 'auto', minHeight: 0 }}>
-              {selectedCert?.mediaType === 'pdf' ? (
-                <iframe
-                  src={selectedCert.mediaUrl}
-                  title={selectedCert.title || selectedCert.name}
-                  style={{ width: '100%', height: '100%', minHeight: 500, border: 'none', display: 'block' }}
+          {/* Body */}
+          <Box sx={{ flex: 1, overflow: 'auto', minHeight: 0 }}>
+            {selectedCert?.mediaType === 'pdf' ? (
+              <iframe
+                src={selectedCert.mediaUrl}
+                title={selectedCert.title || selectedCert.name}
+                style={{ width: '100%', height: '100%', minHeight: 500, border: 'none', display: 'block' }}
+              />
+            ) : (
+              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p: 2 }}>
+                <img
+                  src={selectedCert?.mediaUrl}
+                  alt={selectedCert?.title || selectedCert?.name}
+                  style={{ maxWidth: '100%', maxHeight: '60vh', objectFit: 'contain' }}
                 />
-              ) : (
-                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p: 2 }}>
-                  <img
-                    src={selectedCert?.mediaUrl}
-                    alt={selectedCert?.title || selectedCert?.name}
-                    style={{ maxWidth: '100%', maxHeight: '60vh', objectFit: 'contain' }}
-                  />
-                </Box>
+              </Box>
+            )}
+          </Box>
+
+          {/* Footer */}
+          <Box sx={{
+            px: { xs: 2, md: 3 }, py: 2,
+            borderTop: '1px solid #e0e0e0', flexShrink: 0,
+            display: 'flex', flexDirection: { xs: 'column', md: 'row' },
+            alignItems: { xs: 'stretch', md: 'center' },
+            gap: 2,
+          }}>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              {selectedCert?.issuer && (
+                <Typography variant="body2">
+                  <strong>Issuer:</strong> {selectedCert.issuer}
+                </Typography>
+              )}
+              {(selectedCert?.date || selectedCert?.year) && (
+                <Typography variant="body2">
+                  <strong>Date:</strong> {selectedCert.date || selectedCert.year}
+                </Typography>
+              )}
+              {selectedCert?.credentialId && (
+                <Typography variant="body2">
+                  <strong>Credential ID:</strong> {selectedCert.credentialId}
+                </Typography>
               )}
             </Box>
-
-            {/* Footer */}
-            <Box sx={{
-              px: { xs: 2, md: 3 }, py: 2,
-              borderTop: '1px solid #000', flexShrink: 0,
-              display: 'flex', flexDirection: { xs: 'column', md: 'row' },
-              alignItems: { xs: 'stretch', md: 'center' },
-              gap: 2,
-            }}>
-              <Box sx={{ flex: 1, minWidth: 0 }}>
-                {selectedCert?.issuer && (
-                  <Typography variant="body2">
-                    <strong>Issuer:</strong> {selectedCert.issuer}
-                  </Typography>
-                )}
-                {(selectedCert?.date || selectedCert?.year) && (
-                  <Typography variant="body2">
-                    <strong>Date:</strong> {selectedCert.date || selectedCert.year}
-                  </Typography>
-                )}
-                {selectedCert?.credentialId && (
-                  <Typography variant="body2">
-                    <strong>Credential ID:</strong> {selectedCert.credentialId}
-                  </Typography>
-                )}
-              </Box>
-              <Box sx={{ display: 'flex', gap: 1, flexShrink: 0 }}>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  startIcon={<DownloadIcon />}
-                  href={selectedCert?.mediaUrl}
-                  download
-                  sx={{
-                    borderColor: '#000', color: '#000', borderRadius: 0,
-                    '&:hover': { bgcolor: '#000', color: '#fff', borderColor: '#000' },
-                  }}
-                >
-                  Download
-                </Button>
-                <Button
-                  variant="contained"
-                  size="small"
-                  startIcon={<OpenInNewIcon />}
-                  href={selectedCert?.mediaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    bgcolor: '#000', color: '#fff', borderRadius: 0, boxShadow: 'none',
-                    '&:hover': { bgcolor: '#000', boxShadow: 'none' },
-                  }}
-                >
-                  Open in new tab
-                </Button>
-              </Box>
+            <Box sx={{ display: 'flex', gap: 1, flexShrink: 0 }}>
+              <Button
+                variant="outlined"
+                size="small"
+                startIcon={<DownloadIcon />}
+                href={selectedCert?.mediaUrl}
+                download
+                sx={{
+                  borderColor: '#111', color: '#111',
+                  '&:hover': { bgcolor: '#111', color: '#fff', borderColor: '#111' },
+                }}
+              >
+                Download
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
+                startIcon={<OpenInNewIcon />}
+                href={selectedCert?.mediaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  bgcolor: '#111', color: '#fff', boxShadow: 'none',
+                  '&:hover': { bgcolor: '#333', boxShadow: 'none' },
+                }}
+              >
+                Open in new tab
+              </Button>
             </Box>
           </Box>
-        </Modal>
+        </Box>
+      </Modal>
 
-        {/* Achievements */}
-        {about.achievements?.length > 0 && (
-          <Box>
-            <SectionHeader
-              icon={<EmojiEventsIcon fontSize="small" />}
+      {/* ── 07 / Achievements ── */}
+      {about.achievements?.length > 0 && (
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+            <SectionHeading
+              number="07 / Achievements"
+              title="Achievements"
               collapsible
-              expanded={isSectionExpanded('achievements')}
-              onToggle={() => toggleSection('achievements')}
-            >
-              Achievements
-            </SectionHeader>
+              sectionKey="achievements"
+            />
             <Collapse in={isSectionExpanded('achievements')}>
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.achievements.map((ach) => (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={ach.id}>
-                    <Card sx={{ border: '1px solid #000', height: '100%' }} variant="outlined">
-                      <CardContent sx={{ p: { xs: 2, md: 3 }, '&:last-child': { pb: { xs: 2, md: 3 } } }}>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
-                          <EmojiEventsIcon sx={{ color: '#000', fontSize: 24 }} />
-                          <Typography variant="subtitle2" fontWeight={700}>
-                            {ach.title}
-                          </Typography>
-                        </Box>
-                        {ach.description && (
-                          <Typography variant="body2" sx={{ color: '#000', lineHeight: 1.7 }}>
-                            {ach.description}
-                          </Typography>
-                        )}
-                        {ach.year && (
-                          <Typography variant="caption" sx={{ color: '#000', display: 'block', mt: 1.5, fontWeight: 600 }}>
-                            {ach.year}
-                          </Typography>
-                        )}
-                      </CardContent>
-                    </Card>
+                    <Box sx={{ border: '1px solid #e0e0e0', p: { xs: 2.5, md: 3 }, height: '100%' }}>
+                      <Typography variant="body1" fontWeight={600}>
+                        {ach.title}
+                      </Typography>
+                      {ach.description && (
+                        <Typography variant="body2" sx={{ color: '#444', lineHeight: 1.7, mt: 1 }}>
+                          {ach.description}
+                        </Typography>
+                      )}
+                      {ach.year && (
+                        <Typography variant="caption" sx={{ color: '#555', display: 'block', mt: 1.5, fontWeight: 600 }}>
+                          {ach.year}
+                        </Typography>
+                      )}
+                    </Box>
                   </Grid>
                 ))}
               </Grid>
             </Collapse>
-          </Box>
-        )}
+          </Container>
+        </Box>
+      )}
 
-        {/* Additional Sections */}
-        {about.additionalSections?.map((section) => (
-          <Box key={section.id}>
-            <SectionHeader icon={<ArticleIcon fontSize="small" />}>{section.title}</SectionHeader>
+      {/* ── Additional Sections ── */}
+      {about.additionalSections?.map((section) => (
+        <Box key={section.id} sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+            <SectionHeading title={section.title} />
             <Typography variant="body1" sx={{
-              whiteSpace: 'pre-line', color: '#000', lineHeight: 1.8, fontSize: { xs: '0.95rem', md: '1rem' },
+              whiteSpace: 'pre-line', color: '#444', lineHeight: 1.8, maxWidth: 700,
+              fontSize: { xs: '0.95rem', md: '1rem' },
             }}>
               {section.content}
             </Typography>
-          </Box>
-        ))}
-      </Container>
+          </Container>
+        </Box>
+      ))}
     </Box>
   );
 }
