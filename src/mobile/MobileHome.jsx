@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -8,22 +8,14 @@ export default function MobileHome({ data }) {
   const { home, projects, about, contact, quotes } = data;
   const allProjects = (projects || []).filter((p) => p.status !== 'draft');
   const featuredProjects = allProjects.filter((p) => p.featured);
-  const [filter, setFilter] = useState('All');
-
-  const categories = useMemo(
-    () => ['All', ...new Set(allProjects.map((p) => p.category).filter(Boolean))],
-    [allProjects]
-  );
-
-  const displayProjects = filter === 'All' ? allProjects : allProjects.filter((p) => p.category === filter);
 
   return (
     <Box>
       {/* ── 01 / Hero ── */}
-      <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
+      <Box sx={{ borderBottom: '1px solid #e0e0e0', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
         <Typography
           variant="overline"
-          sx={{ color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 700, fontSize: '0.6rem' }}
+          sx={{ color: '#555', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 600, fontSize: '0.6rem' }}
         >
           01 / Introduction
         </Typography>
@@ -64,9 +56,9 @@ export default function MobileHome({ data }) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  bgcolor: i === 0 ? '#000' : '#fff',
-                  color: i === 0 ? '#fff' : '#000',
-                  border: '1px solid #000',
+                  bgcolor: i === 0 ? '#111' : '#fff',
+                  color: i === 0 ? '#fff' : '#111',
+                  border: '1px solid #e0e0e0',
                   py: 1.25,
                   textDecoration: 'none',
                   fontFamily: '"Space Grotesk", sans-serif',
@@ -86,10 +78,10 @@ export default function MobileHome({ data }) {
       </Box>
 
       {/* Snapshot — compact list */}
-      <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
+      <Box sx={{ borderBottom: '1px solid #e0e0e0', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
         <Typography
           variant="overline"
-          sx={{ color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 700, fontSize: '0.6rem' }}
+          sx={{ color: '#555', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 600, fontSize: '0.6rem' }}
         >
           Snapshot
         </Typography>
@@ -110,7 +102,7 @@ export default function MobileHome({ data }) {
               minHeight: 36,
             }}
           >
-            <Typography sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, fontSize: '0.6rem' }}>
+            <Typography sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, fontSize: '0.6rem' }}>
               {row.label}
             </Typography>
             <Typography sx={{ fontWeight: 500, fontSize: '0.8rem', textAlign: 'right' }}>
@@ -122,7 +114,7 @@ export default function MobileHome({ data }) {
 
       {/* ── 02 / Key Metrics ── */}
       {home.stats?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
+        <Box sx={{ borderBottom: '1px solid #e0e0e0', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
           <Box sx={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
@@ -134,8 +126,8 @@ export default function MobileHome({ data }) {
                 sx={{
                   textAlign: 'center',
                   py: 1.25,
-                  borderRight: i % 2 === 0 ? '1px solid #000' : 'none',
-                  borderBottom: i < home.stats.length - 2 ? '1px solid #000' : 'none',
+                  borderRight: i % 2 === 0 ? '1px solid #e0e0e0' : 'none',
+                  borderBottom: i < home.stats.length - 2 ? '1px solid #e0e0e0' : 'none',
                 }}
               >
                 <Typography
@@ -149,7 +141,7 @@ export default function MobileHome({ data }) {
                   {stat.value}
                 </Typography>
                 <Typography
-                  sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, fontSize: '0.55rem' }}
+                  sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, fontSize: '0.55rem' }}
                 >
                   {stat.label}
                 </Typography>
@@ -161,10 +153,10 @@ export default function MobileHome({ data }) {
 
       {/* ── 03 / Featured Work (compact list) ── */}
       {allProjects.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
+        <Box sx={{ borderBottom: '1px solid #e0e0e0', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           <Typography
             variant="overline"
-            sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
+            sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
           >
             03 / Work
           </Typography>
@@ -172,53 +164,8 @@ export default function MobileHome({ data }) {
             Featured Work
           </Typography>
 
-          {/* Filters — horizontal scroll tabs, no pills */}
-          {categories.length > 1 && (
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 0,
-                mb: 2,
-                overflowX: 'auto',
-                WebkitOverflowScrolling: 'touch',
-                mx: 'calc(-1 * var(--page-pad-x))',
-                px: 'var(--page-pad-x)',
-                '&::-webkit-scrollbar': { display: 'none' },
-                scrollbarWidth: 'none',
-              }}
-            >
-              {categories.map((cat) => (
-                <Box
-                  key={cat}
-                  component="button"
-                  onClick={() => setFilter(cat)}
-                  sx={{
-                    px: 1.5,
-                    py: 0.75,
-                    cursor: 'pointer',
-                    border: 'none',
-                    borderBottom: filter === cat ? '2px solid #000' : '2px solid transparent',
-                    bgcolor: 'transparent',
-                    color: '#000',
-                    fontSize: '0.7rem',
-                    fontWeight: filter === cat ? 700 : 500,
-                    fontFamily: 'inherit',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.06em',
-                    minHeight: 36,
-                    whiteSpace: 'nowrap',
-                    flexShrink: 0,
-                    '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
-                  }}
-                >
-                  {cat}
-                </Box>
-              ))}
-            </Box>
-          )}
-
           {/* Compact list items */}
-          {displayProjects.slice(0, 6).map((project, i, arr) => (
+          {allProjects.slice(0, 6).map((project, i, arr) => (
             <Box
               key={project.id}
               component={RouterLink}
@@ -243,11 +190,11 @@ export default function MobileHome({ data }) {
                 <Typography sx={{ fontSize: '0.85rem', fontWeight: 600, lineHeight: 1.3 }}>
                   {project.title}
                 </Typography>
-                <Typography sx={{ fontSize: '0.75rem', lineHeight: 1.4, color: '#000', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <Typography sx={{ fontSize: '0.75rem', lineHeight: 1.4, color: '#555', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {project.description}
                 </Typography>
               </Box>
-              <Typography sx={{ color: '#000', fontWeight: 600, fontSize: '0.75rem', flexShrink: 0 }}>
+              <Typography sx={{ color: '#111', fontWeight: 600, fontSize: '0.75rem', flexShrink: 0 }}>
                 Details →
               </Typography>
             </Box>
@@ -265,10 +212,10 @@ export default function MobileHome({ data }) {
               fontWeight: 600,
               fontSize: '0.8rem',
               py: 1,
-              border: '1px solid #000',
+              border: '1px solid #e0e0e0',
               minHeight: 44,
               lineHeight: '28px',
-              '&:active': { bgcolor: '#000', color: '#fff' },
+              '&:active': { bgcolor: '#111', color: '#fff' },
             }}
           >
             View all projects →
@@ -285,10 +232,10 @@ export default function MobileHome({ data }) {
 
       {/* ── 05 / Highlights (simple list) ── */}
       {featuredProjects.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
+        <Box sx={{ borderBottom: '1px solid #e0e0e0', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           <Typography
             variant="overline"
-            sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
+            sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
           >
             05 / Highlights
           </Typography>
@@ -319,7 +266,7 @@ export default function MobileHome({ data }) {
                   {project.subtitle || project.description}
                 </Typography>
               </Box>
-              <Typography sx={{ color: '#000', fontWeight: 600, fontSize: '0.75rem', ml: 1, flexShrink: 0 }}>→</Typography>
+              <Typography sx={{ color: '#111', fontWeight: 600, fontSize: '0.75rem', ml: 1, flexShrink: 0 }}>→</Typography>
             </Box>
           ))}
         </Box>
@@ -327,7 +274,7 @@ export default function MobileHome({ data }) {
 
       {/* ── 06 / Custom Sections ── */}
       {home.customSections?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
+        <Box sx={{ borderBottom: '1px solid #e0e0e0', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           {home.customSections.map((section, i) => (
             <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 3 : 0 }}>
               <Typography sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: '1.15rem', mb: 1 }}>
@@ -342,10 +289,10 @@ export default function MobileHome({ data }) {
       )}
 
       {/* ── 07 / CTA Footer ── */}
-      <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)', textAlign: 'center' }}>
+      <Box sx={{ borderBottom: '1px solid #e0e0e0', px: 'var(--page-pad-x)', py: 'var(--section-gap)', textAlign: 'center' }}>
         <Typography
           variant="overline"
-          sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
+          sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
         >
           Get in touch
         </Typography>
@@ -368,7 +315,7 @@ export default function MobileHome({ data }) {
                 justifyContent: 'center',
                 bgcolor: '#000',
                 color: '#fff',
-                border: '1px solid #000',
+                border: '1px solid #e0e0e0',
                 py: 1.25,
                 textDecoration: 'none',
                 fontWeight: 600,
@@ -389,13 +336,13 @@ export default function MobileHome({ data }) {
               justifyContent: 'center',
               bgcolor: '#fff',
               color: '#000',
-              border: '1px solid #000',
+              border: '1px solid #e0e0e0',
               py: 1.25,
               textDecoration: 'none',
               fontWeight: 600,
               fontSize: '0.8rem',
               minHeight: 44,
-              '&:active': { bgcolor: '#000', color: '#fff' },
+              '&:active': { bgcolor: '#111', color: '#fff' },
             }}
           >
             Contact page

@@ -79,9 +79,9 @@ export default function Navbar({ data }) {
   }, [menuOpen, handleKeyDown]);
 
   const linkSx = (path) => ({
-    color: '#000',
+    color: '#111',
     fontWeight: isActive(path) ? 700 : 400,
-    borderBottom: isActive(path) ? '1px solid #000' : '1px solid transparent',
+    borderBottom: isActive(path) ? '1px solid #111' : '1px solid transparent',
     borderRadius: 0,
     px: 1.5,
     py: 0.75,
@@ -91,24 +91,24 @@ export default function Navbar({ data }) {
     transition: 'border-color 0.2s ease',
     '&:hover': {
       backgroundColor: 'transparent',
-      color: '#000',
-      borderBottom: '1px solid #000',
+      color: '#111',
+      borderBottom: '1px solid #111',
     },
     '&:focus-visible': {
-      outline: '2px solid #000',
+      outline: '2px solid #111',
       outlineOffset: '2px',
     },
   });
 
   return (
     <>
-      <AppBar position="sticky" sx={{ bgcolor: '#fff', color: '#000' }}>
+      <AppBar position="sticky" sx={{ bgcolor: '#fff', color: '#111' }}>
         <Toolbar sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 1, minHeight: { xs: 56, sm: 64 } }}>
           <Typography
             variant="h6"
             component={Link}
             to="/"
-            sx={{ fontWeight: 700, flexGrow: 1, color: '#000', textDecoration: 'none', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
+            sx={{ fontWeight: 700, flexGrow: 1, color: '#111', textDecoration: 'none', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
           >
             {siteTitle}
           </Typography>
@@ -143,14 +143,14 @@ export default function Navbar({ data }) {
               border: 'none',
               cursor: 'pointer',
               p: 1,
-              color: '#000',
+              color: '#111',
               fontFamily: '"Space Grotesk", sans-serif',
               fontSize: '0.85rem',
               fontWeight: 600,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
               minHeight: 44,
-              '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+              '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
             }}
           >
             Menu
@@ -185,13 +185,13 @@ export default function Navbar({ data }) {
               alignItems: 'center',
               px: 3,
               minHeight: 64,
-              borderBottom: '1px solid #000',
+              borderBottom: '1px solid #e0e0e0',
               flexShrink: 0,
             }}
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: 700, color: '#000', letterSpacing: '-0.02em', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
+              sx={{ fontWeight: 700, color: '#111', letterSpacing: '-0.02em', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
             >
               {siteTitle}
             </Typography>
@@ -202,21 +202,20 @@ export default function Navbar({ data }) {
               aria-label="Close navigation menu"
               sx={{
                 background: 'none',
-                border: '1px solid #000',
+                border: '1px solid #e0e0e0',
                 cursor: 'pointer',
-                p: 0,
                 width: 44,
                 height: 44,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#000',
+                color: '#111',
                 fontFamily: '"Space Grotesk", sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+                '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
               }}
             >
               ✕
@@ -236,19 +235,19 @@ export default function Navbar({ data }) {
                   alignItems: 'baseline',
                   gap: 2,
                   py: 2,
-                  borderBottom: '1px dashed #000',
+                  borderBottom: '1px solid #eee',
                   textDecoration: 'none',
-                  color: '#000',
+                  color: '#111',
                   minHeight: 56,
                   transition: 'padding-left 0.15s ease',
                   '&:hover': { pl: 0.5 },
-                  '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+                  '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
                 }}
               >
                 <Typography
                   variant="caption"
                   sx={{
-                    color: '#000',
+                    color: '#555',
                     fontWeight: 600,
                     fontSize: '0.7rem',
                     letterSpacing: '0.1em',
@@ -274,10 +273,10 @@ export default function Navbar({ data }) {
 
             {/* Custom page links — secondary style */}
             {customLinks.length > 0 && (
-              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #000' }}>
+              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #e0e0e0' }}>
                 <Typography
                   variant="overline"
-                  sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 700 }}
+                  sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 600 }}
                 >
                   Pages
                 </Typography>
@@ -291,12 +290,12 @@ export default function Navbar({ data }) {
                       display: 'block',
                       py: 1.5,
                       textDecoration: 'none',
-                      color: '#000',
+                      color: '#111',
                       fontWeight: isActive(item.path) ? 700 : 400,
                       fontSize: '1rem',
                       minHeight: 44,
                       '&:hover': { fontWeight: 700 },
-                      '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+                      '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
                     }}
                   >
                     {item.label}
@@ -311,13 +310,13 @@ export default function Navbar({ data }) {
             sx={{
               px: 3,
               py: 3,
-              borderTop: '1px solid #000',
+              borderTop: '1px solid #e0e0e0',
               flexShrink: 0,
             }}
           >
             <Typography
               variant="caption"
-              sx={{ color: '#000', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}
+              sx={{ color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}
             >
               © {new Date().getFullYear()} {siteTitle}
             </Typography>
