@@ -6,11 +6,11 @@ const bodyFont = '"Sora", "Helvetica", "Arial", sans-serif';
 const theme = createTheme({
   palette: {
     mode: 'light',
-    primary: { main: '#000000' },
-    secondary: { main: '#000000' },
+    primary: { main: '#111111' },
+    secondary: { main: '#111111' },
     background: { default: '#ffffff', paper: '#ffffff' },
-    text: { primary: '#000000', secondary: '#000000' },
-    divider: '#000000',
+    text: { primary: '#111111', secondary: '#555555' },
+    divider: '#e0e0e0',
   },
   typography: {
     fontFamily: bodyFont,
@@ -34,17 +34,17 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 0,
-          padding: '8px 20px',
+          padding: '10px 24px',
           boxShadow: 'none',
-          '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+          '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
         },
         contained: {
           boxShadow: 'none',
           '&:hover': { boxShadow: 'none' },
         },
         outlined: {
-          borderColor: '#000',
-          '&:hover': { backgroundColor: '#000', color: '#fff', borderColor: '#000' },
+          borderColor: '#111',
+          '&:hover': { backgroundColor: '#111', color: '#fff', borderColor: '#111' },
         },
       },
     },
@@ -53,20 +53,20 @@ const theme = createTheme({
         root: {
           borderRadius: 0,
           boxShadow: 'none',
-          border: '1px solid #000',
+          border: '1px solid #e0e0e0',
           transition: 'none',
         },
       },
     },
     MuiChip: {
       styleOverrides: {
-        root: { borderRadius: 0, borderColor: '#000', color: '#000' },
-        outlined: { borderColor: '#000' },
+        root: { borderRadius: 0, borderColor: '#e0e0e0', color: '#111' },
+        outlined: { borderColor: '#e0e0e0' },
       },
     },
     MuiAppBar: {
       styleOverrides: {
-        root: { boxShadow: 'none', borderBottom: '1px solid #000' },
+        root: { boxShadow: 'none', borderBottom: '1px solid #e0e0e0' },
       },
     },
     MuiPaper: {
@@ -77,7 +77,7 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: { borderRadius: 0 },
-        notchedOutline: { borderColor: '#000' },
+        notchedOutline: { borderColor: '#e0e0e0' },
       },
     },
     MuiDialog: {
@@ -97,7 +97,7 @@ const theme = createTheme({
     },
     MuiDivider: {
       styleOverrides: {
-        root: { borderColor: '#000' },
+        root: { borderColor: '#e0e0e0' },
       },
     },
   },

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   Container,
@@ -15,26 +15,18 @@ export default function HomePage({ data }) {
   const { home, projects, about, contact, quotes } = data;
   const allProjects = (projects || []).filter((p) => p.status !== 'draft');
   const featuredProjects = allProjects.filter((p) => p.featured);
-  const [filter, setFilter] = useState('All');
-
-  const categories = useMemo(
-    () => ['All', ...new Set(allProjects.map((p) => p.category).filter(Boolean))],
-    [allProjects]
-  );
-
-  const displayProjects = filter === 'All' ? allProjects : allProjects.filter((p) => p.category === filter);
 
   return (
     <Box>
       {/* ── 01 / Hero ── */}
-      <Box sx={{ borderBottom: '1px solid #000' }}>
-        <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 }, px: { xs: 2, md: 5 } }}>
+      <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+        <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
           <Grid container spacing={{ xs: 2, md: 3 }} alignItems="flex-start">
             {/* Left: headline */}
             <Grid size={{ xs: 12, md: 7 }}>
               <Typography
                 variant="overline"
-                sx={{ color: '#000', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block', fontWeight: 700 }}
+                sx={{ color: '#555', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block', fontWeight: 600 }}
               >
                 01 / Introduction
               </Typography>
@@ -56,7 +48,7 @@ export default function HomePage({ data }) {
               <Typography
                 variant="h6"
                 sx={{
-                  color: '#000',
+                  color: '#333',
                   fontWeight: 400,
                   mb: 3,
                   maxWidth: 500,
@@ -67,7 +59,7 @@ export default function HomePage({ data }) {
                 {home.heroSubtitle}
               </Typography>
               {home.introText && (
-                <Typography variant="body1" sx={{ color: '#000', maxWidth: 500, mb: 4, lineHeight: 1.7 }}>
+                <Typography variant="body1" sx={{ color: '#444', maxWidth: 500, mb: 4, lineHeight: 1.7 }}>
                   {home.introText}
                 </Typography>
               )}
@@ -81,15 +73,15 @@ export default function HomePage({ data }) {
                       variant={i === 0 ? 'contained' : 'outlined'}
                       size="large"
                       sx={{
-                        bgcolor: i === 0 ? '#000' : 'transparent',
-                        color: i === 0 ? '#fff' : '#000',
-                        borderColor: '#000',
+                        bgcolor: i === 0 ? '#111' : 'transparent',
+                        color: i === 0 ? '#fff' : '#111',
+                        borderColor: '#111',
                         minHeight: 48,
                         px: { xs: 3, md: 4 },
                         '&:hover': {
-                          bgcolor: '#000',
+                          bgcolor: '#111',
                           color: '#fff',
-                          borderColor: '#000',
+                          borderColor: '#111',
                         },
                       }}
                     >
@@ -104,13 +96,13 @@ export default function HomePage({ data }) {
             <Grid size={{ xs: 12, md: 5 }}>
               <Box
                 sx={{
-                  border: '1px solid #000',
-                  p: { xs: 2, md: 4 },
+                  border: '1px solid #e0e0e0',
+                  p: { xs: 2.5, md: 4 },
                 }}
               >
                 <Typography
                   variant="overline"
-                  sx={{ color: '#000', letterSpacing: '0.15em', mb: 2, display: 'block', fontWeight: 700 }}
+                  sx={{ color: '#555', letterSpacing: '0.15em', mb: 2, display: 'block', fontWeight: 600 }}
                 >
                   Snapshot
                 </Typography>
@@ -127,11 +119,11 @@ export default function HomePage({ data }) {
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       py: 1.5,
-                      borderBottom: '1px dashed #000',
+                      borderBottom: '1px solid #eee',
                       minHeight: 44,
                     }}
                   >
-                    <Typography variant="caption" sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700 }}>
+                    <Typography variant="caption" sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
                       {row.label}
                     </Typography>
                     <Typography variant="body2" sx={{ fontWeight: 500, textAlign: 'right' }}>
@@ -148,7 +140,7 @@ export default function HomePage({ data }) {
                         href={`mailto:${contact.email}`}
                         variant="caption"
                         className="ink-link"
-                        sx={{ color: '#000', textDecoration: 'none', fontWeight: 600, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
+                        sx={{ color: '#111', textDecoration: 'none', fontWeight: 600, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
                       >
                         Email
                       </Typography>
@@ -161,7 +153,7 @@ export default function HomePage({ data }) {
                         rel="noopener noreferrer"
                         variant="caption"
                         className="ink-link"
-                        sx={{ color: '#000', textDecoration: 'none', fontWeight: 600, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
+                        sx={{ color: '#111', textDecoration: 'none', fontWeight: 600, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
                       >
                         LinkedIn
                       </Typography>
@@ -174,7 +166,7 @@ export default function HomePage({ data }) {
                         rel="noopener noreferrer"
                         variant="caption"
                         className="ink-link"
-                        sx={{ color: '#000', textDecoration: 'none', fontWeight: 600, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
+                        sx={{ color: '#111', textDecoration: 'none', fontWeight: 600, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
                       >
                         GitHub
                       </Typography>
@@ -189,8 +181,8 @@ export default function HomePage({ data }) {
 
       {/* ── 02 / Key Metrics ── */}
       {home.stats?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000' }}>
-          <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 } }}>
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <Grid container spacing={0}>
               {home.stats.map((stat, i) => (
                 <Grid
@@ -198,9 +190,9 @@ export default function HomePage({ data }) {
                   key={stat.id || i}
                   sx={{
                     textAlign: 'center',
-                    py: 2,
-                    borderRight: i < home.stats.length - 1 ? { sm: '1px solid #000' } : 'none',
-                    borderBottom: { xs: i < home.stats.length - 2 ? '1px solid #000' : 'none', sm: 'none' },
+                    py: 3,
+                    borderRight: i < home.stats.length - 1 ? { sm: '1px solid #e0e0e0' } : 'none',
+                    borderBottom: { xs: i < home.stats.length - 2 ? '1px solid #e0e0e0' : 'none', sm: 'none' },
                   }}
                 >
                   <Typography
@@ -216,7 +208,7 @@ export default function HomePage({ data }) {
                   </Typography>
                   <Typography
                     variant="caption"
-                    sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600, fontSize: { xs: '0.65rem', md: '0.75rem' } }}
+                    sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600, fontSize: { xs: '0.65rem', md: '0.75rem' } }}
                   >
                     {stat.label}
                   </Typography>
@@ -229,13 +221,13 @@ export default function HomePage({ data }) {
 
       {/* ── 03 / Featured Work ── */}
       {allProjects.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000' }}>
-          <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 } }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: { xs: 3, md: 4 }, flexWrap: 'wrap', gap: 2 }}>
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: { xs: 3, md: 5 }, flexWrap: 'wrap', gap: 2 }}>
               <Box>
                 <Typography
                   variant="overline"
-                  sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700 }}
+                  sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 600 }}
                 >
                   03 / Work
                 </Typography>
@@ -244,54 +236,8 @@ export default function HomePage({ data }) {
                 </Typography>
               </Box>
             </Box>
-            {/* Filters — strict B&W */}
-            {categories.length > 1 && (
-              <Box
-                sx={{
-                  display: 'flex',
-                  gap: 1,
-                  mb: 3,
-                  overflowX: 'auto',
-                  WebkitOverflowScrolling: 'touch',
-                  pb: 1,
-                  mx: { xs: -0.5, sm: 0 },
-                  px: { xs: 0.5, sm: 0 },
-                  '&::-webkit-scrollbar': { display: 'none' },
-                  scrollbarWidth: 'none',
-                }}
-              >
-                {categories.map((cat) => (
-                  <Box
-                    key={cat}
-                    component="button"
-                    onClick={() => setFilter(cat)}
-                    sx={{
-                      px: 2,
-                      py: 1,
-                      cursor: 'pointer',
-                      border: '1px solid #000',
-                      bgcolor: filter === cat ? '#000' : '#fff',
-                      color: filter === cat ? '#fff' : '#000',
-                      fontSize: '0.75rem',
-                      fontWeight: 600,
-                      fontFamily: 'inherit',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em',
-                      minHeight: 44,
-                      whiteSpace: 'nowrap',
-                      flexShrink: 0,
-                      transition: 'none',
-                      '&:hover': { bgcolor: '#000', color: '#fff' },
-                      '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
-                    }}
-                  >
-                    {cat}
-                  </Box>
-                ))}
-              </Box>
-            )}
             <Grid container spacing={{ xs: 2, md: 3 }}>
-              {displayProjects.slice(0, 6).map((project) => (
+              {allProjects.slice(0, 6).map((project) => (
                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
                   <Box
                     component={RouterLink}
@@ -301,17 +247,17 @@ export default function HomePage({ data }) {
                       display: 'block',
                       textDecoration: 'none',
                       color: 'inherit',
-                      border: '1px solid #000',
-                      p: { xs: 2, md: 3 },
+                      border: '1px solid #e0e0e0',
+                      p: { xs: 2.5, md: 3 },
                       height: '100%',
                       position: 'relative',
                       overflow: 'hidden',
-                      '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+                      '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
                     }}
                   >
                     <Typography
                       variant="overline"
-                      sx={{ color: '#000', display: 'block', mb: 1, fontWeight: 700 }}
+                      sx={{ color: '#555', display: 'block', mb: 1, fontWeight: 600 }}
                     >
                       {project.category}
                     </Typography>
@@ -324,7 +270,7 @@ export default function HomePage({ data }) {
                     {project.tags?.length > 0 && (
                       <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
                         {project.tags.map((tag) => (
-                          <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#000', color: '#000' }} />
+                          <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#e0e0e0', color: '#555' }} />
                         ))}
                       </Box>
                     )}
@@ -334,15 +280,15 @@ export default function HomePage({ data }) {
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         pt: 2,
-                        borderTop: '1px dashed #000',
+                        borderTop: '1px solid #eee',
                       }}
                     >
                       {project.date && (
-                        <Typography variant="caption" sx={{ color: '#000' }}>
+                        <Typography variant="caption" sx={{ color: '#888' }}>
                           {project.date}
                         </Typography>
                       )}
-                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 600 }}>
+                      <Typography variant="caption" sx={{ color: '#111', fontWeight: 600 }}>
                         Details →
                       </Typography>
                     </Box>
@@ -350,12 +296,12 @@ export default function HomePage({ data }) {
                 </Grid>
               ))}
             </Grid>
-            <Box sx={{ mt: 4, textAlign: 'center' }}>
+            <Box sx={{ mt: 5, textAlign: 'center' }}>
               <Button
                 component={RouterLink}
                 to="/projects"
                 endIcon={<ArrowForwardIcon />}
-                sx={{ color: '#000', fontWeight: 600, minHeight: 48 }}
+                sx={{ color: '#111', fontWeight: 600, minHeight: 48 }}
               >
                 View all projects
               </Button>
@@ -373,15 +319,15 @@ export default function HomePage({ data }) {
 
       {/* ── 05 / Highlights ── */}
       {featuredProjects.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000' }}>
-          <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 } }}>
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <Typography
               variant="overline"
-              sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700 }}
+              sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 600 }}
             >
               05 / Highlights
             </Typography>
-            <Typography variant="h4" fontWeight={600} sx={{ mb: { xs: 3, md: 4 }, fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
+            <Typography variant="h4" fontWeight={600} sx={{ mb: { xs: 3, md: 5 }, fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
               Notable Work
             </Typography>
             {featuredProjects.slice(0, 4).map((project, i) => (
@@ -395,11 +341,11 @@ export default function HomePage({ data }) {
                   alignItems: 'baseline',
                   py: 2,
                   minHeight: 56,
-                  borderBottom: i < featuredProjects.length - 1 ? '1px dashed #000' : 'none',
+                  borderBottom: i < featuredProjects.length - 1 ? '1px solid #eee' : 'none',
                   textDecoration: 'none',
                   color: 'inherit',
                   '&:hover': { fontWeight: 700 },
-                  '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+                  '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
                 }}
               >
                 <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -412,7 +358,7 @@ export default function HomePage({ data }) {
                 </Box>
                 <Typography
                   variant="caption"
-                  sx={{ color: '#000', fontWeight: 600, ml: 2, flexShrink: 0 }}
+                  sx={{ color: '#111', fontWeight: 600, ml: 2, flexShrink: 0 }}
                 >
                   →
                 </Typography>
@@ -424,8 +370,8 @@ export default function HomePage({ data }) {
 
       {/* ── 06 / Custom Sections ── */}
       {home.customSections?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000' }}>
-          <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 } }}>
+        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             {home.customSections.map((section, i) => (
               <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 6 : 0 }}>
                 <Typography variant="h4" fontWeight={600} gutterBottom sx={{ fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
@@ -441,11 +387,11 @@ export default function HomePage({ data }) {
       )}
 
       {/* ── 07 / CTA Footer ── */}
-      <Box sx={{ borderBottom: '1px solid #000' }}>
-        <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 }, px: { xs: 2, md: 5 }, textAlign: 'center' }}>
+      <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+        <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 }, textAlign: 'center' }}>
           <Typography
             variant="overline"
-            sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 700 }}
+            sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 600 }}
           >
             Get in touch
           </Typography>
@@ -464,7 +410,7 @@ export default function HomePage({ data }) {
                 href={`mailto:${contact.email}`}
                 variant="contained"
                 size="large"
-                sx={{ bgcolor: '#000', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000' } }}
+                sx={{ bgcolor: '#111', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#333' } }}
               >
                 Email me
               </Button>
@@ -474,7 +420,7 @@ export default function HomePage({ data }) {
               to="/contact"
               variant="outlined"
               size="large"
-              sx={{ color: '#000', borderColor: '#000', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#fff' } }}
+              sx={{ color: '#111', borderColor: '#111', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#111', bgcolor: '#111', color: '#fff' } }}
             >
               Contact page
             </Button>
