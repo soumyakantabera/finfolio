@@ -108,7 +108,7 @@ export default function Navbar({ data }) {
             variant="h6"
             component={Link}
             to="/"
-            sx={{ fontWeight: 700, flexGrow: 1, color: '#000', textDecoration: 'none', fontSize: { xs: '1rem', sm: '1.1rem' } }}
+            sx={{ fontWeight: 700, flexGrow: 1, color: '#000', textDecoration: 'none', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
           >
             {siteTitle}
           </Typography>
@@ -191,7 +191,7 @@ export default function Navbar({ data }) {
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: 700, color: '#000', letterSpacing: '-0.02em' }}
+              sx={{ fontWeight: 700, color: '#000', letterSpacing: '-0.02em', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
             >
               {siteTitle}
             </Typography>
