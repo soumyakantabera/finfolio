@@ -10,7 +10,7 @@ export default function MobileProjects({ data }) {
     <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
       <Typography
         variant="overline"
-        sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
+        sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
       >
         Gallery
       </Typography>
@@ -31,7 +31,7 @@ export default function MobileProjects({ data }) {
             display: 'flex',
             alignItems: 'center',
             py: 1.25,
-            borderBottom: i < arr.length - 1 ? '1px solid #eee' : 'none',
+            borderBottom: i < arr.length - 1 ? '1px solid #000' : 'none',
             textDecoration: 'none',
             color: '#000',
             minHeight: 48,
@@ -49,14 +49,14 @@ export default function MobileProjects({ data }) {
             {project.tags?.length > 0 && (
               <Box sx={{ display: 'flex', gap: 0.5, mt: 0.25 }}>
                 {project.tags.slice(0, 2).map((tag) => (
-                  <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#000', border: '1px solid #e0e0e0', px: 0.5, py: 0.125, lineHeight: 1.4 }}>
+                  <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#000', border: '1px solid #000', px: 0.5, py: 0.125, lineHeight: 1.4 }}>
                     {tag}
                   </Typography>
                 ))}
               </Box>
             )}
           </Box>
-          <Typography sx={{ color: '#111', fontWeight: 600, fontSize: '0.85rem', flexShrink: 0 }}>→</Typography>
+          <Typography sx={{ color: '#000', fontWeight: 600, fontSize: '0.85rem', flexShrink: 0 }}>→</Typography>
         </Box>
       ))}
 
