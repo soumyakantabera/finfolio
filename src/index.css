@@ -54,6 +54,9 @@
     --page-pad-x: 16px;
     --page-pad-y: 32px;
     --section-gap: 32px;
+    --c-fg: #000;
+    --c-border: #000;
+    --c-border-subtle: #000;
   }
 }
 
@@ -81,7 +84,7 @@ table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
 
 /* ── Effect E — Focus Ring System ── */
 *:focus-visible {
-  outline: 2px solid #111;
+  outline: 2px solid #000;
   outline-offset: 2px;
 }
 
