@@ -94,7 +94,7 @@ export default function MobileHeader({ data }) {
           sx={{
             fontFamily: '"Space Grotesk", sans-serif',
             fontWeight: 700,
-            fontSize: '0.9rem',
+            fontSize: '1.25rem',
             color: '#000',
             textDecoration: 'none',
             letterSpacing: '-0.02em',
@@ -163,7 +163,7 @@ export default function MobileHeader({ data }) {
               sx={{
                 fontFamily: '"Space Grotesk", sans-serif',
                 fontWeight: 700,
-                fontSize: '0.9rem',
+                fontSize: '1.25rem',
                 color: '#000',
                 letterSpacing: '-0.02em',
               }}
