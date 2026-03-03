@@ -42,7 +42,7 @@ export default function ProjectsPage({ data }) {
                 flexDirection: 'column',
                 position: 'relative',
                 overflow: 'hidden',
-                border: '1px solid #e0e0e0',
+                border: '1px solid #eee',
                 '&:focus-within': { outline: '2px solid #111', outlineOffset: '2px' },
               }}
             >
@@ -67,7 +67,7 @@ export default function ProjectsPage({ data }) {
                     alignItems: 'center',
                     gap: 0.5,
                     bgcolor: '#fff',
-                    border: '1px solid #e0e0e0',
+                    border: '1px solid #eee',
                     px: 1,
                     py: 0.25,
                   }}
@@ -99,7 +99,7 @@ export default function ProjectsPage({ data }) {
                 {project.tags?.length > 0 && (
                   <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 1 }}>
                     {project.tags.map((tag) => (
-                      <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#e0e0e0', color: '#555' }} />
+                      <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#eee', color: '#555' }} />
                     ))}
                   </Box>
                 )}

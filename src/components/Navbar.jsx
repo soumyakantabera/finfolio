@@ -185,7 +185,7 @@ export default function Navbar({ data }) {
               alignItems: 'center',
               px: 3,
               minHeight: 64,
-              borderBottom: '1px solid #e0e0e0',
+              borderBottom: '1px solid #eee',
               flexShrink: 0,
             }}
           >
@@ -202,7 +202,7 @@ export default function Navbar({ data }) {
               aria-label="Close navigation menu"
               sx={{
                 background: 'none',
-                border: '1px solid #e0e0e0',
+                border: 'none',
                 cursor: 'pointer',
                 width: 44,
                 height: 44,
@@ -273,7 +273,7 @@ export default function Navbar({ data }) {
 
             {/* Custom page links — secondary style */}
             {customLinks.length > 0 && (
-              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #e0e0e0' }}>
+              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #eee' }}>
                 <Typography
                   variant="overline"
                   sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 600 }}
@@ -310,7 +310,7 @@ export default function Navbar({ data }) {
             sx={{
               px: 3,
               py: 3,
-              borderTop: '1px solid #e0e0e0',
+              borderTop: '1px solid #eee',
               flexShrink: 0,
             }}
           >
