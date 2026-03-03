@@ -44,7 +44,9 @@ const defaultData = {
     certifications: [
       { id: '1', title: 'CFA Level I Candidate', name: 'CFA Level I Candidate', issuer: 'CFA Institute', date: '2024', year: '2024', credentialId: '', link: '', mediaType: '', mediaUrl: '', thumbnail: '' },
       { id: '2', title: 'Bloomberg Market Concepts', name: 'Bloomberg Market Concepts', issuer: 'Bloomberg LP', date: '2023', year: '2023', credentialId: '', link: '', mediaType: '', mediaUrl: '', thumbnail: '' }
-    ]
+    ],
+    programmingLanguages: 'Python, Excel / VBA, SQL',
+    languagesKnown: 'English, Spanish'
   },
   projects: [
     {

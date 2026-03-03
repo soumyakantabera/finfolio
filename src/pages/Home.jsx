@@ -36,7 +36,7 @@ export default function HomePage({ data }) {
                 sx={{
                   fontFamily: '"Space Grotesk", sans-serif',
                   fontWeight: 700,
-                  fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' },
+                  fontSize: { xs: '2rem', sm: '3rem', md: '3.5rem' },
                   letterSpacing: '-0.03em',
                   lineHeight: 1.15,
                   whiteSpace: 'pre-line',
@@ -109,6 +109,9 @@ export default function HomePage({ data }) {
                 {[
                   { label: 'Name', value: about?.name },
                   { label: 'Role', value: home.snapshotRole || about?.introTitle },
+                  { label: 'Last Course', value: about?.education?.[0] ? `${about.education[0].degree}, ${about.education[0].institution}` : undefined },
+                  { label: 'Programming', value: about?.programmingLanguages },
+                  { label: 'Languages', value: about?.languagesKnown },
                   { label: 'Location', value: home.snapshotLocation || about?.address },
                   { label: 'Availability', value: home.snapshotAvailability },
                 ].filter((r) => r.value).map((row) => (
@@ -126,7 +129,11 @@ export default function HomePage({ data }) {
                     <Typography variant="caption" sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
                       {row.label}
                     </Typography>
-                    <Typography variant="body2" sx={{ fontWeight: 500, textAlign: 'right' }}>
+                    <Typography variant="body2" sx={{
+                      fontWeight: ['Name', 'Last Course', 'Programming', 'Languages'].includes(row.label) ? 700 : 500,
+                      fontSize: ['Name'].includes(row.label) ? '1.1rem' : ['Last Course', 'Programming', 'Languages'].includes(row.label) ? '0.95rem' : undefined,
+                      textAlign: 'right',
+                    }}>
                       {row.value}
                     </Typography>
                   </Box>
@@ -231,7 +238,7 @@ export default function HomePage({ data }) {
                 >
                   03 / Work
                 </Typography>
-                <Typography variant="h4" fontWeight={600} sx={{ fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
+                <Typography variant="h4" fontWeight={600} sx={{ fontSize: { xs: '1.5rem', md: '2.5rem' } }}>
                   Featured Work
                 </Typography>
               </Box>
@@ -327,7 +334,7 @@ export default function HomePage({ data }) {
             >
               05 / Highlights
             </Typography>
-            <Typography variant="h4" fontWeight={600} sx={{ mb: { xs: 3, md: 5 }, fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
+            <Typography variant="h4" fontWeight={600} sx={{ mb: { xs: 3, md: 5 }, fontSize: { xs: '1.5rem', md: '2.5rem' } }}>
               Notable Work
             </Typography>
             {featuredProjects.slice(0, 4).map((project, i) => (
@@ -374,7 +381,7 @@ export default function HomePage({ data }) {
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
             {home.customSections.map((section, i) => (
               <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 6 : 0 }}>
-                <Typography variant="h4" fontWeight={600} gutterBottom sx={{ fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
+                <Typography variant="h4" fontWeight={600} gutterBottom sx={{ fontSize: { xs: '1.5rem', md: '2.5rem' } }}>
                   {section.title}
                 </Typography>
                 <Typography variant="body1" sx={{ whiteSpace: 'pre-line', maxWidth: 700, lineHeight: 1.7 }}>
@@ -397,7 +404,7 @@ export default function HomePage({ data }) {
           </Typography>
           <Typography
             variant="h3"
-            sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, mb: 2, fontSize: { xs: '1.75rem', md: '3rem' } }}
+            sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, mb: 2, fontSize: { xs: '2rem', md: '3.5rem' } }}
           >
             Let&apos;s connect.
           </Typography>

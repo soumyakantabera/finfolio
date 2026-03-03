@@ -78,7 +78,7 @@ export default function AboutPage({ data }) {
             {number}
           </Typography>
         )}
-        <Typography variant="h4" fontWeight={600} sx={{ fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
+        <Typography variant="h4" fontWeight={600} sx={{ fontSize: { xs: '1.5rem', md: '2.5rem' } }}>
           {title}
         </Typography>
       </Box>
@@ -110,7 +110,7 @@ export default function AboutPage({ data }) {
                 sx={{
                   fontFamily: '"Space Grotesk", sans-serif',
                   fontWeight: 700,
-                  fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' },
+                  fontSize: { xs: '2rem', sm: '3rem', md: '3.5rem' },
                   letterSpacing: '-0.03em',
                   lineHeight: 1.15,
                   mb: 2,
@@ -239,7 +239,7 @@ export default function AboutPage({ data }) {
               collapsible
               sectionKey="experience"
             />
-            <Collapse in={isSectionExpanded('experience')}>
+            <Collapse in={isSectionExpanded('experience')} timeout={300}>
               {about.experience.map((exp, idx) => (
                 <Box
                   key={exp.id}
@@ -288,7 +288,7 @@ export default function AboutPage({ data }) {
               collapsible
               sectionKey="education"
             />
-            <Collapse in={isSectionExpanded('education')}>
+            <Collapse in={isSectionExpanded('education')} timeout={300}>
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.education.map((edu) => (
                   <Grid size={{ xs: 12, md: 6 }} key={edu.id}>
@@ -326,7 +326,7 @@ export default function AboutPage({ data }) {
               collapsible
               sectionKey="skills"
             />
-            <Collapse in={isSectionExpanded('skills')}>
+            <Collapse in={isSectionExpanded('skills')} timeout={300}>
               <Grid container spacing={2}>
                 {about.skills.map((skill) => (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={skill.id}>
@@ -361,7 +361,7 @@ export default function AboutPage({ data }) {
               collapsible
               sectionKey="certifications"
             />
-            <Collapse in={isSectionExpanded('certifications')}>
+            <Collapse in={isSectionExpanded('certifications')} timeout={300}>
               <Grid container spacing={2}>
                 {about.certifications.map((cert) => {
                   const hasMedia = !!cert.mediaUrl;
@@ -542,7 +542,7 @@ export default function AboutPage({ data }) {
               collapsible
               sectionKey="achievements"
             />
-            <Collapse in={isSectionExpanded('achievements')}>
+            <Collapse in={isSectionExpanded('achievements')} timeout={300}>
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.achievements.map((ach) => (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={ach.id}>
