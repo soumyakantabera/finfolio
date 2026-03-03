@@ -10,7 +10,7 @@ const theme = createTheme({
     secondary: { main: '#111111' },
     background: { default: '#ffffff', paper: '#ffffff' },
     text: { primary: '#111111', secondary: '#555555' },
-    divider: '#e0e0e0',
+    divider: '#eee',
   },
   typography: {
     fontFamily: bodyFont,

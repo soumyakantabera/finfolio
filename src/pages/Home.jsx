@@ -19,7 +19,7 @@ export default function HomePage({ data }) {
   return (
     <Box>
       {/* ── 01 / Hero ── */}
-      <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+      <Box>
         <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
           <Grid container spacing={{ xs: 2, md: 3 }} alignItems="flex-start">
             {/* Left: headline */}
@@ -96,7 +96,7 @@ export default function HomePage({ data }) {
             <Grid size={{ xs: 12, md: 5 }}>
               <Box
                 sx={{
-                  border: '1px solid #e0e0e0',
+                  border: '1px solid #eee',
                   p: { xs: 2.5, md: 4 },
                 }}
               >
@@ -181,7 +181,7 @@ export default function HomePage({ data }) {
 
       {/* ── 02 / Key Metrics ── */}
       {home.stats?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+        <Box>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <Grid container spacing={0}>
               {home.stats.map((stat, i) => (
@@ -191,8 +191,8 @@ export default function HomePage({ data }) {
                   sx={{
                     textAlign: 'center',
                     py: 3,
-                    borderRight: i < home.stats.length - 1 ? { sm: '1px solid #e0e0e0' } : 'none',
-                    borderBottom: { xs: i < home.stats.length - 2 ? '1px solid #e0e0e0' : 'none', sm: 'none' },
+                    borderRight: i < home.stats.length - 1 ? { sm: '1px solid #eee' } : 'none',
+                    borderBottom: { xs: i < home.stats.length - 2 ? '1px solid #eee' : 'none', sm: 'none' },
                   }}
                 >
                   <Typography
@@ -221,7 +221,7 @@ export default function HomePage({ data }) {
 
       {/* ── 03 / Featured Work ── */}
       {allProjects.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+        <Box>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: { xs: 3, md: 5 }, flexWrap: 'wrap', gap: 2 }}>
               <Box>
@@ -247,7 +247,7 @@ export default function HomePage({ data }) {
                       display: 'block',
                       textDecoration: 'none',
                       color: 'inherit',
-                      border: '1px solid #e0e0e0',
+                      border: '1px solid #eee',
                       p: { xs: 2.5, md: 3 },
                       height: '100%',
                       position: 'relative',
@@ -270,7 +270,7 @@ export default function HomePage({ data }) {
                     {project.tags?.length > 0 && (
                       <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
                         {project.tags.map((tag) => (
-                          <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#e0e0e0', color: '#555' }} />
+                          <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#eee', color: '#555' }} />
                         ))}
                       </Box>
                     )}
@@ -319,7 +319,7 @@ export default function HomePage({ data }) {
 
       {/* ── 05 / Highlights ── */}
       {featuredProjects.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+        <Box>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <Typography
               variant="overline"
@@ -370,7 +370,7 @@ export default function HomePage({ data }) {
 
       {/* ── 06 / Custom Sections ── */}
       {home.customSections?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+        <Box>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             {home.customSections.map((section, i) => (
               <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 6 : 0 }}>
@@ -387,7 +387,7 @@ export default function HomePage({ data }) {
       )}
 
       {/* ── 07 / CTA Footer ── */}
-      <Box sx={{ borderBottom: '1px solid #e0e0e0' }}>
+      <Box>
         <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 }, textAlign: 'center' }}>
           <Typography
             variant="overline"
