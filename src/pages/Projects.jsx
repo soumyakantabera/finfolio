@@ -18,14 +18,14 @@ export default function ProjectsPage({ data }) {
   const projects = (data.projects || []).filter((p) => p.status !== 'draft');
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
       <Typography
         variant="overline"
         sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 600 }}
       >
         Gallery
       </Typography>
-      <Typography variant="h3" fontWeight={700} gutterBottom sx={{ fontSize: { xs: '1.75rem', md: '3rem' } }}>
+      <Typography variant="h3" fontWeight={700} gutterBottom sx={{ fontSize: { xs: '1.75rem', md: '3rem' }, mb: { xs: 3, md: 5 } }}>
         Projects
       </Typography>
 
@@ -42,7 +42,7 @@ export default function ProjectsPage({ data }) {
                 flexDirection: 'column',
                 position: 'relative',
                 overflow: 'hidden',
-                border: '1px solid #eee',
+                border: '1px solid #f0f0f0',
                 '&:focus-within': { outline: '2px solid #111', outlineOffset: '2px' },
               }}
             >
@@ -67,7 +67,7 @@ export default function ProjectsPage({ data }) {
                     alignItems: 'center',
                     gap: 0.5,
                     bgcolor: '#fff',
-                    border: '1px solid #eee',
+                    border: '1px solid #f0f0f0',
                     px: 1,
                     py: 0.25,
                   }}
@@ -79,7 +79,7 @@ export default function ProjectsPage({ data }) {
                 </Box>
               )}
 
-              <CardContent sx={{ flexGrow: 1, p: 2.5 }}>
+              <CardContent sx={{ flexGrow: 1, p: 3 }}>
                 <Typography variant="overline" sx={{ color: '#555', fontWeight: 600 }}>
                   {project.category}
                 </Typography>
@@ -99,7 +99,7 @@ export default function ProjectsPage({ data }) {
                 {project.tags?.length > 0 && (
                   <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 1 }}>
                     {project.tags.map((tag) => (
-                      <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#eee', color: '#555' }} />
+                      <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#f0f0f0', color: '#555' }} />
                     ))}
                   </Box>
                 )}
@@ -131,7 +131,7 @@ export default function ProjectsPage({ data }) {
                 )}
               </CardContent>
 
-              <CardActions sx={{ px: 2.5, pb: 2.5, pt: 1, justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, borderTop: '1px solid #eee' }}>
+              <CardActions sx={{ px: 3, pb: 3, pt: 1, justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, borderTop: '1px solid #f0f0f0' }}>
                 <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                   {project.category === 'Research Papers' ? (
                     <>

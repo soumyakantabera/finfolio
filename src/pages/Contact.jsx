@@ -51,7 +51,7 @@ export default function ContactPage({ data }) {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, px: { xs: 2, md: 5 } }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
       <Typography
         variant="overline"
         sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700 }}
@@ -65,7 +65,7 @@ export default function ContactPage({ data }) {
       <Grid container spacing={{ xs: 3, md: 4 }}>
         {/* Contact Info */}
         <Grid size={{ xs: 12, md: 5 }}>
-          <Card variant="outlined" sx={{ mb: 3, border: '1px solid #eee' }}>
+          <Card variant="outlined" sx={{ mb: 3, border: '1px solid #f0f0f0' }}>
             <CardContent sx={{ p: 2 }}>
               {contact.email && (
                 <Box
@@ -116,7 +116,7 @@ export default function ContactPage({ data }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                sx={{ color: '#111', border: '1px solid #ddd', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#111', color: '#fff' } }}
+                sx={{ color: '#111', border: '1px solid #f0f0f0', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#111', color: '#fff' } }}
               >
                 <LinkedInIcon />
               </IconButton>
@@ -127,7 +127,7 @@ export default function ContactPage({ data }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                sx={{ color: '#111', border: '1px solid #ddd', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#111', color: '#fff' } }}
+                sx={{ color: '#111', border: '1px solid #f0f0f0', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#111', color: '#fff' } }}
               >
                 <GitHubIcon />
               </IconButton>
@@ -139,7 +139,7 @@ export default function ContactPage({ data }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.platform}
-                sx={{ color: '#111', border: '1px solid #ddd', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#111', color: '#fff' } }}
+                sx={{ color: '#111', border: '1px solid #f0f0f0', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#111', color: '#fff' } }}
               >
                 <LaunchIcon />
               </IconButton>
@@ -157,7 +157,7 @@ export default function ContactPage({ data }) {
               onChange={handleChange('name')}
               error={!!errors.name}
               helperText={errors.name}
-              sx={{ mb: 2 }}
+              sx={{ mb: 2.5 }}
               inputProps={{ style: { minHeight: 24 } }}
             />
             <TextField
@@ -168,7 +168,7 @@ export default function ContactPage({ data }) {
               onChange={handleChange('email')}
               error={!!errors.email}
               helperText={errors.email}
-              sx={{ mb: 2 }}
+              sx={{ mb: 2.5 }}
               inputProps={{ style: { minHeight: 24 } }}
             />
             <TextField
@@ -180,7 +180,7 @@ export default function ContactPage({ data }) {
               onChange={handleChange('message')}
               error={!!errors.message}
               helperText={errors.message}
-              sx={{ mb: 3 }}
+              sx={{ mb: 3.5 }}
             />
             <Button
               type="submit"
