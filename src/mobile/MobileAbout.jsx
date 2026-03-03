@@ -58,7 +58,7 @@ export default function MobileAbout({ data }) {
         cursor: 'pointer',
         fontFamily: '"Space Grotesk", sans-serif',
         fontWeight: 700,
-        fontSize: '0.95rem',
+        fontSize: '1.1rem',
         color: '#111',
         minHeight: 40,
         '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
@@ -106,7 +106,7 @@ export default function MobileAbout({ data }) {
           <Box>
             <Typography
               component="h1"
-              sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, fontSize: '1.3rem', lineHeight: 1.2 }}
+              sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, fontSize: '1.5rem', lineHeight: 1.2 }}
             >
               {about.name}
             </Typography>
@@ -179,7 +179,7 @@ export default function MobileAbout({ data }) {
         {about.bio && (
           <Box sx={{ mb: 2 }}>
             <SectionTitle number="02 / Bio" label="About Me" sectionKey="bio" />
-            <Collapse in={isSectionExpanded('bio')}>
+            <Collapse in={isSectionExpanded('bio')} timeout={300}>
               <Typography sx={{ py: 1.5, fontSize: '0.8rem', lineHeight: 1.7, whiteSpace: 'pre-line', color: '#111' }}>
                 {about.bio}
               </Typography>
@@ -191,7 +191,7 @@ export default function MobileAbout({ data }) {
         {about.experience?.length > 0 && (
           <Box sx={{ mb: 2 }}>
             <SectionTitle number="03 / Experience" label="Experience" sectionKey="experience" />
-            <Collapse in={isSectionExpanded('experience')}>
+            <Collapse in={isSectionExpanded('experience')} timeout={300}>
               {about.experience.map((exp, idx) => (
                 <Box key={exp.id} sx={{ py: 1.25, borderBottom: idx < about.experience.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1 }}>
@@ -218,7 +218,7 @@ export default function MobileAbout({ data }) {
         {about.education?.length > 0 && (
           <Box sx={{ mb: 2 }}>
             <SectionTitle number="04 / Education" label="Education" sectionKey="education" />
-            <Collapse in={isSectionExpanded('education')}>
+            <Collapse in={isSectionExpanded('education')} timeout={300}>
               {about.education.map((edu, idx) => (
                 <Box key={edu.id} sx={{ py: 1.25, borderBottom: idx < about.education.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
                   <Typography sx={{ fontWeight: 700, fontSize: '0.85rem' }}>{edu.degree}</Typography>
@@ -237,7 +237,7 @@ export default function MobileAbout({ data }) {
         {about.skills?.length > 0 && (
           <Box sx={{ mb: 2 }}>
             <SectionTitle number="05 / Skills" label="Skills" sectionKey="skills" />
-            <Collapse in={isSectionExpanded('skills')}>
+            <Collapse in={isSectionExpanded('skills')} timeout={300}>
               {about.skills.map((skill, idx) => (
                 <Box
                   key={skill.id}
@@ -264,7 +264,7 @@ export default function MobileAbout({ data }) {
         {about.certifications?.length > 0 && (
           <Box sx={{ mb: 2 }}>
             <SectionTitle number="06 / Certifications" label="Certifications" sectionKey="certifications" />
-            <Collapse in={isSectionExpanded('certifications')}>
+            <Collapse in={isSectionExpanded('certifications')} timeout={300}>
               {about.certifications.map((cert, idx) => {
                 const hasMedia = !!cert.mediaUrl;
                 return (
@@ -308,7 +308,7 @@ export default function MobileAbout({ data }) {
         {about.achievements?.length > 0 && (
           <Box sx={{ mb: 2 }}>
             <SectionTitle number="07 / Achievements" label="Achievements" sectionKey="achievements" />
-            <Collapse in={isSectionExpanded('achievements')}>
+            <Collapse in={isSectionExpanded('achievements')} timeout={300}>
               {about.achievements.map((ach, idx) => (
                 <Box key={ach.id} sx={{ py: 1, borderBottom: idx < about.achievements.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
                   <Typography sx={{ fontSize: '0.8rem', fontWeight: 700 }}>{ach.title}</Typography>
@@ -326,7 +326,7 @@ export default function MobileAbout({ data }) {
         {about.additionalSections?.map((section) => (
           <Box key={section.id} sx={{ mb: 2 }}>
             <SectionTitle label={section.title} sectionKey={`additional-${section.id}`} />
-            <Collapse in={isSectionExpanded(`additional-${section.id}`)}>
+            <Collapse in={isSectionExpanded(`additional-${section.id}`)} timeout={300}>
               <Typography sx={{ py: 1.5, fontSize: '0.8rem', whiteSpace: 'pre-line', lineHeight: 1.7, color: '#111' }}>
                 {section.content}
               </Typography>

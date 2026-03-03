@@ -24,7 +24,7 @@ export default function MobileHome({ data }) {
           sx={{
             fontFamily: '"Space Grotesk", sans-serif',
             fontWeight: 700,
-            fontSize: '1.5rem',
+            fontSize: '1.75rem',
             letterSpacing: '-0.03em',
             lineHeight: 1.15,
             whiteSpace: 'pre-line',
@@ -88,6 +88,9 @@ export default function MobileHome({ data }) {
         {[
           { label: 'Name', value: about?.name },
           { label: 'Role', value: home.snapshotRole || about?.introTitle },
+          { label: 'Last Course', value: about?.education?.[0] ? `${about.education[0].degree}, ${about.education[0].institution}` : undefined },
+          { label: 'Programming', value: about?.programmingLanguages },
+          { label: 'Languages', value: about?.languagesKnown },
           { label: 'Location', value: home.snapshotLocation || about?.address },
           { label: 'Availability', value: home.snapshotAvailability },
         ].filter((r) => r.value).map((row, i, arr) => (
@@ -105,7 +108,11 @@ export default function MobileHome({ data }) {
             <Typography sx={{ color: '#111', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, fontSize: '0.6rem' }}>
               {row.label}
             </Typography>
-            <Typography sx={{ fontWeight: 500, fontSize: '0.8rem', textAlign: 'right' }}>
+            <Typography sx={{
+              fontWeight: ['Name', 'Last Course', 'Programming', 'Languages'].includes(row.label) ? 700 : 500,
+              fontSize: ['Name'].includes(row.label) ? '0.95rem' : ['Last Course', 'Programming', 'Languages'].includes(row.label) ? '0.85rem' : '0.8rem',
+              textAlign: 'right',
+            }}>
               {row.value}
             </Typography>
           </Box>
@@ -160,7 +167,7 @@ export default function MobileHome({ data }) {
           >
             03 / Work
           </Typography>
-          <Typography sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: '1.15rem', mb: 1.5 }}>
+          <Typography sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
             Featured Work
           </Typography>
 
@@ -239,7 +246,7 @@ export default function MobileHome({ data }) {
           >
             05 / Highlights
           </Typography>
-          <Typography sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: '1.15rem', mb: 1.5 }}>
+          <Typography sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
             Notable Work
           </Typography>
           {featuredProjects.slice(0, 4).map((project, i, arr) => (
@@ -277,7 +284,7 @@ export default function MobileHome({ data }) {
         <Box sx={{ borderBottom: '1px solid #eee', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           {home.customSections.map((section, i) => (
             <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 3 : 0 }}>
-              <Typography sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: '1.15rem', mb: 1 }}>
+              <Typography sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1 }}>
                 {section.title}
               </Typography>
               <Typography sx={{ whiteSpace: 'pre-line', fontSize: '0.85rem', lineHeight: 1.6 }}>
@@ -297,7 +304,7 @@ export default function MobileHome({ data }) {
           Get in touch
         </Typography>
         <Typography
-          sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, fontSize: '1.35rem', mb: 1 }}
+          sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, fontSize: '1.5rem', mb: 1 }}
         >
           Let&apos;s connect.
         </Typography>
