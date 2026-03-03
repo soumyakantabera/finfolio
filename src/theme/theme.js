@@ -53,20 +53,20 @@ const theme = createTheme({
         root: {
           borderRadius: 0,
           boxShadow: 'none',
-          border: '1px solid #e0e0e0',
+          border: '1px solid #eee',
           transition: 'none',
         },
       },
     },
     MuiChip: {
       styleOverrides: {
-        root: { borderRadius: 0, borderColor: '#e0e0e0', color: '#111' },
-        outlined: { borderColor: '#e0e0e0' },
+        root: { borderRadius: 0, borderColor: '#eee', color: '#111' },
+        outlined: { borderColor: '#eee' },
       },
     },
     MuiAppBar: {
       styleOverrides: {
-        root: { boxShadow: 'none', borderBottom: '1px solid #e0e0e0' },
+        root: { boxShadow: 'none', borderBottom: '1px solid #eee' },
       },
     },
     MuiPaper: {
@@ -77,7 +77,7 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: { borderRadius: 0 },
-        notchedOutline: { borderColor: '#e0e0e0' },
+        notchedOutline: { borderColor: '#eee' },
       },
     },
     MuiDialog: {
@@ -97,7 +97,7 @@ const theme = createTheme({
     },
     MuiDivider: {
       styleOverrides: {
-        root: { borderColor: '#e0e0e0' },
+        root: { borderColor: '#eee' },
       },
     },
   },
