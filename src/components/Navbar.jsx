@@ -83,9 +83,9 @@ export default function Navbar({ data }) {
     fontWeight: isActive(path) ? 700 : 400,
     borderBottom: isActive(path) ? '1px solid #111' : '1px solid transparent',
     borderRadius: 0,
-    px: 1.5,
+    px: 2,
     py: 0.75,
-    fontSize: '0.875rem',
+    fontSize: '0.8rem',
     letterSpacing: '0.01em',
     position: 'relative',
     transition: 'border-color 0.2s ease',
@@ -103,7 +103,7 @@ export default function Navbar({ data }) {
   return (
     <>
       <AppBar position="sticky" sx={{ bgcolor: '#fff', color: '#111' }}>
-        <Toolbar sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 1, minHeight: { xs: 56, sm: 64 } }}>
+        <Toolbar sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 1, minHeight: { xs: 56, sm: 72 } }}>
           <Typography
             variant="h6"
             component={Link}

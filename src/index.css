@@ -3,7 +3,7 @@
   --c-bg: #fff;
   --c-fg: #111;
 
-  --c-border: #eee;
+  --c-border: #f0f0f0;
   --c-border-subtle: #f5f5f5;
   --border: 1px solid var(--c-border);
   --border-dashed: 1px dashed var(--c-border);
@@ -20,9 +20,10 @@
   --s9: 64px;
 
   /* ── Layout Tokens (Desktop) ── */
-  --page-pad-x: 40px;
-  --page-pad-y: 64px;
-  --section-gap: 48px;
+  --page-pad-x: 64px;
+  --page-pad-y: 80px;
+  --section-gap: 72px;
+  --max-width-content: 680px;
 
   /* ── Layout Tokens (Shared) ── */
   --block-gap: 16px;
@@ -55,13 +56,14 @@
     --page-pad-y: 32px;
     --section-gap: 32px;
     --c-fg: #111;
-    --c-border: #eee;
+    --c-border: #f0f0f0;
     --c-border-subtle: #f5f5f5;
   }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-body); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: var(--c-bg); color: var(--c-fg); line-height: 1.6; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: var(--c-bg); color: var(--c-fg); line-height: 1.75; }
 a { color: inherit; text-decoration: none; }
 
 /* Tabular numerals for finance content */

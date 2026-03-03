@@ -9,12 +9,12 @@ const theme = createTheme({
     primary: { main: '#111111' },
     secondary: { main: '#111111' },
     background: { default: '#ffffff', paper: '#ffffff' },
-    text: { primary: '#111111', secondary: '#555555' },
-    divider: '#eee',
+    text: { primary: '#111111', secondary: '#777' },
+    divider: '#f0f0f0',
   },
   typography: {
     fontFamily: bodyFont,
-    h1: { fontFamily: headingFont, fontWeight: 700, letterSpacing: '-0.03em', fontSize: '3rem' },
+    h1: { fontFamily: headingFont, fontWeight: 700, letterSpacing: '-0.04em', fontSize: '2.75rem' },
     h2: { fontFamily: headingFont, fontWeight: 700, letterSpacing: '-0.02em', fontSize: '2.25rem' },
     h3: { fontFamily: headingFont, fontWeight: 600, letterSpacing: '-0.01em', fontSize: '1.75rem' },
     h4: { fontFamily: headingFont, fontWeight: 600, letterSpacing: '-0.01em', fontSize: '1.5rem' },
@@ -22,8 +22,8 @@ const theme = createTheme({
     h6: { fontFamily: headingFont, fontWeight: 500, fontSize: '1.1rem' },
     subtitle1: { fontFamily: bodyFont, fontWeight: 500 },
     subtitle2: { fontFamily: bodyFont, fontWeight: 500 },
-    body1: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.7 },
-    body2: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.6 },
+    body1: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.8 },
+    body2: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.8 },
     caption: { fontFamily: bodyFont, fontWeight: 400, fontSize: '0.75rem' },
     overline: { fontFamily: bodyFont, fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.7rem' },
     button: { fontFamily: bodyFont, textTransform: 'none', fontWeight: 600 },
@@ -34,7 +34,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 0,
-          padding: '10px 24px',
+          padding: '12px 32px',
           boxShadow: 'none',
           '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
         },
@@ -53,20 +53,20 @@ const theme = createTheme({
         root: {
           borderRadius: 0,
           boxShadow: 'none',
-          border: '1px solid #eee',
+          border: '1px solid #f0f0f0',
           transition: 'none',
         },
       },
     },
     MuiChip: {
       styleOverrides: {
-        root: { borderRadius: 0, borderColor: '#eee', color: '#111' },
-        outlined: { borderColor: '#eee' },
+        root: { borderRadius: 0, borderColor: '#f0f0f0', color: '#111' },
+        outlined: { borderColor: '#f0f0f0' },
       },
     },
     MuiAppBar: {
       styleOverrides: {
-        root: { boxShadow: 'none', borderBottom: '1px solid #eee' },
+        root: { boxShadow: 'none', borderBottom: '1px solid #f0f0f0' },
       },
     },
     MuiPaper: {
@@ -77,7 +77,7 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: { borderRadius: 0 },
-        notchedOutline: { borderColor: '#eee' },
+        notchedOutline: { borderColor: '#f0f0f0' },
       },
     },
     MuiDialog: {
@@ -97,7 +97,7 @@ const theme = createTheme({
     },
     MuiDivider: {
       styleOverrides: {
-        root: { borderColor: '#eee' },
+        root: { borderColor: '#f0f0f0' },
       },
     },
   },

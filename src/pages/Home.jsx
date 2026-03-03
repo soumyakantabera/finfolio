@@ -20,7 +20,7 @@ export default function HomePage({ data }) {
     <Box>
       {/* ── 01 / Hero ── */}
       <Box>
-        <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
+        <Container maxWidth="lg" sx={{ py: { xs: 5, md: 14 }, px: { xs: 2, md: 5 } }}>
           <Grid container spacing={{ xs: 2, md: 3 }} alignItems="flex-start">
             {/* Left: headline */}
             <Grid size={{ xs: 12, md: 7 }}>
@@ -96,7 +96,7 @@ export default function HomePage({ data }) {
             <Grid size={{ xs: 12, md: 5 }}>
               <Box
                 sx={{
-                  border: '1px solid #eee',
+                  border: '1px solid #f0f0f0',
                   p: { xs: 2.5, md: 4 },
                 }}
               >
@@ -119,7 +119,7 @@ export default function HomePage({ data }) {
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       py: 1.5,
-                      borderBottom: '1px solid #eee',
+                      borderBottom: '1px solid #f0f0f0',
                       minHeight: 44,
                     }}
                   >
@@ -182,7 +182,7 @@ export default function HomePage({ data }) {
       {/* ── 02 / Key Metrics ── */}
       {home.stats?.length > 0 && (
         <Box>
-          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
             <Grid container spacing={0}>
               {home.stats.map((stat, i) => (
                 <Grid
@@ -191,8 +191,8 @@ export default function HomePage({ data }) {
                   sx={{
                     textAlign: 'center',
                     py: 3,
-                    borderRight: i < home.stats.length - 1 ? { sm: '1px solid #eee' } : 'none',
-                    borderBottom: { xs: i < home.stats.length - 2 ? '1px solid #eee' : 'none', sm: 'none' },
+                    borderRight: i < home.stats.length - 1 ? { sm: '1px solid #f0f0f0' } : 'none',
+                    borderBottom: { xs: i < home.stats.length - 2 ? '1px solid #f0f0f0' : 'none', sm: 'none' },
                   }}
                 >
                   <Typography
@@ -222,8 +222,8 @@ export default function HomePage({ data }) {
       {/* ── 03 / Featured Work ── */}
       {allProjects.length > 0 && (
         <Box>
-          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: { xs: 3, md: 5 }, flexWrap: 'wrap', gap: 2 }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: { xs: 3, md: 6 }, flexWrap: 'wrap', gap: 2 }}>
               <Box>
                 <Typography
                   variant="overline"
@@ -247,8 +247,8 @@ export default function HomePage({ data }) {
                       display: 'block',
                       textDecoration: 'none',
                       color: 'inherit',
-                      border: '1px solid #eee',
-                      p: { xs: 2.5, md: 3 },
+                      border: '1px solid #f0f0f0',
+                      p: { xs: 2.5, md: 4 },
                       height: '100%',
                       position: 'relative',
                       overflow: 'hidden',
@@ -270,7 +270,7 @@ export default function HomePage({ data }) {
                     {project.tags?.length > 0 && (
                       <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
                         {project.tags.map((tag) => (
-                          <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#eee', color: '#555' }} />
+                          <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#f0f0f0', color: '#555' }} />
                         ))}
                       </Box>
                     )}
@@ -280,7 +280,7 @@ export default function HomePage({ data }) {
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         pt: 2,
-                        borderTop: '1px solid #eee',
+                        borderTop: '1px solid #f0f0f0',
                       }}
                     >
                       {project.date && (
@@ -320,7 +320,7 @@ export default function HomePage({ data }) {
       {/* ── 05 / Highlights ── */}
       {featuredProjects.length > 0 && (
         <Box>
-          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
             <Typography
               variant="overline"
               sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 600 }}
@@ -341,7 +341,7 @@ export default function HomePage({ data }) {
                   alignItems: 'baseline',
                   py: 2,
                   minHeight: 56,
-                  borderBottom: i < featuredProjects.length - 1 ? '1px solid #eee' : 'none',
+                  borderBottom: i < featuredProjects.length - 1 ? '1px solid #f0f0f0' : 'none',
                   textDecoration: 'none',
                   color: 'inherit',
                   '&:hover': { fontWeight: 700 },
@@ -371,7 +371,7 @@ export default function HomePage({ data }) {
       {/* ── 06 / Custom Sections ── */}
       {home.customSections?.length > 0 && (
         <Box>
-          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
+          <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
             {home.customSections.map((section, i) => (
               <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 6 : 0 }}>
                 <Typography variant="h4" fontWeight={600} gutterBottom sx={{ fontSize: { xs: '1.35rem', md: '2.125rem' } }}>
@@ -388,7 +388,7 @@ export default function HomePage({ data }) {
 
       {/* ── 07 / CTA Footer ── */}
       <Box>
-        <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 }, textAlign: 'center' }}>
+        <Container maxWidth="lg" sx={{ py: { xs: 5, md: 14 }, px: { xs: 2, md: 5 }, textAlign: 'center' }}>
           <Typography
             variant="overline"
             sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 600 }}
