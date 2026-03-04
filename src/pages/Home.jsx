@@ -146,8 +146,7 @@ export default function HomePage({ data }) {
                         {row.label}
                       </Typography>
                       <Typography variant="body2" sx={{
-                        fontWeight: ['Name', 'Last Course', 'Programming', 'Languages'].includes(row.label) ? 700 : 500,
-                        fontSize: ['Name'].includes(row.label) ? '1.1rem' : ['Last Course', 'Programming', 'Languages'].includes(row.label) ? '0.95rem' : undefined,
+                        fontWeight: 500,
                         textAlign: 'right',
                         color: '#000',
                       }}>
