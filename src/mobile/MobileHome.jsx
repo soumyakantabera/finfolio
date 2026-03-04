@@ -109,8 +109,8 @@ export default function MobileHome({ data }) {
               {row.label}
             </Typography>
             <Typography sx={{
-              fontWeight: ['Name', 'Last Course', 'Programming', 'Languages'].includes(row.label) ? 700 : 500,
-              fontSize: ['Name'].includes(row.label) ? '0.95rem' : ['Last Course', 'Programming', 'Languages'].includes(row.label) ? '0.85rem' : '0.8rem',
+              fontWeight: 500,
+              fontSize: '0.8rem',
               textAlign: 'right',
             }}>
               {row.value}
