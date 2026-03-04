@@ -61,7 +61,7 @@ export default function MobileHome({ data }) {
                   border: '1px solid #000',
                   py: 1.25,
                   textDecoration: 'none',
-                  fontFamily: '"Space Grotesk", sans-serif',
+                  fontFamily: '"Playfair Display", "Georgia", serif',
                   fontWeight: 600,
                   fontSize: '0.8rem',
                   letterSpacing: '0.04em',
@@ -140,7 +140,7 @@ export default function MobileHome({ data }) {
                 <Typography
                   className="tabular-nums"
                   sx={{
-                    fontFamily: '"Space Grotesk", sans-serif',
+                    fontFamily: '"JetBrains Mono", "Menlo", monospace',
                     fontWeight: 700,
                     fontSize: '1.25rem',
                   }}
