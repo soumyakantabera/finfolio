@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
+import { motion } from 'framer-motion';
 
 export default function QuoteBlock({ quotes, mode = 'featured' }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -24,10 +25,15 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
 
   return (
     <Box
+      component={motion.div}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
       sx={{
         py: { xs: 4, md: 6 },
-        borderTop: '1px solid #eee',
-        borderBottom: '1px solid #eee',
+        borderTop: '1px solid #000',
+        borderBottom: '1px solid #000',
         textAlign: 'center',
       }}
     >
@@ -35,7 +41,7 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
         variant="h4"
         component="blockquote"
         sx={{
-          fontFamily: '"Space Grotesk", "Sora", sans-serif',
+          fontFamily: '"Playfair Display", "Georgia", serif',
           fontWeight: 500,
           fontStyle: 'normal',
           letterSpacing: '-0.01em',
@@ -44,8 +50,8 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
           mx: 'auto',
           px: { xs: 1, sm: 2 },
           fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2.125rem' },
-          color: '#111',
-          '&::before': { content: '"\\201C"', display: 'block', fontSize: { xs: '2rem', md: '3rem' }, lineHeight: 1, color: '#111', mb: 1 },
+          color: '#000',
+          '&::before': { content: '"\\201C"', display: 'block', fontSize: { xs: '3rem', md: '5rem' }, fontWeight: 900, lineHeight: 1, color: '#000', mb: 1 },
         }}
       >
         {quote.text}
@@ -56,7 +62,8 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
           sx={{
             display: 'block',
             mt: 2,
-            color: '#111',
+            color: '#000',
+            fontFamily: '"JetBrains Mono", "Menlo", monospace',
             textTransform: 'uppercase',
             letterSpacing: '0.15em',
             fontWeight: 600,
@@ -74,8 +81,8 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
               sx={{
                 width: 8,
                 height: 8,
-                bgcolor: i === activeIndex ? '#111' : '#fff',
-                border: '1px solid #111',
+                bgcolor: i === activeIndex ? '#000' : '#FFFFFF',
+                border: '1px solid #000',
                 cursor: 'pointer',
                 transition: 'none',
               }}
