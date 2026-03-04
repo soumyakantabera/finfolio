@@ -1,16 +1,17 @@
 import { createTheme } from '@mui/material/styles';
 
-const headingFont = '"Space Grotesk", "Sora", "Helvetica", "Arial", sans-serif';
+const headingFont = '"Playfair Display", "Georgia", serif';
 const bodyFont = '"Sora", "Helvetica", "Arial", sans-serif';
+const monoFont = '"JetBrains Mono", "Menlo", monospace';
 
 const theme = createTheme({
   palette: {
     mode: 'light',
-    primary: { main: '#111111' },
-    secondary: { main: '#111111' },
-    background: { default: '#ffffff', paper: '#ffffff' },
-    text: { primary: '#111111', secondary: '#777' },
-    divider: '#f0f0f0',
+    primary: { main: '#000000' },
+    secondary: { main: '#000000' },
+    background: { default: '#FFFFFF', paper: '#FFFFFF' },
+    text: { primary: '#000000', secondary: '#000000' },
+    divider: '#000000',
   },
   typography: {
     fontFamily: bodyFont,
@@ -24,8 +25,8 @@ const theme = createTheme({
     subtitle2: { fontFamily: bodyFont, fontWeight: 500 },
     body1: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.8 },
     body2: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.8 },
-    caption: { fontFamily: bodyFont, fontWeight: 400, fontSize: '0.75rem' },
-    overline: { fontFamily: bodyFont, fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.7rem' },
+    caption: { fontFamily: monoFont, fontWeight: 400, fontSize: '0.75rem' },
+    overline: { fontFamily: monoFont, fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.7rem' },
     button: { fontFamily: bodyFont, textTransform: 'none', fontWeight: 600 },
   },
   shape: { borderRadius: 0 },
@@ -36,15 +37,15 @@ const theme = createTheme({
           borderRadius: 0,
           padding: '12px 32px',
           boxShadow: 'none',
-          '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
+          '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
         },
         contained: {
           boxShadow: 'none',
           '&:hover': { boxShadow: 'none' },
         },
         outlined: {
-          borderColor: '#111',
-          '&:hover': { backgroundColor: '#111', color: '#fff', borderColor: '#111' },
+          borderColor: '#000',
+          '&:hover': { backgroundColor: '#000', color: '#fff', borderColor: '#000' },
         },
       },
     },
@@ -53,20 +54,20 @@ const theme = createTheme({
         root: {
           borderRadius: 0,
           boxShadow: 'none',
-          border: '1px solid #f0f0f0',
+          border: '1px solid #000',
           transition: 'none',
         },
       },
     },
     MuiChip: {
       styleOverrides: {
-        root: { borderRadius: 0, borderColor: '#f0f0f0', color: '#111' },
-        outlined: { borderColor: '#f0f0f0' },
+        root: { borderRadius: 0, borderColor: '#000', color: '#000' },
+        outlined: { borderColor: '#000' },
       },
     },
     MuiAppBar: {
       styleOverrides: {
-        root: { boxShadow: 'none', borderBottom: '1px solid #f0f0f0' },
+        root: { boxShadow: 'none', borderBottom: '1px solid #000' },
       },
     },
     MuiPaper: {
@@ -77,7 +78,7 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: { borderRadius: 0 },
-        notchedOutline: { borderColor: '#f0f0f0' },
+        notchedOutline: { borderColor: '#000' },
       },
     },
     MuiDialog: {
@@ -97,7 +98,7 @@ const theme = createTheme({
     },
     MuiDivider: {
       styleOverrides: {
-        root: { borderColor: '#f0f0f0' },
+        root: { borderColor: '#000' },
       },
     },
   },
