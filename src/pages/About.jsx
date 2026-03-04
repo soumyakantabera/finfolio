@@ -11,6 +11,7 @@ import {
   Modal,
   Button,
 } from '@mui/material';
+import { motion } from 'framer-motion';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -22,6 +23,16 @@ import ImageIcon from '@mui/icons-material/Image';
 import CloseIcon from '@mui/icons-material/Close';
 import DownloadIcon from '@mui/icons-material/Download';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+
+const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
+
+const sectionReveal = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-50px' },
+  transition: { duration: 0.6, ease: 'easeOut' },
+};
 
 const platformIcon = (platform) => {
   const p = platform?.toLowerCase() || '';
@@ -62,6 +73,8 @@ export default function AboutPage({ data }) {
         gap: 2,
         cursor: collapsible ? 'pointer' : 'default',
         minHeight: 44,
+        borderBottom: '1px solid #000',
+        pb: 2,
       }}
       onClick={collapsible ? () => toggleSection(sectionKey) : undefined}
       role={collapsible ? 'button' : undefined}
@@ -73,17 +86,17 @@ export default function AboutPage({ data }) {
         {number && (
           <Typography
             variant="overline"
-            sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 600 }}
+            sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 600, fontFamily: accentFont }}
           >
             {number}
           </Typography>
         )}
-        <Typography variant="h4" fontWeight={600} sx={{ fontSize: { xs: '1.5rem', md: '2.5rem' } }}>
+        <Typography variant="h4" fontWeight={600} sx={{ fontSize: { xs: '1.5rem', md: '2.5rem' }, fontFamily: serifFont }}>
           {title}
         </Typography>
       </Box>
       {collapsible && (
-        <Box sx={{ color: '#555', display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ color: '#000', display: 'flex', alignItems: 'center' }}>
           {isSectionExpanded(sectionKey) ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </Box>
       )}
@@ -91,16 +104,16 @@ export default function AboutPage({ data }) {
   );
 
   return (
-    <Box>
+    <Box sx={{ bgcolor: '#FFF', color: '#000' }}>
       {/* ── 01 / Hero ── */}
-      <Box>
+      <motion.div {...sectionReveal}>
         <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
           <Grid container spacing={{ xs: 2, md: 3 }} alignItems="flex-start">
             {/* Left: headline */}
             <Grid size={{ xs: 12, md: 7 }}>
               <Typography
                 variant="overline"
-                sx={{ color: '#555', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block', fontWeight: 600 }}
+                sx={{ color: '#000', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block', fontWeight: 600, fontFamily: accentFont }}
               >
                 01 / About
               </Typography>
@@ -108,12 +121,13 @@ export default function AboutPage({ data }) {
                 variant="h2"
                 component="h1"
                 sx={{
-                  fontFamily: '"Space Grotesk", sans-serif',
+                  fontFamily: serifFont,
                   fontWeight: 700,
                   fontSize: { xs: '2rem', sm: '3rem', md: '3.5rem' },
                   letterSpacing: '-0.03em',
                   lineHeight: 1.15,
                   mb: 2,
+                  color: '#000',
                 }}
               >
                 {about.name}
@@ -121,13 +135,13 @@ export default function AboutPage({ data }) {
               {about.introTitle && (
                 <Typography
                   variant="h6"
-                  sx={{ color: '#333', fontWeight: 400, mb: 2, fontSize: { xs: '1rem', md: '1.25rem' }, lineHeight: 1.6 }}
+                  sx={{ color: '#000', fontWeight: 400, mb: 2, fontSize: { xs: '1rem', md: '1.25rem' }, lineHeight: 1.6, fontFamily: serifFont }}
                 >
                   {about.introTitle}
                 </Typography>
               )}
               {about.introDescription && (
-                <Typography variant="body1" sx={{ color: '#444', maxWidth: 500, mb: 3, lineHeight: 1.7 }}>
+                <Typography variant="body1" sx={{ color: '#000', maxWidth: 500, mb: 3, lineHeight: 1.7 }}>
                   {about.introDescription}
                 </Typography>
               )}
@@ -142,9 +156,9 @@ export default function AboutPage({ data }) {
                       rel="noopener noreferrer"
                       aria-label={link.platform}
                       sx={{
-                        color: '#111', border: '1px solid #eee',
+                        color: '#000', border: '1px solid #000',
                         width: 44, height: 44,
-                        '&:hover': { bgcolor: '#111', color: '#fff', borderColor: '#111' },
+                        '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
                       }}
                       size="small"
                     >
@@ -157,23 +171,23 @@ export default function AboutPage({ data }) {
 
             {/* Right: profile card */}
             <Grid size={{ xs: 12, md: 5 }}>
-              <Box sx={{ border: '1px solid #eee', p: { xs: 2.5, md: 4 } }}>
+              <Box sx={{ border: '1px solid #000', p: { xs: 2.5, md: 4 } }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
                   <Avatar
                     src={about.profilePhoto || undefined}
                     alt={about.name}
                     sx={{
                       width: 64, height: 64,
-                      bgcolor: '#111', fontSize: 28, fontWeight: 700,
-                      color: '#fff', border: '1px solid #eee',
+                      bgcolor: '#000', fontSize: 28, fontWeight: 700,
+                      color: '#FFF', border: '1px solid #000',
                     }}
                   >
                     {about.name?.[0]}
                   </Avatar>
                   <Box>
-                    <Typography variant="subtitle1" fontWeight={600}>{about.name}</Typography>
+                    <Typography variant="subtitle1" fontWeight={600} sx={{ color: '#000' }}>{about.name}</Typography>
                     {about.introTitle && (
-                      <Typography variant="body2" sx={{ color: '#555' }}>{about.introTitle}</Typography>
+                      <Typography variant="body2" sx={{ color: '#000', fontFamily: accentFont, fontSize: '0.75rem' }}>{about.introTitle}</Typography>
                     )}
                   </Box>
                 </Box>
@@ -182,7 +196,7 @@ export default function AboutPage({ data }) {
                   <Box>
                     <Typography
                       variant="overline"
-                      sx={{ color: '#555', letterSpacing: '0.15em', mb: 1.5, display: 'block', fontWeight: 600 }}
+                      sx={{ color: '#000', letterSpacing: '0.15em', mb: 1.5, display: 'block', fontWeight: 600, fontFamily: accentFont }}
                     >
                       At a glance
                     </Typography>
@@ -194,14 +208,14 @@ export default function AboutPage({ data }) {
                           justifyContent: 'space-between',
                           alignItems: 'center',
                           py: 1.5,
-                          borderBottom: i < about.metrics.length - 1 ? '1px solid #eee' : 'none',
+                          borderBottom: i < about.metrics.length - 1 ? '1px solid #000' : 'none',
                           minHeight: 44,
                         }}
                       >
-                        <Typography variant="caption" sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
+                        <Typography variant="caption" sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, fontFamily: accentFont }}>
                           {m.label}
                         </Typography>
-                        <Typography variant="body2" className="tabular-nums" sx={{ fontWeight: 600 }}>
+                        <Typography variant="body2" className="tabular-nums" sx={{ fontWeight: 600, color: '#000' }}>
                           {m.value}
                         </Typography>
                       </Box>
@@ -212,26 +226,26 @@ export default function AboutPage({ data }) {
             </Grid>
           </Grid>
         </Container>
-      </Box>
+      </motion.div>
 
       {/* ── 02 / Bio ── */}
       {about.bio && (
-        <Box>
+        <motion.div {...sectionReveal}>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <SectionHeading number="02 / Bio" title="About Me" />
             <Typography variant="body1" sx={{
-              lineHeight: 1.8, color: '#444', whiteSpace: 'pre-line', maxWidth: 700,
+              lineHeight: 1.8, color: '#000', whiteSpace: 'pre-line', maxWidth: 700,
               fontSize: { xs: '0.95rem', md: '1.05rem' },
             }}>
               {about.bio}
             </Typography>
           </Container>
-        </Box>
+        </motion.div>
       )}
 
       {/* ── 03 / Experience ── */}
       {about.experience?.length > 0 && (
-        <Box>
+        <motion.div {...sectionReveal}>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <SectionHeading
               number="03 / Experience"
@@ -250,37 +264,37 @@ export default function AboutPage({ data }) {
                     flexWrap: 'wrap',
                     gap: 1,
                     py: 2.5,
-                    borderBottom: idx < about.experience.length - 1 ? '1px solid #eee' : 'none',
+                    borderBottom: idx < about.experience.length - 1 ? '1px solid #000' : 'none',
                     minHeight: 56,
                   }}
                 >
                   <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Typography variant="body1" fontWeight={600}>
+                    <Typography variant="body1" fontWeight={600} sx={{ color: '#000' }}>
                       {exp.role}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#555', mt: 0.5 }}>
+                    <Typography variant="body2" sx={{ color: '#000', mt: 0.5 }}>
                       {exp.company}
                     </Typography>
                     {exp.description && (
-                      <Typography variant="body2" sx={{ mt: 1.5, color: '#444', lineHeight: 1.7 }}>
+                      <Typography variant="body2" sx={{ mt: 1.5, color: '#000', lineHeight: 1.7 }}>
                         {exp.description}
                       </Typography>
                     )}
                   </Box>
                   <Chip label={exp.period} size="small" sx={{
-                    bgcolor: '#fff', color: '#555', fontWeight: 600, fontSize: '0.7rem',
-                    border: '1px solid #eee',
+                    bgcolor: '#FFF', color: '#000', fontWeight: 600, fontSize: '0.7rem',
+                    border: '1px solid #000', fontFamily: accentFont,
                   }} />
                 </Box>
               ))}
             </Collapse>
           </Container>
-        </Box>
+        </motion.div>
       )}
 
       {/* ── 04 / Education ── */}
       {about.education?.length > 0 && (
-        <Box>
+        <motion.div {...sectionReveal}>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <SectionHeading
               number="04 / Education"
@@ -292,18 +306,18 @@ export default function AboutPage({ data }) {
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.education.map((edu) => (
                   <Grid size={{ xs: 12, md: 6 }} key={edu.id}>
-                    <Box sx={{ border: '1px solid #eee', p: { xs: 2.5, md: 3 }, height: '100%' }}>
-                      <Typography variant="subtitle1" fontWeight={600}>
+                    <Box sx={{ border: '1px solid #000', p: { xs: 2.5, md: 3 }, height: '100%' }}>
+                      <Typography variant="subtitle1" fontWeight={600} sx={{ color: '#000' }}>
                         {edu.degree}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: '#555', mt: 0.5 }}>
+                      <Typography variant="body2" sx={{ color: '#000', mt: 0.5 }}>
                         {edu.institution}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#555', fontWeight: 600, display: 'block', mt: 0.5 }}>
+                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 600, display: 'block', mt: 0.5, fontFamily: accentFont }}>
                         {edu.year}
                       </Typography>
                       {edu.details && (
-                        <Typography variant="body2" sx={{ mt: 1.5, color: '#444', lineHeight: 1.7 }}>
+                        <Typography variant="body2" sx={{ mt: 1.5, color: '#000', lineHeight: 1.7 }}>
                           {edu.details}
                         </Typography>
                       )}
@@ -313,12 +327,12 @@ export default function AboutPage({ data }) {
               </Grid>
             </Collapse>
           </Container>
-        </Box>
+        </motion.div>
       )}
 
       {/* ── 05 / Skills ── */}
       {about.skills?.length > 0 && (
-        <Box>
+        <motion.div {...sectionReveal}>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <SectionHeading
               number="05 / Skills"
@@ -333,13 +347,13 @@ export default function AboutPage({ data }) {
                     <Box sx={{
                       display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                       py: 1.5, px: 2,
-                      border: '1px solid #eee',
+                      border: '1px solid #000',
                       minHeight: 44,
                     }}>
-                      <Typography variant="body2" fontWeight={600}>
+                      <Typography variant="body2" fontWeight={600} sx={{ color: '#000' }}>
                         {skill.name}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#555', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: accentFont }}>
                         {skill.level}
                       </Typography>
                     </Box>
@@ -348,12 +362,12 @@ export default function AboutPage({ data }) {
               </Grid>
             </Collapse>
           </Container>
-        </Box>
+        </motion.div>
       )}
 
       {/* ── 06 / Certifications ── */}
       {about.certifications?.length > 0 && (
-        <Box>
+        <motion.div {...sectionReveal}>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <SectionHeading
               number="06 / Certifications"
@@ -369,15 +383,15 @@ export default function AboutPage({ data }) {
                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={cert.id}>
                       <Box
                         sx={{
-                          border: '1px solid #eee',
+                          border: '1px solid #000',
                           p: { xs: 2, md: 2.5 },
                           cursor: hasMedia ? 'pointer' : 'default',
                           display: 'flex',
                           alignItems: 'center',
                           gap: 1.5,
                           minHeight: 56,
-                          '&:hover': hasMedia ? { borderColor: '#111' } : {},
-                          '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
+                          '&:hover': hasMedia ? { bgcolor: '#000', color: '#FFF' } : {},
+                          '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                         }}
                         onClick={hasMedia ? () => setSelectedCert(cert) : undefined}
                         role={hasMedia ? 'button' : undefined}
@@ -391,16 +405,16 @@ export default function AboutPage({ data }) {
                             </Typography>
                             {hasMedia && (
                               cert.mediaType === 'pdf'
-                                ? <PictureAsPdfIcon sx={{ fontSize: 16, color: '#555' }} />
-                                : <ImageIcon sx={{ fontSize: 16, color: '#555' }} />
+                                ? <PictureAsPdfIcon sx={{ fontSize: 16, color: 'inherit' }} />
+                                : <ImageIcon sx={{ fontSize: 16, color: 'inherit' }} />
                             )}
                           </Box>
                           {cert.issuer && (
-                            <Typography variant="caption" sx={{ color: '#555', display: 'block' }}>
+                            <Typography variant="caption" sx={{ color: 'inherit', display: 'block', fontFamily: accentFont }}>
                               {cert.issuer}
                             </Typography>
                           )}
-                          <Typography variant="caption" sx={{ color: '#555', fontWeight: 600 }}>
+                          <Typography variant="caption" sx={{ color: 'inherit', fontWeight: 600, fontFamily: accentFont }}>
                             {cert.date || cert.year}
                           </Typography>
                         </Box>
@@ -411,7 +425,7 @@ export default function AboutPage({ data }) {
               </Grid>
             </Collapse>
           </Container>
-        </Box>
+        </motion.div>
       )}
 
       {/* Certification Viewer Modal */}
@@ -430,8 +444,8 @@ export default function AboutPage({ data }) {
           maxWidth: { xs: '100%', md: 900 },
           height: { xs: '100%', md: 'auto' },
           maxHeight: { xs: '100%', md: '85vh' },
-          bgcolor: '#fff',
-          border: '1px solid #eee',
+          bgcolor: '#FFF',
+          border: '1px solid #000',
           display: 'flex',
           flexDirection: 'column',
           outline: 'none',
@@ -440,15 +454,15 @@ export default function AboutPage({ data }) {
           <Box sx={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             px: { xs: 2, md: 3 }, py: 1.5,
-            borderBottom: '1px solid #eee', flexShrink: 0,
+            borderBottom: '1px solid #000', flexShrink: 0,
           }}>
-            <Typography variant="subtitle1" fontWeight={600} noWrap sx={{ flex: 1, mr: 1 }}>
+            <Typography variant="subtitle1" fontWeight={600} noWrap sx={{ flex: 1, mr: 1, color: '#000' }}>
               {selectedCert?.title || selectedCert?.name}
             </Typography>
             <IconButton
               onClick={() => setSelectedCert(null)}
               aria-label="Close"
-              sx={{ color: '#111', flexShrink: 0, border: '1px solid #eee', width: 40, height: 40 }}
+              sx={{ color: '#000', flexShrink: 0, border: '1px solid #000', width: 40, height: 40 }}
               size="large"
             >
               <CloseIcon />
@@ -477,24 +491,24 @@ export default function AboutPage({ data }) {
           {/* Footer */}
           <Box sx={{
             px: { xs: 2, md: 3 }, py: 2,
-            borderTop: '1px solid #eee', flexShrink: 0,
+            borderTop: '1px solid #000', flexShrink: 0,
             display: 'flex', flexDirection: { xs: 'column', md: 'row' },
             alignItems: { xs: 'stretch', md: 'center' },
             gap: 2,
           }}>
             <Box sx={{ flex: 1, minWidth: 0 }}>
               {selectedCert?.issuer && (
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{ color: '#000' }}>
                   <strong>Issuer:</strong> {selectedCert.issuer}
                 </Typography>
               )}
               {(selectedCert?.date || selectedCert?.year) && (
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{ color: '#000' }}>
                   <strong>Date:</strong> {selectedCert.date || selectedCert.year}
                 </Typography>
               )}
               {selectedCert?.credentialId && (
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{ color: '#000' }}>
                   <strong>Credential ID:</strong> {selectedCert.credentialId}
                 </Typography>
               )}
@@ -507,8 +521,8 @@ export default function AboutPage({ data }) {
                 href={selectedCert?.mediaUrl}
                 download
                 sx={{
-                  borderColor: '#111', color: '#111',
-                  '&:hover': { bgcolor: '#111', color: '#fff', borderColor: '#111' },
+                  borderColor: '#000', color: '#000',
+                  '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
                 }}
               >
                 Download
@@ -521,8 +535,8 @@ export default function AboutPage({ data }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                  bgcolor: '#111', color: '#fff', boxShadow: 'none',
-                  '&:hover': { bgcolor: '#333', boxShadow: 'none' },
+                  bgcolor: '#000', color: '#FFF',
+                  '&:hover': { bgcolor: '#000' },
                 }}
               >
                 Open in new tab
@@ -534,7 +548,7 @@ export default function AboutPage({ data }) {
 
       {/* ── 07 / Achievements ── */}
       {about.achievements?.length > 0 && (
-        <Box>
+        <motion.div {...sectionReveal}>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <SectionHeading
               number="07 / Achievements"
@@ -546,17 +560,17 @@ export default function AboutPage({ data }) {
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.achievements.map((ach) => (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={ach.id}>
-                    <Box sx={{ border: '1px solid #eee', p: { xs: 2.5, md: 3 }, height: '100%' }}>
-                      <Typography variant="body1" fontWeight={600}>
+                    <Box sx={{ border: '1px solid #000', p: { xs: 2.5, md: 3 }, height: '100%' }}>
+                      <Typography variant="body1" fontWeight={600} sx={{ color: '#000' }}>
                         {ach.title}
                       </Typography>
                       {ach.description && (
-                        <Typography variant="body2" sx={{ color: '#444', lineHeight: 1.7, mt: 1 }}>
+                        <Typography variant="body2" sx={{ color: '#000', lineHeight: 1.7, mt: 1 }}>
                           {ach.description}
                         </Typography>
                       )}
                       {ach.year && (
-                        <Typography variant="caption" sx={{ color: '#555', display: 'block', mt: 1.5, fontWeight: 600 }}>
+                        <Typography variant="caption" sx={{ color: '#000', display: 'block', mt: 1.5, fontWeight: 600, fontFamily: accentFont }}>
                           {ach.year}
                         </Typography>
                       )}
@@ -566,22 +580,22 @@ export default function AboutPage({ data }) {
               </Grid>
             </Collapse>
           </Container>
-        </Box>
+        </motion.div>
       )}
 
       {/* ── Additional Sections ── */}
       {about.additionalSections?.map((section) => (
-        <Box key={section.id}>
+        <motion.div key={section.id} {...sectionReveal}>
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
             <SectionHeading title={section.title} />
             <Typography variant="body1" sx={{
-              whiteSpace: 'pre-line', color: '#444', lineHeight: 1.8, maxWidth: 700,
+              whiteSpace: 'pre-line', color: '#000', lineHeight: 1.8, maxWidth: 700,
               fontSize: { xs: '0.95rem', md: '1rem' },
             }}>
               {section.content}
             </Typography>
           </Container>
-        </Box>
+        </motion.div>
       ))}
     </Box>
   );

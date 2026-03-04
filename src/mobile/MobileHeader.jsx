@@ -79,8 +79,8 @@ export default function MobileHeader({ data }) {
           position: 'sticky',
           top: 0,
           zIndex: 1200,
-          bgcolor: '#fff',
-          borderBottom: '1px solid #eee',
+          bgcolor: '#FFF',
+          borderBottom: '1px solid #000',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -92,10 +92,10 @@ export default function MobileHeader({ data }) {
           component={Link}
           to="/"
           sx={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
             fontWeight: 700,
             fontSize: '1.25rem',
-            color: '#111',
+            color: '#000',
             textDecoration: 'none',
             letterSpacing: '-0.02em',
           }}
@@ -114,8 +114,8 @@ export default function MobileHeader({ data }) {
             border: 'none',
             cursor: 'pointer',
             p: 0,
-            color: '#111',
-            fontFamily: '"Space Grotesk", sans-serif',
+            color: '#000',
+            fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
             fontSize: '0.8rem',
             fontWeight: 600,
             letterSpacing: '0.08em',
@@ -141,7 +141,7 @@ export default function MobileHeader({ data }) {
           sx={{
             position: 'fixed',
             inset: 0,
-            bgcolor: '#fff',
+            bgcolor: '#FFF',
             zIndex: 1400,
             display: 'flex',
             flexDirection: 'column',
@@ -155,16 +155,16 @@ export default function MobileHeader({ data }) {
               alignItems: 'center',
               px: 'var(--page-pad-x)',
               height: 56,
-              borderBottom: '1px solid #eee',
+              borderBottom: '1px solid #000',
               flexShrink: 0,
             }}
           >
             <Typography
               sx={{
-                fontFamily: '"Space Grotesk", sans-serif',
+                fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
                 fontWeight: 700,
                 fontSize: '1.25rem',
-                color: '#111',
+                color: '#000',
                 letterSpacing: '-0.02em',
               }}
             >
@@ -180,8 +180,8 @@ export default function MobileHeader({ data }) {
                 border: 'none',
                 cursor: 'pointer',
                 p: 0,
-                color: '#111',
-                fontFamily: '"Space Grotesk", sans-serif',
+                color: '#000',
+                fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
@@ -209,9 +209,9 @@ export default function MobileHeader({ data }) {
                   alignItems: 'baseline',
                   gap: 2,
                   py: 2,
-                  borderBottom: '1px solid #f0f0f0',
+                  borderBottom: '1px solid #000',
                   textDecoration: 'none',
-                  color: '#111',
+                  color: '#000',
                   minHeight: 48,
                   '&:active': { pl: 0.5 },
                   '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
@@ -220,7 +220,8 @@ export default function MobileHeader({ data }) {
                 <Typography
                   variant="caption"
                   sx={{
-                    color: '#111',
+                    color: '#000',
+                    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                     fontWeight: 600,
                     fontSize: '0.65rem',
                     letterSpacing: '0.1em',
@@ -232,7 +233,7 @@ export default function MobileHeader({ data }) {
                 </Typography>
                 <Typography
                   sx={{
-                    fontFamily: '"Space Grotesk", sans-serif',
+                    fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
                     fontWeight: isActive(item.path) ? 700 : 500,
                     fontSize: '1.25rem',
                     letterSpacing: '-0.02em',
@@ -245,10 +246,10 @@ export default function MobileHeader({ data }) {
             ))}
 
             {customLinks.length > 0 && (
-              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #f0f0f0' }}>
+              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #000' }}>
                 <Typography
                   variant="overline"
-                  sx={{ color: '#111', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
+                  sx={{ color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
                 >
                   Pages
                 </Typography>
@@ -262,7 +263,7 @@ export default function MobileHeader({ data }) {
                       display: 'block',
                       py: 1,
                       textDecoration: 'none',
-                      color: '#111',
+                      color: '#000',
                       fontWeight: isActive(item.path) ? 700 : 400,
                       fontSize: '0.9rem',
                       minHeight: 44,
@@ -277,10 +278,10 @@ export default function MobileHeader({ data }) {
           </Box>
 
           {/* Menu footer */}
-          <Box sx={{ px: 'var(--page-pad-x)', py: 3, borderTop: '1px solid #eee', flexShrink: 0 }}>
+          <Box sx={{ px: 'var(--page-pad-x)', py: 3, borderTop: '1px solid #000', flexShrink: 0 }}>
             <Typography
               variant="caption"
-              sx={{ color: '#111', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, fontSize: '0.6rem' }}
+              sx={{ color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, fontSize: '0.6rem' }}
             >
               © {new Date().getFullYear()} {siteTitle}
             </Typography>

@@ -14,8 +14,11 @@
     "@emotion/styled": "^11.14.1",
     "@fontsource/sora": "^5.2.8",
     "@fontsource/space-grotesk": "^5.2.10",
+    "@fontsource/stack-sans-notch": "^5.2.1",
     "@mui/icons-material": "^7.3.8",
     "@mui/material": "^7.3.8",
+    "@tailwindcss/vite": "^4.2.1",
+    "framer-motion": "^12.34.5",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-markdown": "^10.1.0",
@@ -23,6 +26,7 @@
     "rehype-raw": "^7.0.0",
     "rehype-sanitize": "^6.0.0",
     "remark-gfm": "^4.0.1",
+    "tailwindcss": "^4.2.1",
     "uuid": "^13.0.0"
   },
   "devDependencies": {

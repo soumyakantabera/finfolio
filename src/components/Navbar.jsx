@@ -79,36 +79,38 @@ export default function Navbar({ data }) {
   }, [menuOpen, handleKeyDown]);
 
   const linkSx = (path) => ({
-    color: '#111',
+    color: '#000',
+    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+    textTransform: 'uppercase',
     fontWeight: isActive(path) ? 700 : 400,
-    borderBottom: isActive(path) ? '1px solid #111' : '1px solid transparent',
+    borderBottom: isActive(path) ? '1px solid #000' : '1px solid transparent',
     borderRadius: 0,
     px: 2,
     py: 0.75,
-    fontSize: '0.8rem',
-    letterSpacing: '0.01em',
+    fontSize: '0.7rem',
+    letterSpacing: '0.08em',
     position: 'relative',
     transition: 'border-color 0.2s ease',
     '&:hover': {
       backgroundColor: 'transparent',
-      color: '#111',
-      borderBottom: '1px solid #111',
+      color: '#000',
+      borderBottom: '1px solid #000',
     },
     '&:focus-visible': {
-      outline: '2px solid #111',
+      outline: '2px solid #000',
       outlineOffset: '2px',
     },
   });
 
   return (
     <>
-      <AppBar position="sticky" sx={{ bgcolor: '#fff', color: '#111' }}>
+      <AppBar position="sticky" elevation={0} sx={{ bgcolor: '#FFF', color: '#000', boxShadow: 'none', borderBottom: '1px solid #000' }}>
         <Toolbar sx={{ px: { xs: 2, sm: 4, md: 6 }, py: 1, minHeight: { xs: 56, sm: 72 } }}>
           <Typography
             variant="h6"
             component={Link}
             to="/"
-            sx={{ fontWeight: 700, flexGrow: 1, color: '#111', textDecoration: 'none', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
+            sx={{ fontWeight: 800, flexGrow: 1, color: '#000', textDecoration: 'none', fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
           >
             {siteTitle}
           </Typography>
@@ -143,14 +145,14 @@ export default function Navbar({ data }) {
               border: 'none',
               cursor: 'pointer',
               p: 1,
-              color: '#111',
-              fontFamily: '"Space Grotesk", sans-serif',
+              color: '#000',
+              fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
               fontSize: '0.85rem',
               fontWeight: 600,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
               minHeight: 44,
-              '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
+              '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
             }}
           >
             Menu
@@ -169,7 +171,7 @@ export default function Navbar({ data }) {
           sx={{
             position: 'fixed',
             inset: 0,
-            bgcolor: '#fff',
+            bgcolor: '#FFF',
             zIndex: 1400,
             display: 'flex',
             flexDirection: 'column',
@@ -185,13 +187,13 @@ export default function Navbar({ data }) {
               alignItems: 'center',
               px: 3,
               minHeight: 64,
-              borderBottom: '1px solid #eee',
+              borderBottom: '1px solid #000',
               flexShrink: 0,
             }}
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: 700, color: '#111', letterSpacing: '-0.02em', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
+              sx={{ fontWeight: 800, color: '#000', letterSpacing: '-0.02em', fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
             >
               {siteTitle}
             </Typography>
@@ -209,13 +211,13 @@ export default function Navbar({ data }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#111',
-                fontFamily: '"Space Grotesk", sans-serif',
+                color: '#000',
+                fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
+                '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
               }}
             >
               ✕
@@ -235,19 +237,20 @@ export default function Navbar({ data }) {
                   alignItems: 'baseline',
                   gap: 2,
                   py: 2,
-                  borderBottom: '1px solid #eee',
+                  borderBottom: '1px solid #000',
                   textDecoration: 'none',
-                  color: '#111',
+                  color: '#000',
                   minHeight: 56,
                   transition: 'padding-left 0.15s ease',
                   '&:hover': { pl: 0.5 },
-                  '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
+                  '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                 }}
               >
                 <Typography
                   variant="caption"
                   sx={{
-                    color: '#555',
+                    color: '#000',
+                    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                     fontWeight: 600,
                     fontSize: '0.7rem',
                     letterSpacing: '0.1em',
@@ -259,7 +262,7 @@ export default function Navbar({ data }) {
                 </Typography>
                 <Typography
                   sx={{
-                    fontFamily: '"Space Grotesk", sans-serif',
+                    fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
                     fontWeight: isActive(item.path) ? 700 : 500,
                     fontSize: '1.5rem',
                     letterSpacing: '-0.02em',
@@ -273,10 +276,10 @@ export default function Navbar({ data }) {
 
             {/* Custom page links — secondary style */}
             {customLinks.length > 0 && (
-              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #eee' }}>
+              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #000' }}>
                 <Typography
                   variant="overline"
-                  sx={{ color: '#555', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 600 }}
+                  sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 600 }}
                 >
                   Pages
                 </Typography>
@@ -290,12 +293,12 @@ export default function Navbar({ data }) {
                       display: 'block',
                       py: 1.5,
                       textDecoration: 'none',
-                      color: '#111',
+                      color: '#000',
                       fontWeight: isActive(item.path) ? 700 : 400,
                       fontSize: '1rem',
                       minHeight: 44,
                       '&:hover': { fontWeight: 700 },
-                      '&:focus-visible': { outline: '2px solid #111', outlineOffset: '2px' },
+                      '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
                   >
                     {item.label}
@@ -310,13 +313,13 @@ export default function Navbar({ data }) {
             sx={{
               px: 3,
               py: 3,
-              borderTop: '1px solid #eee',
+              borderTop: '1px solid #000',
               flexShrink: 0,
             }}
           >
             <Typography
               variant="caption"
-              sx={{ color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}
+              sx={{ color: '#000', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}
             >
               © {new Date().getFullYear()} {siteTitle}
             </Typography>
