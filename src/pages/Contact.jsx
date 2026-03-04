@@ -67,7 +67,7 @@ export default function ContactPage({ data }) {
       '&.Mui-focused fieldset': { border: '1px solid #000' },
     },
     '& .MuiInputLabel-root': {
-      fontFamily: '"JetBrains Mono", "Menlo", monospace',
+      fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
       color: '#000',
     },
   };
@@ -83,7 +83,7 @@ export default function ContactPage({ data }) {
             display: 'block',
             mb: 0.5,
             fontWeight: 700,
-            fontFamily: '"JetBrains Mono", "Menlo", monospace',
+            fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
           }}
         >
           Get in Touch
@@ -94,7 +94,7 @@ export default function ContactPage({ data }) {
           gutterBottom
           sx={{
             fontSize: { xs: '1.75rem', md: '3rem' },
-            fontFamily: '"Playfair Display", "Georgia", serif',
+            fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
           }}
         >
           Contact

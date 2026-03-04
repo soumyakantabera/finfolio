@@ -56,7 +56,7 @@ export default function MobileAbout({ data }) {
         px: 0,
         py: 1.25,
         cursor: 'pointer',
-        fontFamily: '"Playfair Display", "Georgia", serif',
+        fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
         fontWeight: 700,
         fontSize: '1.1rem',
         color: '#000',
@@ -70,7 +70,7 @@ export default function MobileAbout({ data }) {
           <Typography
             variant="overline"
             component="span"
-            sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', fontWeight: 600, fontSize: '0.6rem', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}
+            sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', fontWeight: 600, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
           >
             {number}
           </Typography>
@@ -87,7 +87,7 @@ export default function MobileAbout({ data }) {
       <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
         <Typography
           variant="overline"
-          sx={{ color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 600, fontSize: '0.6rem', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}
+          sx={{ color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 600, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
         >
           01 / About
         </Typography>
@@ -106,7 +106,7 @@ export default function MobileAbout({ data }) {
           <Box>
             <Typography
               component="h1"
-              sx={{ fontFamily: '"Playfair Display", "Georgia", serif', fontWeight: 700, fontSize: '1.5rem', lineHeight: 1.2 }}
+              sx={{ fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.5rem', lineHeight: 1.2 }}
             >
               {about.name}
             </Typography>
@@ -165,7 +165,7 @@ export default function MobileAbout({ data }) {
                 <Typography className="tabular-nums" sx={{ fontWeight: 700, fontSize: '0.95rem', color: '#000' }}>
                   {m.value}
                 </Typography>
-                <Typography sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.5rem', fontWeight: 600, fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>
+                <Typography sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.5rem', fontWeight: 600, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                   {m.label}
                 </Typography>
               </Box>
@@ -199,7 +199,7 @@ export default function MobileAbout({ data }) {
                       <Typography sx={{ fontWeight: 700, fontSize: '0.85rem' }}>{exp.role}</Typography>
                       <Typography sx={{ color: '#000', fontSize: '0.75rem' }}>{exp.company}</Typography>
                     </Box>
-                    <Typography sx={{ fontSize: '0.6rem', fontWeight: 600, border: '1px solid #000', px: 0.5, py: 0.25, flexShrink: 0, lineHeight: 1.4, color: '#000', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>
+                    <Typography sx={{ fontSize: '0.6rem', fontWeight: 600, border: '1px solid #000', px: 0.5, py: 0.25, flexShrink: 0, lineHeight: 1.4, color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                       {exp.period}
                     </Typography>
                   </Box>
@@ -223,7 +223,7 @@ export default function MobileAbout({ data }) {
                 <Box key={edu.id} sx={{ py: 1.25, borderBottom: idx < about.education.length - 1 ? '1px solid #000' : 'none' }}>
                   <Typography sx={{ fontWeight: 700, fontSize: '0.85rem' }}>{edu.degree}</Typography>
                   <Typography sx={{ color: '#000', fontSize: '0.75rem' }}>{edu.institution}</Typography>
-                  <Typography sx={{ color: '#000', fontSize: '0.65rem', fontWeight: 600, fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>{edu.year}</Typography>
+                  <Typography sx={{ color: '#000', fontSize: '0.65rem', fontWeight: 600, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{edu.year}</Typography>
                   {edu.details && (
                     <Typography sx={{ mt: 0.5, color: '#000', fontSize: '0.75rem', lineHeight: 1.6 }}>{edu.details}</Typography>
                   )}
@@ -251,7 +251,7 @@ export default function MobileAbout({ data }) {
                   }}
                 >
                   <Typography sx={{ fontSize: '0.8rem', fontWeight: 600 }}>{skill.name}</Typography>
-                  <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#000', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>
+                  <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                     {skill.level}
                   </Typography>
                 </Box>
@@ -292,7 +292,7 @@ export default function MobileAbout({ data }) {
                     <Box sx={{ flex: 1, minWidth: 0 }}>
                       <Typography sx={{ fontSize: '0.8rem', fontWeight: 700 }}>{cert.title || cert.name}</Typography>
                       {cert.issuer && <Typography sx={{ fontSize: '0.65rem', color: '#000' }}>{cert.issuer}</Typography>}
-                      <Typography sx={{ fontSize: '0.6rem', color: '#000', fontWeight: 600, fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>{cert.date || cert.year}</Typography>
+                      <Typography sx={{ fontSize: '0.6rem', color: '#000', fontWeight: 600, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{cert.date || cert.year}</Typography>
                     </Box>
                     {hasMedia && (
                       <Typography sx={{ fontSize: '0.7rem', fontWeight: 600, color: '#000', flexShrink: 0 }}>View →</Typography>

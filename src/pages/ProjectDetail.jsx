@@ -25,8 +25,8 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import BlockRenderer from '../components/BlockRenderer';
 
-const serifFont = '"Playfair Display", "Georgia", serif';
-const monoFont = '"JetBrains Mono", "Menlo", monospace';
+const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 function slugify(text) {
   return String(text).toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_]+/g, '-').replace(/^-+|-+$/g, '');
@@ -122,7 +122,7 @@ export default function ProjectDetail({ data }) {
             <Chip
               label={project.category}
               size="small"
-              sx={{ mb: 1.5, bgcolor: '#000', color: '#FFF', borderRadius: 0, fontFamily: monoFont }}
+              sx={{ mb: 1.5, bgcolor: '#000', color: '#FFF', borderRadius: 0, fontFamily: accentFont }}
             />
           )}
           <Typography variant="h3" fontWeight={700} sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' }, fontFamily: serifFont }}>
@@ -134,7 +134,7 @@ export default function ProjectDetail({ data }) {
             </Typography>
           )}
           {project.date && (
-            <Typography variant="caption" sx={{ display: 'block', mt: 1, fontWeight: 600, fontFamily: monoFont }}>
+            <Typography variant="caption" sx={{ display: 'block', mt: 1, fontWeight: 600, fontFamily: accentFont }}>
               {project.date}
             </Typography>
           )}
@@ -152,7 +152,7 @@ export default function ProjectDetail({ data }) {
           <Box sx={{ mb: 4 }}>
             {project.abstract && (
               <Box sx={{ mb: 3 }}>
-                <Typography variant="overline" sx={{ color: '#000', letterSpacing: '0.1em', fontWeight: 700, fontFamily: monoFont }}>Abstract</Typography>
+                <Typography variant="overline" sx={{ color: '#000', letterSpacing: '0.1em', fontWeight: 700, fontFamily: accentFont }}>Abstract</Typography>
                 <Typography variant="body1" sx={{ mt: 0.5, lineHeight: 1.8, color: '#000' }}>
                   {project.abstract}
                 </Typography>
@@ -161,19 +161,19 @@ export default function ProjectDetail({ data }) {
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mb: 3 }}>
               {project.publication && (
                 <Box>
-                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: monoFont }}>Publication</Typography>
+                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: accentFont }}>Publication</Typography>
                   <Typography variant="body2" fontWeight={600}>{project.publication}</Typography>
                 </Box>
               )}
               {project.authors && (
                 <Box>
-                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: monoFont }}>Authors</Typography>
+                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: accentFont }}>Authors</Typography>
                   <Typography variant="body2">{project.authors}</Typography>
                 </Box>
               )}
               {project.year && (
                 <Box>
-                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: monoFont }}>Year</Typography>
+                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: accentFont }}>Year</Typography>
                   <Typography variant="body2">{project.year}</Typography>
                 </Box>
               )}
@@ -258,13 +258,13 @@ export default function ProjectDetail({ data }) {
                     Copy
                   </Button>
                 </Box>
-                <Typography variant="body2" sx={{ fontFamily: monoFont, fontSize: '0.8rem', color: '#000', lineHeight: 1.6 }}>
+                <Typography variant="body2" sx={{ fontFamily: accentFont, fontSize: '0.8rem', color: '#000', lineHeight: 1.6 }}>
                   {project.citationText}
                 </Typography>
                 {project.bibtex && (
                   <Box sx={{ mt: 2 }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
-                      <Typography variant="caption" fontWeight={600} sx={{ fontFamily: monoFont }}>BibTeX</Typography>
+                      <Typography variant="caption" fontWeight={600} sx={{ fontFamily: accentFont }}>BibTeX</Typography>
                       <Button
                         size="small"
                         startIcon={<ContentCopyIcon />}
@@ -274,7 +274,7 @@ export default function ProjectDetail({ data }) {
                         Copy
                       </Button>
                     </Box>
-                    <Box sx={{ p: 1.5, bgcolor: '#FFF', border: '1px dashed #000', fontFamily: monoFont, fontSize: '0.75rem', whiteSpace: 'pre-wrap', color: '#000' }}>
+                    <Box sx={{ p: 1.5, bgcolor: '#FFF', border: '1px dashed #000', fontFamily: accentFont, fontSize: '0.75rem', whiteSpace: 'pre-wrap', color: '#000' }}>
                       {project.bibtex}
                     </Box>
                   </Box>
@@ -301,7 +301,7 @@ export default function ProjectDetail({ data }) {
             >
               {project.techStack?.length > 0 && (
                 <Box>
-                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: monoFont }}>
+                  <Typography variant="caption" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: accentFont }}>
                     Tech Stack
                   </Typography>
                   <Typography variant="body2">
@@ -442,7 +442,7 @@ export default function ProjectDetail({ data }) {
                   >
                     <CardContent sx={{ p: 2 }}>
                       {rp.category && (
-                        <Typography variant="overline" sx={{ fontWeight: 700, fontFamily: monoFont }}>
+                        <Typography variant="overline" sx={{ fontWeight: 700, fontFamily: accentFont }}>
                           {rp.category}
                         </Typography>
                       )}

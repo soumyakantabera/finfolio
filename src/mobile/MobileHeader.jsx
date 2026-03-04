@@ -92,7 +92,7 @@ export default function MobileHeader({ data }) {
           component={Link}
           to="/"
           sx={{
-            fontFamily: '"Playfair Display", "Georgia", serif',
+            fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
             fontWeight: 700,
             fontSize: '1.25rem',
             color: '#000',
@@ -115,7 +115,7 @@ export default function MobileHeader({ data }) {
             cursor: 'pointer',
             p: 0,
             color: '#000',
-            fontFamily: '"JetBrains Mono", "Menlo", monospace',
+            fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
             fontSize: '0.8rem',
             fontWeight: 600,
             letterSpacing: '0.08em',
@@ -161,7 +161,7 @@ export default function MobileHeader({ data }) {
           >
             <Typography
               sx={{
-                fontFamily: '"Playfair Display", "Georgia", serif',
+                fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
                 fontWeight: 700,
                 fontSize: '1.25rem',
                 color: '#000',
@@ -181,7 +181,7 @@ export default function MobileHeader({ data }) {
                 cursor: 'pointer',
                 p: 0,
                 color: '#000',
-                fontFamily: '"JetBrains Mono", "Menlo", monospace',
+                fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
@@ -221,7 +221,7 @@ export default function MobileHeader({ data }) {
                   variant="caption"
                   sx={{
                     color: '#000',
-                    fontFamily: '"JetBrains Mono", "Menlo", monospace',
+                    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                     fontWeight: 600,
                     fontSize: '0.65rem',
                     letterSpacing: '0.1em',
@@ -233,7 +233,7 @@ export default function MobileHeader({ data }) {
                 </Typography>
                 <Typography
                   sx={{
-                    fontFamily: '"Playfair Display", "Georgia", serif',
+                    fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
                     fontWeight: isActive(item.path) ? 700 : 500,
                     fontSize: '1.25rem',
                     letterSpacing: '-0.02em',
@@ -249,7 +249,7 @@ export default function MobileHeader({ data }) {
               <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #000' }}>
                 <Typography
                   variant="overline"
-                  sx={{ color: '#000', fontFamily: '"JetBrains Mono", "Menlo", monospace', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
+                  sx={{ color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
                 >
                   Pages
                 </Typography>
@@ -281,7 +281,7 @@ export default function MobileHeader({ data }) {
           <Box sx={{ px: 'var(--page-pad-x)', py: 3, borderTop: '1px solid #000', flexShrink: 0 }}>
             <Typography
               variant="caption"
-              sx={{ color: '#000', fontFamily: '"JetBrains Mono", "Menlo", monospace', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, fontSize: '0.6rem' }}
+              sx={{ color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, fontSize: '0.6rem' }}
             >
               © {new Date().getFullYear()} {siteTitle}
             </Typography>

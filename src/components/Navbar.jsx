@@ -80,7 +80,7 @@ export default function Navbar({ data }) {
 
   const linkSx = (path) => ({
     color: '#000',
-    fontFamily: '"JetBrains Mono", "Menlo", monospace',
+    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
     textTransform: 'uppercase',
     fontWeight: isActive(path) ? 700 : 400,
     borderBottom: isActive(path) ? '1px solid #000' : '1px solid transparent',
@@ -110,7 +110,7 @@ export default function Navbar({ data }) {
             variant="h6"
             component={Link}
             to="/"
-            sx={{ fontWeight: 800, flexGrow: 1, color: '#000', textDecoration: 'none', fontFamily: '"Playfair Display", "Georgia", serif', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
+            sx={{ fontWeight: 800, flexGrow: 1, color: '#000', textDecoration: 'none', fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
           >
             {siteTitle}
           </Typography>
@@ -146,7 +146,7 @@ export default function Navbar({ data }) {
               cursor: 'pointer',
               p: 1,
               color: '#000',
-              fontFamily: '"JetBrains Mono", "Menlo", monospace',
+              fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
               fontSize: '0.85rem',
               fontWeight: 600,
               letterSpacing: '0.08em',
@@ -193,7 +193,7 @@ export default function Navbar({ data }) {
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: 800, color: '#000', letterSpacing: '-0.02em', fontFamily: '"Playfair Display", "Georgia", serif', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
+              sx={{ fontWeight: 800, color: '#000', letterSpacing: '-0.02em', fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
             >
               {siteTitle}
             </Typography>
@@ -212,7 +212,7 @@ export default function Navbar({ data }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#000',
-                fontFamily: '"JetBrains Mono", "Menlo", monospace',
+                fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
@@ -250,7 +250,7 @@ export default function Navbar({ data }) {
                   variant="caption"
                   sx={{
                     color: '#000',
-                    fontFamily: '"JetBrains Mono", "Menlo", monospace',
+                    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                     fontWeight: 600,
                     fontSize: '0.7rem',
                     letterSpacing: '0.1em',
@@ -262,7 +262,7 @@ export default function Navbar({ data }) {
                 </Typography>
                 <Typography
                   sx={{
-                    fontFamily: '"Playfair Display", "Georgia", serif',
+                    fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
                     fontWeight: isActive(item.path) ? 700 : 500,
                     fontSize: '1.5rem',
                     letterSpacing: '-0.02em',

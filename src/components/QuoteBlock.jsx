@@ -41,7 +41,7 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
         variant="h4"
         component="blockquote"
         sx={{
-          fontFamily: '"Playfair Display", "Georgia", serif',
+          fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
           fontWeight: 500,
           fontStyle: 'normal',
           letterSpacing: '-0.01em',
@@ -63,7 +63,7 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
             display: 'block',
             mt: 2,
             color: '#000',
-            fontFamily: '"JetBrains Mono", "Menlo", monospace',
+            fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
             textTransform: 'uppercase',
             letterSpacing: '0.15em',
             fontWeight: 600,

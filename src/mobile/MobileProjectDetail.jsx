@@ -131,11 +131,11 @@ export default function MobileProjectDetail({ data }) {
         {/* Header */}
         <Box sx={{ mb: 2 }}>
           {project.category && (
-            <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', bgcolor: '#000', color: '#FFF', display: 'inline-block', px: 0.75, py: 0.25, mb: 1, fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>
+            <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', bgcolor: '#000', color: '#FFF', display: 'inline-block', px: 0.75, py: 0.25, mb: 1, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
               {project.category}
             </Typography>
           )}
-          <Typography sx={{ fontFamily: '"Playfair Display", "Georgia", serif', fontWeight: 700, fontSize: '1.3rem', lineHeight: 1.2 }}>
+          <Typography sx={{ fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.3rem', lineHeight: 1.2 }}>
             {project.title}
           </Typography>
           {project.subtitle && (
@@ -144,12 +144,12 @@ export default function MobileProjectDetail({ data }) {
             </Typography>
           )}
           {project.date && (
-            <Typography sx={{ mt: 0.5, fontSize: '0.7rem', fontWeight: 600, fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>{project.date}</Typography>
+            <Typography sx={{ mt: 0.5, fontSize: '0.7rem', fontWeight: 600, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{project.date}</Typography>
           )}
           {project.tags?.length > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 1 }}>
               {project.tags.map((tag) => (
-                <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#000', border: '1px solid #000', px: 0.5, py: 0.125, fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>
+                <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#000', border: '1px solid #000', px: 0.5, py: 0.125, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                   {tag}
                 </Typography>
               ))}
@@ -162,7 +162,7 @@ export default function MobileProjectDetail({ data }) {
           <Box sx={{ mb: 2, pb: 2, borderBottom: '1px solid #000' }}>
             {project.techStack?.length > 0 && (
               <Box sx={{ mb: 1 }}>
-                <Typography sx={{ fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>Tech Stack</Typography>
+                <Typography sx={{ fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Tech Stack</Typography>
                 <Typography sx={{ fontSize: '0.8rem' }}>{project.techStack.join(', ')}</Typography>
               </Box>
             )}
@@ -269,7 +269,7 @@ export default function MobileProjectDetail({ data }) {
         {/* Related projects */}
         {relatedProjects.length > 0 && (
           <Box sx={{ borderTop: '1px solid #000', pt: 2 }}>
-            <Typography sx={{ fontFamily: '"Playfair Display", "Georgia", serif', fontWeight: 700, fontSize: '1rem', mb: 1.5 }}>
+            <Typography sx={{ fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1rem', mb: 1.5 }}>
               Related Projects
             </Typography>
             {relatedProjects.map((rp, i, arr) => (
@@ -287,7 +287,7 @@ export default function MobileProjectDetail({ data }) {
                 }}
               >
                 {rp.category && (
-                  <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>
+                  <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                     {rp.category}
                   </Typography>
                 )}

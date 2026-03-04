@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Container, Typography, Chip, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 
-const serifFont = '"Playfair Display", "Georgia", serif';
-const monoFont = '"JetBrains Mono", "Menlo", monospace';
+const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 export default function ProjectsPage({ data }) {
   const projects = (data.projects || []).filter((p) => p.status !== 'draft');
@@ -20,7 +20,7 @@ export default function ProjectsPage({ data }) {
         {/* Section numbering */}
         <Typography
           sx={{
-            fontFamily: monoFont,
+            fontFamily: accentFont,
             fontSize: { xs: '0.85rem', md: '1rem' },
             color: '#000000',
             letterSpacing: '0.1em',
@@ -85,7 +85,7 @@ export default function ProjectsPage({ data }) {
                   {project.category && (
                     <Typography
                       sx={{
-                        fontFamily: monoFont,
+                        fontFamily: accentFont,
                         fontSize: '0.75rem',
                         letterSpacing: '0.08em',
                         textTransform: 'uppercase',
@@ -98,7 +98,7 @@ export default function ProjectsPage({ data }) {
                   {project.featured && (
                     <Typography
                       sx={{
-                        fontFamily: monoFont,
+                        fontFamily: accentFont,
                         fontSize: '0.7rem',
                         color: '#000000',
                       }}
@@ -109,7 +109,7 @@ export default function ProjectsPage({ data }) {
                   {project.year && (
                     <Typography
                       sx={{
-                        fontFamily: monoFont,
+                        fontFamily: accentFont,
                         fontSize: '0.75rem',
                         color: '#000000',
                         ml: 'auto',
@@ -157,7 +157,7 @@ export default function ProjectsPage({ data }) {
                     {project.publication && (
                       <Typography
                         sx={{
-                          fontFamily: monoFont,
+                          fontFamily: accentFont,
                           fontSize: '0.75rem',
                           fontStyle: 'italic',
                           color: '#000000',
@@ -169,7 +169,7 @@ export default function ProjectsPage({ data }) {
                     {project.authors && (
                       <Typography
                         sx={{
-                          fontFamily: monoFont,
+                          fontFamily: accentFont,
                           fontSize: '0.75rem',
                           color: '#000000',
                         }}
@@ -190,7 +190,7 @@ export default function ProjectsPage({ data }) {
                         size="small"
                         variant="outlined"
                         sx={{
-                          fontFamily: monoFont,
+                          fontFamily: accentFont,
                           fontSize: '0.65rem',
                           borderColor: '#000000',
                           color: '#000000',
@@ -211,7 +211,7 @@ export default function ProjectsPage({ data }) {
             sx={{
               mt: 4,
               textAlign: 'center',
-              fontFamily: monoFont,
+              fontFamily: accentFont,
               color: '#000000',
             }}
           >

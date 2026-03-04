@@ -1,8 +1,8 @@
 import { createTheme } from '@mui/material/styles';
 
-const headingFont = '"Playfair Display", "Georgia", serif';
+const headingFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
 const bodyFont = '"Sora", "Helvetica", "Arial", sans-serif';
-const monoFont = '"JetBrains Mono", "Menlo", monospace';
+const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 const theme = createTheme({
   palette: {
@@ -25,8 +25,8 @@ const theme = createTheme({
     subtitle2: { fontFamily: bodyFont, fontWeight: 500 },
     body1: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.8 },
     body2: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.8 },
-    caption: { fontFamily: monoFont, fontWeight: 400, fontSize: '0.75rem' },
-    overline: { fontFamily: monoFont, fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.7rem' },
+    caption: { fontFamily: accentFont, fontWeight: 400, fontSize: '0.75rem' },
+    overline: { fontFamily: accentFont, fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.7rem' },
     button: { fontFamily: bodyFont, textTransform: 'none', fontWeight: 600 },
   },
   shape: { borderRadius: 0 },

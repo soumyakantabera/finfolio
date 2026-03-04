@@ -2,8 +2,8 @@
 
 /* ── Tailwind Theme ── */
 @theme {
-  --font-serif: 'Playfair Display', 'Georgia', serif;
-  --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+  --font-serif: 'Stack Sans Notch', 'Helvetica', 'Arial', sans-serif;
+  --font-accent: 'Sora', 'Helvetica', 'Arial', sans-serif;
   --font-body: 'Sora', 'Helvetica', 'Arial', sans-serif;
   --color-black: #000000;
   --color-white: #FFFFFF;
@@ -52,9 +52,9 @@
 
   --radius: 0px;
 
-  --font-heading: 'Playfair Display', 'Georgia', serif;
+  --font-heading: 'Stack Sans Notch', 'Helvetica', 'Arial', sans-serif;
   --font-body: 'Sora', 'Helvetica', 'Arial', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+  --font-accent: 'Sora', 'Helvetica', 'Arial', sans-serif;
 
   --transition-fast: 0s;
   --transition-base: 0s;

@@ -15,14 +15,14 @@ export default function MobileHome({ data }) {
       <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
         <Typography
           variant="overline"
-          sx={{ fontFamily: '"JetBrains Mono", "Menlo", monospace', color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 600, fontSize: '0.6rem' }}
+          sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 600, fontSize: '0.6rem' }}
         >
           01 / Introduction
         </Typography>
         <Typography
           component="h1"
           sx={{
-            fontFamily: '"Playfair Display", "Georgia", serif',
+            fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
             fontWeight: 700,
             fontSize: '1.75rem',
             letterSpacing: '-0.03em',
@@ -61,7 +61,7 @@ export default function MobileHome({ data }) {
                   border: '1px solid #000',
                   py: 1.25,
                   textDecoration: 'none',
-                  fontFamily: '"Playfair Display", "Georgia", serif',
+                  fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
                   fontWeight: 600,
                   fontSize: '0.8rem',
                   letterSpacing: '0.04em',
@@ -81,7 +81,7 @@ export default function MobileHome({ data }) {
       <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
         <Typography
           variant="overline"
-          sx={{ fontFamily: '"JetBrains Mono", "Menlo", monospace', color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 600, fontSize: '0.6rem' }}
+          sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 600, fontSize: '0.6rem' }}
         >
           Snapshot
         </Typography>
@@ -105,7 +105,7 @@ export default function MobileHome({ data }) {
               minHeight: 36,
             }}
           >
-            <Typography sx={{ fontFamily: '"JetBrains Mono", "Menlo", monospace', color: '#000', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, fontSize: '0.6rem' }}>
+            <Typography sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#000', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, fontSize: '0.6rem' }}>
               {row.label}
             </Typography>
             <Typography sx={{
@@ -140,7 +140,7 @@ export default function MobileHome({ data }) {
                 <Typography
                   className="tabular-nums"
                   sx={{
-                    fontFamily: '"JetBrains Mono", "Menlo", monospace',
+                    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                     fontWeight: 700,
                     fontSize: '1.25rem',
                   }}
@@ -163,11 +163,11 @@ export default function MobileHome({ data }) {
         <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           <Typography
             variant="overline"
-            sx={{ fontFamily: '"JetBrains Mono", "Menlo", monospace', color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
+            sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
           >
             03 / Work
           </Typography>
-          <Typography sx={{ fontFamily: '"Playfair Display", "Georgia", serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
+          <Typography sx={{ fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
             Featured Work
           </Typography>
 
@@ -242,11 +242,11 @@ export default function MobileHome({ data }) {
         <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           <Typography
             variant="overline"
-            sx={{ fontFamily: '"JetBrains Mono", "Menlo", monospace', color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
+            sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
           >
             05 / Highlights
           </Typography>
-          <Typography sx={{ fontFamily: '"Playfair Display", "Georgia", serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
+          <Typography sx={{ fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
             Notable Work
           </Typography>
           {featuredProjects.slice(0, 4).map((project, i, arr) => (
@@ -284,7 +284,7 @@ export default function MobileHome({ data }) {
         <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           {home.customSections.map((section, i) => (
             <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 3 : 0 }}>
-              <Typography sx={{ fontFamily: '"Playfair Display", "Georgia", serif', fontWeight: 600, fontSize: '1.35rem', mb: 1 }}>
+              <Typography sx={{ fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1 }}>
                 {section.title}
               </Typography>
               <Typography sx={{ whiteSpace: 'pre-line', fontSize: '0.85rem', lineHeight: 1.6 }}>
@@ -299,12 +299,12 @@ export default function MobileHome({ data }) {
       <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)', textAlign: 'center' }}>
         <Typography
           variant="overline"
-          sx={{ fontFamily: '"JetBrains Mono", "Menlo", monospace', color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
+          sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem' }}
         >
           Get in touch
         </Typography>
         <Typography
-          sx={{ fontFamily: '"Playfair Display", "Georgia", serif', fontWeight: 700, fontSize: '1.5rem', mb: 1 }}
+          sx={{ fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.5rem', mb: 1 }}
         >
           Let&apos;s connect.
         </Typography>

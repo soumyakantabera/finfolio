@@ -24,8 +24,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import DownloadIcon from '@mui/icons-material/Download';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
-const serifFont = '"Playfair Display", "Georgia", serif';
-const monoFont = '"JetBrains Mono", "Menlo", monospace';
+const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 const sectionReveal = {
   initial: { opacity: 0, y: 30 },
@@ -86,7 +86,7 @@ export default function AboutPage({ data }) {
         {number && (
           <Typography
             variant="overline"
-            sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 600, fontFamily: monoFont }}
+            sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 600, fontFamily: accentFont }}
           >
             {number}
           </Typography>
@@ -113,7 +113,7 @@ export default function AboutPage({ data }) {
             <Grid size={{ xs: 12, md: 7 }}>
               <Typography
                 variant="overline"
-                sx={{ color: '#000', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block', fontWeight: 600, fontFamily: monoFont }}
+                sx={{ color: '#000', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block', fontWeight: 600, fontFamily: accentFont }}
               >
                 01 / About
               </Typography>
@@ -187,7 +187,7 @@ export default function AboutPage({ data }) {
                   <Box>
                     <Typography variant="subtitle1" fontWeight={600} sx={{ color: '#000' }}>{about.name}</Typography>
                     {about.introTitle && (
-                      <Typography variant="body2" sx={{ color: '#000', fontFamily: monoFont, fontSize: '0.75rem' }}>{about.introTitle}</Typography>
+                      <Typography variant="body2" sx={{ color: '#000', fontFamily: accentFont, fontSize: '0.75rem' }}>{about.introTitle}</Typography>
                     )}
                   </Box>
                 </Box>
@@ -196,7 +196,7 @@ export default function AboutPage({ data }) {
                   <Box>
                     <Typography
                       variant="overline"
-                      sx={{ color: '#000', letterSpacing: '0.15em', mb: 1.5, display: 'block', fontWeight: 600, fontFamily: monoFont }}
+                      sx={{ color: '#000', letterSpacing: '0.15em', mb: 1.5, display: 'block', fontWeight: 600, fontFamily: accentFont }}
                     >
                       At a glance
                     </Typography>
@@ -212,7 +212,7 @@ export default function AboutPage({ data }) {
                           minHeight: 44,
                         }}
                       >
-                        <Typography variant="caption" sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, fontFamily: monoFont }}>
+                        <Typography variant="caption" sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, fontFamily: accentFont }}>
                           {m.label}
                         </Typography>
                         <Typography variant="body2" className="tabular-nums" sx={{ fontWeight: 600, color: '#000' }}>
@@ -283,7 +283,7 @@ export default function AboutPage({ data }) {
                   </Box>
                   <Chip label={exp.period} size="small" sx={{
                     bgcolor: '#FFF', color: '#000', fontWeight: 600, fontSize: '0.7rem',
-                    border: '1px solid #000', fontFamily: monoFont,
+                    border: '1px solid #000', fontFamily: accentFont,
                   }} />
                 </Box>
               ))}
@@ -313,7 +313,7 @@ export default function AboutPage({ data }) {
                       <Typography variant="body2" sx={{ color: '#000', mt: 0.5 }}>
                         {edu.institution}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 600, display: 'block', mt: 0.5, fontFamily: monoFont }}>
+                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 600, display: 'block', mt: 0.5, fontFamily: accentFont }}>
                         {edu.year}
                       </Typography>
                       {edu.details && (
@@ -353,7 +353,7 @@ export default function AboutPage({ data }) {
                       <Typography variant="body2" fontWeight={600} sx={{ color: '#000' }}>
                         {skill.name}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: monoFont }}>
+                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: accentFont }}>
                         {skill.level}
                       </Typography>
                     </Box>
@@ -410,11 +410,11 @@ export default function AboutPage({ data }) {
                             )}
                           </Box>
                           {cert.issuer && (
-                            <Typography variant="caption" sx={{ color: 'inherit', display: 'block', fontFamily: monoFont }}>
+                            <Typography variant="caption" sx={{ color: 'inherit', display: 'block', fontFamily: accentFont }}>
                               {cert.issuer}
                             </Typography>
                           )}
-                          <Typography variant="caption" sx={{ color: 'inherit', fontWeight: 600, fontFamily: monoFont }}>
+                          <Typography variant="caption" sx={{ color: 'inherit', fontWeight: 600, fontFamily: accentFont }}>
                             {cert.date || cert.year}
                           </Typography>
                         </Box>
@@ -570,7 +570,7 @@ export default function AboutPage({ data }) {
                         </Typography>
                       )}
                       {ach.year && (
-                        <Typography variant="caption" sx={{ color: '#000', display: 'block', mt: 1.5, fontWeight: 600, fontFamily: monoFont }}>
+                        <Typography variant="caption" sx={{ color: '#000', display: 'block', mt: 1.5, fontWeight: 600, fontFamily: accentFont }}>
                           {ach.year}
                         </Typography>
                       )}

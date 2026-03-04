@@ -12,8 +12,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import QuoteBlock from '../components/QuoteBlock';
 import { motion } from 'framer-motion';
 
-const serifFont = '"Playfair Display", "Georgia", serif';
-const monoFont = '"JetBrains Mono", "Menlo", monospace';
+const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 const reveal = {
   initial: { opacity: 0, y: 30 },
@@ -38,7 +38,7 @@ export default function HomePage({ data }) {
               <Grid size={{ xs: 12, md: 7 }} sx={{ borderRight: { md: '1px solid #000' }, pr: { md: 4 } }}>
                 <Typography
                   variant="overline"
-                  sx={{ color: '#000', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block', fontWeight: 700, fontFamily: monoFont, fontSize: { xs: '0.85rem', md: '1rem' } }}
+                  sx={{ color: '#000', letterSpacing: '0.15em', mb: { xs: 1.5, md: 2 }, display: 'block', fontWeight: 700, fontFamily: accentFont, fontSize: { xs: '0.85rem', md: '1rem' } }}
                 >
                   01 / Introduction
                 </Typography>
@@ -118,7 +118,7 @@ export default function HomePage({ data }) {
                 >
                   <Typography
                     variant="overline"
-                    sx={{ color: '#000', letterSpacing: '0.15em', mb: 2, display: 'block', fontWeight: 700, fontFamily: monoFont, fontSize: '0.85rem' }}
+                    sx={{ color: '#000', letterSpacing: '0.15em', mb: 2, display: 'block', fontWeight: 700, fontFamily: accentFont, fontSize: '0.85rem' }}
                   >
                     Snapshot
                   </Typography>
@@ -142,7 +142,7 @@ export default function HomePage({ data }) {
                         minHeight: 44,
                       }}
                     >
-                      <Typography variant="caption" sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, fontFamily: monoFont, fontSize: '0.7rem' }}>
+                      <Typography variant="caption" sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, fontFamily: accentFont, fontSize: '0.7rem' }}>
                         {row.label}
                       </Typography>
                       <Typography variant="body2" sx={{
@@ -164,7 +164,7 @@ export default function HomePage({ data }) {
                           href={`mailto:${contact.email}`}
                           variant="caption"
                           className="ink-link"
-                          sx={{ color: '#000', textDecoration: 'none', fontWeight: 600, fontFamily: monoFont, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
+                          sx={{ color: '#000', textDecoration: 'none', fontWeight: 600, fontFamily: accentFont, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
                         >
                           Email
                         </Typography>
@@ -177,7 +177,7 @@ export default function HomePage({ data }) {
                           rel="noopener noreferrer"
                           variant="caption"
                           className="ink-link"
-                          sx={{ color: '#000', textDecoration: 'none', fontWeight: 600, fontFamily: monoFont, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
+                          sx={{ color: '#000', textDecoration: 'none', fontWeight: 600, fontFamily: accentFont, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
                         >
                           LinkedIn
                         </Typography>
@@ -190,7 +190,7 @@ export default function HomePage({ data }) {
                           rel="noopener noreferrer"
                           variant="caption"
                           className="ink-link"
-                          sx={{ color: '#000', textDecoration: 'none', fontWeight: 600, fontFamily: monoFont, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
+                          sx={{ color: '#000', textDecoration: 'none', fontWeight: 600, fontFamily: accentFont, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
                         >
                           GitHub
                         </Typography>
@@ -235,7 +235,7 @@ export default function HomePage({ data }) {
                     </Typography>
                     <Typography
                       variant="caption"
-                      sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600, fontSize: { xs: '0.65rem', md: '0.75rem' }, fontFamily: monoFont }}
+                      sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 600, fontSize: { xs: '0.65rem', md: '0.75rem' }, fontFamily: accentFont }}
                     >
                       {stat.label}
                     </Typography>
@@ -256,7 +256,7 @@ export default function HomePage({ data }) {
                 <Box>
                   <Typography
                     variant="overline"
-                    sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontFamily: monoFont, fontSize: { xs: '0.85rem', md: '1rem' } }}
+                    sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontFamily: accentFont, fontSize: { xs: '0.85rem', md: '1rem' } }}
                   >
                     03 / Work
                   </Typography>
@@ -286,7 +286,7 @@ export default function HomePage({ data }) {
                     >
                       <Typography
                         variant="overline"
-                        sx={{ color: '#000', display: 'block', mb: 1, fontWeight: 600, fontFamily: monoFont }}
+                        sx={{ color: '#000', display: 'block', mb: 1, fontWeight: 600, fontFamily: accentFont }}
                       >
                         {project.category}
                       </Typography>
@@ -299,7 +299,7 @@ export default function HomePage({ data }) {
                       {project.tags?.length > 0 && (
                         <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
                           {project.tags.map((tag) => (
-                            <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#000', color: '#000', fontFamily: monoFont, borderRadius: 0 }} />
+                            <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#000', color: '#000', fontFamily: accentFont, borderRadius: 0 }} />
                           ))}
                         </Box>
                       )}
@@ -313,7 +313,7 @@ export default function HomePage({ data }) {
                         }}
                       >
                         {project.date && (
-                          <Typography variant="caption" sx={{ color: '#000', fontFamily: monoFont }}>
+                          <Typography variant="caption" sx={{ color: '#000', fontFamily: accentFont }}>
                             {project.date}
                           </Typography>
                         )}
@@ -356,7 +356,7 @@ export default function HomePage({ data }) {
             <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 }, px: { xs: 2, md: 5 } }}>
               <Typography
                 variant="overline"
-                sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontFamily: monoFont, fontSize: { xs: '0.85rem', md: '1rem' } }}
+                sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontFamily: accentFont, fontSize: { xs: '0.85rem', md: '1rem' } }}
               >
                 05 / Highlights
               </Typography>
@@ -428,7 +428,7 @@ export default function HomePage({ data }) {
           <Container maxWidth="lg" sx={{ py: { xs: 5, md: 14 }, px: { xs: 2, md: 5 }, textAlign: 'center' }}>
             <Typography
               variant="overline"
-              sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 700, fontFamily: monoFont, fontSize: { xs: '0.85rem', md: '1rem' } }}
+              sx={{ color: '#000', letterSpacing: '0.15em', display: 'block', mb: 1, fontWeight: 700, fontFamily: accentFont, fontSize: { xs: '0.85rem', md: '1rem' } }}
             >
               Get in touch
             </Typography>
