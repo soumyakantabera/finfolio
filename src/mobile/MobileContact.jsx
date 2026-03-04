@@ -39,19 +39,19 @@ export default function MobileContact({ data }) {
     <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
       <Typography
         variant="overline"
-        sx={{ color: '#111', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
+        sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}
       >
         Get in Touch
       </Typography>
       <Typography
         component="h1"
-        sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
+        sx={{ fontFamily: '"Playfair Display", "Georgia", serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
       >
         Contact
       </Typography>
 
       {/* Contact methods — tappable rows */}
-      <Box sx={{ mb: 2, borderBottom: '1px solid #eee' }}>
+      <Box sx={{ mb: 2, borderBottom: '1px solid #000' }}>
         {contact.email && (
           <Box
             component="a"
@@ -61,14 +61,14 @@ export default function MobileContact({ data }) {
               justifyContent: 'space-between',
               alignItems: 'center',
               py: 1.25,
-              borderBottom: '1px solid #f0f0f0',
+              borderBottom: '1px solid #000',
               textDecoration: 'none',
-              color: '#111',
+              color: '#000',
               minHeight: 44,
               '&:active': { fontWeight: 700 },
             }}
           >
-            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>Email</Typography>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>Email</Typography>
             <Typography sx={{ fontSize: '0.8rem', fontWeight: 500 }}>{contact.email}</Typography>
           </Box>
         )}
@@ -81,14 +81,14 @@ export default function MobileContact({ data }) {
               justifyContent: 'space-between',
               alignItems: 'center',
               py: 1.25,
-              borderBottom: '1px solid #f0f0f0',
+              borderBottom: '1px solid #000',
               textDecoration: 'none',
-              color: '#111',
+              color: '#000',
               minHeight: 44,
               '&:active': { fontWeight: 700 },
             }}
           >
-            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>Phone</Typography>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>Phone</Typography>
             <Typography sx={{ fontSize: '0.8rem', fontWeight: 500 }}>{contact.phone}</Typography>
           </Box>
         )}
@@ -102,7 +102,7 @@ export default function MobileContact({ data }) {
               minHeight: 44,
             }}
           >
-            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>Location</Typography>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"JetBrains Mono", "Menlo", monospace' }}>Location</Typography>
             <Typography sx={{ fontSize: '0.8rem', textAlign: 'right' }}>{contact.address}</Typography>
           </Box>
         )}
@@ -118,17 +118,18 @@ export default function MobileContact({ data }) {
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: '#111',
-                border: '1px solid #ddd',
+                color: '#000',
+                border: '1px solid #000',
                 px: 1.5,
                 py: 0.5,
                 textDecoration: 'none',
                 fontSize: '0.7rem',
                 fontWeight: 600,
+                fontFamily: '"JetBrains Mono", "Menlo", monospace',
                 minHeight: 36,
                 display: 'flex',
                 alignItems: 'center',
-                '&:active': { bgcolor: '#111', color: '#fff' },
+                '&:active': { bgcolor: '#000', color: '#FFF' },
               }}
             >
               LinkedIn
@@ -141,17 +142,18 @@ export default function MobileContact({ data }) {
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: '#111',
-                border: '1px solid #ddd',
+                color: '#000',
+                border: '1px solid #000',
                 px: 1.5,
                 py: 0.5,
                 textDecoration: 'none',
                 fontSize: '0.7rem',
                 fontWeight: 600,
+                fontFamily: '"JetBrains Mono", "Menlo", monospace',
                 minHeight: 36,
                 display: 'flex',
                 alignItems: 'center',
-                '&:active': { bgcolor: '#111', color: '#fff' },
+                '&:active': { bgcolor: '#000', color: '#FFF' },
               }}
             >
               GitHub
@@ -165,17 +167,18 @@ export default function MobileContact({ data }) {
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: '#111',
-                border: '1px solid #ddd',
+                color: '#000',
+                border: '1px solid #000',
                 px: 1.5,
                 py: 0.5,
                 textDecoration: 'none',
                 fontSize: '0.7rem',
                 fontWeight: 600,
+                fontFamily: '"JetBrains Mono", "Menlo", monospace',
                 minHeight: 36,
                 display: 'flex',
                 alignItems: 'center',
-                '&:active': { bgcolor: '#111', color: '#fff' },
+                '&:active': { bgcolor: '#000', color: '#FFF' },
               }}
             >
               {social.platform}
@@ -226,11 +229,11 @@ export default function MobileContact({ data }) {
           type="submit"
           sx={{
             width: '100%',
-            bgcolor: '#111',
-            color: '#fff',
-            border: '1px solid #111',
+            bgcolor: '#000',
+            color: '#FFF',
+            border: '1px solid #000',
             py: 1.25,
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: '"Playfair Display", "Georgia", serif',
             fontWeight: 600,
             fontSize: '0.8rem',
             letterSpacing: '0.04em',
