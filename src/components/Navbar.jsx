@@ -110,7 +110,7 @@ export default function Navbar({ data }) {
             variant="h6"
             component={Link}
             to="/"
-            sx={{ fontWeight: 800, flexGrow: 1, color: '#000', textDecoration: 'none', fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
+            sx={{ fontWeight: 800, flexGrow: 1, color: '#000', textDecoration: 'none', fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
           >
             {siteTitle}
           </Typography>
@@ -193,7 +193,7 @@ export default function Navbar({ data }) {
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: 800, color: '#000', letterSpacing: '-0.02em', fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
+              sx={{ fontWeight: 800, color: '#000', letterSpacing: '-0.02em', fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
             >
               {siteTitle}
             </Typography>
@@ -262,7 +262,7 @@ export default function Navbar({ data }) {
                 </Typography>
                 <Typography
                   sx={{
-                    fontFamily: '"Stack Sans Notch", "Helvetica", "Arial", sans-serif',
+                    fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
                     fontWeight: isActive(item.path) ? 700 : 500,
                     fontSize: '1.5rem',
                     letterSpacing: '-0.02em',
