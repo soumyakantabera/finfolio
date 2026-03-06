@@ -24,8 +24,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import DownloadIcon from '@mui/icons-material/Download';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
-const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const serifFont = '"Space Grotesk", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
+
+const skillLevelMap = { expert: 100, advanced: 75, intermediate: 50, beginner: 25 };
 
 const sectionReveal = {
   initial: { opacity: 0, y: 30 },
@@ -342,23 +344,37 @@ export default function AboutPage({ data }) {
             />
             <Collapse in={isSectionExpanded('skills')} timeout={300}>
               <Grid container spacing={2}>
-                {about.skills.map((skill) => (
-                  <Grid size={{ xs: 12, sm: 6, md: 4 }} key={skill.id}>
-                    <Box sx={{
-                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                      py: 1.5, px: 2,
-                      border: '1px solid #000',
-                      minHeight: 44,
-                    }}>
-                      <Typography variant="body2" fontWeight={600} sx={{ color: '#000' }}>
-                        {skill.name}
-                      </Typography>
-                      <Typography variant="caption" sx={{ color: '#000', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: accentFont }}>
-                        {skill.level}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                ))}
+                {about.skills.map((skill) => {
+                  const pct = skillLevelMap[(skill.level || '').toLowerCase()] || 50;
+                  return (
+                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={skill.id}>
+                      <Box sx={{
+                        py: 1.5, px: 2,
+                        border: '1px solid #000',
+                        minHeight: 44,
+                      }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                          <Typography variant="body2" fontWeight={600} sx={{ color: '#000' }}>
+                            {skill.name}
+                          </Typography>
+                          <Typography variant="caption" sx={{ color: '#000', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', fontFamily: accentFont }}>
+                            {skill.level}
+                          </Typography>
+                        </Box>
+                        <Box
+                          sx={{ width: '100%', height: 4, bgcolor: '#FFF', border: '1px solid #000' }}
+                          role="progressbar"
+                          aria-valuenow={pct}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                          aria-label={`${skill.name}: ${skill.level}`}
+                        >
+                          <Box sx={{ width: `${pct}%`, height: '100%', bgcolor: '#000' }} />
+                        </Box>
+                      </Box>
+                    </Grid>
+                  );
+                })}
               </Grid>
             </Collapse>
           </Container>
