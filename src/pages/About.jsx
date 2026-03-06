@@ -27,6 +27,8 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 const serifFont = '"Space Grotesk", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
+const skillLevelMap = { expert: 100, advanced: 75, intermediate: 50, beginner: 25 };
+
 const sectionReveal = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -343,8 +345,7 @@ export default function AboutPage({ data }) {
             <Collapse in={isSectionExpanded('skills')} timeout={300}>
               <Grid container spacing={2}>
                 {about.skills.map((skill) => {
-                  const levelMap = { expert: 100, advanced: 75, intermediate: 50, beginner: 25 };
-                  const pct = levelMap[(skill.level || '').toLowerCase()] || 50;
+                  const pct = skillLevelMap[(skill.level || '').toLowerCase()] || 50;
                   return (
                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={skill.id}>
                       <Box sx={{

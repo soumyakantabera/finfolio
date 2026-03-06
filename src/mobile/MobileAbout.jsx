@@ -21,6 +21,8 @@ const platformIcon = (platform) => {
   return <LanguageIcon sx={{ fontSize: 18 }} />;
 };
 
+const skillLevelMap = { expert: 100, advanced: 75, intermediate: 50, beginner: 25 };
+
 export default function MobileAbout({ data }) {
   const { about } = data;
   const [expandedSections, setExpandedSections] = useState({});
@@ -239,8 +241,7 @@ export default function MobileAbout({ data }) {
             <SectionTitle number="05 / Skills" label="Skills" sectionKey="skills" />
             <Collapse in={isSectionExpanded('skills')} timeout={300}>
               {about.skills.map((skill, idx) => {
-                const levelMap = { expert: 100, advanced: 75, intermediate: 50, beginner: 25 };
-                const pct = levelMap[(skill.level || '').toLowerCase()] || 50;
+                const pct = skillLevelMap[(skill.level || '').toLowerCase()] || 50;
                 return (
                   <Box
                     key={skill.id}
