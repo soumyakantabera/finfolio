@@ -91,7 +91,6 @@ export default function ProjectsPage({ data }) {
                   fontWeight: activeTab === cat ? 700 : 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: '#000',
                   background: activeTab === cat ? '#000' : 'transparent',
                   color: activeTab === cat ? '#FFF' : '#000',
                   border: '1px solid #000',
@@ -144,6 +143,7 @@ export default function ProjectsPage({ data }) {
 
                     {/* Title */}
                     <Typography
+                      component="h3"
                       sx={{
                         fontFamily: serifFont,
                         fontWeight: 700,
@@ -288,6 +288,7 @@ export default function ProjectsPage({ data }) {
 
                     {/* Title */}
                     <Typography
+                      component="h3"
                       sx={{
                         fontFamily: serifFont,
                         fontWeight: 700,

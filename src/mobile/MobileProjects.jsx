@@ -93,7 +93,7 @@ export default function MobileProjects({ data }) {
             </Box>
 
             {/* Title */}
-            <Typography sx={{ fontSize: '0.9rem', fontWeight: 600, lineHeight: 1.3, mb: 0.5 }}>
+            <Typography component="h3" sx={{ fontSize: '0.9rem', fontWeight: 600, lineHeight: 1.3, mb: 0.5 }}>
               {project.title}
             </Typography>
 
