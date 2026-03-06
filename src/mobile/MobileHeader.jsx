@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
@@ -12,7 +13,7 @@ const corePages = [
 
 export default function MobileHeader({ data }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+  const router = useRouter();
   const menuRef = useRef(null);
   const closeBtnRef = useRef(null);
   const openBtnRef = useRef(null);
@@ -26,9 +27,9 @@ export default function MobileHeader({ data }) {
     path: `/page/${cp.slug}`,
   }));
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => router.pathname === path;
 
-  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+  useEffect(() => { setMenuOpen(false); }, [router.pathname]);
 
   useEffect(() => {
     if (menuOpen) {
@@ -90,7 +91,7 @@ export default function MobileHeader({ data }) {
       >
         <Typography
           component={Link}
-          to="/"
+          href="/"
           sx={{
             fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
             fontWeight: 700,
@@ -202,7 +203,7 @@ export default function MobileHeader({ data }) {
               <Box
                 key={item.key}
                 component={Link}
-                to={item.path}
+                href={item.path}
                 onClick={() => setMenuOpen(false)}
                 sx={{
                   display: 'flex',
@@ -257,7 +258,7 @@ export default function MobileHeader({ data }) {
                   <Box
                     key={item.path}
                     component={Link}
-                    to={item.path}
+                    href={item.path}
                     onClick={() => setMenuOpen(false)}
                     sx={{
                       display: 'block',
