@@ -12,7 +12,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import QuoteBlock from '../components/QuoteBlock';
 import { motion } from 'framer-motion';
 
-const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const serifFont = '"Space Grotesk", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 const reveal = {

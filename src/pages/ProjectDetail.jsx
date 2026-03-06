@@ -25,7 +25,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import BlockRenderer from '../components/BlockRenderer';
 
-const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const serifFont = '"Space Grotesk", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 function slugify(text) {

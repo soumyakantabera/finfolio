@@ -24,7 +24,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import DownloadIcon from '@mui/icons-material/Download';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
-const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const serifFont = '"Space Grotesk", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 const sectionReveal = {

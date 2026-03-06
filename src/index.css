@@ -2,7 +2,7 @@
 
 /* ── Tailwind Theme ── */
 @theme {
-  --font-serif: 'Stack Sans Notch', 'Helvetica', 'Arial', sans-serif;
+  --font-serif: 'Space Grotesk', 'Helvetica', 'Arial', sans-serif;
   --font-accent: 'Sora', 'Helvetica', 'Arial', sans-serif;
   --font-body: 'Sora', 'Helvetica', 'Arial', sans-serif;
   --color-black: #000000;
@@ -52,7 +52,7 @@
 
   --radius: 0px;
 
-  --font-heading: 'Stack Sans Notch', 'Helvetica', 'Arial', sans-serif;
+  --font-heading: 'Space Grotesk', 'Helvetica', 'Arial', sans-serif;
   --font-body: 'Sora', 'Helvetica', 'Arial', sans-serif;
   --font-accent: 'Sora', 'Helvetica', 'Arial', sans-serif;
 

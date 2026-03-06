@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Typography, Chip, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 
-const serifFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const serifFont = '"Space Grotesk", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 export default function ProjectsPage({ data }) {
