@@ -238,24 +238,37 @@ export default function MobileAbout({ data }) {
           <Box sx={{ mb: 2 }}>
             <SectionTitle number="05 / Skills" label="Skills" sectionKey="skills" />
             <Collapse in={isSectionExpanded('skills')} timeout={300}>
-              {about.skills.map((skill, idx) => (
-                <Box
-                  key={skill.id}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    py: 0.75,
-                    borderBottom: idx < about.skills.length - 1 ? '1px solid #000' : 'none',
-                    minHeight: 32,
-                  }}
-                >
-                  <Typography sx={{ fontSize: '0.8rem', fontWeight: 600 }}>{skill.name}</Typography>
-                  <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
-                    {skill.level}
-                  </Typography>
-                </Box>
-              ))}
+              {about.skills.map((skill, idx) => {
+                const levelMap = { expert: 100, advanced: 75, intermediate: 50, beginner: 25 };
+                const pct = levelMap[(skill.level || '').toLowerCase()] || 50;
+                return (
+                  <Box
+                    key={skill.id}
+                    sx={{
+                      py: 0.75,
+                      borderBottom: idx < about.skills.length - 1 ? '1px solid #000' : 'none',
+                      minHeight: 32,
+                    }}
+                  >
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
+                      <Typography sx={{ fontSize: '0.8rem', fontWeight: 600 }}>{skill.name}</Typography>
+                      <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                        {skill.level}
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{ width: '100%', height: 3, bgcolor: '#FFF', border: '1px solid #000' }}
+                      role="progressbar"
+                      aria-valuenow={pct}
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      aria-label={`${skill.name}: ${skill.level}`}
+                    >
+                      <Box sx={{ width: `${pct}%`, height: '100%', bgcolor: '#000' }} />
+                    </Box>
+                  </Box>
+                );
+              })}
             </Collapse>
           </Box>
         )}
