@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-const headingFont = '"Stack Sans Notch", "Helvetica", "Arial", sans-serif';
+const headingFont = '"Space Grotesk", "Helvetica", "Arial", sans-serif';
 const bodyFont = '"Sora", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
