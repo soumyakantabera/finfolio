@@ -1,4 +1,4 @@
-const defaultData = {
+export const defaultData = {
   about: {
     name: 'Jane Smith',
     gender: 'Female',

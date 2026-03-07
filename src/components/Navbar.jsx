@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -15,7 +16,7 @@ const corePages = [
 
 export default function Navbar({ data }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+  const router = useRouter();
   const menuRef = useRef(null);
   const closeBtnRef = useRef(null);
   const openBtnRef = useRef(null);
@@ -29,12 +30,12 @@ export default function Navbar({ data }) {
     path: `/page/${cp.slug}`,
   }));
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => router.pathname === path;
 
   // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
-  }, [location.pathname]);
+  }, [router.pathname]);
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -109,7 +110,7 @@ export default function Navbar({ data }) {
           <Typography
             variant="h6"
             component={Link}
-            to="/"
+            href="/"
             sx={{ fontWeight: 800, flexGrow: 1, color: '#000', textDecoration: 'none', fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' } }}
           >
             {siteTitle}
@@ -118,12 +119,12 @@ export default function Navbar({ data }) {
           {/* Desktop links */}
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: 1 }}>
             {navLinks.map((item) => (
-              <Button key={item.key} component={Link} to={item.path} sx={linkSx(item.path)}>
+              <Button key={item.key} component={Link} href={item.path} sx={linkSx(item.path)}>
                 {item.label}
               </Button>
             ))}
             {customLinks.map((item) => (
-              <Button key={item.path} component={Link} to={item.path} sx={linkSx(item.path)}>
+              <Button key={item.path} component={Link} href={item.path} sx={linkSx(item.path)}>
                 {item.label}
               </Button>
             ))}
@@ -230,7 +231,7 @@ export default function Navbar({ data }) {
               <Box
                 key={item.key}
                 component={Link}
-                to={item.path}
+                href={item.path}
                 onClick={() => setMenuOpen(false)}
                 sx={{
                   display: 'flex',
@@ -287,7 +288,7 @@ export default function Navbar({ data }) {
                   <Box
                     key={item.path}
                     component={Link}
-                    to={item.path}
+                    href={item.path}
                     onClick={() => setMenuOpen(false)}
                     sx={{
                       display: 'block',
