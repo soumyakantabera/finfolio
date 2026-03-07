@@ -17,7 +17,8 @@ export default function AdminLogin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (passcode === 'Soumya01') {
+    const adminPasscode = process.env.NEXT_PUBLIC_ADMIN_PASSCODE || 'Soumya01';
+    if (passcode === adminPasscode) {
       sessionStorage.setItem('finfolio_admin', 'true');
       router.push('/admin/dashboard');
     } else {

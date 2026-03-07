@@ -56,7 +56,7 @@ export default function CustomPage({ initialData }) {
 export function getStaticPaths() {
   const pages = defaultData.settings?.customPages || [];
   const paths = pages.map((p) => ({ params: { slug: p.slug } }));
-  return { paths, fallback: 'blocking' };
+  return { paths, fallback: false };
 }
 
 export function getStaticProps() {
