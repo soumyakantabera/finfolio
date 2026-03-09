@@ -51,7 +51,7 @@ export default function ProjectsPage({ initialData }) {
             sx={{
               fontFamily: accentFont,
               fontSize: { xs: '0.85rem', md: '1rem' },
-              color: '#000000',
+              color: '#555',
               letterSpacing: '0.1em',
               mb: 1,
             }}
@@ -66,7 +66,7 @@ export default function ProjectsPage({ initialData }) {
               fontFamily: serifFont,
               fontWeight: 700,
               fontSize: { xs: '2.5rem', md: '4.5rem' },
-              color: '#000000',
+              color: '#111',
               mb: { xs: 3, md: 4 },
               lineHeight: 1.1,
             }}
@@ -81,7 +81,7 @@ export default function ProjectsPage({ initialData }) {
               gap: 1,
               flexWrap: 'wrap',
               mb: { xs: 3, md: 5 },
-              borderBottom: '1px solid #000',
+              borderBottom: '1px solid #E0E0E0',
               pb: 2,
             }}
           >
@@ -94,9 +94,9 @@ export default function ProjectsPage({ initialData }) {
                   fontSize: '0.75rem',
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: activeTab === cat ? '#FFF' : '#000',
+                  color: activeTab === cat ? '#FFF' : '#111',
                   bgcolor: activeTab === cat ? '#000' : 'transparent',
-                  border: '1px solid #000',
+                  border: activeTab === cat ? '1px solid #000' : '1px solid #E0E0E0',
                   borderRadius: 0,
                   px: 2,
                   py: 0.75,
@@ -125,7 +125,7 @@ export default function ProjectsPage({ initialData }) {
                 >
                   <Box
                     sx={{
-                      border: '1px solid #000',
+                      border: '1px solid #E0E0E0',
                       p: { xs: 2.5, md: 3 },
                       height: '100%',
                       display: 'flex',
@@ -141,8 +141,8 @@ export default function ProjectsPage({ initialData }) {
                           fontSize: '0.7rem',
                           letterSpacing: '0.08em',
                           textTransform: 'uppercase',
-                          color: '#000',
-                          fontWeight: 600,
+                          color: '#555',
+                          fontWeight: 500,
                           mb: 1,
                         }}
                       >
@@ -158,7 +158,7 @@ export default function ProjectsPage({ initialData }) {
                         fontWeight: 700,
                         fontSize: { xs: '1.25rem', md: '1.5rem' },
                         lineHeight: 1.2,
-                        color: '#000',
+                        color: '#111',
                         mb: 1,
                       }}
                     >
@@ -170,7 +170,7 @@ export default function ProjectsPage({ initialData }) {
                       <Typography
                         variant="body2"
                         sx={{
-                          color: '#000',
+                          color: '#111',
                           lineHeight: 1.6,
                           mb: 1.5,
                           display: '-webkit-box',
@@ -192,7 +192,7 @@ export default function ProjectsPage({ initialData }) {
                               fontFamily: accentFont,
                               fontSize: '0.75rem',
                               fontStyle: 'italic',
-                              color: '#000',
+                              color: '#555',
                             }}
                           >
                             {project.publication}{project.year ? ` (${project.year})` : ''}
@@ -203,7 +203,7 @@ export default function ProjectsPage({ initialData }) {
                             sx={{
                               fontFamily: accentFont,
                               fontSize: '0.75rem',
-                              color: '#000',
+                              color: '#555',
                             }}
                           >
                             {project.authors}
@@ -224,8 +224,8 @@ export default function ProjectsPage({ initialData }) {
                             sx={{
                               fontFamily: accentFont,
                               fontSize: '0.65rem',
-                              borderColor: '#000',
-                              color: '#000',
+                              borderColor: '#E0E0E0',
+                              color: '#555',
                               borderRadius: 0,
                               height: 22,
                             }}
@@ -239,7 +239,7 @@ export default function ProjectsPage({ initialData }) {
                       sx={{
                         mt: 'auto',
                         pt: 2,
-                        borderTop: '1px solid #000',
+                        borderTop: '1px solid #E0E0E0',
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
@@ -250,7 +250,7 @@ export default function ProjectsPage({ initialData }) {
                       {(project.date || project.year) && (
                         <Typography
                           variant="caption"
-                          sx={{ color: '#000', fontFamily: accentFont, fontWeight: 600 }}
+                          sx={{ color: '#555', fontFamily: accentFont, fontWeight: 600 }}
                         >
                           {project.date || project.year}
                         </Typography>
@@ -265,8 +265,8 @@ export default function ProjectsPage({ initialData }) {
                             size="small"
                             variant="outlined"
                             sx={{
-                              color: '#000',
-                              borderColor: '#000',
+                              color: '#111',
+                              borderColor: '#E0E0E0',
                               borderRadius: 0,
                               fontSize: '0.7rem',
                               fontFamily: accentFont,
@@ -285,7 +285,7 @@ export default function ProjectsPage({ initialData }) {
                           href={`/projects/${project.slug}`}
                           size="small"
                           sx={{
-                            color: '#000',
+                            color: '#111',
                             fontWeight: 600,
                             fontSize: '0.75rem',
                             fontFamily: accentFont,
@@ -311,7 +311,7 @@ export default function ProjectsPage({ initialData }) {
                 mt: 4,
                 textAlign: 'center',
                 fontFamily: accentFont,
-                color: '#000000',
+                color: '#111',
               }}
             >
               No projects found.
