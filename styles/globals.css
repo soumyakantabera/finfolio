@@ -1,11 +1,14 @@
-/* Design Tokens (Minimalist B&W) */
+/* Design Tokens — Park UI-inspired minimalist B&W */
 :root {
   --c-bg: #FAFAFA;
-  --c-fg: #111111;
-  --c-fg-secondary: #555555;
-  --c-border: #E0E0E0;
-  --c-border-subtle: #EEEEEE;
-  --c-accent: #000000;
+  --c-fg: #0A0A0A;
+  --c-fg-secondary: #525252;
+  --c-fg-muted: #A3A3A3;
+  --c-border: #EBEBEB;
+  --c-border-subtle: #F5F5F5;
+  --c-accent: #0A0A0A;
+  --c-surface: #FFFFFF;
+  --c-surface-hover: #F5F5F5;
   --border: 1px solid var(--c-border);
   --border-dashed: 1px dashed var(--c-border);
   --s1: 4px;
@@ -31,7 +34,10 @@
   --space-xl: var(--s6);
   --space-2xl: var(--s8);
   --space-3xl: var(--s9);
-  --radius: 0px;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
   --font-heading: 'Manrope', 'Helvetica', 'Arial', sans-serif;
   --font-body: 'Manrope', 'Helvetica', 'Arial', sans-serif;
   --font-accent: 'Manrope', 'Helvetica', 'Arial', sans-serif;
