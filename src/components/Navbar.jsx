@@ -134,7 +134,7 @@ export default function Navbar({ data }) {
               color: '#0A0A0A',
               textDecoration: 'none',
               fontFamily: fontStack,
-              fontSize: { xs: '1.05rem', sm: '1.15rem' },
+              fontSize: { xs: '1.25rem', sm: '1.35rem', md: '1.4rem' },
               letterSpacing: '-0.04em',
               lineHeight: 1,
             }}
@@ -168,7 +168,7 @@ export default function Navbar({ data }) {
                   color: isActive(item.path) ? '#0A0A0A' : '#525252',
                   fontFamily: fontStack,
                   fontWeight: isActive(item.path) ? 600 : 500,
-                  fontSize: '0.84rem',
+                  fontSize: '0.9rem',
                   letterSpacing: '-0.01em',
                   lineHeight: 1,
                   transition:
@@ -285,7 +285,7 @@ export default function Navbar({ data }) {
               color: '#0A0A0A',
               textDecoration: 'none',
               fontFamily: fontStack,
-              fontSize: '1.05rem',
+              fontSize: '1.25rem',
               letterSpacing: '-0.04em',
               lineHeight: 1,
             }}
