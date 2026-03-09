@@ -31,14 +31,15 @@ function BentoTile({ children, gridArea, index, sx = {} }) {
       viewport={{ once: true, margin: '-40px' }}
       whileHover={{
         scale: 1.02,
-        rotateX: -1,
-        rotateY: 1,
-        boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
+        rotateX: -2,
+        rotateY: 2,
+        boxShadow: '0 12px 32px rgba(0,0,0,0.06)',
       }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 24 }}
       style={{
         gridArea,
-        perspective: '800px',
+        perspective: 1200,
         transformStyle: 'preserve-3d',
       }}
     >

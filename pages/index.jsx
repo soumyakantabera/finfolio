@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Container,
   Box,
@@ -43,6 +44,7 @@ const reveal = {
 
 export default function HomePage({ initialData }) {
   const [data, setData] = useState(initialData);
+  const router = useRouter();
 
   useEffect(() => {
     const loaded = loadData();
@@ -217,22 +219,26 @@ export default function HomePage({ initialData }) {
                         whileInView="visible"
                         viewport={{ once: true, margin: '-40px' }}
                         whileHover={{
-                          scale: 1.03,
-                          rotateX: -1,
-                          rotateY: 1.5,
-                          boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                          scale: 1.02,
+                          rotateX: -2,
+                          rotateY: 2,
+                          boxShadow: '0 16px 40px rgba(0,0,0,0.08)',
                         }}
-                        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                        style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+                        style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
                       >
                         <Box
-                          component={Link}
-                          href={`/projects/${project.slug}`}
+                          onClick={(e) => {
+                            if (e.target.closest('a')) return;
+                            router.push(`/projects/${project.slug}`);
+                          }}
                           className="frame-shift"
                           sx={{
                             display: 'block',
                             textDecoration: 'none',
                             color: 'inherit',
+                            cursor: 'pointer',
                             border: '1px solid var(--c-border)',
                             borderRadius: 'var(--radius-lg)',
                             p: { xs: 2.5, md: 4 },
@@ -379,21 +385,25 @@ export default function HomePage({ initialData }) {
                         whileInView="visible"
                         viewport={{ once: true, margin: '-40px' }}
                         whileHover={{
-                          scale: 1.03,
-                          rotateX: -1,
-                          rotateY: 1.5,
-                          boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                          scale: 1.02,
+                          rotateX: -2,
+                          rotateY: 2,
+                          boxShadow: '0 16px 40px rgba(0,0,0,0.08)',
                         }}
-                        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                        style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+                        style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
                       >
                         <Box
-                          component={Link}
-                          href={`/projects/${project.slug}`}
+                          onClick={(e) => {
+                            if (e.target.closest('a')) return;
+                            router.push(`/projects/${project.slug}`);
+                          }}
                           sx={{
                             display: 'block',
                             textDecoration: 'none',
                             color: 'inherit',
+                            cursor: 'pointer',
                             border: '1px solid var(--c-border)',
                             borderRadius: 'var(--radius-lg)',
                             p: { xs: 2.5, md: 4 },

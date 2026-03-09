@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   Container,
   Box,
@@ -39,6 +39,7 @@ const reveal = {
 };
 
 export default function HomePage({ data }) {
+  const navigate = useNavigate();
   const { home, projects, about, contact, quotes } = data;
   const allProjects = (projects || []).filter((p) => p.status !== 'draft');
   const featuredProjects = allProjects.filter((p) => p.featured);
@@ -204,22 +205,26 @@ export default function HomePage({ data }) {
                       whileInView="visible"
                       viewport={{ once: true, margin: '-40px' }}
                       whileHover={{
-                        scale: 1.03,
-                        rotateX: -1,
-                        rotateY: 1.5,
-                        boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                        scale: 1.02,
+                        rotateX: -2,
+                        rotateY: 2,
+                        boxShadow: '0 16px 40px rgba(0,0,0,0.08)',
                       }}
-                      transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                      style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+                      style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
                     >
                       <Box
-                        component={RouterLink}
-                        to={`/projects/${project.slug}`}
+                        onClick={(e) => {
+                          if (e.target.closest('a')) return;
+                          navigate(`/projects/${project.slug}`);
+                        }}
                         className="frame-shift"
                         sx={{
                           display: 'block',
                           textDecoration: 'none',
                           color: 'inherit',
+                          cursor: 'pointer',
                           border: '1px solid var(--c-border)',
                           borderRadius: 'var(--radius-lg)',
                           p: { xs: 2.5, md: 4 },
@@ -366,21 +371,25 @@ export default function HomePage({ data }) {
                       whileInView="visible"
                       viewport={{ once: true, margin: '-40px' }}
                       whileHover={{
-                        scale: 1.03,
-                        rotateX: -1,
-                        rotateY: 1.5,
-                        boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                        scale: 1.02,
+                        rotateX: -2,
+                        rotateY: 2,
+                        boxShadow: '0 16px 40px rgba(0,0,0,0.08)',
                       }}
-                      transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                      style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+                      style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
                     >
                       <Box
-                        component={RouterLink}
-                        to={`/projects/${project.slug}`}
+                        onClick={(e) => {
+                          if (e.target.closest('a')) return;
+                          navigate(`/projects/${project.slug}`);
+                        }}
                         sx={{
                           display: 'block',
                           textDecoration: 'none',
                           color: 'inherit',
+                          cursor: 'pointer',
                           border: '1px solid var(--c-border)',
                           borderRadius: 'var(--radius-lg)',
                           p: { xs: 2.5, md: 4 },

@@ -106,12 +106,13 @@ export default function ProjectsPage({ data }) {
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.06 }}
                 whileHover={{
-                  scale: 1.03,
-                  rotateX: -1,
-                  rotateY: 1.5,
-                  boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                  scale: 1.02,
+                  rotateX: -2,
+                  rotateY: 2,
+                  boxShadow: '0 16px 40px rgba(0,0,0,0.08)',
                 }}
-                style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
+                whileTap={{ scale: 0.98 }}
+                style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
               >
                 <Box
                   sx={{
