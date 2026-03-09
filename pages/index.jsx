@@ -281,21 +281,48 @@ export default function HomePage({ initialData }) {
                                 {project.date}
                               </Typography>
                             )}
-                            <Box
-                              component="span"
-                              sx={{
-                                display: 'inline-block',
-                                bgcolor: '#000',
-                                color: '#FFF',
-                                fontWeight: 600,
-                                fontSize: '0.7rem',
-                                fontFamily: accentFont,
-                                px: 1.5,
-                                py: 0.5,
-                                borderRadius: '999px',
-                              }}
-                            >
-                              Details →
+                            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+                              {project.links?.[0] && (
+                                <Box
+                                  component="a"
+                                  href={project.links[0].url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  sx={{
+                                    display: 'inline-block',
+                                    bgcolor: 'transparent',
+                                    color: '#111',
+                                    fontWeight: 600,
+                                    fontSize: '0.7rem',
+                                    fontFamily: accentFont,
+                                    px: 1.5,
+                                    py: 0.5,
+                                    borderRadius: '8px',
+                                    border: '1px solid #E0E0E0',
+                                    textDecoration: 'none',
+                                    '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
+                                  }}
+                                >
+                                  {project.links[0].label}
+                                </Box>
+                              )}
+                              <Box
+                                component="span"
+                                sx={{
+                                  display: 'inline-block',
+                                  bgcolor: '#000',
+                                  color: '#FFF',
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem',
+                                  fontFamily: accentFont,
+                                  px: 1.5,
+                                  py: 0.5,
+                                  borderRadius: '8px',
+                                }}
+                              >
+                                Details →
+                              </Box>
                             </Box>
                           </Box>
                         </Box>
@@ -392,21 +419,48 @@ export default function HomePage({ initialData }) {
                                 {project.date}
                               </Typography>
                             )}
-                            <Box
-                              component="span"
-                              sx={{
-                                display: 'inline-block',
-                                bgcolor: '#000',
-                                color: '#FFF',
-                                fontWeight: 600,
-                                fontSize: '0.7rem',
-                                fontFamily: accentFont,
-                                px: 1.5,
-                                py: 0.5,
-                                borderRadius: '999px',
-                              }}
-                            >
-                              Details →
+                            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+                              {project.links?.[0] && (
+                                <Box
+                                  component="a"
+                                  href={project.links[0].url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  sx={{
+                                    display: 'inline-block',
+                                    bgcolor: 'transparent',
+                                    color: '#111',
+                                    fontWeight: 600,
+                                    fontSize: '0.7rem',
+                                    fontFamily: accentFont,
+                                    px: 1.5,
+                                    py: 0.5,
+                                    borderRadius: '8px',
+                                    border: '1px solid #E0E0E0',
+                                    textDecoration: 'none',
+                                    '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
+                                  }}
+                                >
+                                  {project.links[0].label}
+                                </Box>
+                              )}
+                              <Box
+                                component="span"
+                                sx={{
+                                  display: 'inline-block',
+                                  bgcolor: '#000',
+                                  color: '#FFF',
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem',
+                                  fontFamily: accentFont,
+                                  px: 1.5,
+                                  py: 0.5,
+                                  borderRadius: '8px',
+                                }}
+                              >
+                                Details →
+                              </Box>
                             </Box>
                           </Box>
                         </Box>

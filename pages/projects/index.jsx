@@ -290,6 +290,29 @@ export default function ProjectsPage({ initialData }) {
                             DOI
                           </Button>
                         )}
+                        {project.links?.[0] && (
+                          <Button
+                            href={project.links[0].url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            size="small"
+                            variant="outlined"
+                            sx={{
+                              color: '#111',
+                              borderColor: '#E0E0E0',
+                              borderRadius: '8px',
+                              fontSize: '0.7rem',
+                              fontFamily: accentFont,
+                              textTransform: 'none',
+                              py: 0.25,
+                              px: 1.5,
+                              minHeight: 28,
+                              '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
+                            }}
+                          >
+                            {project.links[0].label}
+                          </Button>
+                        )}
                         <Button
                           component={Link}
                           href={`/projects/${project.slug}`}
