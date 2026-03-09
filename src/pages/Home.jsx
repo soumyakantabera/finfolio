@@ -10,10 +10,26 @@ import {
 } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import QuoteBlock from '../components/QuoteBlock';
+import BentoSnapshot from '../components/BentoSnapshot';
 import { motion } from 'framer-motion';
 
 const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Manrope", "Helvetica", "Arial", sans-serif';
+
+/* ── Staggered entrance animation for cards ── */
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.97 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  }),
+};
 
 const reveal = {
   initial: { opacity: 0, y: 30 },
@@ -108,95 +124,9 @@ export default function HomePage({ data }) {
                 )}
               </Grid>
 
-              {/* Right: snapshot panel */}
+              {/* Right: Bento Grid snapshot */}
               <Grid size={{ xs: 12, md: 5 }}>
-                <Box
-                  sx={{
-                    border: '1px solid #E0E0E0',
-                    p: { xs: 2.5, md: 4 },
-                  }}
-                >
-                  <Typography
-                    variant="overline"
-                    sx={{ color: '#555', letterSpacing: '0.15em', mb: 2, display: 'block', fontWeight: 500, fontFamily: accentFont, fontSize: '0.85rem' }}
-                  >
-                    Snapshot
-                  </Typography>
-                  {[
-                    { label: 'Name', value: about?.name },
-                    { label: 'Role', value: home.snapshotRole || about?.introTitle },
-                    { label: 'Last Course', value: about?.education?.[0] ? `${about.education[0].degree}, ${about.education[0].institution}` : undefined },
-                    { label: 'Programming', value: about?.programmingLanguages },
-                    { label: 'Languages', value: about?.languagesKnown },
-                    { label: 'Location', value: home.snapshotLocation || about?.address },
-                    { label: 'Availability', value: home.snapshotAvailability },
-                  ].filter((r) => r.value).map((row) => (
-                    <Box
-                      key={row.label}
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        py: 1.5,
-                        borderBottom: '1px solid #E0E0E0',
-                        minHeight: 44,
-                      }}
-                    >
-                      <Typography variant="caption" sx={{ color: '#111', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, fontFamily: accentFont, fontSize: '0.7rem' }}>
-                        {row.label}
-                      </Typography>
-                      <Typography variant="body2" sx={{
-                        fontWeight: 500,
-                        textAlign: 'right',
-                        color: '#111',
-                      }}>
-                        {row.value}
-                      </Typography>
-                    </Box>
-                  ))}
-                  {/* Quick links */}
-                  {(contact?.linkedin || contact?.github || contact?.email) && (
-                    <Box sx={{ mt: 2, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                      {contact?.email && (
-                        <Typography
-                          component="a"
-                          href={`mailto:${contact.email}`}
-                          variant="caption"
-                          className="ink-link"
-                          sx={{ color: '#111', textDecoration: 'none', fontWeight: 600, fontFamily: accentFont, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
-                        >
-                          Email
-                        </Typography>
-                      )}
-                      {contact?.linkedin && (
-                        <Typography
-                          component="a"
-                          href={contact.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          variant="caption"
-                          className="ink-link"
-                          sx={{ color: '#111', textDecoration: 'none', fontWeight: 600, fontFamily: accentFont, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
-                        >
-                          LinkedIn
-                        </Typography>
-                      )}
-                      {contact?.github && (
-                        <Typography
-                          component="a"
-                          href={contact.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          variant="caption"
-                          className="ink-link"
-                          sx={{ color: '#111', textDecoration: 'none', fontWeight: 600, fontFamily: accentFont, py: 0.5, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
-                        >
-                          GitHub
-                        </Typography>
-                      )}
-                    </Box>
-                  )}
-                </Box>
+                <BentoSnapshot home={home} about={about} contact={contact} />
               </Grid>
             </Grid>
           </Container>
@@ -265,62 +195,85 @@ export default function HomePage({ data }) {
                 </Box>
               </Box>
               <Grid container spacing={{ xs: 2, md: 3 }}>
-                {allProjects.slice(0, 6).map((project) => (
+                {allProjects.slice(0, 6).map((project, idx) => (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
-                    <Box
-                      component={RouterLink}
-                      to={`/projects/${project.slug}`}
-                      className="frame-shift"
-                      sx={{
-                        display: 'block',
-                        textDecoration: 'none',
-                        color: 'inherit',
-                        border: '1px solid #E0E0E0',
-                        p: { xs: 2.5, md: 4 },
-                        height: '100%',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+                    <motion.div
+                      custom={idx}
+                      variants={cardVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: '-40px' }}
+                      whileHover={{
+                        scale: 1.03,
+                        rotateX: -1,
+                        rotateY: 1.5,
+                        boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
                       }}
+                      transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                      style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
                     >
-                      <Typography
-                        variant="overline"
-                        sx={{ color: '#555', display: 'block', mb: 1, fontWeight: 500, fontFamily: accentFont }}
-                      >
-                        {project.category}
-                      </Typography>
-                      <Typography variant="h6" fontWeight={700} gutterBottom sx={{ fontSize: { xs: '1.15rem', md: '1.5rem' }, fontFamily: serifFont, color: '#111' }}>
-                        {project.title}
-                      </Typography>
-                      <Typography variant="body2" sx={{ mb: 2, lineHeight: 1.6, color: '#111' }}>
-                        {project.description}
-                      </Typography>
-                      {project.tags?.length > 0 && (
-                        <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
-                          {project.tags.map((tag) => (
-                            <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#E0E0E0', color: '#111', fontFamily: accentFont, borderRadius: 0 }} />
-                          ))}
-                        </Box>
-                      )}
                       <Box
+                        component={RouterLink}
+                        to={`/projects/${project.slug}`}
+                        className="frame-shift"
                         sx={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          pt: 2,
-                          borderTop: '1px solid #E0E0E0',
+                          display: 'block',
+                          textDecoration: 'none',
+                          color: 'inherit',
+                          border: '1px solid var(--c-border)',
+                          borderRadius: 'var(--radius-lg)',
+                          p: { xs: 2.5, md: 4 },
+                          height: '100%',
+                          position: 'relative',
+                          overflow: 'hidden',
+                          bgcolor: 'var(--c-surface)',
+                          transition: 'background var(--transition-base), border-color var(--transition-base)',
+                          '&:hover': {
+                            bgcolor: 'var(--c-surface-hover)',
+                            borderColor: 'var(--c-fg-muted)',
+                          },
+                          '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                         }}
                       >
-                        {project.date && (
-                          <Typography variant="caption" sx={{ color: '#111', fontFamily: accentFont }}>
-                            {project.date}
-                          </Typography>
-                        )}
-                        <Typography variant="caption" sx={{ color: '#111', fontWeight: 600 }}>
-                          Details →
+                        <Typography
+                          variant="overline"
+                          sx={{ color: 'var(--c-fg-secondary)', display: 'block', mb: 1, fontWeight: 500, fontFamily: accentFont }}
+                        >
+                          {project.category}
                         </Typography>
+                        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ fontSize: { xs: '1.15rem', md: '1.5rem' }, fontFamily: serifFont, color: 'var(--c-fg)' }}>
+                          {project.title}
+                        </Typography>
+                        <Typography variant="body2" sx={{ mb: 2, lineHeight: 1.6, color: 'var(--c-fg)' }}>
+                          {project.description}
+                        </Typography>
+                        {project.tags?.length > 0 && (
+                          <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
+                            {project.tags.map((tag) => (
+                              <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: 'var(--c-border)', color: 'var(--c-fg-secondary)', fontFamily: accentFont, borderRadius: 'var(--radius-sm)' }} />
+                            ))}
+                          </Box>
+                        )}
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            pt: 2,
+                            borderTop: '1px solid var(--c-border)',
+                          }}
+                        >
+                          {project.date && (
+                            <Typography variant="caption" sx={{ color: 'var(--c-fg-secondary)', fontFamily: accentFont }}>
+                              {project.date}
+                            </Typography>
+                          )}
+                          <Typography variant="caption" sx={{ color: 'var(--c-fg)', fontWeight: 600 }}>
+                            Details →
+                          </Typography>
+                        </Box>
                       </Box>
-                    </Box>
+                    </motion.div>
                   </Grid>
                 ))}
               </Grid>
