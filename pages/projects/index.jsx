@@ -8,7 +8,7 @@ import MobileHeader from '../../src/mobile/MobileHeader';
 import useIsMobile from '../../src/mobile/useIsMobile';
 import { defaultData, loadData } from '../../src/data/portfolioData';
 
-const serifFont = '"Space Grotesk", "Helvetica", "Arial", sans-serif';
+const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 export default function ProjectsPage({ initialData }) {

@@ -5,14 +5,11 @@ import '@fontsource/sora/400.css';
 import '@fontsource/sora/500.css';
 import '@fontsource/sora/600.css';
 import '@fontsource/sora/700.css';
-import '@fontsource/space-grotesk/400.css';
-import '@fontsource/space-grotesk/500.css';
-import '@fontsource/space-grotesk/600.css';
-import '@fontsource/space-grotesk/700.css';
-import '@fontsource/stack-sans-notch/400.css';
-import '@fontsource/stack-sans-notch/500.css';
-import '@fontsource/stack-sans-notch/600.css';
-import '@fontsource/stack-sans-notch/700.css';
+import '@fontsource/manrope/400.css';
+import '@fontsource/manrope/500.css';
+import '@fontsource/manrope/600.css';
+import '@fontsource/manrope/700.css';
+import '@fontsource/manrope/800.css';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

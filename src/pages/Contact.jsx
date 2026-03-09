@@ -94,7 +94,7 @@ export default function ContactPage({ data }) {
           gutterBottom
           sx={{
             fontSize: { xs: '1.75rem', md: '3rem' },
-            fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
           }}
         >
           Contact

@@ -58,7 +58,7 @@ export default function MobileAbout({ data }) {
         px: 0,
         py: 1.25,
         cursor: 'pointer',
-        fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+        fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
         fontWeight: 700,
         fontSize: '1.1rem',
         color: '#000',
@@ -108,7 +108,7 @@ export default function MobileAbout({ data }) {
           <Box>
             <Typography
               component="h1"
-              sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.5rem', lineHeight: 1.2 }}
+              sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.5rem', lineHeight: 1.2 }}
             >
               {about.name}
             </Typography>

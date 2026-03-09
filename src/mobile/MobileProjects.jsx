@@ -26,7 +26,7 @@ export default function MobileProjects({ data }) {
       </Typography>
       <Typography
         component="h1"
-        sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
+        sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
       >
         Projects
       </Typography>

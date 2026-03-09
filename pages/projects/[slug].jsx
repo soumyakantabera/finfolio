@@ -31,7 +31,7 @@ import useIsMobile from '../../src/mobile/useIsMobile';
 import BlockRenderer from '../../src/components/BlockRenderer';
 import { defaultData, loadData } from '../../src/data/portfolioData';
 
-const serifFont = '"Space Grotesk", "Helvetica", "Arial", sans-serif';
+const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
 
 function slugify(text) {

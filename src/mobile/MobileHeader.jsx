@@ -93,7 +93,7 @@ export default function MobileHeader({ data }) {
           component={Link}
           href="/"
           sx={{
-            fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
             fontWeight: 700,
             fontSize: '1.25rem',
             color: '#000',
@@ -162,7 +162,7 @@ export default function MobileHeader({ data }) {
           >
             <Typography
               sx={{
-                fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+                fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                 fontWeight: 700,
                 fontSize: '1.25rem',
                 color: '#000',
@@ -234,7 +234,7 @@ export default function MobileHeader({ data }) {
                 </Typography>
                 <Typography
                   sx={{
-                    fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+                    fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                     fontWeight: isActive(item.path) ? 700 : 500,
                     fontSize: '1.25rem',
                     letterSpacing: '-0.02em',

@@ -22,7 +22,7 @@ export default function MobileHome({ data }) {
         <Typography
           component="h1"
           sx={{
-            fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
             fontWeight: 700,
             fontSize: '1.75rem',
             letterSpacing: '-0.03em',
@@ -61,7 +61,7 @@ export default function MobileHome({ data }) {
                   border: '1px solid #000',
                   py: 1.25,
                   textDecoration: 'none',
-                  fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+                  fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                   fontWeight: 600,
                   fontSize: '0.8rem',
                   letterSpacing: '0.04em',
@@ -167,7 +167,7 @@ export default function MobileHome({ data }) {
           >
             03 / Work
           </Typography>
-          <Typography sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
+          <Typography sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
             Featured Work
           </Typography>
 
@@ -246,7 +246,7 @@ export default function MobileHome({ data }) {
           >
             05 / Highlights
           </Typography>
-          <Typography sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
+          <Typography sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1.5 }}>
             Notable Work
           </Typography>
           {featuredProjects.slice(0, 4).map((project, i, arr) => (
@@ -284,7 +284,7 @@ export default function MobileHome({ data }) {
         <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           {home.customSections.map((section, i) => (
             <Box key={section.id || i} sx={{ mb: i < home.customSections.length - 1 ? 3 : 0 }}>
-              <Typography sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1 }}>
+              <Typography sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 600, fontSize: '1.35rem', mb: 1 }}>
                 {section.title}
               </Typography>
               <Typography sx={{ whiteSpace: 'pre-line', fontSize: '0.85rem', lineHeight: 1.6 }}>
@@ -304,7 +304,7 @@ export default function MobileHome({ data }) {
           Get in touch
         </Typography>
         <Typography
-          sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.5rem', mb: 1 }}
+          sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.5rem', mb: 1 }}
         >
           Let&apos;s connect.
         </Typography>

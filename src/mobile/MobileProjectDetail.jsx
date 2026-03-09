@@ -135,7 +135,7 @@ export default function MobileProjectDetail({ data }) {
               {project.category}
             </Typography>
           )}
-          <Typography sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.3rem', lineHeight: 1.2 }}>
+          <Typography sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.3rem', lineHeight: 1.2 }}>
             {project.title}
           </Typography>
           {project.subtitle && (
@@ -269,7 +269,7 @@ export default function MobileProjectDetail({ data }) {
         {/* Related projects */}
         {relatedProjects.length > 0 && (
           <Box sx={{ borderTop: '1px solid #000', pt: 2 }}>
-            <Typography sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1rem', mb: 1.5 }}>
+            <Typography sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1rem', mb: 1.5 }}>
               Related Projects
             </Typography>
             {relatedProjects.map((rp, i, arr) => (

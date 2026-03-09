@@ -45,7 +45,7 @@ export default function MobileContact({ data }) {
       </Typography>
       <Typography
         component="h1"
-        sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
+        sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
       >
         Contact
       </Typography>
@@ -233,7 +233,7 @@ export default function MobileContact({ data }) {
             color: '#FFF',
             border: '1px solid #000',
             py: 1.25,
-            fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
             fontWeight: 600,
             fontSize: '0.8rem',
             letterSpacing: '0.04em',
