@@ -365,7 +365,7 @@ export default function AboutPage({ initialData }) {
                         <Box sx={{
                           py: 1.5, px: 2,
                           border: '1px solid #E0E0E0',
-                          borderRadius: 'var(--radius)',
+                          borderRadius: 'var(--radius-lg)',
                           minHeight: 44,
                         }}>
                           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
@@ -377,7 +377,7 @@ export default function AboutPage({ initialData }) {
                             </Typography>
                           </Box>
                           <Box
-                            sx={{ width: '100%', height: 4, bgcolor: '#EEEEEE', border: '1px solid #E0E0E0', borderRadius: '999px' }}
+                            sx={{ width: '100%', height: 4, bgcolor: '#EEEEEE', borderRadius: '999px' }}
                             role="progressbar"
                             aria-valuenow={pct}
                             aria-valuemin={0}
