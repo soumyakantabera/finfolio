@@ -95,8 +95,8 @@ npm run preview
 
 The admin portal is hidden from the public navigation but remains accessible via direct URL.
 
-1. Navigate to `/#/admin` in the browser
-2. Enter the passcode: **Soumya01**
+1. Navigate to `/admin` in the browser (e.g. `https://<your-domain>/finfolio/admin`)
+2. Enter the passcode (default: **Soumya01**, or set `NEXT_PUBLIC_ADMIN_PASSCODE` env variable at build time)
 3. Use the dashboard to manage all portfolio sections
 
 ### What You Can Edit
@@ -435,11 +435,11 @@ The included `.github/workflows/deploy.yml` workflow:
 
 ## Tech Stack
 
-- **Vite** — Build tool
+- **Next.js 16** — React framework with static export
 - **React 19** — UI library
 - **Material UI (MUI) v7** — Component library (sharp styling overrides)
 - **Manrope** — Font via @fontsource
-- **React Router v7** — Client-side routing (HashRouter)
+- **Next.js Pages Router** — File-based routing
 - **react-markdown** — Markdown rendering
 - **remark-gfm** — GitHub Flavored Markdown support
 - **rehype-sanitize** — XSS-safe HTML sanitization
@@ -450,16 +450,16 @@ The included `.github/workflows/deploy.yml` workflow:
 
 ### Changing the Passcode
 
-The admin passcode is checked in `src/admin/AdminLogin.jsx`. Update the comparison value to change it. For production use, consider implementing a more secure authentication mechanism.
+The admin passcode defaults to `Soumya01` and is checked in `pages/admin/index.jsx`. You can override it by setting the `NEXT_PUBLIC_ADMIN_PASSCODE` environment variable at build time. For production use, consider implementing a more secure authentication mechanism.
 
 ### Changing the Base URL
 
-Update the `base` property in `vite.config.js` to match your repository name:
+Update the `basePath` property in `next.config.mjs` to match your repository name:
 
 ```js
-export default defineConfig({
-  base: '/your-repo-name/',
-});
+const nextConfig = {
+  basePath: '/your-repo-name',
+};
 ```
 
 ### Sample Content

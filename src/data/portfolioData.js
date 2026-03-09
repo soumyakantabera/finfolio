@@ -392,6 +392,14 @@ export function loadData() {
       if (parsed.about) {
         merged.about = { ...defaultData.about, ...parsed.about };
       }
+      // Deep-merge settings with defaults
+      merged.settings = { ...defaultData.settings, ...(parsed.settings || {}) };
+      if (parsed.settings?.visiblePages) {
+        merged.settings.visiblePages = { ...defaultData.settings.visiblePages, ...parsed.settings.visiblePages };
+      }
+      if (!Array.isArray(merged.settings.customPages)) {
+        merged.settings.customPages = defaultData.settings.customPages;
+      }
       // Deep-merge config with defaults
       merged.config = { ...defaultData.config, ...(parsed.config || {}) };
       if (!Array.isArray(merged.config.embedWhitelist)) {
