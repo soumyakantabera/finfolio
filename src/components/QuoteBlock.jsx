@@ -32,8 +32,8 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       sx={{
         py: { xs: 4, md: 6 },
-        borderTop: '1px solid #000',
-        borderBottom: '1px solid #000',
+        borderTop: '1px solid #E0E0E0',
+        borderBottom: '1px solid #E0E0E0',
         textAlign: 'center',
       }}
     >
@@ -50,8 +50,8 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
           mx: 'auto',
           px: { xs: 1, sm: 2 },
           fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2.125rem' },
-          color: '#000',
-          '&::before': { content: '"\\201C"', display: 'block', fontSize: { xs: '3rem', md: '5rem' }, fontWeight: 900, lineHeight: 1, color: '#000', mb: 1 },
+          color: '#111',
+          '&::before': { content: '"\\201C"', display: 'block', fontSize: { xs: '3rem', md: '5rem' }, fontWeight: 900, lineHeight: 1, color: '#DDD', mb: 1 },
         }}
       >
         {quote.text}
@@ -62,7 +62,7 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
           sx={{
             display: 'block',
             mt: 2,
-            color: '#000',
+            color: '#555',
             fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
             textTransform: 'uppercase',
             letterSpacing: '0.15em',
@@ -82,7 +82,7 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
                 width: 8,
                 height: 8,
                 bgcolor: i === activeIndex ? '#000' : '#FFFFFF',
-                border: '1px solid #000',
+                border: '1px solid #E0E0E0',
                 cursor: 'pointer',
                 transition: 'none',
               }}
