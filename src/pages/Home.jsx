@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   Container,
   Box,
@@ -39,6 +39,7 @@ const reveal = {
 };
 
 export default function HomePage({ data }) {
+  const navigate = useNavigate();
   const { home, projects, about, contact, quotes } = data;
   const allProjects = (projects || []).filter((p) => p.status !== 'draft');
   const featuredProjects = allProjects.filter((p) => p.featured);
@@ -105,7 +106,7 @@ export default function HomePage({ data }) {
                           bgcolor: i === 0 ? '#000' : 'transparent',
                           color: i === 0 ? '#FFF' : '#111',
                           borderColor: '#E0E0E0',
-                          borderRadius: '999px',
+                          borderRadius: '8px',
                           boxShadow: 'none',
                           minHeight: 48,
                           px: { xs: 3, md: 4 },
@@ -214,13 +215,16 @@ export default function HomePage({ data }) {
                       style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
                     >
                       <Box
-                        component={RouterLink}
-                        to={`/projects/${project.slug}`}
+                        onClick={(e) => {
+                          if (e.target.closest('a')) return;
+                          navigate(`/projects/${project.slug}`);
+                        }}
                         className="frame-shift"
                         sx={{
                           display: 'block',
                           textDecoration: 'none',
                           color: 'inherit',
+                          cursor: 'pointer',
                           border: '1px solid var(--c-border)',
                           borderRadius: 'var(--radius-lg)',
                           p: { xs: 2.5, md: 4 },
@@ -286,7 +290,7 @@ export default function HomePage({ data }) {
                                   fontFamily: accentFont,
                                   px: 1.5,
                                   py: 0.5,
-                                  borderRadius: '999px',
+                                  borderRadius: '8px',
                                   border: '1px solid #E0E0E0',
                                   textDecoration: 'none',
                                   '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
@@ -306,7 +310,7 @@ export default function HomePage({ data }) {
                                 fontFamily: accentFont,
                                 px: 1.5,
                                 py: 0.5,
-                                borderRadius: '999px',
+                                borderRadius: '8px',
                               }}
                             >
                               Details →
@@ -324,7 +328,7 @@ export default function HomePage({ data }) {
                   to="/projects"
                   variant="contained"
                   endIcon={<ArrowForwardIcon />}
-                  sx={{ bgcolor: '#000', color: '#FFF', fontWeight: 600, minHeight: 48, borderRadius: '999px', boxShadow: 'none', px: 4, '&:hover': { bgcolor: '#222', boxShadow: 'none' } }}
+                  sx={{ bgcolor: '#000', color: '#FFF', fontWeight: 600, minHeight: 48, borderRadius: '8px', boxShadow: 'none', px: 4, '&:hover': { bgcolor: '#222', boxShadow: 'none' } }}
                 >
                   View all projects
                 </Button>
@@ -377,12 +381,15 @@ export default function HomePage({ data }) {
                       style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
                     >
                       <Box
-                        component={RouterLink}
-                        to={`/projects/${project.slug}`}
+                        onClick={(e) => {
+                          if (e.target.closest('a')) return;
+                          navigate(`/projects/${project.slug}`);
+                        }}
                         sx={{
                           display: 'block',
                           textDecoration: 'none',
                           color: 'inherit',
+                          cursor: 'pointer',
                           border: '1px solid var(--c-border)',
                           borderRadius: 'var(--radius-lg)',
                           p: { xs: 2.5, md: 4 },
@@ -425,7 +432,7 @@ export default function HomePage({ data }) {
                                   fontFamily: accentFont,
                                   px: 1.5,
                                   py: 0.5,
-                                  borderRadius: '999px',
+                                  borderRadius: '8px',
                                   border: '1px solid #E0E0E0',
                                   textDecoration: 'none',
                                   '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
@@ -445,7 +452,7 @@ export default function HomePage({ data }) {
                                 fontFamily: accentFont,
                                 px: 1.5,
                                 py: 0.5,
-                                borderRadius: '999px',
+                                borderRadius: '8px',
                               }}
                             >
                               Details →
@@ -507,7 +514,7 @@ export default function HomePage({ data }) {
                   href={`mailto:${contact.email}`}
                   variant="contained"
                   size="large"
-                  sx={{ bgcolor: '#000', color: '#FFF', borderRadius: '999px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
+                  sx={{ bgcolor: '#000', color: '#FFF', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
                 >
                   Email me
                 </Button>
@@ -517,7 +524,7 @@ export default function HomePage({ data }) {
                 to="/contact"
                 variant="outlined"
                 size="large"
-                sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '999px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
+                sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
               >
                 Contact page
               </Button>
