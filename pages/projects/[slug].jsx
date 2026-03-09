@@ -79,7 +79,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
           <Typography variant="body1" sx={{ mb: 3 }}>
             The project you&#39;re looking for doesn&#39;t exist or has been removed.
           </Typography>
-          <Button component={Link} href="/projects" variant="outlined" sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '999px', minHeight: 48 }}>
+          <Button component={Link} href="/projects" variant="outlined" sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '8px', minHeight: 48 }}>
             ← Back to Projects
           </Button>
         </Container>
@@ -229,7 +229,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                       rel="noopener noreferrer"
                       size="small"
                       variant="outlined"
-                      sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '999px', textTransform: 'none', minHeight: 36 }}
+                      sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '8px', textTransform: 'none', minHeight: 36 }}
                     >
                       {ds.label}
                     </Button>
@@ -245,7 +245,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                   rel="noopener noreferrer"
                   variant="contained"
                   startIcon={<PictureAsPdfIcon />}
-                  sx={{ bgcolor: '#000', color: '#FFF', '&:hover': { bgcolor: '#000' }, borderRadius: '999px', minHeight: 48, textTransform: 'none', fontWeight: 600 }}
+                  sx={{ bgcolor: '#000', color: '#FFF', '&:hover': { bgcolor: '#000' }, borderRadius: '8px', minHeight: 48, textTransform: 'none', fontWeight: 600 }}
                 >
                   Open PDF
                 </Button>
@@ -256,7 +256,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                     rel="noopener noreferrer"
                     variant="outlined"
                     size="small"
-                    sx={{ ml: 1, color: '#111', borderColor: '#E0E0E0', borderRadius: '999px', minHeight: 48, textTransform: 'none' }}
+                    sx={{ ml: 1, color: '#111', borderColor: '#E0E0E0', borderRadius: '8px', minHeight: 48, textTransform: 'none' }}
                   >
                     View DOI
                   </Button>
@@ -338,7 +338,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                       rel="noopener noreferrer"
                       size="small"
                       variant="outlined"
-                      sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '999px', minHeight: 44 }}
+                      sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '8px', minHeight: 44 }}
                     >
                       {link.label}
                     </Button>

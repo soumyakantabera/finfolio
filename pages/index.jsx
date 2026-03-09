@@ -118,7 +118,7 @@ export default function HomePage({ initialData }) {
                             bgcolor: i === 0 ? '#000' : 'transparent',
                             color: i === 0 ? '#FFF' : '#000',
                             borderColor: '#000',
-                            borderRadius: '999px',
+                            borderRadius: '8px',
                             boxShadow: 'none',
                             minHeight: 48,
                             px: { xs: 3, md: 4 },
@@ -309,7 +309,7 @@ export default function HomePage({ initialData }) {
                     href="/projects"
                     variant="contained"
                     endIcon={<ArrowForwardIcon />}
-                    sx={{ bgcolor: '#000', color: '#FFF', fontWeight: 600, minHeight: 48, borderRadius: '999px', boxShadow: 'none', px: 4, '&:hover': { bgcolor: '#222', boxShadow: 'none' } }}
+                    sx={{ bgcolor: '#000', color: '#FFF', fontWeight: 600, minHeight: 48, borderRadius: '8px', boxShadow: 'none', px: 4, '&:hover': { bgcolor: '#222', boxShadow: 'none' } }}
                   >
                     View all projects
                   </Button>
@@ -464,7 +464,7 @@ export default function HomePage({ initialData }) {
                     href={`mailto:${contact.email}`}
                     variant="contained"
                     size="large"
-                    sx={{ bgcolor: '#000', color: '#FFF', borderRadius: '999px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
+                    sx={{ bgcolor: '#000', color: '#FFF', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
                   >
                     Email me
                   </Button>
@@ -474,7 +474,7 @@ export default function HomePage({ initialData }) {
                   href="/contact"
                   variant="outlined"
                   size="large"
-                  sx={{ color: '#000', borderColor: '#000', borderRadius: '999px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
+                  sx={{ color: '#000', borderColor: '#000', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
                 >
                   Contact page
                 </Button>
