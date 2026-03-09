@@ -81,7 +81,7 @@ export default function MobileHeader({ data }) {
           top: 0,
           zIndex: 1200,
           bgcolor: '#FFF',
-          borderBottom: '1px solid #000',
+          borderBottom: '1px solid #E0E0E0',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -96,7 +96,7 @@ export default function MobileHeader({ data }) {
             fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
             fontWeight: 700,
             fontSize: '1.25rem',
-            color: '#000',
+            color: '#111',
             textDecoration: 'none',
             letterSpacing: '-0.02em',
           }}
@@ -115,7 +115,7 @@ export default function MobileHeader({ data }) {
             border: 'none',
             cursor: 'pointer',
             p: 0,
-            color: '#000',
+            color: '#111',
             fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
             fontSize: '0.8rem',
             fontWeight: 600,
@@ -156,7 +156,7 @@ export default function MobileHeader({ data }) {
               alignItems: 'center',
               px: 'var(--page-pad-x)',
               height: 56,
-              borderBottom: '1px solid #000',
+              borderBottom: '1px solid #E0E0E0',
               flexShrink: 0,
             }}
           >
@@ -165,7 +165,7 @@ export default function MobileHeader({ data }) {
                 fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                 fontWeight: 700,
                 fontSize: '1.25rem',
-                color: '#000',
+                color: '#111',
                 letterSpacing: '-0.02em',
               }}
             >
@@ -181,7 +181,7 @@ export default function MobileHeader({ data }) {
                 border: 'none',
                 cursor: 'pointer',
                 p: 0,
-                color: '#000',
+                color: '#111',
                 fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 600,
@@ -210,9 +210,9 @@ export default function MobileHeader({ data }) {
                   alignItems: 'baseline',
                   gap: 2,
                   py: 2,
-                  borderBottom: '1px solid #000',
+                  borderBottom: '1px solid #E0E0E0',
                   textDecoration: 'none',
-                  color: '#000',
+                  color: '#111',
                   minHeight: 48,
                   '&:active': { pl: 0.5 },
                   '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
@@ -221,9 +221,9 @@ export default function MobileHeader({ data }) {
                 <Typography
                   variant="caption"
                   sx={{
-                    color: '#000',
+                    color: '#555',
                     fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
-                    fontWeight: 600,
+                    fontWeight: 500,
                     fontSize: '0.65rem',
                     letterSpacing: '0.1em',
                     fontVariantNumeric: 'tabular-nums',
@@ -247,10 +247,10 @@ export default function MobileHeader({ data }) {
             ))}
 
             {customLinks.length > 0 && (
-              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #000' }}>
+              <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #E0E0E0' }}>
                 <Typography
                   variant="overline"
-                  sx={{ color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem' }}
+                  sx={{ color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem' }}
                 >
                   Pages
                 </Typography>
@@ -264,7 +264,7 @@ export default function MobileHeader({ data }) {
                       display: 'block',
                       py: 1,
                       textDecoration: 'none',
-                      color: '#000',
+                      color: '#111',
                       fontWeight: isActive(item.path) ? 700 : 400,
                       fontSize: '0.9rem',
                       minHeight: 44,
@@ -279,10 +279,10 @@ export default function MobileHeader({ data }) {
           </Box>
 
           {/* Menu footer */}
-          <Box sx={{ px: 'var(--page-pad-x)', py: 3, borderTop: '1px solid #000', flexShrink: 0 }}>
+          <Box sx={{ px: 'var(--page-pad-x)', py: 3, borderTop: '1px solid #E0E0E0', flexShrink: 0 }}>
             <Typography
               variant="caption"
-              sx={{ color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, fontSize: '0.6rem' }}
+              sx={{ color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, fontSize: '0.6rem' }}
             >
               © {new Date().getFullYear()} {siteTitle}
             </Typography>
