@@ -231,7 +231,7 @@ export default function ContactPage({ data }) {
                 sx={{
                   bgcolor: '#000',
                   color: '#FFF',
-                  borderRadius: '999px',
+                  borderRadius: '8px',
                   boxShadow: 'none',
                   minHeight: 48,
                   px: 4,

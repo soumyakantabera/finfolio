@@ -81,7 +81,7 @@ export default function ProjectsPage({ data }) {
                 color: activeTab === cat ? '#FFF' : '#111',
                 bgcolor: activeTab === cat ? '#000' : 'transparent',
                 border: '1px solid #E0E0E0',
-                borderRadius: '999px',
+                borderRadius: '8px',
                 px: 2,
                 py: 0.75,
                 minHeight: 36,
@@ -264,7 +264,7 @@ export default function ProjectsPage({ data }) {
                           sx={{
                             color: '#111',
                             borderColor: '#E0E0E0',
-                            borderRadius: '999px',
+                            borderRadius: '8px',
                             fontSize: '0.7rem',
                             fontFamily: accentFont,
                             textTransform: 'none',
@@ -291,7 +291,7 @@ export default function ProjectsPage({ data }) {
                           textTransform: 'none',
                           minHeight: 28,
                           px: 1.5,
-                          borderRadius: '999px',
+                          borderRadius: '8px',
                           boxShadow: 'none',
                           '&:hover': { bgcolor: '#222', boxShadow: 'none' },
                         }}
