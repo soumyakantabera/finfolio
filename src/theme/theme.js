@@ -25,7 +25,7 @@ const theme = createTheme({
     subtitle2: { fontFamily: bodyFont, fontWeight: 500, lineHeight: 1.6 },
     body1: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.75, fontSize: '0.95rem' },
     body2: { fontFamily: bodyFont, fontWeight: 400, lineHeight: 1.7, fontSize: '0.875rem' },
-    caption: { fontFamily: accentFont, fontWeight: 400, fontSize: '0.75rem', color: '#A3A3A3' },
+    caption: { fontFamily: accentFont, fontWeight: 400, fontSize: '0.75rem', color: '#525252' },
     overline: { fontFamily: accentFont, fontWeight: 500, letterSpacing: '0.1em', fontSize: '0.7rem' },
     button: { fontFamily: bodyFont, textTransform: 'none', fontWeight: 500, fontSize: '0.875rem' },
   },
