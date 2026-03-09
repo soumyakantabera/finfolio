@@ -34,11 +34,11 @@
   --space-xl: var(--s6);
   --space-2xl: var(--s8);
   --space-3xl: var(--s9);
-  --radius-sm: 4px;
-  --radius: 8px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --font-heading: 'Manrope', 'Helvetica', 'Arial', sans-serif;
   --font-body: 'Manrope', 'Helvetica', 'Arial', sans-serif;
   --font-accent: 'Manrope', 'Helvetica', 'Arial', sans-serif;

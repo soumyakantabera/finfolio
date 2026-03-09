@@ -71,7 +71,7 @@ export default function ContactPage({ initialData }) {
   const inputSx = {
     mb: 2.5,
     '& .MuiOutlinedInput-root': {
-      borderRadius: 0,
+      borderRadius: 'var(--radius)',
       '& fieldset': { border: '1px solid #E0E0E0' },
       '&:hover fieldset': { border: '1px solid #E0E0E0' },
       '&.Mui-focused fieldset': { border: '1px solid #111' },
@@ -118,7 +118,7 @@ export default function ContactPage({ initialData }) {
           {/* Contact Info */}
           <Grid size={{ xs: 12, md: 5 }}>
             <motion.div {...scrollReveal}>
-              <Card variant="outlined" sx={{ mb: 3, border: '1px solid #E0E0E0', borderRadius: 0, boxShadow: 'none' }}>
+              <Card variant="outlined" sx={{ mb: 3, border: '1px solid #E0E0E0', borderRadius: 'var(--radius-lg)', boxShadow: 'none' }}>
                 <CardContent sx={{ p: 2 }}>
                   {contact.email && (
                     <Box
@@ -169,7 +169,7 @@ export default function ContactPage({ initialData }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
-                    sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
+                    sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: '50%', width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
                   >
                     <LinkedInIcon />
                   </IconButton>
@@ -180,7 +180,7 @@ export default function ContactPage({ initialData }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub"
-                    sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
+                    sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: '50%', width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
                   >
                     <GitHubIcon />
                   </IconButton>
@@ -192,7 +192,7 @@ export default function ContactPage({ initialData }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.platform}
-                    sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
+                    sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: '50%', width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
                   >
                     <LaunchIcon />
                   </IconButton>
@@ -244,7 +244,7 @@ export default function ContactPage({ initialData }) {
                   sx={{
                     bgcolor: '#000',
                     color: '#FFF',
-                    borderRadius: 0,
+                    borderRadius: '999px',
                     boxShadow: 'none',
                     minHeight: 48,
                     px: 4,
