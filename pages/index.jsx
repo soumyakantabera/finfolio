@@ -282,7 +282,7 @@ export default function HomePage({ initialData }) {
                               </Typography>
                             )}
                             <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-                              {project.links?.[0] && (
+                              {project.links?.[0]?.url && project.links[0].label && (
                                 <Box
                                   component="a"
                                   href={project.links[0].url}
@@ -420,7 +420,7 @@ export default function HomePage({ initialData }) {
                               </Typography>
                             )}
                             <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-                              {project.links?.[0] && (
+                              {project.links?.[0]?.url && project.links[0].label && (
                                 <Box
                                   component="a"
                                   href={project.links[0].url}

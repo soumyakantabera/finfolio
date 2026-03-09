@@ -290,7 +290,7 @@ export default function ProjectsPage({ initialData }) {
                             DOI
                           </Button>
                         )}
-                        {project.links?.[0] && (
+                        {project.links?.[0]?.url && project.links[0].label && (
                           <Button
                             href={project.links[0].url}
                             target="_blank"
