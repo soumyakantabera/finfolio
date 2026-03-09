@@ -22,13 +22,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
 import { motion } from 'framer-motion';
 import Navbar from '../src/components/Navbar';
-import MobileHeader from '../src/mobile/MobileHeader';
-import useIsMobile from '../src/mobile/useIsMobile';
 import { defaultData, loadData } from '../src/data/portfolioData';
 
 export default function ContactPage({ initialData }) {
   const [data, setData] = useState(initialData);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const loaded = loadData();
@@ -88,7 +85,7 @@ export default function ContactPage({ initialData }) {
   return (
     <>
       <Head><title>Contact | FinFolio</title></Head>
-      {isMobile ? <MobileHeader data={data} /> : <Navbar data={data} />}
+      <Navbar data={data} />
       <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, px: { xs: 2, md: 5 } }}>
         <motion.div {...scrollReveal}>
           <Typography

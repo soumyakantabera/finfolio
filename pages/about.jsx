@@ -25,8 +25,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import DownloadIcon from '@mui/icons-material/Download';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Navbar from '../src/components/Navbar';
-import MobileHeader from '../src/mobile/MobileHeader';
-import useIsMobile from '../src/mobile/useIsMobile';
 import { defaultData, loadData } from '../src/data/portfolioData';
 
 const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
@@ -51,7 +49,6 @@ const platformIcon = (platform) => {
 
 export default function AboutPage({ initialData }) {
   const [data, setData] = useState(initialData);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const loaded = loadData();
@@ -121,7 +118,7 @@ export default function AboutPage({ initialData }) {
   return (
     <>
       <Head><title>About | FinFolio</title></Head>
-      {isMobile ? <MobileHeader data={data} /> : <Navbar data={data} />}
+      <Navbar data={data} />
       <Box sx={{ bgcolor: '#FFF', color: '#111' }}>
         {/* ── 01 / Hero ── */}
         <motion.div {...sectionReveal}>

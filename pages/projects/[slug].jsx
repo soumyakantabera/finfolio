@@ -26,8 +26,6 @@ import FormatListBulleted from '@mui/icons-material/FormatListBulleted';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import Navbar from '../../src/components/Navbar';
-import MobileHeader from '../../src/mobile/MobileHeader';
-import useIsMobile from '../../src/mobile/useIsMobile';
 import BlockRenderer from '../../src/components/BlockRenderer';
 import { defaultData, loadData } from '../../src/data/portfolioData';
 
@@ -56,7 +54,6 @@ function extractHeadings(blocks, markdownContent) {
 
 export default function ProjectDetailPage({ initialData, slug: propSlug }) {
   const [data, setData] = useState(initialData);
-  const isMobile = useIsMobile();
   const router = useRouter();
   const contentRef = useRef(null);
   const [tocOpen, setTocOpen] = useState(false);
@@ -74,7 +71,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
     return (
       <>
         <Head><title>Project Not Found | FinFolio</title></Head>
-        {isMobile ? <MobileHeader data={data} /> : <Navbar data={data} />}
+        <Navbar data={data} />
         <Container maxWidth="md" sx={{ py: 8, textAlign: 'center', px: { xs: 2, md: 5 } }}>
           <Typography variant="h4" fontWeight={700} gutterBottom sx={{ fontFamily: serifFont }}>
             Project not found
@@ -103,7 +100,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
   return (
     <>
       <Head><title>{project.title} | FinFolio</title></Head>
-      {isMobile ? <MobileHeader data={data} /> : <Navbar data={data} />}
+      <Navbar data={data} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

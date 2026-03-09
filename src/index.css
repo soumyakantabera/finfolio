@@ -108,13 +108,6 @@ table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
   }
 }
 
-/* ── Mobile-Only Micro-Interactions ── */
-@media (max-width: 768px) {
-  .mobile-ink-link:active {
-    text-decoration: underline;
-  }
-}
-
 /* ── Respect prefers-reduced-motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

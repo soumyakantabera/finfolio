@@ -11,8 +11,6 @@ import {
 } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Navbar from '../src/components/Navbar';
-import MobileHeader from '../src/mobile/MobileHeader';
-import useIsMobile from '../src/mobile/useIsMobile';
 import QuoteBlock from '../src/components/QuoteBlock';
 import { defaultData, loadData } from '../src/data/portfolioData';
 import { motion } from 'framer-motion';
@@ -29,7 +27,6 @@ const reveal = {
 
 export default function HomePage({ initialData }) {
   const [data, setData] = useState(initialData);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const loaded = loadData();
@@ -43,7 +40,7 @@ export default function HomePage({ initialData }) {
   return (
     <>
       <Head><title>FinFolio</title></Head>
-      {isMobile ? <MobileHeader data={data} /> : <Navbar data={data} />}
+      <Navbar data={data} />
       <Box>
         {/* ── 01 / Hero ── */}
         <motion.div {...reveal}>
