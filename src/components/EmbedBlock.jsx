@@ -13,11 +13,11 @@ import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 const bw = {
-  color: '#000', borderColor: '#000',
+  color: '#111', borderColor: '#000',
   '&:hover': { borderColor: '#000', bgcolor: '#fff' },
 };
-const cardSx = { my: 2, borderRadius: 0, border: '1px solid #000' };
-const iframeStyle = { border: '1px solid #000', borderRadius: 0 };
+const cardSx = { my: 2, borderRadius: 0, border: '1px solid #E0E0E0' };
+const iframeStyle = { border: '1px solid #E0E0E0', borderRadius: 0 };
 
 function extractYouTubeId(url) {
   const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?.*v=|embed\/))([\w-]+)/);
@@ -54,7 +54,7 @@ function FallbackCard({ url, title }) {
   return (
     <Card variant="outlined" sx={cardSx}>
       <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
-        <Typography variant="body1" sx={{ fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
+        <Typography variant="body1" sx={{ fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', color: '#111' }}>
           {title || 'Embedded Content'}
         </Typography>
         {url && (
@@ -158,7 +158,7 @@ export default function EmbedBlock({
   const withCaption = (content) => (
     <Box sx={{ my: 2 }}>
       {content}
-      {caption && <Typography variant="caption" sx={{ display: 'block', mt: 0.5, color: '#000', textAlign: 'center' }}>{caption}</Typography>}
+      {caption && <Typography variant="caption" sx={{ display: 'block', mt: 0.5, color: '#555', textAlign: 'center' }}>{caption}</Typography>}
     </Box>
   );
 
@@ -218,7 +218,7 @@ export default function EmbedBlock({
       return withCaption(
         <Card variant="outlined" sx={cardSx}>
           <CardContent>
-            {title && <Typography variant="body1" sx={{ fontWeight: 500, mb: 1, color: '#000' }}>{title}</Typography>}
+            {title && <Typography variant="body1" sx={{ fontWeight: 500, mb: 1, color: '#111' }}>{title}</Typography>}
             <audio controls preload="metadata" style={{ width: '100%' }}>
               <source src={url} />
               Your browser does not support the audio element.
@@ -293,15 +293,15 @@ export default function EmbedBlock({
     case 'code': {
       if (!code) return <FallbackCard title={title || 'Code Snippet'} />;
       return withCaption(
-        <Box sx={{ position: 'relative', my: 1, border: '1px solid #000', bgcolor: '#fff' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 1.5, py: 0.5, borderBottom: '1px solid #000' }}>
-            <Typography variant="caption" sx={{ color: '#000', fontFamily: 'monospace' }}>{language || 'plain text'}</Typography>
+        <Box sx={{ position: 'relative', my: 1, border: '1px solid #E0E0E0', bgcolor: '#fff' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 1.5, py: 0.5, borderBottom: '1px solid #E0E0E0' }}>
+            <Typography variant="caption" sx={{ color: '#555', fontFamily: 'monospace' }}>{language || 'plain text'}</Typography>
             <Button size="small" startIcon={<ContentCopyIcon sx={{ fontSize: 14 }} />} onClick={handleCopy}
               sx={{ ...bw, fontSize: 12, textTransform: 'none' }}>
               {copied ? 'Copied!' : 'Copy'}
             </Button>
           </Box>
-          <Box component="pre" sx={{ m: 0, p: 2, overflow: 'auto', fontFamily: 'monospace', fontSize: 13, lineHeight: 1.6, color: '#000', whiteSpace: 'pre', maxWidth: '100%' }}>
+          <Box component="pre" sx={{ m: 0, p: 2, overflow: 'auto', fontFamily: 'monospace', fontSize: 13, lineHeight: 1.6, color: '#111', whiteSpace: 'pre', maxWidth: '100%' }}>
             <code>{code}</code>
           </Box>
         </Box>
@@ -359,12 +359,12 @@ export default function EmbedBlock({
         <Card variant="outlined" sx={cardSx}>
           <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, overflow: 'hidden' }}>
-              <InsertDriveFileIcon sx={{ color: '#000', fontSize: 28 }} />
+              <InsertDriveFileIcon sx={{ color: '#555', fontSize: 28 }} />
               <Box>
-                <Typography variant="body1" sx={{ fontWeight: 500, color: '#000', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <Typography variant="body1" sx={{ fontWeight: 500, color: '#111', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {name}
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#000' }}>
+                <Typography variant="caption" sx={{ color: '#555' }}>
                   {[fileType, formatFileSize(fileSize)].filter(Boolean).join(' · ')}
                 </Typography>
               </Box>

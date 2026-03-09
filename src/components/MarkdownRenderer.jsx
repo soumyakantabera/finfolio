@@ -224,18 +224,18 @@ function CodeBlock({ className, children }) {
   }, [code]);
 
   return (
-    <Box sx={{ my: 3, border: '1px solid #000', borderRadius: 0 }}>
+    <Box sx={{ my: 3, border: '1px solid #E0E0E0', borderRadius: 0 }}>
       {/* Header bar */}
       <Box sx={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        px: 1.5, py: 0.5, borderBottom: '1px solid #000', bgcolor: '#fff',
+        px: 1.5, py: 0.5, borderBottom: '1px solid #E0E0E0', bgcolor: '#fff',
       }}>
-        <Typography variant="caption" sx={{ color: '#000', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+        <Typography variant="caption" sx={{ color: '#555', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: 0.5 }}>
           {language || 'code'}
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <Tooltip title={wrap ? 'No wrap' : 'Wrap lines'}>
-            <IconButton size="small" onClick={() => setWrap((w) => !w)} sx={{ color: '#000' }}>
+            <IconButton size="small" onClick={() => setWrap((w) => !w)} sx={{ color: '#555' }}>
               <WrapTextIcon sx={{ fontSize: 16 }} />
             </IconButton>
           </Tooltip>
@@ -243,7 +243,7 @@ function CodeBlock({ className, children }) {
             size="small"
             startIcon={<ContentCopyIcon sx={{ fontSize: 14 }} />}
             onClick={handleCopy}
-            sx={{ fontSize: 12, textTransform: 'none', color: '#000', borderColor: '#000', '&:hover': { bgcolor: '#fff' } }}
+            sx={{ fontSize: 12, textTransform: 'none', color: '#111', borderColor: '#000', '&:hover': { bgcolor: '#fff' } }}
           >
             {copied ? 'Copied!' : 'Copy'}
           </Button>
@@ -270,7 +270,7 @@ function CodeBlock({ className, children }) {
 
 const markdownComponents = {
   h1: ({ children, ...props }) => (
-    <Typography variant="h4" component="h1" sx={{ fontWeight: 700, mt: 4, mb: 2, color: '#000' }} {...props}>
+    <Typography variant="h4" component="h1" sx={{ fontWeight: 700, mt: 4, mb: 2, color: '#111' }} {...props}>
       {children}
     </Typography>
   ),
@@ -278,7 +278,7 @@ const markdownComponents = {
     const text = extractTextFromChildren(children);
     const id = slugify(text);
     return (
-      <Typography variant="h5" component="h2" id={id} sx={{ fontWeight: 600, mt: 3, mb: 1.5, color: '#000' }} {...props}>
+      <Typography variant="h5" component="h2" id={id} sx={{ fontWeight: 600, mt: 3, mb: 1.5, color: '#111' }} {...props}>
         {children}
       </Typography>
     );
@@ -287,23 +287,23 @@ const markdownComponents = {
     const text = extractTextFromChildren(children);
     const id = slugify(text);
     return (
-      <Typography variant="h6" component="h3" id={id} sx={{ fontWeight: 600, mt: 3, mb: 1, color: '#000' }} {...props}>
+      <Typography variant="h6" component="h3" id={id} sx={{ fontWeight: 600, mt: 3, mb: 1, color: '#111' }} {...props}>
         {children}
       </Typography>
     );
   },
   h4: ({ children, ...props }) => (
-    <Typography variant="subtitle1" component="h4" sx={{ fontWeight: 600, mt: 2, mb: 1, color: '#000' }} {...props}>
+    <Typography variant="subtitle1" component="h4" sx={{ fontWeight: 600, mt: 2, mb: 1, color: '#111' }} {...props}>
       {children}
     </Typography>
   ),
   p: ({ children, ...props }) => (
-    <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.7, color: '#000' }} {...props}>
+    <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.7, color: '#111' }} {...props}>
       {children}
     </Typography>
   ),
   a: ({ href, children, ...props }) => (
-    <MuiLink href={href} target="_blank" rel="noopener noreferrer" sx={{ color: '#000', fontWeight: 500 }} {...props}>
+    <MuiLink href={href} target="_blank" rel="noopener noreferrer" sx={{ color: '#111', fontWeight: 500 }} {...props}>
       {children}
     </MuiLink>
   ),
@@ -313,7 +313,7 @@ const markdownComponents = {
   blockquote: ({ children, ...props }) => (
     <Box
       component="blockquote"
-      sx={{ borderLeft: '4px solid #000', pl: 2, my: 3, ml: 0, color: '#000' }}
+      sx={{ borderLeft: '4px solid #E0E0E0', pl: 2, my: 3, ml: 0, color: '#111' }}
       {...props}
     >
       {children}
@@ -324,7 +324,7 @@ const markdownComponents = {
       return (
         <Box
           component="code"
-          sx={{ bgcolor: '#fff', border: '1px solid #000', px: 0.75, py: 0.25, borderRadius: 0, fontSize: '0.875em', fontFamily: 'monospace' }}
+          sx={{ bgcolor: '#fff', border: '1px solid #E0E0E0', px: 0.75, py: 0.25, borderRadius: 0, fontSize: '0.875em', fontFamily: 'monospace' }}
           {...props}
         >
           {children}
@@ -354,7 +354,7 @@ const markdownComponents = {
     return (
       <Box
         component="pre"
-        sx={{ bgcolor: '#fff', p: 2, borderRadius: 0, overflow: 'auto', my: 3, border: '1px solid #000', fontSize: { xs: '0.8rem', md: '0.875em' }, maxWidth: '100%' }}
+        sx={{ bgcolor: '#fff', p: 2, borderRadius: 0, overflow: 'auto', my: 3, border: '1px solid #E0E0E0', fontSize: { xs: '0.8rem', md: '0.875em' }, maxWidth: '100%' }}
         {...props}
       >
         {children}
@@ -371,14 +371,14 @@ const markdownComponents = {
   th: ({ children, ...props }) => (
     <Box
       component="th"
-      sx={{ border: '1px solid #000', p: 1, fontWeight: 600, textAlign: 'left', bgcolor: '#fff' }}
+      sx={{ border: '1px solid #E0E0E0', p: 1, fontWeight: 600, textAlign: 'left', bgcolor: '#fff' }}
       {...props}
     >
       {children}
     </Box>
   ),
   td: ({ children, ...props }) => (
-    <Box component="td" sx={{ border: '1px solid #000', p: 1 }} {...props}>
+    <Box component="td" sx={{ border: '1px solid #E0E0E0', p: 1 }} {...props}>
       {children}
     </Box>
   ),
@@ -393,7 +393,7 @@ export default function MarkdownRenderer({ content }) {
   const parts = processed.split(new RegExp(`${PLACEHOLDER_PREFIX.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}(\\d+)${PLACEHOLDER_SUFFIX.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}`));
 
   return (
-    <Box sx={{ color: '#000' }}>
+    <Box sx={{ color: '#111' }}>
       {parts.map((part, i) => {
         // Odd indices are captured embed indices
         if (i % 2 === 1) {
