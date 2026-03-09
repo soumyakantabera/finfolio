@@ -1,8 +1,8 @@
 import { createTheme } from '@mui/material/styles';
 
 const headingFont = '"Manrope", "Helvetica", "Arial", sans-serif';
-const bodyFont = '"Sora", "Helvetica", "Arial", sans-serif';
-const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
+const bodyFont = '"Manrope", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 
 const theme = createTheme({
   palette: {

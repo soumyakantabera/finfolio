@@ -3,8 +3,8 @@
 /* ── Tailwind Theme ── */
 @theme {
   --font-serif: 'Manrope', 'Helvetica', 'Arial', sans-serif;
-  --font-accent: 'Sora', 'Helvetica', 'Arial', sans-serif;
-  --font-body: 'Sora', 'Helvetica', 'Arial', sans-serif;
+  --font-accent: 'Manrope', 'Helvetica', 'Arial', sans-serif;
+  --font-body: 'Manrope', 'Helvetica', 'Arial', sans-serif;
   --color-black: #000000;
   --color-white: #FFFFFF;
 }
@@ -55,8 +55,8 @@
   --radius: 0px;
 
   --font-heading: 'Manrope', 'Helvetica', 'Arial', sans-serif;
-  --font-body: 'Sora', 'Helvetica', 'Arial', sans-serif;
-  --font-accent: 'Sora', 'Helvetica', 'Arial', sans-serif;
+  --font-body: 'Manrope', 'Helvetica', 'Arial', sans-serif;
+  --font-accent: 'Manrope', 'Helvetica', 'Arial', sans-serif;
 
   --transition-fast: 0.15s ease;
   --transition-base: 0.25s ease;

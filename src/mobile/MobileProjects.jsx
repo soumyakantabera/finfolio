@@ -20,7 +20,7 @@ export default function MobileProjects({ data }) {
     <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
       <Typography
         variant="overline"
-        sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
+        sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}
       >
         Gallery
       </Typography>
@@ -39,7 +39,7 @@ export default function MobileProjects({ data }) {
             component="button"
             onClick={() => setActiveTab(cat)}
             sx={{
-              fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+              fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
               fontSize: '0.65rem',
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
@@ -71,7 +71,7 @@ export default function MobileProjects({ data }) {
           }}
         >
           <Box sx={{ mb: 0.75 }}>
-            <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+            <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#555', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>
               {project.category}
             </Typography>
             <Typography sx={{ fontSize: '0.9rem', fontWeight: 600, lineHeight: 1.3 }}>
@@ -85,7 +85,7 @@ export default function MobileProjects({ data }) {
             {project.tags?.length > 0 && (
               <Box sx={{ display: 'flex', gap: 0.5, mt: 0.5 }}>
                 {project.tags.slice(0, 3).map((tag) => (
-                  <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#555', border: '1px solid #E0E0E0', px: 0.5, py: 0.125, lineHeight: 1.4, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                  <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#555', border: '1px solid #E0E0E0', px: 0.5, py: 0.125, lineHeight: 1.4, fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>
                     {tag}
                   </Typography>
                 ))}
@@ -100,7 +100,7 @@ export default function MobileProjects({ data }) {
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             {(project.date || project.year) && (
-              <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+              <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, color: '#555', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>
                 {project.date || project.year}
               </Typography>
             )}

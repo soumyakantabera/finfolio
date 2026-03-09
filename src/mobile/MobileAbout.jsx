@@ -72,7 +72,7 @@ export default function MobileAbout({ data }) {
           <Typography
             variant="overline"
             component="span"
-            sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
+            sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}
           >
             {number}
           </Typography>
@@ -89,7 +89,7 @@ export default function MobileAbout({ data }) {
       <Box sx={{ borderBottom: '1px solid #E0E0E0', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
         <Typography
           variant="overline"
-          sx={{ color: '#555', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
+          sx={{ color: '#555', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}
         >
           01 / About
         </Typography>
@@ -167,7 +167,7 @@ export default function MobileAbout({ data }) {
                 <Typography className="tabular-nums" sx={{ fontWeight: 700, fontSize: '0.95rem', color: '#111' }}>
                   {m.value}
                 </Typography>
-                <Typography sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.5rem', fontWeight: 500, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                <Typography sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.5rem', fontWeight: 500, fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>
                   {m.label}
                 </Typography>
               </Box>
@@ -201,7 +201,7 @@ export default function MobileAbout({ data }) {
                       <Typography sx={{ fontWeight: 700, fontSize: '0.85rem' }}>{exp.role}</Typography>
                       <Typography sx={{ color: '#111', fontSize: '0.75rem' }}>{exp.company}</Typography>
                     </Box>
-                    <Typography sx={{ fontSize: '0.6rem', fontWeight: 600, border: '1px solid #E0E0E0', px: 0.5, py: 0.25, flexShrink: 0, lineHeight: 1.4, color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                    <Typography sx={{ fontSize: '0.6rem', fontWeight: 600, border: '1px solid #E0E0E0', px: 0.5, py: 0.25, flexShrink: 0, lineHeight: 1.4, color: '#555', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>
                       {exp.period}
                     </Typography>
                   </Box>
@@ -225,7 +225,7 @@ export default function MobileAbout({ data }) {
                 <Box key={edu.id} sx={{ py: 1.25, borderBottom: idx < about.education.length - 1 ? '1px solid #E0E0E0' : 'none' }}>
                   <Typography sx={{ fontWeight: 700, fontSize: '0.85rem' }}>{edu.degree}</Typography>
                   <Typography sx={{ color: '#111', fontSize: '0.75rem' }}>{edu.institution}</Typography>
-                  <Typography sx={{ color: '#555', fontSize: '0.65rem', fontWeight: 500, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{edu.year}</Typography>
+                  <Typography sx={{ color: '#555', fontSize: '0.65rem', fontWeight: 500, fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>{edu.year}</Typography>
                   {edu.details && (
                     <Typography sx={{ mt: 0.5, color: '#111', fontSize: '0.75rem', lineHeight: 1.6 }}>{edu.details}</Typography>
                   )}
@@ -253,7 +253,7 @@ export default function MobileAbout({ data }) {
                   >
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
                       <Typography sx={{ fontSize: '0.8rem', fontWeight: 600 }}>{skill.name}</Typography>
-                      <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                      <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#555', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>
                         {skill.level}
                       </Typography>
                     </Box>
@@ -306,7 +306,7 @@ export default function MobileAbout({ data }) {
                     <Box sx={{ flex: 1, minWidth: 0 }}>
                       <Typography sx={{ fontSize: '0.8rem', fontWeight: 700 }}>{cert.title || cert.name}</Typography>
                       {cert.issuer && <Typography sx={{ fontSize: '0.65rem', color: '#111' }}>{cert.issuer}</Typography>}
-                      <Typography sx={{ fontSize: '0.6rem', color: '#555', fontWeight: 500, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{cert.date || cert.year}</Typography>
+                      <Typography sx={{ fontSize: '0.6rem', color: '#555', fontWeight: 500, fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>{cert.date || cert.year}</Typography>
                     </Box>
                     {hasMedia && (
                       <Typography sx={{ fontSize: '0.7rem', fontWeight: 600, color: '#111', flexShrink: 0 }}>View →</Typography>

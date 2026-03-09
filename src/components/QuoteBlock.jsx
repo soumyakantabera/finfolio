@@ -63,7 +63,7 @@ export default function QuoteBlock({ quotes, mode = 'featured' }) {
             display: 'block',
             mt: 2,
             color: '#555',
-            fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
             textTransform: 'uppercase',
             letterSpacing: '0.15em',
             fontWeight: 600,

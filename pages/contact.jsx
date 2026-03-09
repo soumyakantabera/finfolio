@@ -80,7 +80,7 @@ export default function ContactPage({ initialData }) {
       '&.Mui-focused fieldset': { border: '1px solid #111' },
     },
     '& .MuiInputLabel-root': {
-      fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+      fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
       color: '#111',
     },
   };
@@ -99,7 +99,7 @@ export default function ContactPage({ initialData }) {
               display: 'block',
               mb: 0.5,
               fontWeight: 500,
-              fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+              fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
             }}
           >
             Get in Touch

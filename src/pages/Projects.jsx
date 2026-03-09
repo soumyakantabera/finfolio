@@ -4,7 +4,7 @@ import { Container, Typography, Chip, Box, Button, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
-const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 
 export default function ProjectsPage({ data }) {
   const projects = (data.projects || []).filter((p) => p.status !== 'draft');

@@ -32,7 +32,7 @@ import BlockRenderer from '../../src/components/BlockRenderer';
 import { defaultData, loadData } from '../../src/data/portfolioData';
 
 const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
-const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 
 function slugify(text) {
   return String(text).toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_]+/g, '-').replace(/^-+|-+$/g, '');

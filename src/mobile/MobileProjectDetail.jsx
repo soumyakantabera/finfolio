@@ -131,7 +131,7 @@ export default function MobileProjectDetail({ data }) {
         {/* Header */}
         <Box sx={{ mb: 2 }}>
           {project.category && (
-            <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', bgcolor: '#000', color: '#FFF', display: 'inline-block', px: 0.75, py: 0.25, mb: 1, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+            <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', bgcolor: '#000', color: '#FFF', display: 'inline-block', px: 0.75, py: 0.25, mb: 1, fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>
               {project.category}
             </Typography>
           )}
@@ -144,12 +144,12 @@ export default function MobileProjectDetail({ data }) {
             </Typography>
           )}
           {project.date && (
-            <Typography sx={{ mt: 0.5, fontSize: '0.7rem', fontWeight: 600, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{project.date}</Typography>
+            <Typography sx={{ mt: 0.5, fontSize: '0.7rem', fontWeight: 600, fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>{project.date}</Typography>
           )}
           {project.tags?.length > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 1 }}>
               {project.tags.map((tag) => (
-                <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#555', border: '1px solid #E0E0E0', px: 0.5, py: 0.125, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#555', border: '1px solid #E0E0E0', px: 0.5, py: 0.125, fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>
                   {tag}
                 </Typography>
               ))}
@@ -162,7 +162,7 @@ export default function MobileProjectDetail({ data }) {
           <Box sx={{ mb: 2, pb: 2, borderBottom: '1px solid #E0E0E0' }}>
             {project.techStack?.length > 0 && (
               <Box sx={{ mb: 1 }}>
-                <Typography sx={{ fontSize: '0.65rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Tech Stack</Typography>
+                <Typography sx={{ fontSize: '0.65rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>Tech Stack</Typography>
                 <Typography sx={{ fontSize: '0.8rem' }}>{project.techStack.join(', ')}</Typography>
               </Box>
             )}
@@ -287,7 +287,7 @@ export default function MobileProjectDetail({ data }) {
                 }}
               >
                 {rp.category && (
-                  <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                  <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>
                     {rp.category}
                   </Typography>
                 )}

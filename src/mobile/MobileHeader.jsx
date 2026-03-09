@@ -116,7 +116,7 @@ export default function MobileHeader({ data }) {
             cursor: 'pointer',
             p: 0,
             color: '#111',
-            fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
             fontSize: '0.8rem',
             fontWeight: 600,
             letterSpacing: '0.08em',
@@ -182,7 +182,7 @@ export default function MobileHeader({ data }) {
                 cursor: 'pointer',
                 p: 0,
                 color: '#111',
-                fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+                fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
@@ -222,7 +222,7 @@ export default function MobileHeader({ data }) {
                   variant="caption"
                   sx={{
                     color: '#555',
-                    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+                    fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                     fontWeight: 500,
                     fontSize: '0.65rem',
                     letterSpacing: '0.1em',
@@ -250,7 +250,7 @@ export default function MobileHeader({ data }) {
               <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #E0E0E0' }}>
                 <Typography
                   variant="overline"
-                  sx={{ color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem' }}
+                  sx={{ color: '#555', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', letterSpacing: '0.15em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem' }}
                 >
                   Pages
                 </Typography>
@@ -282,7 +282,7 @@ export default function MobileHeader({ data }) {
           <Box sx={{ px: 'var(--page-pad-x)', py: 3, borderTop: '1px solid #E0E0E0', flexShrink: 0 }}>
             <Typography
               variant="caption"
-              sx={{ color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, fontSize: '0.6rem' }}
+              sx={{ color: '#555', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, fontSize: '0.6rem' }}
             >
               © {new Date().getFullYear()} {siteTitle}
             </Typography>
