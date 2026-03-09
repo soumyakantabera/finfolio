@@ -165,7 +165,22 @@ export default function BentoSnapshot({ home, about, contact }) {
 
         {/* Quick-links tile */}
         {hasLinks && (
-          <BentoTile gridArea="links" index={snapshotItems.length} sx={{ flexDirection: 'row', gap: 2, flexWrap: 'wrap', alignItems: 'center' }}>
+          <BentoTile gridArea="links" index={snapshotItems.length}>
+            <Typography
+              variant="caption"
+              sx={{
+                color: 'var(--c-fg-muted)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.12em',
+                fontWeight: 600,
+                fontFamily: fontStack,
+                fontSize: '0.65rem',
+                mb: 0.5,
+              }}
+            >
+              Connect
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center' }}>
             {contact?.email && (
               <Typography
                 component="a"
@@ -236,6 +251,7 @@ export default function BentoSnapshot({ home, about, contact }) {
                 GitHub ↗
               </Typography>
             )}
+            </Box>
           </BentoTile>
         )}
       </Box>

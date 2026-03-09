@@ -8,35 +8,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* Preload critical Manrope font weights for fast rendering */}
-          <link
-            rel="preload"
-            href="/finfolio/_next/static/media/manrope-latin-400-normal.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/finfolio/_next/static/media/manrope-latin-600-normal.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/finfolio/_next/static/media/manrope-latin-700-normal.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          {/* Ensure text is visible during font loading (prevent FOIT) */}
-          <style>{`
-            @font-face {
-              font-family: 'Manrope';
-              font-display: swap;
-            }
-          `}</style>
           {this.props.emotionStyleTags}
         </Head>
         <body>
