@@ -118,7 +118,7 @@ export default function HomePage({ initialData }) {
                             bgcolor: i === 0 ? '#000' : 'transparent',
                             color: i === 0 ? '#FFF' : '#000',
                             borderColor: '#000',
-                            borderRadius: 0,
+                            borderRadius: '999px',
                             boxShadow: 'none',
                             minHeight: 48,
                             px: { xs: 3, md: 4 },
@@ -263,7 +263,7 @@ export default function HomePage({ initialData }) {
                           {project.tags?.length > 0 && (
                             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
                               {project.tags.map((tag) => (
-                                <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: 'var(--c-border)', color: 'var(--c-fg-secondary)', fontFamily: accentFont, borderRadius: 'var(--radius-sm)' }} />
+                                <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: 'var(--c-border)', color: 'var(--c-fg-secondary)', fontFamily: accentFont, borderRadius: '999px' }} />
                               ))}
                             </Box>
                           )}
@@ -281,9 +281,22 @@ export default function HomePage({ initialData }) {
                                 {project.date}
                               </Typography>
                             )}
-                            <Typography variant="caption" sx={{ color: 'var(--c-fg)', fontWeight: 600 }}>
+                            <Box
+                              component="span"
+                              sx={{
+                                display: 'inline-block',
+                                bgcolor: '#000',
+                                color: '#FFF',
+                                fontWeight: 600,
+                                fontSize: '0.7rem',
+                                fontFamily: accentFont,
+                                px: 1.5,
+                                py: 0.5,
+                                borderRadius: '999px',
+                              }}
+                            >
                               Details →
-                            </Typography>
+                            </Box>
                           </Box>
                         </Box>
                       </motion.div>
@@ -294,8 +307,9 @@ export default function HomePage({ initialData }) {
                   <Button
                     component={Link}
                     href="/projects"
+                    variant="contained"
                     endIcon={<ArrowForwardIcon />}
-                    sx={{ color: '#111', fontWeight: 600, minHeight: 48 }}
+                    sx={{ bgcolor: '#000', color: '#FFF', fontWeight: 600, minHeight: 48, borderRadius: '999px', boxShadow: 'none', px: 4, '&:hover': { bgcolor: '#222', boxShadow: 'none' } }}
                   >
                     View all projects
                   </Button>
@@ -328,40 +342,78 @@ export default function HomePage({ initialData }) {
                 <Typography variant="h4" fontWeight={600} sx={{ mb: { xs: 3, md: 5 }, fontSize: { xs: '1.5rem', md: '2.5rem' }, fontFamily: serifFont, color: '#111' }}>
                   Notable Work
                 </Typography>
-                {featuredProjects.slice(0, 4).map((project, i) => (
-                  <Box
-                    key={project.id}
-                    component={Link}
-                    href={`/projects/${project.slug}`}
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'baseline',
-                      py: 2,
-                      minHeight: 56,
-                      borderBottom: i < featuredProjects.length - 1 ? '1px solid #E0E0E0' : 'none',
-                      textDecoration: 'none',
-                      color: '#111',
-                      '&:hover': { fontWeight: 700 },
-                      '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
-                    }}
-                  >
-                    <Box sx={{ flex: 1, minWidth: 0 }}>
-                      <Typography variant="body1" fontWeight={600} sx={{ color: '#111' }}>
-                        {project.title}
-                      </Typography>
-                      <Typography variant="body2" sx={{ mt: 0.5, fontWeight: 400, color: '#111' }}>
-                        {project.subtitle || project.description}
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="caption"
-                      sx={{ color: '#111', fontWeight: 600, ml: 2, flexShrink: 0 }}
-                    >
-                      →
-                    </Typography>
-                  </Box>
-                ))}
+                <Grid container spacing={{ xs: 2, md: 3 }}>
+                  {featuredProjects.slice(0, 4).map((project, i) => (
+                    <Grid size={{ xs: 12, sm: 6 }} key={project.id}>
+                      <motion.div
+                        custom={i}
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: '-40px' }}
+                        whileHover={{
+                          scale: 1.03,
+                          rotateX: -1,
+                          rotateY: 1.5,
+                          boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                        }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                        style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
+                      >
+                        <Box
+                          component={Link}
+                          href={`/projects/${project.slug}`}
+                          sx={{
+                            display: 'block',
+                            textDecoration: 'none',
+                            color: 'inherit',
+                            border: '1px solid var(--c-border)',
+                            borderRadius: 'var(--radius-lg)',
+                            p: { xs: 2.5, md: 4 },
+                            height: '100%',
+                            bgcolor: 'var(--c-surface)',
+                            transition: 'background var(--transition-base), border-color var(--transition-base)',
+                            '&:hover': {
+                              bgcolor: 'var(--c-surface-hover)',
+                              borderColor: 'var(--c-fg-muted)',
+                            },
+                            '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
+                          }}
+                        >
+                          <Typography variant="body1" fontWeight={700} sx={{ color: '#111', fontSize: { xs: '1.15rem', md: '1.35rem' }, fontFamily: serifFont, mb: 1 }}>
+                            {project.title}
+                          </Typography>
+                          <Typography variant="body2" sx={{ color: '#555', lineHeight: 1.6, mb: 2 }}>
+                            {project.subtitle || project.description}
+                          </Typography>
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pt: 2, borderTop: '1px solid var(--c-border)' }}>
+                            {project.date && (
+                              <Typography variant="caption" sx={{ color: 'var(--c-fg-secondary)', fontFamily: accentFont }}>
+                                {project.date}
+                              </Typography>
+                            )}
+                            <Box
+                              component="span"
+                              sx={{
+                                display: 'inline-block',
+                                bgcolor: '#000',
+                                color: '#FFF',
+                                fontWeight: 600,
+                                fontSize: '0.7rem',
+                                fontFamily: accentFont,
+                                px: 1.5,
+                                py: 0.5,
+                                borderRadius: '999px',
+                              }}
+                            >
+                              Details →
+                            </Box>
+                          </Box>
+                        </Box>
+                      </motion.div>
+                    </Grid>
+                  ))}
+                </Grid>
               </Container>
             </Box>
           </motion.div>
@@ -412,7 +464,7 @@ export default function HomePage({ initialData }) {
                     href={`mailto:${contact.email}`}
                     variant="contained"
                     size="large"
-                    sx={{ bgcolor: '#000', color: '#FFF', borderRadius: 0, boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
+                    sx={{ bgcolor: '#000', color: '#FFF', borderRadius: '999px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
                   >
                     Email me
                   </Button>
@@ -422,7 +474,7 @@ export default function HomePage({ initialData }) {
                   href="/contact"
                   variant="outlined"
                   size="large"
-                  sx={{ color: '#000', borderColor: '#000', borderRadius: 0, boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
+                  sx={{ color: '#000', borderColor: '#000', borderRadius: '999px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
                 >
                   Contact page
                 </Button>

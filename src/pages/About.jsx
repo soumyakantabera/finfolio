@@ -158,7 +158,7 @@ export default function AboutPage({ data }) {
                       rel="noopener noreferrer"
                       aria-label={link.platform}
                       sx={{
-                        color: '#111', border: '1px solid #E0E0E0',
+                        color: '#111', border: '1px solid #E0E0E0', borderRadius: '50%',
                         width: 44, height: 44,
                         '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
                       }}
@@ -173,7 +173,7 @@ export default function AboutPage({ data }) {
 
             {/* Right: profile card */}
             <Grid size={{ xs: 12, md: 5 }}>
-              <Box sx={{ border: '1px solid #E0E0E0', p: { xs: 2.5, md: 4 } }}>
+              <Box sx={{ border: '1px solid #E0E0E0', borderRadius: 'var(--radius-lg)', p: { xs: 2.5, md: 4 } }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
                   <Avatar
                     src={about.profilePhoto || undefined}
@@ -285,7 +285,7 @@ export default function AboutPage({ data }) {
                   </Box>
                   <Chip label={exp.period} size="small" sx={{
                     bgcolor: '#FFF', color: '#111', fontWeight: 600, fontSize: '0.7rem',
-                    border: '1px solid #E0E0E0', fontFamily: accentFont,
+                    border: '1px solid #E0E0E0', fontFamily: accentFont, borderRadius: '999px',
                   }} />
                 </Box>
               ))}
@@ -308,7 +308,7 @@ export default function AboutPage({ data }) {
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.education.map((edu) => (
                   <Grid size={{ xs: 12, md: 6 }} key={edu.id}>
-                    <Box sx={{ border: '1px solid #E0E0E0', p: { xs: 2.5, md: 3 }, height: '100%' }}>
+                    <Box sx={{ border: '1px solid #E0E0E0', borderRadius: 'var(--radius-lg)', p: { xs: 2.5, md: 3 }, height: '100%' }}>
                       <Typography variant="subtitle1" fontWeight={600} sx={{ color: '#111' }}>
                         {edu.degree}
                       </Typography>
@@ -351,6 +351,7 @@ export default function AboutPage({ data }) {
                       <Box sx={{
                         py: 1.5, px: 2,
                         border: '1px solid #E0E0E0',
+                        borderRadius: 'var(--radius-lg)',
                         minHeight: 44,
                       }}>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
@@ -362,14 +363,14 @@ export default function AboutPage({ data }) {
                           </Typography>
                         </Box>
                         <Box
-                          sx={{ width: '100%', height: 4, bgcolor: '#EEEEEE' }}
+                          sx={{ width: '100%', height: 4, bgcolor: '#EEEEEE', borderRadius: '999px' }}
                           role="progressbar"
                           aria-valuenow={pct}
                           aria-valuemin={0}
                           aria-valuemax={100}
                           aria-label={`${skill.name}: ${skill.level}`}
                         >
-                          <Box sx={{ width: `${pct}%`, height: '100%', bgcolor: '#000' }} />
+                          <Box sx={{ width: `${pct}%`, height: '100%', bgcolor: '#000', borderRadius: '999px' }} />
                         </Box>
                       </Box>
                     </Grid>
@@ -400,6 +401,7 @@ export default function AboutPage({ data }) {
                       <Box
                         sx={{
                           border: '1px solid #E0E0E0',
+                          borderRadius: 'var(--radius-lg)',
                           p: { xs: 2, md: 2.5 },
                           cursor: hasMedia ? 'pointer' : 'default',
                           display: 'flex',
@@ -478,7 +480,7 @@ export default function AboutPage({ data }) {
             <IconButton
               onClick={() => setSelectedCert(null)}
               aria-label="Close"
-              sx={{ color: '#111', flexShrink: 0, border: '1px solid #E0E0E0', width: 40, height: 40 }}
+              sx={{ color: '#111', flexShrink: 0, border: '1px solid #E0E0E0', borderRadius: '50%', width: 40, height: 40 }}
               size="large"
             >
               <CloseIcon />
@@ -576,7 +578,7 @@ export default function AboutPage({ data }) {
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {about.achievements.map((ach) => (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={ach.id}>
-                    <Box sx={{ border: '1px solid #E0E0E0', p: { xs: 2.5, md: 3 }, height: '100%' }}>
+                    <Box sx={{ border: '1px solid #E0E0E0', borderRadius: 'var(--radius-lg)', p: { xs: 2.5, md: 3 }, height: '100%' }}>
                       <Typography variant="body1" fontWeight={600} sx={{ color: '#111' }}>
                         {ach.title}
                       </Typography>

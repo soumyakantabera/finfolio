@@ -79,7 +79,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
           <Typography variant="body1" sx={{ mb: 3 }}>
             The project you&#39;re looking for doesn&#39;t exist or has been removed.
           </Typography>
-          <Button component={Link} href="/projects" variant="outlined" sx={{ color: '#111', borderColor: '#E0E0E0', minHeight: 48 }}>
+          <Button component={Link} href="/projects" variant="outlined" sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '999px', minHeight: 48 }}>
             ← Back to Projects
           </Button>
         </Container>
@@ -128,6 +128,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
               width: '100%',
               maxHeight: { xs: 240, md: 400 },
               objectFit: 'cover',
+              borderRadius: 'var(--radius-lg)',
               mb: 4,
               display: 'block',
             }}
@@ -140,7 +141,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
             <Chip
               label={project.category}
               size="small"
-              sx={{ mb: 1.5, bgcolor: '#000', color: '#FFF', borderRadius: 0, fontFamily: accentFont }}
+              sx={{ mb: 1.5, bgcolor: '#000', color: '#FFF', borderRadius: '999px', fontFamily: accentFont }}
             />
           )}
           <Typography variant="h3" fontWeight={700} sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' }, fontFamily: serifFont }}>
@@ -159,7 +160,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
           {project.tags?.length > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 2 }}>
               {project.tags.map((tag) => (
-                <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#E0E0E0', color: '#555' }} />
+                <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderColor: '#E0E0E0', color: '#555', borderRadius: '999px' }} />
               ))}
             </Box>
           )}
@@ -197,7 +198,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
               )}
             </Box>
             {project.keyFindings?.length > 0 && (
-              <Box sx={{ mb: 3, p: 2, border: '1px solid #E0E0E0' }}>
+              <Box sx={{ mb: 3, p: 2, border: '1px solid #E0E0E0', borderRadius: 'var(--radius-lg)' }}>
                 <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1, fontFamily: serifFont }}>Key Findings</Typography>
                 <Box component="ul" sx={{ m: 0, pl: 3 }}>
                   {project.keyFindings.map((finding, i) => (
@@ -228,7 +229,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                       rel="noopener noreferrer"
                       size="small"
                       variant="outlined"
-                      sx={{ color: '#111', borderColor: '#E0E0E0', textTransform: 'none', minHeight: 36 }}
+                      sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '999px', textTransform: 'none', minHeight: 36 }}
                     >
                       {ds.label}
                     </Button>
@@ -244,7 +245,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                   rel="noopener noreferrer"
                   variant="contained"
                   startIcon={<PictureAsPdfIcon />}
-                  sx={{ bgcolor: '#000', color: '#FFF', '&:hover': { bgcolor: '#000' }, minHeight: 48, textTransform: 'none', fontWeight: 600 }}
+                  sx={{ bgcolor: '#000', color: '#FFF', '&:hover': { bgcolor: '#000' }, borderRadius: '999px', minHeight: 48, textTransform: 'none', fontWeight: 600 }}
                 >
                   Open PDF
                 </Button>
@@ -255,7 +256,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                     rel="noopener noreferrer"
                     variant="outlined"
                     size="small"
-                    sx={{ ml: 1, color: '#111', borderColor: '#E0E0E0', minHeight: 48, textTransform: 'none' }}
+                    sx={{ ml: 1, color: '#111', borderColor: '#E0E0E0', borderRadius: '999px', minHeight: 48, textTransform: 'none' }}
                   >
                     View DOI
                   </Button>
@@ -264,7 +265,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
             )}
             {/* Citation block */}
             {project.citationText && (
-              <Box sx={{ p: 2, border: '1px solid #E0E0E0', mb: 3 }}>
+              <Box sx={{ p: 2, border: '1px solid #E0E0E0', borderRadius: 'var(--radius-lg)', mb: 3 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
                   <Typography variant="subtitle2" fontWeight={700} sx={{ fontFamily: serifFont }}>Citation</Typography>
                   <Button
@@ -337,7 +338,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                       rel="noopener noreferrer"
                       size="small"
                       variant="outlined"
-                      sx={{ color: '#111', borderColor: '#E0E0E0', minHeight: 44 }}
+                      sx={{ color: '#111', borderColor: '#E0E0E0', borderRadius: '999px', minHeight: 44 }}
                     >
                       {link.label}
                     </Button>
@@ -389,7 +390,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                   color: '#111',
                   borderColor: '#E0E0E0',
                   border: '1px solid #E0E0E0',
-                  borderRadius: 0,
+                  borderRadius: 'var(--radius)',
                   textTransform: 'none',
                   fontWeight: 600,
                   justifyContent: 'space-between',
@@ -399,7 +400,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                 Table of Contents
               </Button>
               <Collapse in={tocOpen}>
-                <Box sx={{ border: '1px solid #E0E0E0', borderTop: 0 }}>
+                <Box sx={{ border: '1px solid #E0E0E0', borderTop: 0, borderRadius: '0 0 var(--radius) var(--radius)' }}>
                   <List dense disablePadding>
                     {headings.map((h) => (
                       <ListItem key={h.id} disablePadding sx={{ pl: h.level === 3 ? 2 : 0 }}>
@@ -455,6 +456,9 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
                       color: 'inherit',
                       display: 'block',
                       border: '1px solid #E0E0E0',
+                      borderRadius: 'var(--radius-lg)',
+                      transition: 'box-shadow var(--transition-base), transform var(--transition-base)',
+                      '&:hover': { boxShadow: 'var(--shadow-lg)', transform: 'translateY(-2px)' },
                       '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
                   >

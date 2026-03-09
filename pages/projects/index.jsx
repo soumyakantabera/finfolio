@@ -94,7 +94,7 @@ export default function ProjectsPage({ initialData }) {
                   color: activeTab === cat ? '#FFF' : '#111',
                   bgcolor: activeTab === cat ? '#000' : 'transparent',
                   border: activeTab === cat ? '1px solid #000' : '1px solid #E0E0E0',
-                  borderRadius: 0,
+                  borderRadius: '999px',
                   px: 2,
                   py: 0.75,
                   minHeight: 36,
@@ -118,15 +118,28 @@ export default function ProjectsPage({ initialData }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-50px' }}
                   transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.06 }}
-                  style={{ height: '100%' }}
+                  whileHover={{
+                    scale: 1.03,
+                    rotateX: -1,
+                    rotateY: 1.5,
+                    boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                  }}
+                  style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
                 >
                   <Box
                     sx={{
                       border: '1px solid #E0E0E0',
+                      borderRadius: 'var(--radius-lg)',
                       p: { xs: 2.5, md: 3 },
                       height: '100%',
                       display: 'flex',
                       flexDirection: 'column',
+                      bgcolor: 'var(--c-surface)',
+                      transition: 'background var(--transition-base), border-color var(--transition-base)',
+                      '&:hover': {
+                        bgcolor: 'var(--c-surface-hover)',
+                        borderColor: 'var(--c-fg-muted)',
+                      },
                       '&:focus-within': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
                   >
@@ -223,7 +236,7 @@ export default function ProjectsPage({ initialData }) {
                               fontSize: '0.65rem',
                               borderColor: '#E0E0E0',
                               color: '#555',
-                              borderRadius: 0,
+                              borderRadius: '999px',
                               height: 22,
                             }}
                           />
@@ -264,12 +277,12 @@ export default function ProjectsPage({ initialData }) {
                             sx={{
                               color: '#111',
                               borderColor: '#E0E0E0',
-                              borderRadius: 0,
+                              borderRadius: '999px',
                               fontSize: '0.7rem',
                               fontFamily: accentFont,
                               textTransform: 'none',
                               py: 0.25,
-                              px: 1,
+                              px: 1.5,
                               minHeight: 28,
                               '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
                             }}
@@ -281,15 +294,19 @@ export default function ProjectsPage({ initialData }) {
                           component={Link}
                           href={`/projects/${project.slug}`}
                           size="small"
+                          variant="contained"
                           sx={{
-                            color: '#111',
+                            bgcolor: '#000',
+                            color: '#FFF',
                             fontWeight: 600,
                             fontSize: '0.75rem',
                             fontFamily: accentFont,
                             textTransform: 'none',
                             minHeight: 28,
-                            px: 1,
-                            '&:hover': { textDecoration: 'underline' },
+                            px: 1.5,
+                            borderRadius: '999px',
+                            boxShadow: 'none',
+                            '&:hover': { bgcolor: '#222', boxShadow: 'none' },
                           }}
                         >
                           Details →
