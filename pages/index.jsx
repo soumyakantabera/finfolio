@@ -118,7 +118,7 @@ export default function HomePage({ initialData }) {
                             bgcolor: i === 0 ? '#000' : 'transparent',
                             color: i === 0 ? '#FFF' : '#000',
                             borderColor: '#000',
-                            borderRadius: '8px',
+                            borderRadius: '999px',
                             boxShadow: 'none',
                             minHeight: 48,
                             px: { xs: 3, md: 4 },
@@ -217,13 +217,14 @@ export default function HomePage({ initialData }) {
                         whileInView="visible"
                         viewport={{ once: true, margin: '-40px' }}
                         whileHover={{
-                          scale: 1.03,
-                          rotateX: -1,
-                          rotateY: 1.5,
-                          boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                          scale: 1.02,
+                          rotateX: -2,
+                          rotateY: 2,
+                          boxShadow: '0 16px 40px rgba(0,0,0,0.08)',
                         }}
-                        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                        style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+                        style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
                       >
                         <Box
                           component={Link}
@@ -298,7 +299,7 @@ export default function HomePage({ initialData }) {
                                     fontFamily: accentFont,
                                     px: 1.5,
                                     py: 0.5,
-                                    borderRadius: '8px',
+                                    borderRadius: '999px',
                                     border: '1px solid #E0E0E0',
                                     textDecoration: 'none',
                                     '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
@@ -318,7 +319,7 @@ export default function HomePage({ initialData }) {
                                   fontFamily: accentFont,
                                   px: 1.5,
                                   py: 0.5,
-                                  borderRadius: '8px',
+                                  borderRadius: '999px',
                                 }}
                               >
                                 Details →
@@ -336,7 +337,7 @@ export default function HomePage({ initialData }) {
                     href="/projects"
                     variant="contained"
                     endIcon={<ArrowForwardIcon />}
-                    sx={{ bgcolor: '#000', color: '#FFF', fontWeight: 600, minHeight: 48, borderRadius: '8px', boxShadow: 'none', px: 4, '&:hover': { bgcolor: '#222', boxShadow: 'none' } }}
+                    sx={{ bgcolor: '#000', color: '#FFF', fontWeight: 600, minHeight: 48, borderRadius: '999px', boxShadow: 'none', px: 4, '&:hover': { bgcolor: '#222', boxShadow: 'none' } }}
                   >
                     View all projects
                   </Button>
@@ -379,13 +380,14 @@ export default function HomePage({ initialData }) {
                         whileInView="visible"
                         viewport={{ once: true, margin: '-40px' }}
                         whileHover={{
-                          scale: 1.03,
-                          rotateX: -1,
-                          rotateY: 1.5,
-                          boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                          scale: 1.02,
+                          rotateX: -2,
+                          rotateY: 2,
+                          boxShadow: '0 16px 40px rgba(0,0,0,0.08)',
                         }}
-                        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                        style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+                        style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
                       >
                         <Box
                           component={Link}
@@ -436,7 +438,7 @@ export default function HomePage({ initialData }) {
                                     fontFamily: accentFont,
                                     px: 1.5,
                                     py: 0.5,
-                                    borderRadius: '8px',
+                                    borderRadius: '999px',
                                     border: '1px solid #E0E0E0',
                                     textDecoration: 'none',
                                     '&:hover': { bgcolor: '#000', color: '#FFF', borderColor: '#000' },
@@ -456,7 +458,7 @@ export default function HomePage({ initialData }) {
                                   fontFamily: accentFont,
                                   px: 1.5,
                                   py: 0.5,
-                                  borderRadius: '8px',
+                                  borderRadius: '999px',
                                 }}
                               >
                                 Details →
@@ -518,7 +520,7 @@ export default function HomePage({ initialData }) {
                     href={`mailto:${contact.email}`}
                     variant="contained"
                     size="large"
-                    sx={{ bgcolor: '#000', color: '#FFF', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
+                    sx={{ bgcolor: '#000', color: '#FFF', borderRadius: '999px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
                   >
                     Email me
                   </Button>
@@ -528,7 +530,7 @@ export default function HomePage({ initialData }) {
                   href="/contact"
                   variant="outlined"
                   size="large"
-                  sx={{ color: '#000', borderColor: '#000', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
+                  sx={{ color: '#000', borderColor: '#000', borderRadius: '999px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
                 >
                   Contact page
                 </Button>

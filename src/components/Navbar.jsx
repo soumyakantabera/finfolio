@@ -204,16 +204,16 @@ export default function Navbar({ data }) {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              gap: '5px',
+              gap: '4px',
               background: 'none',
-              border: 'none',
+              border: '1px solid #EBEBEB',
               cursor: 'pointer',
               p: '8px',
               minWidth: 44,
               minHeight: 44,
-              borderRadius: '8px',
-              transition: 'background-color 0.15s ease',
-              '&:hover': { backgroundColor: '#F0F0F0' },
+              borderRadius: '12px',
+              transition: 'background-color 0.15s ease, border-color 0.15s ease',
+              '&:hover': { backgroundColor: '#F0F0F0', borderColor: '#D4D4D4' },
               '&:focus-visible': {
                 outline: '2px solid #0A0A0A',
                 outlineOffset: '2px',
@@ -222,7 +222,7 @@ export default function Navbar({ data }) {
           >
             <Box
               sx={{
-                width: 18,
+                width: 16,
                 height: '1.5px',
                 bgcolor: '#0A0A0A',
                 borderRadius: '1px',
@@ -230,7 +230,15 @@ export default function Navbar({ data }) {
             />
             <Box
               sx={{
-                width: 18,
+                width: 16,
+                height: '1.5px',
+                bgcolor: '#0A0A0A',
+                borderRadius: '1px',
+              }}
+            />
+            <Box
+              sx={{
+                width: 16,
                 height: '1.5px',
                 bgcolor: '#0A0A0A',
                 borderRadius: '1px',
@@ -240,7 +248,22 @@ export default function Navbar({ data }) {
         </Toolbar>
       </AppBar>
 
-      {/* Full-screen mobile menu overlay with fade transition */}
+      {/* Backdrop scrim */}
+      <Box
+        onClick={() => setMenuOpen(false)}
+        sx={{
+          position: 'fixed',
+          inset: 0,
+          bgcolor: 'rgba(0,0,0,0.2)',
+          zIndex: 1399,
+          opacity: menuOpen ? 1 : 0,
+          visibility: menuOpen ? 'visible' : 'hidden',
+          transition: 'opacity 0.3s cubic-bezier(0.4,0,0.2,1), visibility 0.3s cubic-bezier(0.4,0,0.2,1)',
+          pointerEvents: menuOpen ? 'auto' : 'none',
+        }}
+      />
+
+      {/* Mobile menu panel — slides in from right */}
       <Box
         id="mobile-nav-overlay"
         ref={menuRef}
@@ -250,16 +273,19 @@ export default function Navbar({ data }) {
         aria-hidden={!menuOpen}
         sx={{
           position: 'fixed',
-          inset: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: { xs: '100%', sm: '380px' },
           bgcolor: '#FAFAFA',
           zIndex: 1400,
           display: 'flex',
           flexDirection: 'column',
           overflowY: 'auto',
           WebkitOverflowScrolling: 'touch',
-          opacity: menuOpen ? 1 : 0,
-          visibility: menuOpen ? 'visible' : 'hidden',
-          transition: 'opacity 0.25s cubic-bezier(0.4,0,0.2,1), visibility 0.25s cubic-bezier(0.4,0,0.2,1)',
+          boxShadow: menuOpen ? '-8px 0 30px rgba(0,0,0,0.08)' : 'none',
+          transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s cubic-bezier(0.4,0,0.2,1)',
           pointerEvents: menuOpen ? 'auto' : 'none',
         }}
       >
@@ -308,7 +334,7 @@ export default function Navbar({ data }) {
               height: 40,
               background: 'none',
               border: '1px solid #EBEBEB',
-              borderRadius: '8px',
+              borderRadius: '50%',
               cursor: 'pointer',
               color: '#0A0A0A',
               transition: 'background-color 0.15s ease, border-color 0.15s ease',
@@ -336,8 +362,8 @@ export default function Navbar({ data }) {
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
-            px: '20px',
-            pt: 4,
+            px: '8px',
+            pt: 3,
             pb: 3,
           }}
         >
@@ -351,15 +377,18 @@ export default function Navbar({ data }) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '14px',
-                py: '16px',
-                borderBottom: '1px solid #EBEBEB',
+                py: '14px',
+                px: '12px',
+                my: '2px',
+                borderRadius: '12px',
                 textDecoration: 'none',
                 color: isActive(item.path) ? '#0A0A0A' : '#525252',
+                bgcolor: isActive(item.path) ? '#F0F0F0' : 'transparent',
                 minHeight: 56,
-                transition: 'color 0.15s ease, padding-left 0.2s ease',
+                transition: 'color 0.15s ease, background-color 0.2s ease',
                 '&:hover': {
                   color: '#0A0A0A',
-                  pl: '4px',
+                  bgcolor: '#F5F5F5',
                 },
                 '&:focus-visible': {
                   outline: '2px solid #0A0A0A',

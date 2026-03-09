@@ -81,7 +81,7 @@ export default function ProjectsPage({ data }) {
                 color: activeTab === cat ? '#FFF' : '#111',
                 bgcolor: activeTab === cat ? '#000' : 'transparent',
                 border: '1px solid #E0E0E0',
-                borderRadius: '8px',
+                borderRadius: '999px',
                 px: 2,
                 py: 0.75,
                 minHeight: 36,
@@ -106,12 +106,13 @@ export default function ProjectsPage({ data }) {
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.06 }}
                 whileHover={{
-                  scale: 1.03,
-                  rotateX: -1,
-                  rotateY: 1.5,
-                  boxShadow: '0 12px 40px rgba(0,0,0,0.10)',
+                  scale: 1.02,
+                  rotateX: -2,
+                  rotateY: 2,
+                  boxShadow: '0 16px 40px rgba(0,0,0,0.08)',
                 }}
-                style={{ height: '100%', perspective: '800px', transformStyle: 'preserve-3d' }}
+                whileTap={{ scale: 0.98 }}
+                style={{ height: '100%', perspective: 1200, transformStyle: 'preserve-3d' }}
               >
                 <Box
                   sx={{
@@ -264,7 +265,7 @@ export default function ProjectsPage({ data }) {
                           sx={{
                             color: '#111',
                             borderColor: '#E0E0E0',
-                            borderRadius: '8px',
+                            borderRadius: '999px',
                             fontSize: '0.7rem',
                             fontFamily: accentFont,
                             textTransform: 'none',
@@ -287,7 +288,7 @@ export default function ProjectsPage({ data }) {
                           sx={{
                             color: '#111',
                             borderColor: '#E0E0E0',
-                            borderRadius: '8px',
+                            borderRadius: '999px',
                             fontSize: '0.7rem',
                             fontFamily: accentFont,
                             textTransform: 'none',
@@ -314,7 +315,7 @@ export default function ProjectsPage({ data }) {
                           textTransform: 'none',
                           minHeight: 28,
                           px: 1.5,
-                          borderRadius: '8px',
+                          borderRadius: '999px',
                           boxShadow: 'none',
                           '&:hover': { bgcolor: '#222', boxShadow: 'none' },
                         }}
