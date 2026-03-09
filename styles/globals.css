@@ -67,10 +67,6 @@ table, .metrics, .stats { font-variant-numeric: tabular-nums lining-nums; }
   button, a, [role="button"] { min-height: 44px; }
 }
 
-@media (max-width: 768px) {
-  .mobile-ink-link:active { text-decoration: underline; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

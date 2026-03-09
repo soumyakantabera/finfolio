@@ -20,50 +20,9 @@ A deployable portfolio web app template built with **Vite + React + Material UI*
 - **Quotes / Own Words CMS** — Manage personal quotes with CRUD, featured toggle, ordering, and attribution
 - **Modern About Page** — Polished design with timeline, skill progress bars, metrics, achievements, and contact links
 - **Sharp B&W Design** — Professional, editorial typography with Manrope font, minimal borders, no rounded corners
-- **Responsive** — Desktop, tablet, and mobile layouts
-- **Dedicated Mobile Code Path** — Separate mobile components (`src/mobile/`) with compact, editorial B&W design that activates automatically at ≤768px
+- **Responsive** — Desktop, tablet, and mobile layouts with a unified codebase
 - **GitHub Pages Ready** — HashRouter for SPA compatibility, GitHub Actions deploy workflow
 - **Custom Pages** — Create and manage additional pages from the admin portal
-
-## Mobile Architecture
-
-FinFolio implements a **dedicated mobile code path** that activates automatically when the viewport is ≤768px. Mobile components live in `src/mobile/` and are completely separate from the desktop pages.
-
-### How It Works
-
-1. **Viewport detection**: `useIsMobile()` hook wraps MUI's `useMediaQuery('(max-width: 768px)')`.
-2. **Route wrapper**: `<ResponsiveRoute desktop={…} mobile={…} />` renders the correct component based on viewport.
-3. **Navigation split**: `App.jsx` renders `<MobileHeader>` on mobile and `<Navbar>` on desktop.
-4. **Lazy loading**: All mobile components are lazy-loaded, so desktop users never download mobile code.
-
-### File Structure
-
-```
-src/mobile/
-├── useIsMobile.js           # Viewport detection hook
-├── ResponsiveRoute.jsx      # Desktop/mobile component switcher
-├── MobileHeader.jsx         # Compact fixed header + fullscreen menu
-├── MobileHome.jsx           # Compact editorial home page
-├── MobileProjects.jsx       # List-based project gallery
-├── MobileProjectDetail.jsx  # Compact project detail + sticky back row
-├── MobileAbout.jsx          # Accordion-based about page
-└── MobileContact.jsx        # Tappable contact rows + form
-```
-
-### Design Principles
-
-- **Strict B&W**: Only `#000` and `#fff` — no gray, no shadows, no opacity overlays.
-- **Consistent spacing**: Uses the spacing token system (see below) via CSS variables.
-- **List-first layout**: Projects use list rows instead of large cards.
-- **Editorial navigation**: Fullscreen white menu with numbered links and "Close" text button.
-- **Shared data layer**: Mobile components receive the same `data` prop and reuse `portfolioData.js`.
-
-### Modifying Mobile
-
-To update mobile UI without affecting desktop:
-- Edit files in `src/mobile/` only.
-- Desktop components in `src/pages/` and `src/components/` remain untouched.
-- Mobile-specific CSS classes (`mobile-ink-link`, `mobile-btn-press`) are in `src/index.css`.
 
 ## Spacing System
 
@@ -95,9 +54,8 @@ All spacing uses a consistent token system defined as CSS custom properties in `
 
 ### Usage Rules
 
-1. **Desktop pages** (in `src/pages/`): Use MUI spacing units that map to the scale (e.g., `py: { xs: 4, md: 8 }` for 32px/64px).
-2. **Mobile components** (in `src/mobile/`): Use CSS variables directly (e.g., `px: 'var(--page-pad-x)'`).
-3. **Section padding**: Hero/CTA sections use `py: { xs: 4, md: 8 }`. Content sections use `py: { xs: 4, md: 6 }`.
+1. **Pages** (in `src/pages/` and `pages/`): Use MUI responsive breakpoints (e.g., `py: { xs: 4, md: 8 }` for 32px/64px).
+2. **Section padding**: Hero/CTA sections use `py: { xs: 4, md: 8 }`. Content sections use `py: { xs: 4, md: 6 }`.
 4. **Container horizontal padding**: `px: { xs: 2, md: 5 }` (16px/40px).
 5. **Grid spacing**: `spacing: { xs: 2, md: 3 }` (16px/24px).
 6. **Markdown vertical rhythm**: Headings get `mt: 3–4`, paragraphs get `mb: 2`, code/tables/quotes get `my: 3`.
@@ -507,63 +465,6 @@ export default defineConfig({
 ### Sample Content
 
 The default portfolio content is defined in `src/data/portfolioData.js`. This serves as the initial data when no changes have been saved. Edit this file to change the default template content.
-
-## Mobile QA Checklist
-
-Use this checklist when testing mobile views (375px viewport recommended):
-
-### Navigation
-- [ ] "Menu" button visible on mobile, opens full-screen overlay
-- [ ] Menu shows numbered links (01 Home, 02 Projects, 03 About, 04 Contact)
-- [ ] Close button (✕) dismisses menu
-- [ ] ESC key dismisses menu
-- [ ] Focus is trapped within menu when open
-- [ ] Body scroll is locked when menu is open
-- [ ] Navigating to a page auto-closes the menu
-- [ ] No Admin link visible in mobile menu
-
-### Touch Targets
-- [ ] All buttons and links have ≥ 44px touch height
-- [ ] Filter pills are easily tappable
-- [ ] Social icon buttons are 44×44px
-
-### Home Page
-- [ ] Hero text is readable (not cramped)
-- [ ] Snapshot panel renders cleanly below hero
-- [ ] Category filter pills scroll horizontally
-- [ ] Project cards show "View →" and date without hover
-- [ ] CTA buttons have adequate spacing
-
-### Projects Page
-- [ ] Filters scroll horizontally, no overflow
-- [ ] Cards show all CTAs without hover (no hover-revealed buttons)
-- [ ] "Details" link is easily tappable
-- [ ] Research Papers tab filters correctly
-- [ ] Research paper cards show Read Paper / DOI buttons
-
-### Project Detail
-- [ ] Sticky bottom action bar visible with "← Projects"
-- [ ] Markdown content (headings, code blocks, tables, blockquotes) is readable
-- [ ] Embeds do not overflow the viewport
-- [ ] Hero image scales to screen width
-
-### About Page
-- [ ] Avatar and name are centered and not cramped
-- [ ] Sections are collapsible (expand/collapse toggle)
-- [ ] Skills show as grouped list with progress bars
-- [ ] Certifications and achievements render cleanly
-
-### Contact Page
-- [ ] Email and phone are tappable links (mailto:, tel:)
-- [ ] Social icons are 44×44px with border
-- [ ] Form fields have adequate spacing and touch targets
-- [ ] Send button is large enough to tap
-
-### Accessibility
-- [ ] Focus-visible outlines on all interactive elements
-- [ ] `prefers-reduced-motion` disables transitions
-- [ ] Menu has `role="dialog"` and `aria-modal="true"`
-- [ ] No layout shifts during page load
 
 ## License
 

@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { Container, Typography, Chip, Box, Button, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 import Navbar from '../../src/components/Navbar';
-import MobileHeader from '../../src/mobile/MobileHeader';
-import useIsMobile from '../../src/mobile/useIsMobile';
 import { defaultData, loadData } from '../../src/data/portfolioData';
 
 const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
@@ -13,7 +11,6 @@ const accentFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 
 export default function ProjectsPage({ initialData }) {
   const [data, setData] = useState(initialData);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const loaded = loadData();
@@ -37,7 +34,7 @@ export default function ProjectsPage({ initialData }) {
   return (
     <>
       <Head><title>Projects | FinFolio</title></Head>
-      {isMobile ? <MobileHeader data={data} /> : <Navbar data={data} />}
+      <Navbar data={data} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

@@ -3,15 +3,12 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Container, Typography, Box, useMediaQuery, useTheme } from '@mui/material';
 import Navbar from '../../src/components/Navbar';
-import MobileHeader from '../../src/mobile/MobileHeader';
-import useIsMobile from '../../src/mobile/useIsMobile';
 import { defaultData, loadData } from '../../src/data/portfolioData';
 
 export default function CustomPage({ initialData }) {
   const router = useRouter();
   const { slug } = router.query;
   const [data, setData] = useState(initialData || defaultData);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const loaded = loadData();
@@ -29,7 +26,7 @@ export default function CustomPage({ initialData }) {
       <Head>
         <title>{page ? `${page.title} | FinFolio` : 'Page Not Found | FinFolio'}</title>
       </Head>
-      {isMobile ? <MobileHeader data={data} /> : <Navbar data={data} />}
+      <Navbar data={data} />
       {!page ? (
         <Container maxWidth="lg" sx={{ py: 6, textAlign: 'center' }}>
           <Typography variant="h3" fontWeight={700} gutterBottom>
