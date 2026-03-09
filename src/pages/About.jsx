@@ -25,7 +25,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
-const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 
 const skillLevelMap = { expert: 100, advanced: 75, intermediate: 50, beginner: 25 };
 

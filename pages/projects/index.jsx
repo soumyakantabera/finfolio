@@ -9,7 +9,7 @@ import useIsMobile from '../../src/mobile/useIsMobile';
 import { defaultData, loadData } from '../../src/data/portfolioData';
 
 const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
-const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 
 export default function ProjectsPage({ initialData }) {
   const [data, setData] = useState(initialData);

@@ -39,7 +39,7 @@ export default function MobileContact({ data }) {
     <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
       <Typography
         variant="overline"
-        sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
+        sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}
       >
         Get in Touch
       </Typography>
@@ -68,7 +68,7 @@ export default function MobileContact({ data }) {
               '&:active': { fontWeight: 700 },
             }}
           >
-            <Typography sx={{ fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Email</Typography>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>Email</Typography>
             <Typography sx={{ fontSize: '0.8rem', fontWeight: 500 }}>{contact.email}</Typography>
           </Box>
         )}
@@ -88,7 +88,7 @@ export default function MobileContact({ data }) {
               '&:active': { fontWeight: 700 },
             }}
           >
-            <Typography sx={{ fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Phone</Typography>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>Phone</Typography>
             <Typography sx={{ fontSize: '0.8rem', fontWeight: 500 }}>{contact.phone}</Typography>
           </Box>
         )}
@@ -102,7 +102,7 @@ export default function MobileContact({ data }) {
               minHeight: 44,
             }}
           >
-            <Typography sx={{ fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Location</Typography>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif' }}>Location</Typography>
             <Typography sx={{ fontSize: '0.8rem', textAlign: 'right' }}>{contact.address}</Typography>
           </Box>
         )}
@@ -125,7 +125,7 @@ export default function MobileContact({ data }) {
                 textDecoration: 'none',
                 fontSize: '0.7rem',
                 fontWeight: 600,
-                fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+                fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                 minHeight: 36,
                 display: 'flex',
                 alignItems: 'center',
@@ -149,7 +149,7 @@ export default function MobileContact({ data }) {
                 textDecoration: 'none',
                 fontSize: '0.7rem',
                 fontWeight: 600,
-                fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+                fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                 minHeight: 36,
                 display: 'flex',
                 alignItems: 'center',
@@ -174,7 +174,7 @@ export default function MobileContact({ data }) {
                 textDecoration: 'none',
                 fontSize: '0.7rem',
                 fontWeight: 600,
-                fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+                fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                 minHeight: 36,
                 display: 'flex',
                 alignItems: 'center',

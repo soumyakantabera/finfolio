@@ -13,7 +13,7 @@ import QuoteBlock from '../components/QuoteBlock';
 import { motion } from 'framer-motion';
 
 const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
-const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 
 const reveal = {
   initial: { opacity: 0, y: 30 },

@@ -15,7 +15,7 @@ export default function MobileHome({ data }) {
       <Box sx={{ borderBottom: '1px solid #E0E0E0', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
         <Typography
           variant="overline"
-          sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 500, fontSize: '0.6rem' }}
+          sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 500, fontSize: '0.6rem' }}
         >
           01 / Introduction
         </Typography>
@@ -81,7 +81,7 @@ export default function MobileHome({ data }) {
       <Box sx={{ borderBottom: '1px solid #E0E0E0', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
         <Typography
           variant="overline"
-          sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 500, fontSize: '0.6rem' }}
+          sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 500, fontSize: '0.6rem' }}
         >
           Snapshot
         </Typography>
@@ -105,7 +105,7 @@ export default function MobileHome({ data }) {
               minHeight: 36,
             }}
           >
-            <Typography sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#555', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 500, fontSize: '0.6rem' }}>
+            <Typography sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', color: '#555', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 500, fontSize: '0.6rem' }}>
               {row.label}
             </Typography>
             <Typography sx={{
@@ -140,7 +140,7 @@ export default function MobileHome({ data }) {
                 <Typography
                   className="tabular-nums"
                   sx={{
-                    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+                    fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                     fontWeight: 700,
                     fontSize: '1.25rem',
                   }}
@@ -163,7 +163,7 @@ export default function MobileHome({ data }) {
         <Box sx={{ borderBottom: '1px solid #E0E0E0', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           <Typography
             variant="overline"
-            sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem' }}
+            sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem' }}
           >
             03 / Work
           </Typography>
@@ -242,7 +242,7 @@ export default function MobileHome({ data }) {
         <Box sx={{ borderBottom: '1px solid #E0E0E0', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
           <Typography
             variant="overline"
-            sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem' }}
+            sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem' }}
           >
             05 / Highlights
           </Typography>
@@ -299,7 +299,7 @@ export default function MobileHome({ data }) {
       <Box sx={{ borderBottom: '1px solid #E0E0E0', px: 'var(--page-pad-x)', py: 'var(--section-gap)', textAlign: 'center' }}>
         <Typography
           variant="overline"
-          sx={{ fontFamily: '"Sora", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem' }}
+          sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem' }}
         >
           Get in touch
         </Typography>

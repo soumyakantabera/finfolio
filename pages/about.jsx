@@ -30,7 +30,7 @@ import useIsMobile from '../src/mobile/useIsMobile';
 import { defaultData, loadData } from '../src/data/portfolioData';
 
 const serifFont = '"Manrope", "Helvetica", "Arial", sans-serif';
-const accentFont = '"Sora", "Helvetica", "Arial", sans-serif';
+const accentFont = '"Manrope", "Helvetica", "Arial", sans-serif';
 
 const skillLevelMap = { expert: 100, advanced: 75, intermediate: 50, beginner: 25 };
 

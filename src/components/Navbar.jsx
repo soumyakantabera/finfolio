@@ -81,7 +81,7 @@ export default function Navbar({ data }) {
 
   const linkSx = (path) => ({
     color: '#111',
-    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
     textTransform: 'uppercase',
     fontWeight: isActive(path) ? 700 : 400,
     borderBottom: isActive(path) ? '1px solid #000' : '1px solid transparent',
@@ -147,7 +147,7 @@ export default function Navbar({ data }) {
               cursor: 'pointer',
               p: 1,
               color: '#111',
-              fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+              fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
               fontSize: '0.85rem',
               fontWeight: 600,
               letterSpacing: '0.08em',
@@ -213,7 +213,7 @@ export default function Navbar({ data }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#111',
-                fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+                fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                 fontSize: '0.8rem',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
@@ -251,7 +251,7 @@ export default function Navbar({ data }) {
                   variant="caption"
                   sx={{
                     color: '#111',
-                    fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
+                    fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
                     fontWeight: 600,
                     fontSize: '0.7rem',
                     letterSpacing: '0.1em',
