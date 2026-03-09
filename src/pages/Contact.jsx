@@ -62,13 +62,13 @@ export default function ContactPage({ data }) {
     mb: 2.5,
     '& .MuiOutlinedInput-root': {
       borderRadius: 0,
-      '& fieldset': { border: '1px solid #000' },
-      '&:hover fieldset': { border: '1px solid #000' },
-      '&.Mui-focused fieldset': { border: '1px solid #000' },
+      '& fieldset': { border: '1px solid #E0E0E0' },
+      '&:hover fieldset': { border: '1px solid #E0E0E0' },
+      '&.Mui-focused fieldset': { border: '1px solid #111' },
     },
     '& .MuiInputLabel-root': {
       fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
-      color: '#000',
+      color: '#555',
     },
   };
 
@@ -78,11 +78,11 @@ export default function ContactPage({ data }) {
         <Typography
           variant="overline"
           sx={{
-            color: '#000',
+            color: '#555',
             letterSpacing: '0.15em',
             display: 'block',
             mb: 0.5,
-            fontWeight: 700,
+            fontWeight: 500,
             fontFamily: '"Sora", "Helvetica", "Arial", sans-serif',
           }}
         >
@@ -94,7 +94,7 @@ export default function ContactPage({ data }) {
           gutterBottom
           sx={{
             fontSize: { xs: '1.75rem', md: '3rem' },
-            fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
           }}
         >
           Contact
@@ -105,7 +105,7 @@ export default function ContactPage({ data }) {
         {/* Contact Info */}
         <Grid size={{ xs: 12, md: 5 }}>
           <motion.div {...scrollReveal}>
-            <Card variant="outlined" sx={{ mb: 3, border: '1px solid #000', borderRadius: 0, boxShadow: 'none' }}>
+            <Card variant="outlined" sx={{ mb: 3, border: '1px solid #E0E0E0', borderRadius: 0, boxShadow: 'none' }}>
               <CardContent sx={{ p: 2 }}>
                 {contact.email && (
                   <Box
@@ -113,13 +113,13 @@ export default function ContactPage({ data }) {
                     href={`mailto:${contact.email}`}
                     sx={{
                       display: 'flex', alignItems: 'center', gap: 1.5, py: 1.5,
-                      borderBottom: '1px solid #000', textDecoration: 'none', color: '#000',
+                      borderBottom: '1px solid #E0E0E0', textDecoration: 'none', color: '#111',
                       minHeight: 48,
                       '&:hover': { fontWeight: 700 },
                       '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
                   >
-                    <EmailIcon sx={{ color: '#000', fontSize: 20 }} />
+                    <EmailIcon sx={{ color: '#555', fontSize: 20 }} />
                     <Typography variant="body2" sx={{ fontWeight: 500 }}>{contact.email}</Typography>
                   </Box>
                 )}
@@ -129,19 +129,19 @@ export default function ContactPage({ data }) {
                     href={`tel:${contact.phone}`}
                     sx={{
                       display: 'flex', alignItems: 'center', gap: 1.5, py: 1.5,
-                      borderBottom: '1px solid #000', textDecoration: 'none', color: '#000',
+                      borderBottom: '1px solid #E0E0E0', textDecoration: 'none', color: '#111',
                       minHeight: 48,
                       '&:hover': { fontWeight: 700 },
                       '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
                     }}
                   >
-                    <PhoneIcon sx={{ color: '#000', fontSize: 20 }} />
+                    <PhoneIcon sx={{ color: '#555', fontSize: 20 }} />
                     <Typography variant="body2" sx={{ fontWeight: 500 }}>{contact.phone}</Typography>
                   </Box>
                 )}
                 {contact.address && (
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, py: 1.5, minHeight: 48 }}>
-                    <LocationOnIcon sx={{ color: '#000', fontSize: 20 }} />
+                    <LocationOnIcon sx={{ color: '#555', fontSize: 20 }} />
                     <Typography variant="body2">{contact.address}</Typography>
                   </Box>
                 )}
@@ -156,7 +156,7 @@ export default function ContactPage({ data }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  sx={{ color: '#000', border: '1px solid #000', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
+                  sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
                 >
                   <LinkedInIcon />
                 </IconButton>
@@ -167,7 +167,7 @@ export default function ContactPage({ data }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  sx={{ color: '#000', border: '1px solid #000', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
+                  sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
                 >
                   <GitHubIcon />
                 </IconButton>
@@ -179,7 +179,7 @@ export default function ContactPage({ data }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.platform}
-                  sx={{ color: '#000', border: '1px solid #000', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
+                  sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: 0, width: 44, height: 44, '&:hover': { bgcolor: '#000', color: '#FFF' } }}
                 >
                   <LaunchIcon />
                 </IconButton>

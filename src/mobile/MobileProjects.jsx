@@ -20,19 +20,19 @@ export default function MobileProjects({ data }) {
     <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
       <Typography
         variant="overline"
-        sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 600, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
+        sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
       >
         Gallery
       </Typography>
       <Typography
         component="h1"
-        sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
+        sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
       >
         Projects
       </Typography>
 
       {/* Filter tabs */}
-      <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2, pb: 1.5, borderBottom: '1px solid #000' }}>
+      <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2, pb: 1.5, borderBottom: '1px solid #E0E0E0' }}>
         {categories.map((cat) => (
           <Box
             key={cat}
@@ -44,7 +44,7 @@ export default function MobileProjects({ data }) {
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
               fontWeight: 600,
-              color: activeTab === cat ? '#FFF' : '#000',
+              color: activeTab === cat ? '#FFF' : '#111',
               bgcolor: activeTab === cat ? '#000' : 'transparent',
               border: '1px solid #000',
               borderRadius: 0,
@@ -67,25 +67,25 @@ export default function MobileProjects({ data }) {
           key={project.id}
           sx={{
             py: 1.25,
-            borderBottom: i < arr.length - 1 ? '1px solid #000' : 'none',
+            borderBottom: i < arr.length - 1 ? '1px solid #E0E0E0' : 'none',
           }}
         >
           <Box sx={{ mb: 0.75 }}>
-            <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+            <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
               {project.category}
             </Typography>
             <Typography sx={{ fontSize: '0.9rem', fontWeight: 600, lineHeight: 1.3 }}>
               {project.title}
             </Typography>
             {(project.description || project.subtitle) && (
-              <Typography sx={{ fontSize: '0.75rem', lineHeight: 1.4, color: '#000', mt: 0.25, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+              <Typography sx={{ fontSize: '0.75rem', lineHeight: 1.4, color: '#111', mt: 0.25, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                 {project.description || project.subtitle}
               </Typography>
             )}
             {project.tags?.length > 0 && (
               <Box sx={{ display: 'flex', gap: 0.5, mt: 0.5 }}>
                 {project.tags.slice(0, 3).map((tag) => (
-                  <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#000', border: '1px solid #000', px: 0.5, py: 0.125, lineHeight: 1.4, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                  <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#555', border: '1px solid #E0E0E0', px: 0.5, py: 0.125, lineHeight: 1.4, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                     {tag}
                   </Typography>
                 ))}
@@ -93,14 +93,14 @@ export default function MobileProjects({ data }) {
             )}
             {/* Research paper metadata */}
             {project.category === 'Research Papers' && project.publication && (
-              <Typography sx={{ fontSize: '0.65rem', fontStyle: 'italic', color: '#000', mt: 0.5 }}>
+              <Typography sx={{ fontSize: '0.65rem', fontStyle: 'italic', color: '#111', mt: 0.5 }}>
                 {project.publication}{project.year ? ` (${project.year})` : ''}
               </Typography>
             )}
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             {(project.date || project.year) && (
-              <Typography sx={{ fontSize: '0.6rem', fontWeight: 600, color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+              <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                 {project.date || project.year}
               </Typography>
             )}
@@ -114,7 +114,7 @@ export default function MobileProjects({ data }) {
                   sx={{
                     fontSize: '0.65rem',
                     fontWeight: 600,
-                    color: '#000',
+                    color: '#111',
                     border: '1px solid #000',
                     px: 0.75,
                     py: 0.25,
@@ -134,7 +134,7 @@ export default function MobileProjects({ data }) {
                 sx={{
                   fontSize: '0.75rem',
                   fontWeight: 600,
-                  color: '#000',
+                  color: '#111',
                   textDecoration: 'none',
                   minHeight: 44,
                   display: 'inline-flex',

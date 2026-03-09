@@ -1,9 +1,11 @@
-/* Design Tokens (Strict B&W) */
+/* Design Tokens (Minimalist B&W) */
 :root {
-  --c-bg: #FFFFFF;
-  --c-fg: #000000;
-  --c-border: #000000;
-  --c-border-subtle: #000000;
+  --c-bg: #FAFAFA;
+  --c-fg: #111111;
+  --c-fg-secondary: #555555;
+  --c-border: #E0E0E0;
+  --c-border-subtle: #EEEEEE;
+  --c-accent: #000000;
   --border: 1px solid var(--c-border);
   --border-dashed: 1px dashed var(--c-border);
   --s1: 4px;
@@ -15,12 +17,12 @@
   --s7: 40px;
   --s8: 48px;
   --s9: 64px;
-  --page-pad-x: 64px;
-  --page-pad-y: 80px;
-  --section-gap: 72px;
-  --max-width-content: 680px;
-  --block-gap: 16px;
-  --row-gap: 12px;
+  --page-pad-x: 72px;
+  --page-pad-y: 96px;
+  --section-gap: 80px;
+  --max-width-content: 720px;
+  --block-gap: 20px;
+  --row-gap: 14px;
   --space-unit: 8px;
   --space-xs: var(--s1);
   --space-sm: var(--s2);
@@ -30,22 +32,19 @@
   --space-2xl: var(--s8);
   --space-3xl: var(--s9);
   --radius: 0px;
-  --font-heading: 'Space Grotesk', 'Helvetica', 'Arial', sans-serif;
+  --font-heading: 'Manrope', 'Helvetica', 'Arial', sans-serif;
   --font-body: 'Sora', 'Helvetica', 'Arial', sans-serif;
   --font-accent: 'Sora', 'Helvetica', 'Arial', sans-serif;
-  --transition-fast: 0s;
-  --transition-base: 0s;
-  --transition-slow: 0s;
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
 }
 
 @media (max-width: 768px) {
   :root {
     --page-pad-x: 20px;
-    --page-pad-y: 32px;
-    --section-gap: 32px;
-    --c-fg: #000000;
-    --c-border: #000000;
-    --c-border-subtle: #000000;
+    --page-pad-y: 40px;
+    --section-gap: 40px;
   }
 }
 

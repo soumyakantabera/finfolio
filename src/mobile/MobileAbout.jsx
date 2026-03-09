@@ -54,14 +54,14 @@ export default function MobileAbout({ data }) {
         alignItems: 'center',
         bgcolor: '#FFF',
         border: 'none',
-        borderBottom: '1px solid #000',
+        borderBottom: '1px solid #E0E0E0',
         px: 0,
         py: 1.25,
         cursor: 'pointer',
-        fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+        fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
         fontWeight: 700,
         fontSize: '1.1rem',
-        color: '#000',
+        color: '#111',
         minHeight: 40,
         '&:focus-visible': { outline: '2px solid #000', outlineOffset: '2px' },
       }}
@@ -72,7 +72,7 @@ export default function MobileAbout({ data }) {
           <Typography
             variant="overline"
             component="span"
-            sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', fontWeight: 600, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
+            sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
           >
             {number}
           </Typography>
@@ -86,10 +86,10 @@ export default function MobileAbout({ data }) {
   return (
     <Box>
       {/* ── 01 / Hero ── */}
-      <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
+      <Box sx={{ borderBottom: '1px solid #E0E0E0', px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
         <Typography
           variant="overline"
-          sx={{ color: '#000', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 600, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
+          sx={{ color: '#555', letterSpacing: '0.12em', mb: 1, display: 'block', fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
         >
           01 / About
         </Typography>
@@ -108,19 +108,19 @@ export default function MobileAbout({ data }) {
           <Box>
             <Typography
               component="h1"
-              sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.5rem', lineHeight: 1.2 }}
+              sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.5rem', lineHeight: 1.2 }}
             >
               {about.name}
             </Typography>
             {about.introTitle && (
-              <Typography sx={{ color: '#000', fontWeight: 400, fontSize: '0.8rem' }}>
+              <Typography sx={{ color: '#111', fontWeight: 400, fontSize: '0.8rem' }}>
                 {about.introTitle}
               </Typography>
             )}
           </Box>
         </Box>
         {about.introDescription && (
-          <Typography sx={{ color: '#000', mt: 1, fontSize: '0.8rem', lineHeight: 1.6 }}>
+          <Typography sx={{ color: '#111', mt: 1, fontSize: '0.8rem', lineHeight: 1.6 }}>
             {about.introDescription}
           </Typography>
         )}
@@ -137,7 +137,7 @@ export default function MobileAbout({ data }) {
                 rel="noopener noreferrer"
                 aria-label={link.platform}
                 sx={{
-                  color: '#000',
+                  color: '#111',
                   border: '1px solid #000',
                   width: 36,
                   height: 36,
@@ -157,17 +157,17 @@ export default function MobileAbout({ data }) {
 
       {/* Metrics */}
       {about.metrics?.length > 0 && (
-        <Box sx={{ borderBottom: '1px solid #000', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
+        <Box sx={{ borderBottom: '1px solid #E0E0E0', px: 'var(--page-pad-x)', py: 'var(--s4)' }}>
           <Box sx={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(about.metrics.length, 3)}, 1fr)`, gap: 0 }}>
             {about.metrics.map((m, i) => (
               <Box key={m.id} sx={{
                 textAlign: 'center', py: 1,
-                borderRight: i < about.metrics.length - 1 ? '1px solid #000' : 'none',
+                borderRight: i < about.metrics.length - 1 ? '1px solid #E0E0E0' : 'none',
               }}>
-                <Typography className="tabular-nums" sx={{ fontWeight: 700, fontSize: '0.95rem', color: '#000' }}>
+                <Typography className="tabular-nums" sx={{ fontWeight: 700, fontSize: '0.95rem', color: '#111' }}>
                   {m.value}
                 </Typography>
-                <Typography sx={{ color: '#000', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.5rem', fontWeight: 600, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                <Typography sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.5rem', fontWeight: 500, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                   {m.label}
                 </Typography>
               </Box>
@@ -182,7 +182,7 @@ export default function MobileAbout({ data }) {
           <Box sx={{ mb: 2 }}>
             <SectionTitle number="02 / Bio" label="About Me" sectionKey="bio" />
             <Collapse in={isSectionExpanded('bio')} timeout={300}>
-              <Typography sx={{ py: 1.5, fontSize: '0.8rem', lineHeight: 1.7, whiteSpace: 'pre-line', color: '#000' }}>
+              <Typography sx={{ py: 1.5, fontSize: '0.8rem', lineHeight: 1.7, whiteSpace: 'pre-line', color: '#111' }}>
                 {about.bio}
               </Typography>
             </Collapse>
@@ -195,18 +195,18 @@ export default function MobileAbout({ data }) {
             <SectionTitle number="03 / Experience" label="Experience" sectionKey="experience" />
             <Collapse in={isSectionExpanded('experience')} timeout={300}>
               {about.experience.map((exp, idx) => (
-                <Box key={exp.id} sx={{ py: 1.25, borderBottom: idx < about.experience.length - 1 ? '1px solid #000' : 'none' }}>
+                <Box key={exp.id} sx={{ py: 1.25, borderBottom: idx < about.experience.length - 1 ? '1px solid #E0E0E0' : 'none' }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1 }}>
                     <Box sx={{ flex: 1, minWidth: 0 }}>
                       <Typography sx={{ fontWeight: 700, fontSize: '0.85rem' }}>{exp.role}</Typography>
-                      <Typography sx={{ color: '#000', fontSize: '0.75rem' }}>{exp.company}</Typography>
+                      <Typography sx={{ color: '#111', fontSize: '0.75rem' }}>{exp.company}</Typography>
                     </Box>
-                    <Typography sx={{ fontSize: '0.6rem', fontWeight: 600, border: '1px solid #000', px: 0.5, py: 0.25, flexShrink: 0, lineHeight: 1.4, color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                    <Typography sx={{ fontSize: '0.6rem', fontWeight: 600, border: '1px solid #E0E0E0', px: 0.5, py: 0.25, flexShrink: 0, lineHeight: 1.4, color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                       {exp.period}
                     </Typography>
                   </Box>
                   {exp.description && (
-                    <Typography sx={{ mt: 0.75, color: '#000', fontSize: '0.75rem', lineHeight: 1.6 }}>
+                    <Typography sx={{ mt: 0.75, color: '#111', fontSize: '0.75rem', lineHeight: 1.6 }}>
                       {exp.description}
                     </Typography>
                   )}
@@ -222,12 +222,12 @@ export default function MobileAbout({ data }) {
             <SectionTitle number="04 / Education" label="Education" sectionKey="education" />
             <Collapse in={isSectionExpanded('education')} timeout={300}>
               {about.education.map((edu, idx) => (
-                <Box key={edu.id} sx={{ py: 1.25, borderBottom: idx < about.education.length - 1 ? '1px solid #000' : 'none' }}>
+                <Box key={edu.id} sx={{ py: 1.25, borderBottom: idx < about.education.length - 1 ? '1px solid #E0E0E0' : 'none' }}>
                   <Typography sx={{ fontWeight: 700, fontSize: '0.85rem' }}>{edu.degree}</Typography>
-                  <Typography sx={{ color: '#000', fontSize: '0.75rem' }}>{edu.institution}</Typography>
-                  <Typography sx={{ color: '#000', fontSize: '0.65rem', fontWeight: 600, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{edu.year}</Typography>
+                  <Typography sx={{ color: '#111', fontSize: '0.75rem' }}>{edu.institution}</Typography>
+                  <Typography sx={{ color: '#555', fontSize: '0.65rem', fontWeight: 500, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{edu.year}</Typography>
                   {edu.details && (
-                    <Typography sx={{ mt: 0.5, color: '#000', fontSize: '0.75rem', lineHeight: 1.6 }}>{edu.details}</Typography>
+                    <Typography sx={{ mt: 0.5, color: '#111', fontSize: '0.75rem', lineHeight: 1.6 }}>{edu.details}</Typography>
                   )}
                 </Box>
               ))}
@@ -247,18 +247,18 @@ export default function MobileAbout({ data }) {
                     key={skill.id}
                     sx={{
                       py: 0.75,
-                      borderBottom: idx < about.skills.length - 1 ? '1px solid #000' : 'none',
+                      borderBottom: idx < about.skills.length - 1 ? '1px solid #E0E0E0' : 'none',
                       minHeight: 32,
                     }}
                   >
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
                       <Typography sx={{ fontSize: '0.8rem', fontWeight: 600 }}>{skill.name}</Typography>
-                      <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#000', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                      <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#555', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                         {skill.level}
                       </Typography>
                     </Box>
                     <Box
-                      sx={{ width: '100%', height: 3, bgcolor: '#FFF', border: '1px solid #000' }}
+                      sx={{ width: '100%', height: 3, bgcolor: '#FFF', border: '1px solid #E0E0E0' }}
                       role="progressbar"
                       aria-valuenow={pct}
                       aria-valuemin={0}
@@ -296,7 +296,7 @@ export default function MobileAbout({ data }) {
                       textAlign: 'left',
                       bgcolor: 'transparent',
                       border: 'none',
-                      borderBottom: idx < about.certifications.length - 1 ? '1px solid #000' : 'none',
+                      borderBottom: idx < about.certifications.length - 1 ? '1px solid #E0E0E0' : 'none',
                       cursor: hasMedia ? 'pointer' : 'default',
                       fontFamily: 'inherit',
                       px: 0,
@@ -305,11 +305,11 @@ export default function MobileAbout({ data }) {
                   >
                     <Box sx={{ flex: 1, minWidth: 0 }}>
                       <Typography sx={{ fontSize: '0.8rem', fontWeight: 700 }}>{cert.title || cert.name}</Typography>
-                      {cert.issuer && <Typography sx={{ fontSize: '0.65rem', color: '#000' }}>{cert.issuer}</Typography>}
-                      <Typography sx={{ fontSize: '0.6rem', color: '#000', fontWeight: 600, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{cert.date || cert.year}</Typography>
+                      {cert.issuer && <Typography sx={{ fontSize: '0.65rem', color: '#111' }}>{cert.issuer}</Typography>}
+                      <Typography sx={{ fontSize: '0.6rem', color: '#555', fontWeight: 500, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>{cert.date || cert.year}</Typography>
                     </Box>
                     {hasMedia && (
-                      <Typography sx={{ fontSize: '0.7rem', fontWeight: 600, color: '#000', flexShrink: 0 }}>View →</Typography>
+                      <Typography sx={{ fontSize: '0.7rem', fontWeight: 600, color: '#111', flexShrink: 0 }}>View →</Typography>
                     )}
                   </Box>
                 );
@@ -324,12 +324,12 @@ export default function MobileAbout({ data }) {
             <SectionTitle number="07 / Achievements" label="Achievements" sectionKey="achievements" />
             <Collapse in={isSectionExpanded('achievements')} timeout={300}>
               {about.achievements.map((ach, idx) => (
-                <Box key={ach.id} sx={{ py: 1, borderBottom: idx < about.achievements.length - 1 ? '1px solid #000' : 'none' }}>
+                <Box key={ach.id} sx={{ py: 1, borderBottom: idx < about.achievements.length - 1 ? '1px solid #E0E0E0' : 'none' }}>
                   <Typography sx={{ fontSize: '0.8rem', fontWeight: 700 }}>{ach.title}</Typography>
                   {ach.description && (
-                    <Typography sx={{ fontSize: '0.75rem', color: '#000', lineHeight: 1.5 }}>{ach.description}</Typography>
+                    <Typography sx={{ fontSize: '0.75rem', color: '#111', lineHeight: 1.5 }}>{ach.description}</Typography>
                   )}
-                  {ach.year && <Typography sx={{ fontSize: '0.6rem', fontWeight: 600, color: '#000', mt: 0.25 }}>{ach.year}</Typography>}
+                  {ach.year && <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, color: '#555', mt: 0.25 }}>{ach.year}</Typography>}
                 </Box>
               ))}
             </Collapse>
@@ -341,7 +341,7 @@ export default function MobileAbout({ data }) {
           <Box key={section.id} sx={{ mb: 2 }}>
             <SectionTitle label={section.title} sectionKey={`additional-${section.id}`} />
             <Collapse in={isSectionExpanded(`additional-${section.id}`)} timeout={300}>
-              <Typography sx={{ py: 1.5, fontSize: '0.8rem', whiteSpace: 'pre-line', lineHeight: 1.7, color: '#000' }}>
+              <Typography sx={{ py: 1.5, fontSize: '0.8rem', whiteSpace: 'pre-line', lineHeight: 1.7, color: '#111' }}>
                 {section.content}
               </Typography>
             </Collapse>
@@ -371,7 +371,7 @@ export default function MobileAbout({ data }) {
             justifyContent: 'space-between',
             px: 'var(--page-pad-x)',
             py: 1,
-            borderBottom: '1px solid #000',
+            borderBottom: '1px solid #E0E0E0',
             flexShrink: 0,
             minHeight: 48,
           }}>
@@ -381,7 +381,7 @@ export default function MobileAbout({ data }) {
             <IconButton
               onClick={() => setSelectedCert(null)}
               aria-label="Close"
-              sx={{ color: '#000', border: '1px solid #000', borderRadius: 0, width: 36, height: 36, p: 0 }}
+              sx={{ color: '#111', border: '1px solid #E0E0E0', borderRadius: 0, width: 36, height: 36, p: 0 }}
             >
               <CloseIcon sx={{ fontSize: 18 }} />
             </IconButton>
@@ -410,7 +410,7 @@ export default function MobileAbout({ data }) {
           <Box sx={{
             px: 'var(--page-pad-x)',
             py: 1.5,
-            borderTop: '1px solid #000',
+            borderTop: '1px solid #E0E0E0',
             flexShrink: 0,
           }}>
             {selectedCert?.issuer && (
@@ -426,7 +426,7 @@ export default function MobileAbout({ data }) {
                   alignItems: 'center',
                   gap: 0.5,
                   border: '1px solid #000',
-                  color: '#000',
+                  color: '#111',
                   textDecoration: 'none',
                   px: 1,
                   py: 0.5,

@@ -39,19 +39,19 @@ export default function MobileContact({ data }) {
     <Box sx={{ px: 'var(--page-pad-x)', py: 'var(--section-gap)' }}>
       <Typography
         variant="overline"
-        sx={{ color: '#000', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 700, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
+        sx={{ color: '#555', letterSpacing: '0.12em', display: 'block', mb: 0.5, fontWeight: 500, fontSize: '0.6rem', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}
       >
         Get in Touch
       </Typography>
       <Typography
         component="h1"
-        sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
+        sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.4rem', mb: 2 }}
       >
         Contact
       </Typography>
 
       {/* Contact methods — tappable rows */}
-      <Box sx={{ mb: 2, borderBottom: '1px solid #000' }}>
+      <Box sx={{ mb: 2, borderBottom: '1px solid #E0E0E0' }}>
         {contact.email && (
           <Box
             component="a"
@@ -61,14 +61,14 @@ export default function MobileContact({ data }) {
               justifyContent: 'space-between',
               alignItems: 'center',
               py: 1.25,
-              borderBottom: '1px solid #000',
+              borderBottom: '1px solid #E0E0E0',
               textDecoration: 'none',
-              color: '#000',
+              color: '#111',
               minHeight: 44,
               '&:active': { fontWeight: 700 },
             }}
           >
-            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Email</Typography>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Email</Typography>
             <Typography sx={{ fontSize: '0.8rem', fontWeight: 500 }}>{contact.email}</Typography>
           </Box>
         )}
@@ -81,14 +81,14 @@ export default function MobileContact({ data }) {
               justifyContent: 'space-between',
               alignItems: 'center',
               py: 1.25,
-              borderBottom: '1px solid #000',
+              borderBottom: '1px solid #E0E0E0',
               textDecoration: 'none',
-              color: '#000',
+              color: '#111',
               minHeight: 44,
               '&:active': { fontWeight: 700 },
             }}
           >
-            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Phone</Typography>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Phone</Typography>
             <Typography sx={{ fontSize: '0.8rem', fontWeight: 500 }}>{contact.phone}</Typography>
           </Box>
         )}
@@ -102,7 +102,7 @@ export default function MobileContact({ data }) {
               minHeight: 44,
             }}
           >
-            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Location</Typography>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Location</Typography>
             <Typography sx={{ fontSize: '0.8rem', textAlign: 'right' }}>{contact.address}</Typography>
           </Box>
         )}
@@ -118,7 +118,7 @@ export default function MobileContact({ data }) {
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: '#000',
+                color: '#111',
                 border: '1px solid #000',
                 px: 1.5,
                 py: 0.5,
@@ -142,7 +142,7 @@ export default function MobileContact({ data }) {
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: '#000',
+                color: '#111',
                 border: '1px solid #000',
                 px: 1.5,
                 py: 0.5,
@@ -167,7 +167,7 @@ export default function MobileContact({ data }) {
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: '#000',
+                color: '#111',
                 border: '1px solid #000',
                 px: 1.5,
                 py: 0.5,
@@ -233,7 +233,7 @@ export default function MobileContact({ data }) {
             color: '#FFF',
             border: '1px solid #000',
             py: 1.25,
-            fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif',
+            fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif',
             fontWeight: 600,
             fontSize: '0.8rem',
             letterSpacing: '0.04em',

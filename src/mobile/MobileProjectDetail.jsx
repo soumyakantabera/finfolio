@@ -50,8 +50,8 @@ export default function MobileProjectDetail({ data }) {
           sx={{
             display: 'inline-flex',
             alignItems: 'center',
-            border: '1px solid #000',
-            color: '#000',
+            border: '1px solid #E0E0E0',
+            color: '#111',
             textDecoration: 'none',
             px: 2,
             py: 1,
@@ -85,7 +85,7 @@ export default function MobileProjectDetail({ data }) {
           top: 48,
           zIndex: 1100,
           bgcolor: '#FFF',
-          borderBottom: '1px solid #000',
+          borderBottom: '1px solid #E0E0E0',
           px: 'var(--page-pad-x)',
           py: 0.75,
           display: 'flex',
@@ -98,7 +98,7 @@ export default function MobileProjectDetail({ data }) {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            color: '#000',
+            color: '#111',
             textDecoration: 'none',
             fontSize: '0.8rem',
             fontWeight: 600,
@@ -135,7 +135,7 @@ export default function MobileProjectDetail({ data }) {
               {project.category}
             </Typography>
           )}
-          <Typography sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.3rem', lineHeight: 1.2 }}>
+          <Typography sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1.3rem', lineHeight: 1.2 }}>
             {project.title}
           </Typography>
           {project.subtitle && (
@@ -149,7 +149,7 @@ export default function MobileProjectDetail({ data }) {
           {project.tags?.length > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 1 }}>
               {project.tags.map((tag) => (
-                <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#000', border: '1px solid #000', px: 0.5, py: 0.125, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                <Typography key={tag} sx={{ fontSize: '0.6rem', color: '#555', border: '1px solid #E0E0E0', px: 0.5, py: 0.125, fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                   {tag}
                 </Typography>
               ))}
@@ -159,10 +159,10 @@ export default function MobileProjectDetail({ data }) {
 
         {/* Tech Stack + Links */}
         {(project.techStack?.length > 0 || project.links?.length > 0) && (
-          <Box sx={{ mb: 2, pb: 2, borderBottom: '1px solid #000' }}>
+          <Box sx={{ mb: 2, pb: 2, borderBottom: '1px solid #E0E0E0' }}>
             {project.techStack?.length > 0 && (
               <Box sx={{ mb: 1 }}>
-                <Typography sx={{ fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Tech Stack</Typography>
+                <Typography sx={{ fontSize: '0.65rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>Tech Stack</Typography>
                 <Typography sx={{ fontSize: '0.8rem' }}>{project.techStack.join(', ')}</Typography>
               </Box>
             )}
@@ -178,7 +178,7 @@ export default function MobileProjectDetail({ data }) {
                     sx={{
                       fontSize: '0.75rem',
                       fontWeight: 600,
-                      color: '#000',
+                      color: '#111',
                       border: '1px solid #000',
                       px: 1,
                       py: 0.5,
@@ -208,8 +208,8 @@ export default function MobileProjectDetail({ data }) {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                color: '#000',
-                border: '1px solid #000',
+                color: '#111',
+                border: '1px solid #E0E0E0',
                 bgcolor: '#FFF',
                 px: 1.5,
                 py: 1,
@@ -225,7 +225,7 @@ export default function MobileProjectDetail({ data }) {
               <span>{tocOpen ? '−' : '+'}</span>
             </Box>
             <Collapse in={tocOpen}>
-              <Box sx={{ border: '1px solid #000', borderTop: 0 }}>
+              <Box sx={{ border: '1px solid #E0E0E0', borderTop: 0 }}>
                 <List dense disablePadding>
                   {headings.map((h) => (
                     <ListItem key={h.id} disablePadding sx={{ pl: h.level === 3 ? 2 : 0 }}>
@@ -253,9 +253,9 @@ export default function MobileProjectDetail({ data }) {
           ref={contentRef}
           sx={{
             mb: 3,
-            '& img': { maxWidth: '100%', height: 'auto', border: '1px solid #000' },
-            '& iframe': { maxWidth: '100%', border: '1px solid #000' },
-            '& pre': { overflow: 'auto', maxWidth: '100%', border: '1px solid #000', p: 1.5, fontSize: '0.75rem' },
+            '& img': { maxWidth: '100%', height: 'auto', border: '1px solid #E0E0E0' },
+            '& iframe': { maxWidth: '100%', border: '1px solid #E0E0E0' },
+            '& pre': { overflow: 'auto', maxWidth: '100%', border: '1px solid #E0E0E0', p: 1.5, fontSize: '0.75rem' },
           }}
         >
           <BlockRenderer
@@ -268,8 +268,8 @@ export default function MobileProjectDetail({ data }) {
 
         {/* Related projects */}
         {relatedProjects.length > 0 && (
-          <Box sx={{ borderTop: '1px solid #000', pt: 2 }}>
-            <Typography sx={{ fontFamily: '"Space Grotesk", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1rem', mb: 1.5 }}>
+          <Box sx={{ borderTop: '1px solid #E0E0E0', pt: 2 }}>
+            <Typography sx={{ fontFamily: '"Manrope", "Helvetica", "Arial", sans-serif', fontWeight: 700, fontSize: '1rem', mb: 1.5 }}>
               Related Projects
             </Typography>
             {relatedProjects.map((rp, i, arr) => (
@@ -280,14 +280,14 @@ export default function MobileProjectDetail({ data }) {
                 sx={{
                   display: 'block',
                   py: 1.25,
-                  borderBottom: i < arr.length - 1 ? '1px solid #000' : 'none',
+                  borderBottom: i < arr.length - 1 ? '1px solid #E0E0E0' : 'none',
                   textDecoration: 'none',
-                  color: '#000',
+                  color: '#111',
                   '&:active': { fontWeight: 700 },
                 }}
               >
                 {rp.category && (
-                  <Typography sx={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
+                  <Typography sx={{ fontSize: '0.6rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: '"Sora", "Helvetica", "Arial", sans-serif' }}>
                     {rp.category}
                   </Typography>
                 )}
@@ -306,7 +306,7 @@ export default function MobileProjectDetail({ data }) {
           left: 0,
           right: 0,
           bgcolor: '#FFF',
-          borderTop: '1px solid #000',
+          borderTop: '1px solid #E0E0E0',
           px: 'var(--page-pad-x)',
           py: 1,
           display: 'flex',
@@ -320,7 +320,7 @@ export default function MobileProjectDetail({ data }) {
           component={Link}
           to="/projects"
           sx={{
-            color: '#000',
+            color: '#111',
             textDecoration: 'none',
             fontWeight: 600,
             fontSize: '0.75rem',
@@ -339,7 +339,7 @@ export default function MobileProjectDetail({ data }) {
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: '#000',
+                color: '#111',
                 border: '1px solid #000',
                 textDecoration: 'none',
                 fontWeight: 600,
@@ -362,7 +362,7 @@ export default function MobileProjectDetail({ data }) {
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: '#000',
+                color: '#111',
                 border: '1px solid #000',
                 textDecoration: 'none',
                 fontWeight: 600,

@@ -19,7 +19,7 @@ A deployable portfolio web app template built with **Vite + React + Material UI*
 - **Admin Portal (CMS)** — Full CRUD dashboard to manage all content from the browser (hidden from public navigation)
 - **Quotes / Own Words CMS** — Manage personal quotes with CRUD, featured toggle, ordering, and attribution
 - **Modern About Page** — Polished design with timeline, skill progress bars, metrics, achievements, and contact links
-- **Sharp B&W Design** — Professional, editorial typography with Space Grotesk + Sora fonts, minimal borders, no rounded corners
+- **Sharp B&W Design** — Professional, editorial typography with Manrope + Sora fonts, minimal borders, no rounded corners
 - **Responsive** — Desktop, tablet, and mobile layouts
 - **Dedicated Mobile Code Path** — Separate mobile components (`src/mobile/`) with compact, editorial B&W design that activates automatically at ≤768px
 - **GitHub Pages Ready** — HashRouter for SPA compatibility, GitHub Actions deploy workflow
@@ -108,7 +108,7 @@ The site uses a custom font system loaded via `@fontsource`:
 
 | Usage | Font | Weights |
 |-------|------|---------|
-| **Headings / Display** | Space Grotesk | 400–700 |
+| **Headings / Display** | Manrope | 400–700 |
 | **Body / UI text** | Sora | 300–700 |
 
 **Type scale**: display, h1–h6, body1, body2, caption, overline — all defined in `src/theme/theme.js`.
@@ -466,7 +466,7 @@ The included `.github/workflows/deploy.yml` workflow:
 │   │   ├── Contact.jsx
 │   │   └── CustomPage.jsx
 │   ├── theme/
-│   │   └── theme.js               # MUI theme (B&W, sharp corners, Space Grotesk + Sora)
+│   │   └── theme.js               # MUI theme (B&W, sharp corners, Manrope + Sora)
 │   ├── App.jsx                    # Root component with routing
 │   ├── main.jsx                   # Entry point + font imports
 │   └── index.css                  # Global styles + tabular numerals
@@ -480,7 +480,7 @@ The included `.github/workflows/deploy.yml` workflow:
 - **Vite** — Build tool
 - **React 19** — UI library
 - **Material UI (MUI) v7** — Component library (sharp styling overrides)
-- **Space Grotesk + Sora** — Fonts via @fontsource
+- **Manrope + Sora** — Fonts via @fontsource
 - **React Router v7** — Client-side routing (HashRouter)
 - **react-markdown** — Markdown rendering
 - **remark-gfm** — GitHub Flavored Markdown support
