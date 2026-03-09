@@ -204,7 +204,7 @@ export default function Navbar({ data }) {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              gap: '4px',
+              gap: 0.5,
               background: 'none',
               border: '1px solid #EBEBEB',
               cursor: 'pointer',
@@ -220,30 +220,17 @@ export default function Navbar({ data }) {
               },
             }}
           >
-            <Box
-              sx={{
-                width: 16,
-                height: '1.5px',
-                bgcolor: '#0A0A0A',
-                borderRadius: '1px',
-              }}
-            />
-            <Box
-              sx={{
-                width: 16,
-                height: '1.5px',
-                bgcolor: '#0A0A0A',
-                borderRadius: '1px',
-              }}
-            />
-            <Box
-              sx={{
-                width: 16,
-                height: '1.5px',
-                bgcolor: '#0A0A0A',
-                borderRadius: '1px',
-              }}
-            />
+            {[0, 1, 2].map((i) => (
+              <Box
+                key={i}
+                sx={{
+                  width: 16,
+                  height: '1.5px',
+                  bgcolor: '#0A0A0A',
+                  borderRadius: '1px',
+                }}
+              />
+            ))}
           </Box>
         </Toolbar>
       </AppBar>
