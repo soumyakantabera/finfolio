@@ -15,10 +15,10 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: bodyFont,
-    h1: { fontFamily: headingFont, fontWeight: 800, letterSpacing: '-0.04em', fontSize: '2.75rem', lineHeight: 1.1 },
-    h2: { fontFamily: headingFont, fontWeight: 700, letterSpacing: '-0.03em', fontSize: '2.25rem', lineHeight: 1.15 },
-    h3: { fontFamily: headingFont, fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.75rem', lineHeight: 1.2 },
-    h4: { fontFamily: headingFont, fontWeight: 600, letterSpacing: '-0.02em', fontSize: '1.5rem', lineHeight: 1.25 },
+    h1: { fontFamily: headingFont, fontWeight: 800, letterSpacing: '-0.04em', fontSize: '2.75rem', lineHeight: 1.1, '@media (max-width:899.95px)': { fontSize: '2rem' } },
+    h2: { fontFamily: headingFont, fontWeight: 700, letterSpacing: '-0.03em', fontSize: '2.25rem', lineHeight: 1.15, '@media (max-width:899.95px)': { fontSize: '1.75rem' } },
+    h3: { fontFamily: headingFont, fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.75rem', lineHeight: 1.2, '@media (max-width:899.95px)': { fontSize: '1.5rem' } },
+    h4: { fontFamily: headingFont, fontWeight: 600, letterSpacing: '-0.02em', fontSize: '1.5rem', lineHeight: 1.25, '@media (max-width:899.95px)': { fontSize: '1.25rem' } },
     h5: { fontFamily: headingFont, fontWeight: 600, letterSpacing: '-0.01em', fontSize: '1.25rem', lineHeight: 1.3 },
     h6: { fontFamily: headingFont, fontWeight: 600, letterSpacing: '-0.01em', fontSize: '1.1rem', lineHeight: 1.35 },
     subtitle1: { fontFamily: bodyFont, fontWeight: 500, lineHeight: 1.6 },
@@ -39,6 +39,7 @@ const theme = createTheme({
           boxShadow: 'none',
           fontWeight: 500,
           letterSpacing: '-0.01em',
+          minHeight: 44,
           '&:focus-visible': { outline: '2px solid #0A0A0A', outlineOffset: '2px' },
         },
         contained: {

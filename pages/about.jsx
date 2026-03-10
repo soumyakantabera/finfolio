@@ -361,7 +361,7 @@ export default function AboutPage({ initialData }) {
                   {about.skills.map((skill) => {
                     const pct = skillLevelMap[(skill.level || '').toLowerCase()] || 50;
                     return (
-                      <Grid size={{ xs: 12, sm: 6, md: 4 }} key={skill.id}>
+                      <Grid size={{ xs: 12, md: 4 }} key={skill.id}>
                         <Box sx={{
                           py: 1.5, px: 2,
                           border: '1px solid #E0E0E0',
@@ -411,7 +411,7 @@ export default function AboutPage({ initialData }) {
                   {about.certifications.map((cert) => {
                     const hasMedia = !!cert.mediaUrl;
                     return (
-                      <Grid size={{ xs: 12, sm: 6, md: 4 }} key={cert.id}>
+                      <Grid size={{ xs: 12, md: 4 }} key={cert.id}>
                         <Box
                           sx={{
                             border: '1px solid #E0E0E0',
@@ -591,7 +591,7 @@ export default function AboutPage({ initialData }) {
               <Collapse in={isSectionExpanded('achievements')} timeout={300}>
                 <Grid container spacing={{ xs: 2, md: 3 }}>
                   {about.achievements.map((ach) => (
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={ach.id}>
+                    <Grid size={{ xs: 12, md: 4 }} key={ach.id}>
                       <Box sx={{ border: '1px solid #E0E0E0', borderRadius: 'var(--radius-lg)', p: { xs: 2.5, md: 3 }, height: '100%' }}>
                         <Typography variant="body1" fontWeight={600} sx={{ color: '#111' }}>
                           {ach.title}
