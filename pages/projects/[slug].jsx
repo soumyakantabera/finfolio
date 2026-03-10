@@ -446,7 +446,7 @@ export default function ProjectDetailPage({ initialData, slug: propSlug }) {
             </Typography>
             <Grid container spacing={{ xs: 2, md: 3 }}>
               {relatedProjects.map((rp) => (
-                <Grid size={{ xs: 12, sm: 6 }} key={rp.id}>
+                <Grid size={{ xs: 12, md: 6 }} key={rp.id}>
                   <Card
                     variant="outlined"
                     component={Link}

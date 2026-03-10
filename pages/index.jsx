@@ -108,7 +108,7 @@ export default function HomePage({ initialData }) {
                     </Typography>
                   )}
                   {home.ctaButtons?.length > 0 && (
-                    <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                    <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', flexDirection: { xs: 'column', md: 'row' } }}>
                       {home.ctaButtons.map((btn, i) => (
                         <Button
                           key={btn.id || i}
@@ -124,6 +124,7 @@ export default function HomePage({ initialData }) {
                             boxShadow: 'none',
                             minHeight: 48,
                             px: { xs: 3, md: 4 },
+                            width: { xs: '100%', md: 'auto' },
                             '&:hover': {
                               bgcolor: '#000',
                               color: '#FFF',
@@ -156,13 +157,13 @@ export default function HomePage({ initialData }) {
                 <Grid container spacing={0}>
                   {home.stats.map((stat, i) => (
                     <Grid
-                      size={{ xs: 6, sm: 3 }}
+                      size={{ xs: 12, md: 3 }}
                       key={stat.id || i}
                       sx={{
                         textAlign: 'center',
                         py: 3,
-                        borderRight: i < home.stats.length - 1 ? { sm: '1px solid #E0E0E0' } : 'none',
-                        borderBottom: { xs: i < home.stats.length - 2 ? '1px solid #E0E0E0' : 'none', sm: 'none' },
+                        borderRight: i < home.stats.length - 1 ? { md: '1px solid #E0E0E0' } : 'none',
+                        borderBottom: { xs: i < home.stats.length - 1 ? '1px solid #E0E0E0' : 'none', md: 'none' },
                       }}
                     >
                       <Typography
@@ -211,7 +212,7 @@ export default function HomePage({ initialData }) {
                 </Box>
                 <Grid container spacing={{ xs: 2, md: 3 }}>
                   {allProjects.slice(0, 6).map((project, idx) => (
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
+                    <Grid size={{ xs: 12, md: 4 }} key={project.id}>
                       <motion.div
                         custom={idx}
                         variants={cardVariants}
@@ -377,7 +378,7 @@ export default function HomePage({ initialData }) {
                 </Typography>
                 <Grid container spacing={{ xs: 2, md: 3 }}>
                   {featuredProjects.slice(0, 4).map((project, i) => (
-                    <Grid size={{ xs: 12, sm: 6 }} key={project.id}>
+                    <Grid size={{ xs: 12, md: 6 }} key={project.id}>
                       <motion.div
                         custom={i}
                         variants={cardVariants}
@@ -522,13 +523,13 @@ export default function HomePage({ initialData }) {
               <Typography variant="body1" sx={{ mb: 4, maxWidth: 500, mx: 'auto', lineHeight: 1.7, color: '#111' }}>
                 Interested in working together, discussing markets, or just saying hello? I&apos;d love to hear from you.
               </Typography>
-              <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Box sx={{ display: 'flex', gap: 2, justifyContent: { md: 'center' }, flexWrap: 'wrap', flexDirection: { xs: 'column', md: 'row' } }}>
                 {contact?.email && (
                   <Button
                     href={`mailto:${contact.email}`}
                     variant="contained"
                     size="large"
-                    sx={{ bgcolor: '#000', color: '#FFF', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
+                    sx={{ bgcolor: '#000', color: '#FFF', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, width: { xs: '100%', md: 'auto' }, '&:hover': { bgcolor: '#000', boxShadow: 'none' } }}
                   >
                     Email me
                   </Button>
@@ -538,7 +539,7 @@ export default function HomePage({ initialData }) {
                   href="/contact"
                   variant="outlined"
                   size="large"
-                  sx={{ color: '#000', borderColor: '#000', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
+                  sx={{ color: '#000', borderColor: '#000', borderRadius: '8px', boxShadow: 'none', minHeight: 48, px: { xs: 3, md: 4 }, width: { xs: '100%', md: 'auto' }, '&:hover': { borderColor: '#000', bgcolor: '#000', color: '#FFF', boxShadow: 'none' } }}
                 >
                   Contact page
                 </Button>
